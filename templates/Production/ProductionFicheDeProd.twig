@@ -1,0 +1,275 @@
+<!-- ProductionFicheDeProd.twig -->
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\ProductionFicheDeProd::IdPageDossier')] is defined) %}
+    {% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\ProductionFicheDeProd::IdPageDossier')] %}
+{% endif %}#}
+<script type="text/javascript" src="js/ProductionFicheDeProd.js"></script>
+
+{% if(session.Classe[constant('fbx\\Fab\\ProductionFicheDeProd::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1'  %}
+    <body id="ProductionFicheDeProd"
+          onload="getMenu('navBarDyna');
+                  document.title= '{% trans "Fiches de prod." %} // {{ session.Slogan }}';
+                  getSelect('SelectSocieteFicheDeProd','getListeSocieteTrad','{{ OUT.IDSociete }}');
+                  getSelect('SelectSecteur','getListeSecteurTrad','{{ OUT.IDSecteur }}');
+                  getSelect('SelectMachine','getListeMachineTrad','{{ OUT.IDMachine }}');
+                  getTableFicheDeProd('{{ OUT.IDSecteur }}','{{ OUT.IDMachine }}');
+                  setTimeout(function() { getBtnModalPlanning(); }, 500);
+                  /*getSelect('SelectSupport','getListeSupportTrad');*/
+            ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron visible-lg visible-md" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divJumbotron">
+                <div class="alert alert-block well fade in">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1>{% trans "Fiche de production" %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid paddingJumbotron visible-sm visible-xs" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+        </div>
+    </div>
+
+    <!-- search engine -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <!-- date -->
+                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                        <label class="control-label" for="searchDateDossier">{% trans "Date" %}</label>
+                        <input id="searchDateDossier" class="form-control" type="text" value="{% if (OUT.searchDateDossier=='') %}{{ "now"|date("d/m/Y") }}{% else %}{{ OUT.searchDateDossier }}{% endif %}">
+                        <!-- JS FOR DATERANGEPICKER -->
+                        {% set idPicker = "searchDateDossier" %}
+                        {% include "elements/datepicker.twig" %}
+                    </div>
+                    <!-- secteur -->
+                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                        <label class="control-label" for="SelectSecteur">{% trans "Secteur" %}</label>
+                        <select id="SelectSecteur" class="form-control" name="SelectSecteur"
+                                onchange="getSelectSecteurTlMachine(this,'SelectMachine');getTableFicheDeProd();setTimeout(function() { getBtnModalPlanning(); }, 100);">
+                            <!-- getSelect('SelectSecteur','getListeSecteurTrad'); -->
+                        </select>
+                    </div>
+                    <!-- machine -->
+                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                        <label class="control-label" for="SelectMachine">{% trans "Machine" %}</label>
+                        <select id="SelectMachine" class="form-control" onchange="getTableFicheDeProd();setTimeout(function() { getBtnModalPlanning(); }, 100);">
+                            <!-- getSelect('SelectMachine','getListeMachine'); -->
+                        </select>
+                    </div>
+                    <!-- dossier -->
+                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                        <label class="control-label" for="Dossier">{% trans "Dossier" %}</label>
+                        <input type="text" class="form-control" id="Dossier"
+                               placeholder="{% trans "Dossier" %}" name="Dossier" title="{% trans "Dossier" %}"
+                               value="{{ OUT.Dossier }}"
+                               onkeypress="if(event.keyCode=='13'){enabledRow($('#SelectSociete').val());}"
+                                >
+                    </div>
+                    <!-- Submit -->
+                    <div class="form-group col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                            <label class="control-label">&nbsp;</label>
+                            <button type="submit" name="submit" value="ok" class="form-control btn btn-primary" id="btnSearchDossier" onclick="enabledRow($('#SelectSociete').val());getTableFicheDeProd();">
+                                {% trans "Chercher" %} &nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>
+                            </button>
+                    </div>
+                    <!-- cancel -->
+                    <div class="form-group col-xs-3 col-sm-2 col-md-1 col-lg-1" id="divBtnCancel" hidden="hidden">
+                            <label class="control-label">&nbsp;</label>
+                            <button type="button" class="form-control btn btn-warning" id="btnCancel" onclick="getCancelAction();">
+                                {% trans "Annuler" %} &nbsp;&nbsp;<span class="glyphicon glyphicon-remove-sign"></span>
+                            </button>
+                    </div>
+                    <!-- active modal planning -->
+                    <div class="form-group col-xs-3 col-sm-2 col-md-1 col-lg-1" id="divBtnPlanning" hidden="hidden">
+                        <label class="control-label">&nbsp;</label>
+                        <button class="form-control btn btn-info" onclick="getDataPlanning();">
+                            {% trans "Planning" %} &nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-condensed">
+                        {#<thead>#}
+                            <tr>
+                                <th></th>
+                                <th>{% trans "Dossier" %}</th>
+                                <th></th>
+                                <th>{% trans "Ref." %}</th>
+                                <th>{% trans "Elements" %}</th>
+                                <th></th>
+                                <th>{% trans "Quantité" %}</th>
+                                <th>{% trans "Support" %}</th>
+                                <th>{% trans "Format" %}</th>
+                                <th>{% trans "Impression" %}</th>
+                                <th>{% trans "Poses" %}</th>
+                                <th>{% trans "Option" %}</th>
+                                <th>{% trans "Code 1" %}</th>
+                                <th>{% trans "Code 2" %}</th>
+                                <th>{% trans "Commentaire" %}</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        {#</thead>#}
+                        <tbody>
+                            <form id="formProductionFicheDeProd" class="form-group" role="form" method="POST" name="search" action="ProductionFicheDeProd" onsubmit="verfiRow();">
+                                <input type="hidden" name="action" value="getInsertDataFicheDeProd">
+                                <tr id="saveRow" hidden="hidden">
+                                    <td>
+                                        <input type="hidden" name="IDSociete" id="IDSociete" value="">
+                                        <input type="hidden" name="IDSecteur" id="IDSecteur" value="">
+                                        <input type="hidden" name="IDMachine" id="IDMachine" value="">
+                                        <input type="hidden" name="Dossier" id="inputDossier" value="">
+                                        <input type="hidden" name="Ref" id="inputRef" value="">
+                                        <input type="hidden" name="IDDossierDeFab" id="IDDossierDeFab" value="">
+                                        <input type="hidden" name="searchDateDossier" id="dDateDossier" value="">
+                                    </td>
+                                    <td style="vertical-align: middle;" class="" ondblclick="getDossierDeFabPage('{{ session.IP }}','{{ session.PUBLIC_PATH }}',$('#IDDossierDeFab').val());">
+                                        <code id="tdDossier"></code>
+                                    </td>
+                                    <td style="vertical-align: middle;" class="text text-center" id="tdCommentaire">
+
+                                    </td>
+                                    <td style="vertical-align: middle;" class="" id="tdRef">
+                                        <!-- enabledRow (js) -->
+                                        <!-- ne pas jeter for save from empty dossier -->
+                                        <label class="sr-only" for="Ref"></label>
+                                        <input type="text" class="form-control input-sm" id="Ref" name="Ref" placeholder="{% trans "Ref." %}">
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        <label class="sr-only" for="IDElement"></label>
+                                        <select id="IDElement" class="form-control input-sm" name="Element" onchange="getDataDossierDeFabTlElement(this.value);" onmouseout="">
+                                            <!-- enabledRow (js) -->
+                                            <!-- ne pas jeter for save from empty dossier -->
+                                            <option value="0"></option>
+                                            <option value="1">{% trans "Couv" %}</option>
+                                            <option value="2">{% trans "Encart" %}</option>
+                                            <option value="3">{% trans "Leaflet" %}</option>
+                                            {% for i in 1..50 %}
+                                                <option value="{{ i+3 }}">{{ i }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td style="vertical-align: middle;" class="text text-center" id="tdCommentaireElement">
+
+                                    </td>
+                                    <td style="vertical-align: middle;width: 6%;">
+                                        <label class="sr-only" for="Quantite"></label>
+                                        <input type="number" min="0" class="form-control input-sm" id="Quantite" name="Quantite" placeholder="{% trans "Quantité" %}" onkeyup="verfiRow();">
+                                    </td>
+                                    <td style="vertical-align: middle;" id="tdSelectSupport">
+                                        <!-- getDataDossierDeFabTlElement (js) -->
+                                        <!-- ne pas jeter for save from empty dossier -->
+                                        <label class="sr-only" for="SelectSupport"></label>
+                                        <select id="SelectSupport" class="form-control input-sm" name="IDSupportMano"
+                                                onchange="getSelectTlSociete('SelectFormat','FormatTlSupport',$('#SelectSociete').val(),this.value);">
+                                            {#<option>250 CB</option>#}
+                                        </select>
+                                    </td>
+                                    <td style="vertical-align: middle;" id="tdSelectFormat">
+                                        <!-- getDataDossierDeFabTlElement (js) -->
+                                        <!-- ne pas jeter for save from empty dossier -->
+                                        <label class="sr-only" for="SelectFormat"></label>{# a rendre selectable #}
+                                        <select id="SelectFormat" class="form-control input-sm" name="IDFormatMano">
+                                            {#<option>45x64</option>#}
+                                        </select>
+                                    </td>
+                                    <td style="vertical-align: middle;" id="tdSelectImpression">
+                                        <!-- getDataDossierDeFabTlElement (js) -->
+                                        <!-- ne pas jeter for save from empty dossier -->
+                                        <label class="sr-only" for="SelectImpression"></label>{# a rendre selectable #}
+                                        <select id="SelectImpression" class="form-control input-sm" name="IDImpression" onchange="verfiRow();">
+                                            {#<option value="0"></option>#}
+                                            {#<option value="1">{% trans "R+V" %}</option>#}
+                                            {#<option value="2">{% trans "1/8" %}</option>#}
+                                            {#<option value="3">{% trans "1/12" %}</option>#}
+                                            {#<option value="4">{% trans "R seul" %}</option>#}
+                                            {#<option value="5">{% trans "V seul" %}</option>#}
+                                            {#<option value="6">{% trans "Retiration" %}</option>#}
+                                        </select>
+                                    </td>
+                                    <td style="vertical-align: middle; width: 5%;" id="tdSelectNbPose" class="text text-center">
+                                        <!-- getDataDossierDeFabTlElement (js) -->
+                                        <label class="sr-only" for="SelectNbPose"></label>
+                                        <input type="number" min="0" class="form-control input-sm" id="NbPose" name="NbPose" placeholder="{% trans "Poses" %}" onkeyup="verfiRow();">
+                                    </td>
+                                    <td style="vertical-align: middle;" id="tdSelectOption" class="text text-center">
+                                        <!-- getDataDossierDeFabTlElement (js) -->
+                                        <label class="sr-only" for="SelectOption"></label>
+                                        <select id="SelectOption" class="form-control input-sm" name="IDOption">
+
+                                        </select>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        <label class="sr-only" for="SelectCodeErreur"></label>
+                                        <select id="SelectCodeErreur" class="form-control input-sm" name="IDCodeErreur1">
+                                            <!-- getSelect('SelectCodeErreur','getListeCodeErreur'); -->
+                                        </select>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        <label class="sr-only" for="SelectCodeErreur2"></label>
+                                        <select id="SelectCodeErreur2" class="form-control input-sm" name="IDCodeErreur2">
+                                            <!-- getSelect('SelectCodeErreur2','getListeCodeErreur');-->
+                                        </select>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        <label class="sr-only" for="Commentaire"></label>
+                                        <input class="form-control input-sm" type="text" id="Commentaire" name="Commentaire" placeholder="{% trans "Commentaire" %}">
+                                    </td>
+                                    <td style="vertical-align: middle;" class="text text-center">
+                                        <input type="hidden" value="" name="IDElementTlOption" id="hiddenArrayOption">
+                                        <input type="hidden" name="IDFormat" id="hiddenSelectFormat">
+                                        <input type="hidden" name="IDSupport" id="hiddenSelectSupport">
+                                        {#<input type="hidden" name="IDImpression" id="hiddenSelectImpression">#}
+                                        <button type="submit" id="btn_save" class="btn btn-default btn-sm" disabled="disabled"><span class="glyphicon glyphicon-ok"></span> </button>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </form>
+                        </tbody>
+                        <tbody id="divTableFicheDeProdUser">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal planning -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="modalPlanning">
+
+    </div>
+
+    <!-- MODAL INCOMPLETES -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                </div>
+                <!-- MODAL FOOT -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Fermer" %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}

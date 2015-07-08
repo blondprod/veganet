@@ -1,0 +1,36 @@
+<!-- tableGestionSecteurTlOption.twig -->
+<div class="panel-group" id="accordionSecteurTlOption" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSecteurTlOption">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSecteurTlOption" aria-expanded="true" aria-controls="collapseSecteurTlOption">
+                <h4 class="panel-title">
+                    {% trans "Secteurs / Options" %} <span class="badge">{% trans "liaison" %}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseSecteurTlOption" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSecteurTlOption">
+            <div class="panel-body">
+                <!-- SOCIETE -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                    <label class="control-label" for="SelectSocieteSecteurTlOption">{% trans "Societe" %}</label>
+                    <select class="form-control" id="SelectSocieteSecteurTlOption"
+                            onchange="getSelectSocieteTlSecteur(this,'SelectSecteurSecteurTlOption');
+                                      getSelectSocieteTlOption(this,'SelectOptionSecteurTlOption');">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- MENU -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label class="control-label" for="SelectSecteurSecteurTlOption">{% trans "Secteur" %}</label>
+                    <select class="form-control" id="SelectSecteurSecteurTlOption" onchange="getTableSecteurTlOption(this.value,$('#SelectSocieteSecteurTlOption').val());">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- PAGE -->
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tableSecteurTlOption">
+                    <!-- elements/tableLiaisonSecteurTlOption.twig -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

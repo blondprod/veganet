@@ -1,0 +1,121 @@
+<!-- tableGestionElement.twig -->
+<div class="panel-group" id="accordionElement" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingElement">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseElement" aria-expanded="true" aria-controls="collapseElement">
+                <h4 class="panel-title">
+                    {% trans "Elements" %} <span class="badge">{{ data_element|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseElement" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingElement">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">
+                        <button class="btn btn-xs btn-info" title="{% trans "Ajouter un element" %}"
+                                onclick="getSelect('LangueElement_add','getListeLangue','1');
+                                         getSelect('SocieteElement_add','getListeSocieteTrad');
+                                         getAdd('tr_saveElement');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" title="{% trans "Supprimer un element" %}"
+                                onclick="getDelete('IDElement','TBL_ELEMENT');
+                                         collapse('collapseElement');"><span class="glyphicon glyphicon-minus-sign"></span></button></caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveElement">
+                        <td></td>
+                        <td>
+                            <div id="divNomElement_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomElement_add',this.value.length,3);verifElement();" id="NomElement_add">
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control" id="" disabled>
+                                <option>{% trans "Français" %}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div id="divOrdreElement_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreElement_add',this);verifElement();" id="OrdreElement_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteElement_add">
+                                <select class="form-control"  id="SocieteElement_add"  onchange="checkInputSelect('divSocieteElement_add',this.value);verifElement();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" >
+                            <input type="checkbox" id="ActifElement_add">
+                        </td>
+                        <td class="text text-center" id="saveElement_add">
+                            <button onclick="getInsertElement();" disabled id="btnInsertElement_add"
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_element %}
+                        <tr>
+                            <td class="text text-center">
+                                <input type="checkbox" id="chk_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)">
+                            </td>
+                            <td>
+                                <div id="divNomElement_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomElement_{{ data.ID }}',this.value.length,3);verifElement({{ data.ID }});" id="NomElement_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" id="LangueElement_{{ data.ID }}" disabled>
+                                    <option>{{ data.Langue }}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div id="divOrdreElement_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreElement_{{ data.ID }}',this);verifElement({{ data.ID }});" id="OrdreElement_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteElement_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteElement_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteElement_{{ data.ID }}',this.value);verifElement({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifElement_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifElement({{ data.ID }});">
+                            </td>
+                            <td class="text text-center"
+                                id="modifElement_{{ data.ID }}">
+                                <button onclick="
+                                            getSelect('LangueElement_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                            getSelect('SocieteElement_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                            getModifElement({{ data.ID }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            </td>
+                            <td class="text text-center"
+                                id="saveElement_{{ data.ID }}"
+                                hidden="hidden">
+                                <button onclick="getUpdateElement({{ data.ID }});" disabled id="btnInsertElement_{{ data.ID }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

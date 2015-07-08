@@ -1,0 +1,108 @@
+<!-- tableGestionCodeErreur.twig -->
+<div class="panel-group" id="accordionCodeErreur" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingCodeErreur">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseCodeErreur" aria-expanded="true" aria-controls="collapseCodeErreur">
+                <h4 class="panel-title">
+                    {% trans "Codes erreur" %} <span class="badge">{{ data_CodeErreur|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseCodeErreur" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCodeErreur">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">
+                        <button class="btn btn-xs btn-info"
+                                title="{% trans "Ajouter un code erreur de production" %}"
+                                onclick="/*getSelect('LangueCodeErreur_add','getListeLangue','1');*/
+                                         getSelect('SocieteCodeErreur_add','getListeSocieteTrad');
+                                         getAdd('tr_saveCodeErreur');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info"
+                                title="{% trans "Supprimer un code erreur de production" %}"
+                                onclick="getDelete('IDCodeErreur','TBL_CODE_ERREUR');
+                                         collapse('collapseCodeErreur');"><span class="glyphicon glyphicon-minus-sign"></span></button></caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveCodeErreur">
+                        <td></td>
+                        <td>
+                            <div id="divNomCodeErreur_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomCodeErreur_add',this.value.length,3);verifCodeErreur();" id="NomCodeErreur_add">
+                            </div>
+                        </td>
+                        <td><select class="form-control" id="" disabled><option>{% trans "Français" %}</option></select></td>
+                        <td>
+                            <div id="divOrdreCodeErreur_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreCodeErreur_add',this);verifCodeErreur();" id="OrdreCodeErreur_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteCodeErreur_add">
+                                <select class="form-control"  id="SocieteCodeErreur_add"  onchange="checkInputSelect('divSocieteCodeErreur_add',this.value);verifCodeErreur();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" ><input type="checkbox" id="ActifCodeErreur_add"></td>
+                        <td class="text text-center" id="saveCodeErreur_add">
+                            <button onclick="getInsertCodeErreur();" disabled id="btnInsertCodeErreur_add" 
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_CodeErreur %}
+                        <tr>
+                            <td class="text text-center"><input type="checkbox" id="chk_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)"></td>
+                            <td>
+                                <div id="divNomCodeErreur_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomCodeErreur_{{ data.ID }}',this.value.length,3);verifCodeErreur({{ data.ID }});" id="NomCodeErreur_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td><select class="form-control" id="LangueCodeErreur_{{ data.ID }}" disabled><option>{{ data.NomLangue }}</option></select></td>
+                            <td>
+                                <div id="divOrdreCodeErreur_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreCodeErreur_{{ data.ID }}',this);verifCodeErreur({{ data.ID }});" id="OrdreCodeErreur_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteCodeErreur_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteCodeErreur_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteCodeErreur_{{ data.ID }}',this.value);verifCodeErreur({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center"><input type="checkbox" id="ActifCodeErreur_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifCodeErreur({{ data.ID }});"></td>
+                            <td class="text text-center"
+                                id="modifCodeErreur_{{ data.ID }}">
+                                <button onclick="
+                                            getSelect('SocieteCodeErreur_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                            getModifCodeErreur({{ data.ID }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            </td>
+                            <td class="text text-center"
+                                id="saveCodeErreur_{{ data.ID }}"
+                                hidden="hidden">
+                                <button onclick="getUpdateCodeErreur({{ data.ID }});" disabled id="btnInsertCodeErreur_{{ data.ID }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

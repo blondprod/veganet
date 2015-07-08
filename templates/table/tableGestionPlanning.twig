@@ -1,0 +1,352 @@
+<!-- tableGestionPlanning.twig -->
+
+{% if (data_planning|length > '0') %}
+<div class="row">
+    <!-- SIDEBAR BTN -->
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 sidebar text text-center">
+        <ul class="nav nav-sidebar"> <!-- hidden="hidden" id="btnPrint" -->
+            <li>
+                <a onclick="getDataListeForExport();">
+                    <span onmouseover="$(this).tooltip('show')" title="{% trans "Export excel" %}" class="glyphicon glyphicon-floppy-disk"></span>
+                </a>
+            </li>
+            <li>
+                <a onclick='getDisabledCell({{ data_planning|length }},false);'>
+                    <span title="{% trans "Editer" %}" onmouseover="$(this).tooltip('show')" class="glyphicon glyphicon-pencil"></span>
+                </a>
+            </li>
+            <li>
+                <a onclick="getDisabledCell({{ data_planning|length }},true);getSavePlanning({{ data_planning|length }});">
+                    <span title="{% trans "Enregistrer" %}" onmouseover="$(this).tooltip('show')" class="glyphicon glyphicon-ok"></span>
+                </a>
+            </li>
+            <li>
+                <a onclick='getDisabledCell({{ data_planning|length }},true);'>
+                    <span title="{% trans "Annuler" %}" onmouseover="$(this).tooltip('show')" class="glyphicon glyphicon-remove"></span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li>
+                <a href="">
+                    <span title="{% trans "Recharger" %}" onmouseover="$(this).tooltip('show')" class="glyphicon glyphicon-refresh"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- TABLE PLANNING -->
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 main">
+        <div class="table-responsive" id="">
+            <table class="table table-hover table-condensed table-bordered">
+                <caption class="lead">{{ data_planning|length }} {% trans "éléments au planning" %}<br/>
+                    {#<button class="btn btn-xs btn-info" onclick="getDisabledCell({{ data_planning|length }},false);"><span class="glyphicon glyphicon-pencil"></span></button>#}
+                    {#<button class="btn btn-xs btn-warning" onclick="getDisabledCell({{ data_planning|length }},true);"><span class="glyphicon glyphicon-remove"></span></button>#}
+                    {#<button class="btn btn-xs btn-success" onclick="getDisabledCell({{ data_planning|length }},true);getSavePlanning({{ data_planning|length }});"><span class="glyphicon glyphicon-floppy-disk"></span></button>#}</caption>
+                <tbody>
+                {% set nb = '0' %}
+                {% set nbSecteur = '0' %}
+                {% set nbTourTotal = '0' %}
+                {% set nbHTotal = '0' %}
+                {% set nbHTotalSecteur = '0' %}
+                {% set nbTourTotalSecteur = '0' %}
+                {% set nbExTotal = '0' %}
+                {% set nbExTotalSecteur = '0' %}
+                {% set nbCalageTotal = '0' %}
+                {% set nbCalageTotalSecteur = '0' %}
+                {% set nbGacheTotal = '0' %}
+                {% set nbGacheTotalSecteur = '0' %}
+                {% set nbFeuilleTotal = '0' %}
+                {% set nbFeuilleTotalSecteur = '0' %}
+                {% set nbTpsCalageTotal = '0' %}
+                {% set nbTpsCalageTotalSecteur = '0' %}
+                {% set nbTpsRouleTotal = '0' %}
+                {% set nbTpsRouleTotalSecteur = '0' %}
+                {% set nbCalageFeuilleTotal = '0' %}
+                {% set nbCalageFeuilleTotalSecteur = '0' %}
+                {% for k , value in data_planning %}
+                    {% if ( data_planning[k].NomSecteur != data_planning[k-1].NomSecteur ) %}
+                        {% if ( k > 0 ) %}
+                        <tr>
+                            <td style="vertical-align: middle;" colspan="10"></td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <td style="vertical-align: middle;" colspan="10" class="info text-primary lead">{{ value.NomSecteur }}</td>
+                        </tr>
+                        <tr style="vertical-align: middle;">
+                            <th style="vertical-align: middle;"></th>
+                            <th style="vertical-align: middle;">{% trans "Dossier" %}</th>
+                            <th style="vertical-align: middle;">{% trans "Element" %}</th>
+                            {#<th>{% trans "Option" %}</th>#}
+                            <th style="vertical-align: middle;">{% trans "Type" %}</th>
+                            <th style="vertical-align: middle;">{% trans "Quantite" %}</th>
+                            <th hidden="hidden" style="vertical-align: middle;">{% trans "Calage (f)" %}</th>
+                            <th hidden="hidden" style="vertical-align: middle;">{% trans "Gâche" %}</th>
+                            <th style="vertical-align: middle;">{% trans "Feuilles" %}</th>
+                            <th style="vertical-align: middle;">{% trans "Tours" %}</th>
+                            <th hidden="hidden" style="vertical-align: middle;">{% trans "Calage (mn)" %}</th>
+                            <th hidden="hidden" style="vertical-align: middle;">{% trans "Roule" %}</th>
+                            <th style="vertical-align: middle;">{% trans "Temps" %}</th>
+                            <th style="vertical-align: middle;">{% trans "Ordre" %}</th>
+                            <th style="vertical-align: middle;">{% trans "Expédition" %}</th>
+                        </tr>
+                    {% endif %}
+                    {% set nb = nb+1 %}
+                    {% set nbSecteur = nbSecteur+1 %}
+                    <tr>
+                        <td style="vertical-align: middle;" hidden="hidden">
+                            <input type="hidden" id="IDDossierTlElementTlMachine_{{ k }}" value="{{ value.IDDossierDeFab_tl_element_tl_machine }}">
+                            <input type="hidden" id="IDSecteur_{{ k }}" value="{{ value.IDSecteur }}">
+                            <input type="hidden" id="IDMachine_{{ k }}" value="{{ value.IDMachine }}">
+                            <script type="text/javascript">$(function(){ getSelectSecteurTlMachine(document.getElementById('IDSecteur_{{ k }}'),'SelectMachine_{{ k }}') })</script>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <select id="SelectMachine_{{ k }}" class="form-control input-sm" disabled>
+                                <option>{{ value.NomMachine }}</option>
+                            </select>
+                        </td>
+                        <td style="vertical-align: middle;" ondblclick="getDossierDeFabPage('{{ session.IP }}','{{ session.PUBLIC_PATH }}','{{ value.IDDossierDeFab }}');">
+                            <code>{{ value.Dossier }}</code>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <span class="badge">{{ value.NomElement }}</span>
+                        </td>
+                        <td style="vertical-align: middle;"> <!-- nb calages -->
+                            {% set nbCalageTotal = nbCalageTotal+value.NbCalage %}
+                            {% set nbCalageTotalSecteur = nbCalageTotalSecteur+value.NbCalage %}
+                            {{ value.NomImpression }}
+                        </td>
+                        <td style="vertical-align: middle;"> <!-- quantite -->
+                            {% set nbExTotal = nbExTotal + value.Quantite %}
+                            {% set nbExTotalSecteur = nbExTotalSecteur + value.Quantite %}
+                            {#<span class="label label-default">#}{{ value.Quantite|number_format(0,',',' ') }}{#</span>#}
+                        </td>
+                        <td hidden="hidden" style="vertical-align: middle;"> <!-- calages feuilles -->
+                            {% set nbFeuillesCalage = value.CalageFeuilles * value.NbCalage %}
+                            {% set nbCalageFeuilleTotal = nbCalageFeuilleTotal + (value.CalageFeuilles * value.NbCalage) %}
+                            {% set nbCalageFeuilleTotalSecteur = nbCalageFeuilleTotalSecteur + (value.CalageFeuilles * value.NbCalage) %}
+                            {% if (nbFeuillesCalage != '0') %}
+                                {{ nbFeuillesCalage }}
+                            {% endif %}
+                        </td>
+                        <td hidden="hidden" style="vertical-align: middle;"> <!-- gache -->
+                            {% set gache = ( (value.Quantite / 1000 ) * (value.GachePour1000Feuilles) ) %}
+                            {% set nbGacheTotal = nbGacheTotal + gache %}
+                            {% set nbGacheTotalSecteur = nbGacheTotalSecteur + gache %}
+                            {% if (gache != '0') %}
+                                {{ gache|number_format(0,',',' ') }}
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;"> <!-- feuilles -->
+                            {% set nbFeuilles = value.Quantite + gache + nbFeuillesCalage %}
+                            {% set nbFeuilleTotal = nbFeuilleTotal + nbFeuilles + nbFeuillesCalage %}
+                            {% set nbFeuilleTotalSecteur = nbFeuilleTotalSecteur + nbFeuilles + nbFeuillesCalage %}
+                            {% if (gache != '0') %}
+                                <span class="text-info"><strong>{{ nbFeuilles|number_format(0,',',' ') }}</strong></span>
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;"> <!-- tours -->
+                            {% set nbTourTotal = nbTourTotal+(nbFeuilles * value.NbTour) %}
+                            {% set nbTourTotalSecteur = nbTourTotalSecteur + (nbFeuilles * value.NbTour) %}
+                            {{ (nbFeuilles * value.NbTour)|number_format(0,',',' ') }}
+                        </td>
+                        <td hidden="hidden" style="vertical-align: middle;"> <!-- tmp calage -->
+                            {% set tmpCalage = value.CalageMin * value.NbCalage %}
+                            {% set nbTpsCalageTotal = nbTpsCalageTotal + tmpCalage %}
+                            {% set nbTpsCalageTotalSecteur = nbTpsCalageTotalSecteur + tmpCalage %}
+                            {% if (tmpCalage != '0') %}
+                                {{ tmpCalage|number_format(0,',',' ') }} mn
+                            {% endif %}
+                        </td>
+                        <td hidden="hidden" style="vertical-align: middle;"> <!-- tmp roule -->
+                            {% if value.CadenceTourMin > 0 %}
+                                {% set tmpRoule = ( (value.Quantite * value.NbTour) / (value.CadenceTourMin) * 60 ) %}
+                                {% set nbTpsRouleTotal = nbTpsRouleTotal + tmpRoule %}
+                                {% set nbTpsRouleTotalSecteur = nbTpsRouleTotalSecteur + tmpRoule %}
+                                {{ tmpRoule|number_format(0,',',' ') }} mn
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;"> <!-- temps -->
+                            {% if value.CadenceTourMin > 0 %}
+                                {% set tpsEnMin = ( ((value.Quantite * value.NbTour) / (value.CadenceTourMin)) * 60 + (value.CalageMin * value.NbCalage) ) %}
+                                {% set nbHTotal = nbHTotal + tpsEnMin %}
+                                {% set nbHTotalSecteur = nbHTotalSecteur + tpsEnMin %}
+                                <span class="text-info"><strong>
+                                {% if (tpsEnMin) < 60 %}
+                                    {{ tpsEnMin|round(0) }} {% trans "mn" %}
+                                {% else %}
+                                    {{ ((tpsEnMin) / 60)|round(0, 'floor') }} h {{ (tpsEnMin) % 60 }} mn
+                                {% endif %}
+                                </strong></span>
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;width: 10%;">
+                            <input id="Ordre_{{ k }}" type="number" min="0" step="1" class="form-control input-sm" value="{{ value.Ordre }}" disabled>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            {{ value.DateExpedition|date("d/m/Y") }}
+                        </td>
+                    </tr>
+                    {% if ( data_planning[k].NomMachine != data_planning[k+1].NomMachine ) %}
+                    <tr>
+                        {#<td colspan="11" style="vertical-align: middle;" class="warning text-primary"><samp>&#123;&#35;{{ value.NomMachine }} : &#35;&#125;<span class="badge">{{ nb }}</span> {% trans "éléments" %}</samp></td>#}
+                        <td style="vertical-align: middle;" class="warning text-primary"></td>
+                        <td style="vertical-align: middle;" class="warning text-primary"></td>
+                        <td style="vertical-align: middle;" class="warning text-primary"><em>{{ nb }}&nbsp;{% trans "éléments" %}</em></td>
+                        <td style="vertical-align: middle;" class="warning text-primary"><em>{{ nbCalageTotal|number_format(0,',',' ') }}&nbsp;{% trans "calages" %}</em></td>
+                        <td style="vertical-align: middle;" class="warning text-primary"><em>{{ nbExTotal|number_format(0,',',' ') }}</em></td>
+                        <td hidden="hidden" style="vertical-align: middle;" class="warning text-primary">{% if (nbCalageFeuilleTotal != '0') %}<em>{{ nbCalageFeuilleTotal|number_format(0,',',' ') }}{% endif %}</em></td>
+                        <td hidden="hidden" style="vertical-align: middle;" class="warning text-primary">{% if (nbGacheTotal != '0') %}<em>{{ nbGacheTotal|number_format(0,',',' ') }}</em>{% endif %}</td>
+                        <td style="vertical-align: middle;" class="warning text-primary">{% if (nbGacheTotal != '0') %}<strong><code>{{ nbFeuilleTotal|number_format(0,',',' ') }}</code></strong>{% endif %}</td>
+                        {#<td style="vertical-align: middle;" class="warning text-primary"><em>{{ nbFeuilleTotal|number_format(0,',',' ') }}</em></td>#}
+                        <td style="vertical-align: middle;" class="warning text-primary"><em>{{ nbTourTotal|number_format(0,',',' ') }}&nbsp;{% trans "tours" %}</em></td>
+                        <td  hidden="hidden"style="vertical-align: middle;" class="warning text-primary">
+                            {#<em>{{ nbTpsCalageTotal|number_format(0,',',' ') }}&nbsp;{% trans "min." %}</em>#}
+                            {% if nbTpsCalageTotal > 0 %}
+                                <em>
+                                    {% if (nbTpsCalageTotal)<60 %}
+                                        {{ nbTpsCalageTotal|number_format(0,',',' ') }} mn
+                                    {% else %}
+                                        {{ ((nbTpsCalageTotal)/60)|round(0, 'floor') }} h {{ (nbTpsCalageTotal)%60 }} mn
+                                    {% endif %}
+                                </em>
+                            {% endif %}
+                        </td>
+                        <td hidden="hidden" style="vertical-align: middle;" class="warning text-primary">
+                            {#<em>{{ nbTpsRouleTotal|number_format(0,',',' ') }}&nbsp;{% trans "min." %}</em>#}
+                            {% if nbTpsRouleTotal > 0 %}
+                                <em>
+                                    {% if (nbTpsRouleTotal)<60 %}
+                                        {{ nbTpsRouleTotal|number_format(0,',',' ') }} mn
+                                    {% else %}
+                                        {{ ((nbTpsRouleTotal)/60)|round(0, 'floor') }} h {{ (nbTpsRouleTotal)%60 }} mn
+                                    {% endif %}
+                                </em>
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;" class="warning text-primary">
+                            {#<em>{{ nbHTotal|number_format(0,',',' ') }}&nbsp;{% trans "min." %}</em>#}
+                            {% if nbHTotal > 0 %}
+                                <code>
+                                    {% if (nbHTotal)<60 %}
+                                        {{ nbHTotal|number_format(0,',',' ') }} mn
+                                    {% else %}
+                                        {{ ((nbHTotal)/60)|round(0, 'floor') }} h {{ (nbHTotal)%60 }} mn
+                                    {% endif %}
+                                </code>
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;" class="warning text-primary"></td>
+                        <td style="vertical-align: middle;" class="warning text-primary"></td>
+                        {% set nb = '0' %}
+                        {% set nbCalageTotal = '0' %}
+                        {% set nbExTotal = '0' %}
+                        {% set nbGacheTotal = '0' %}
+                        {% set nbFeuilleTotal = '0' %}
+                        {% set nbTourTotal = '0' %}
+                        {% set nbTpsCalageTotal = '0' %}
+                        {% set nbTpsRouleTotal = '0' %}
+                        {% set nbHTotal = '0' %}
+                        {% set nbCalageFeuilleTotal = '0' %}
+                    </tr>
+                    {% endif %}
+                    {% if ( data_planning[k].NomSecteur != data_planning[k+1].NomSecteur ) %}
+                    <tr>
+                        <td style="vertical-align: middle;" class="info text-primary"><em>{{ value.NomSecteur }}</em></td>
+                        <td style="vertical-align: middle;" class="info text-primary"></td>
+                        <td style="vertical-align: middle;" class="info text-primary"><samp>{{ nbSecteur }}&nbsp;{% trans "éléments" %}</samp></td>
+                        <td style="vertical-align: middle;" class="info text-primary"><samp>{{ nbCalageTotalSecteur|number_format(0,',',' ') }}&nbsp;{% trans "calages" %}</samp></td>
+                        <td style="vertical-align: middle;" class="info text-primary"><samp>{{ nbExTotalSecteur|number_format(0,',',' ') }}</samp></td>
+                        <td hidden="hidden" style="vertical-align: middle;" class="info text-primary">{% if (nbCalageFeuilleTotalSecteur != '0') %}<samp>{{ nbCalageFeuilleTotalSecteur }} f</samp>{% endif %}</td>
+                        <td hidden="hidden" style="vertical-align: middle;" class="info text-primary">{% if (nbGacheTotalSecteur != '0') %}<samp>{{ nbGacheTotalSecteur|number_format(0,',',' ') }} f</samp>{% endif %}</td>
+                        <td style="vertical-align: middle;" class="info text-primary">{% if (nbGacheTotalSecteur != '0') %}<strong><kbd>{{ nbFeuilleTotalSecteur|number_format(0,',',' ') }} f</kbd></strong>{% endif %}</td>
+                        {#<td style="vertical-align: middle;" class="info text-primary"><samp>{{ nbFeuilleTotalSecteur|number_format(0,',',' ') }}</samp></td>#}
+                        <td style="vertical-align: middle;" class="info text-primary"><samp>{{ nbTourTotalSecteur|number_format(0,',',' ') }}&nbsp;{% trans "tours" %}</samp></td>
+                        <td hidden="hidden" style="vertical-align: middle;" class="info text-primary">
+                            {#<samp>{{ nbTpsCalageTotalSecteur }}&nbsp;{% trans "min." %}</samp>#}
+                            {% if nbTpsCalageTotalSecteur > 0 %}
+                                <samp>
+                                {% if (nbTpsCalageTotalSecteur) < 60 %}
+                                    {{ nbTpsCalageTotalSecteur }} mn
+                                {% else %}
+                                    {{ ((nbTpsCalageTotalSecteur) / 60)|round(0, 'floor') }} h {{ (nbTpsCalageTotalSecteur) % 60 }} mn
+                                {% endif %}
+                                </samp>
+                            {% endif %}
+                        </td>
+                        <td hidden="hidden" style="vertical-align: middle;" class="info text-primary">
+                            {#<samp>{{ nbTpsRouleTotalSecteur }}&nbsp;{% trans "min." %}</samp>#}
+                            {% if nbTpsRouleTotalSecteur > 0 %}
+                                <samp>
+                                    {% if (nbTpsRouleTotalSecteur) < 60 %}
+                                        {{ nbTpsRouleTotalSecteur|number_format(0,',',' ') }} mn
+                                    {% else %}
+                                        {{ ((nbTpsRouleTotalSecteur) / 60)|round(0, 'floor') }} h {{ (nbTpsRouleTotalSecteur) % 60 }} mn
+                                    {% endif %}
+                                </samp>
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;" class="info text-primary">
+                            {#<samp>{{ nbHTotalSecteur }}&nbsp;{% trans "min." %}</samp>#}
+                            {% if nbHTotalSecteur > 0 %}
+                                <kbd>
+                                    {% if (nbHTotalSecteur) < 60 %}
+                                        {{ nbHTotalSecteur }} mn
+                                    {% else %}
+                                        {{ ((nbHTotalSecteur) / 60)|round(0, 'floor') }} h {{ (nbHTotalSecteur) % 60 }} mn
+                                    {% endif %}
+                                </kbd>
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;" class="info text-primary"></td>
+                        <td style="vertical-align: middle;" class="info text-primary"></td>
+                        {% set nbSecteur = '0' %}
+                        {% set nbCalageTotalSecteur = '0' %}
+                        {% set nbExTotalSecteur = '0' %}
+                        {% set nbGacheTotalSecteur = '0' %}
+                        {% set nbFeuilleTotalSecteur = '0' %}
+                        {% set nbTourTotalSecteur = '0' %}
+                        {% set nbTpsCalageTotalSecteur = '0' %}
+                        {% set nbTpsRouleTotalSecteur = '0' %}
+                        {% set nbHTotalSecteur = '0' %}
+                        {% set nbCalageFeuilleTotalSecteur = '0' %}
+                    </tr>
+                    {% endif %}
+                    {% set timeout = '1000' %}
+                    {% if ( data_planning|length > 5 ) %}{% set timeout = '750' %}{% endif %}
+                    {% if ( data_planning|length > 10 ) %}{% set timeout = '1000' %}{% endif %}
+                    {% if ( data_planning|length > 25 ) %}{% set timeout = '1500' %}{% endif %}
+                    {% if ( data_planning|length > 50 ) %}{% set timeout = '3000' %}{% endif %}
+                    <script type="text/javascript">$(function(){
+                            {#$("select#SelectMachine_{{ k }} option[value="+$("#IDMachine_{{ k }}").val()+"]").attr("selected","selected");#}
+                            setTimeout(function() { $("select#SelectMachine_{{ k }} option[value="+$("#IDMachine_{{ k }}").val()+"]").attr("selected","selected"); }, {{ timeout }}); })
+                    </script>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script type="text/javascript">
+    function getDataListeForExport(){
+        $.getJSON(
+                'GestionPlanning',
+                {
+                    'action': 'getExportPlanning',
+                    'IDSecteur': $('#SelectSecteur').val(),
+                    'IDMachine': $('#SelectMachine').val(),
+                    'async': '1',
+                    'async_data': '1'
+                },
+                function (data)
+                {
+                    //console.log(data);
+                    window.open('http://{{ session.IP_SERVER }}/{{ session.PUBLIC_PATH }}ExportXLS.php','Planning', '');
+                }
+        );
+        //console.log('end');
+    }
+</script>

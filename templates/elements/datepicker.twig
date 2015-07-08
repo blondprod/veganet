@@ -1,0 +1,51 @@
+<!-- daterangepicker.twig -->
+<script type="text/javascript">
+
+    var id = '{{ idPicker }}';
+    var divDateRange = $('#'+id+'');
+    var divDate = '{{ div }}';
+
+    var largeur = (document.body.clientWidth);
+//    console.log('largeur: '+largeur);
+
+    if(largeur>1280) {
+        divDateRange.daterangepicker(
+            {
+                singleDatePicker: true,
+                locale: {
+                    daysOfWeek: [
+                        '{% trans "Dimanche" %}',
+                        '{% trans "Lundi" %}',
+                        '{% trans "Mardi" %}',
+                        '{% trans "Marcredi" %}',
+                        '{% trans "Jeudi" %}',
+                        '{% trans "Vendredi" %}',
+                        '{% trans "Samedi" %}'
+                    ],
+                    monthNames: [
+                        '{% trans "Janvier" %}',
+                        '{% trans "Fevrier" %}',
+                        '{% trans "Mars" %}',
+                        '{% trans "Avril" %}',
+                        '{% trans "Mai" %}',
+                        '{% trans "Juin" %}',
+                        '{% trans "Juillet" %}',
+                        '{% trans "Aout" %}',
+                        '{% trans "Septembre" %}',
+                        '{% trans "Octobre" %}',
+                        '{% trans "Novembre" %}',
+                        '{% trans "Decembre" %}'
+                    ]
+                }
+            },
+
+            function (start, end, label) {
+//            console.log(start.toISOString(), end.toISOString(), label);
+                var length = divDateRange.val().length;
+                checkInputText(divDate, length, 10);
+            }
+        );
+        divDateRange.data('daterangepicker').setStartDate('{{ "now"|date("d/m/Y") }}');
+    }
+</script>
+

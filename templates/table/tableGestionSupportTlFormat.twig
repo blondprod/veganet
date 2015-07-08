@@ -1,0 +1,36 @@
+<!-- tableGestionSupportTlFormat.twig -->
+<div class="panel-group" id="accordionSupportTlFormat" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSupportTlFormat">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSupportTlFormat" aria-expanded="true" aria-controls="collapseSupportTlFormat">
+                <h4 class="panel-title">
+                    {% trans "Supports / Formats" %} <span class="badge">{% trans "liaison" %}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseSupportTlFormat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSupportTlFormat">
+            <div class="panel-body">
+                <!-- SOCIETE -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                    <label class="control-label" for="SelectSocieteSupportTlFormat">{% trans "Societe" %}</label>
+                    <select class="form-control" id="SelectSocieteSupportTlFormat"
+                            onchange="getSelectSocieteTlSupport(this,'SelectSupportSupportTlFormat');
+                                      /*getSelectSocieteTlFormat(this,'SelectFormatSupportTlFormat');*/">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- MENU -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label class="control-label" for="SelectSupportSupportTlFormat">{% trans "Support" %}</label>
+                    <select class="form-control" id="SelectSupportSupportTlFormat" onchange="getTableSupportTlFormat(this.value,$('#SelectSocieteSupportTlFormat').val());">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- PAGE -->
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tableSupportTlFormat">
+                    <!-- elements/tableLiaisonSupportTlFormat.twig -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

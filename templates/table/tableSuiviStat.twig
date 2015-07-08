@@ -1,0 +1,99 @@
+<!-- tableSuiviStat.twig -->
+<div role="tabpanel">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        {% for k, obj in DATA_SECTEUR %}
+            {% if ( DATA_SECTEUR[k].ID != DATA_SECTEUR[k+1].ID ) %}
+                <li role="presentation" {% if (k==0) %}class="active"{% endif %}><a href="#secteur_{{ obj.ID }}" aria-controls="secteur_{{ obj.ID }}" role="tab" data-toggle="tab">{{ obj.Nom }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        {% for m, itm in DATA_SECTEUR %}
+            {% if ( DATA_SECTEUR[m].ID != DATA_SECTEUR[m+1].ID ) %}
+            <div role="tabpanel" class="tab-pane fade in {% if (m==0) %}active{% endif %}" id="secteur_{{ itm.ID }}">
+                <br>
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs" role="tablist">
+                        {% for n, object in DATA_SECTEUR %}
+                            {% if ( DATA_SECTEUR[m].ID == DATA_SECTEUR[n].ID ) %}
+                                <li role="presentation"><a href="#machine_{{ object.IDMachine }}" aria-controls="machine_{{ object.IDMachine }}" role="tab" data-toggle="tab">{{ object.NomMachine }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    {% for o, items in DATA_SECTEUR %}
+                        {% if ( DATA_SECTEUR[m].ID == DATA_SECTEUR[o].ID ) %}
+                            <div role="tabpanel" class="tab-pane fade in" id="machine_{{ items.IDMachine }}">
+                                <br>
+                                <div class="panel panel-default">
+                                    <!-- Default panel contents -->
+                                    <div class="panel-heading">{{ items.Nom }}</div>
+                                    <!-- Table -->
+                                    <table class="table table-hover table-bordered">
+                                        <!-- Table head -->
+                                        {#<thead>#}
+                                        <tr class="info text-right">
+                                            <td><strong>{% trans "Membre" %}</strong></td>
+                                            <td><strong>{% trans "Dossiers" %}</td>
+                                            <td><strong>{% trans "Feuilles" %}</td>
+                                            <td><strong>{% trans "Calages" %}</td>
+                                            <td><strong>{% trans "Tours" %}</td>
+                                            <td><strong>{% trans "Jours" %}</td>
+                                            <td><strong>{% trans "Ratio" %}</td>
+                                        </tr>
+                                        {#</thead>#}
+                                        <!-- Table body -->
+                                        <tbody>
+                                        {% set nbFicheDeProd = 0 %}
+                                        {% set nbFeuilles = 0 %}
+                                        {% set nbCalage = 0 %}
+                                        {% set nbTour = 0 %}
+                                        {% for z, STAT in DATA_STAT %}
+                                            {% if (items.ID == STAT.IDSecteur) %}
+                                                {% if (items.IDMachine == STAT.IDMachine) %}
+                                                    <tr class="text-right">
+                                                        <td>{{ STAT.PrenomMembre }} {{ STAT.NomMembre }}</td>
+                                                        <td>{{ STAT.nbFicheDeProd }}</td>
+                                                        <td>{{ STAT.QuantiteFeuilles|number_format(0,',',' ') }}</td>
+                                                        <td>{{ STAT.NbCalage|number_format(0,',',' ') }}</td>
+                                                        <td>{{ STAT.NbTour|number_format(0,',',' ') }}</td>
+                                                        <td>{{ DATA_NBJOUR[STAT.IDMembreAdd] }}</td>
+                                                        <td>{{ ( (STAT.nbFicheDeProd)/(DATA_NBJOUR[STAT.IDMembreAdd]) )|number_format(2,',',' ') }}</td>
+                                                    </tr>
+                                                    {% set nbFicheDeProd = nbFicheDeProd + (STAT.nbFicheDeProd) %}
+                                                    {% set nbFeuilles = nbFeuilles + (STAT.QuantiteFeuilles) %}
+                                                    {% set nbCalage = nbCalage + (STAT.NbCalage) %}
+                                                    {% set nbTour = nbTour + (STAT.NbTour) %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        </tbody>
+                                        <!-- Table foot -->
+                                        {#<tfoot>#}
+                                        <tr class="warning text-right">
+                                            <td></td>
+                                            <td><code>{{ nbFicheDeProd|number_format(0,',',' ') }}</code></td>
+                                            <td><code>{{ nbFeuilles|number_format(0,',',' ') }}</code></td>
+                                            <td><code>{{ nbCalage|number_format(0,',',' ') }}</code></td>
+                                            <td><code>{{ nbTour|number_format(0,',',' ') }}</code></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        {#</tfoot>#}
+                                    </table>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{#{{ dump(DATA_STAT) }}#}
+{#{{ dump(OUT) }}#}

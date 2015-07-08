@@ -1,0 +1,106 @@
+<!-- tableGestionGroupe.twig -->
+<div class="panel-group" id="accordionGroupe" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingGroupe">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseGroupe" aria-expanded="true" aria-controls="collapseGroupe">
+                <h4 class="panel-title">
+                    {% trans "Groupes" %} <span class="badge">{{ data_groupe|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseGroupe" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGroupe">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">
+                        <button class="btn btn-xs btn-info" title="{% trans "Ajouter un groupe de fonction" %}"
+                                onclick="getSelect('LangueGroupe_add','getListeLangue');
+                                         getSelect('SocieteGroupe_add','getListeSocieteTrad');
+                                         getAdd('tr_saveGroupe');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" title="{% trans "Supprimer un groupe de fonction" %}"
+                                onclick="getDelete('IDGroupe','TBL_GROUPE');
+                                         collapse('collapseGroupe');"><span class="glyphicon glyphicon-minus-sign"></span></button></caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveGroupe">
+                        <td></td>
+                        <td>
+                            <div id="divNomGroupe_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomGroupe_add',this.value.length,3);verifGroupe();" id="NomGroupe_add">
+                            </div>
+                        </td>
+                        <td><select class="form-control" id="" disabled><option>{% trans "Français" %}</option></select></td>
+                        <td>
+                            <div id="divOrdreGroupe_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreGroupe_add',this);verifGroupe();" id="OrdreGroupe_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteGroupe_add">
+                                <select class="form-control"  id="SocieteGroupe_add"  onchange="checkInputSelect('divSocieteGroupe_add',this.value);verifGroupe();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" ><input type="checkbox" id="ActifGroupe_add"></td>
+                        <td class="text text-center" id="saveGroupe_add">
+                            <button onclick="getInsertGroupe();" disabled id="btnInsertGroupe_add"
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_groupe %}
+                        <tr>
+                            <td class="text text-center"><input type="checkbox" id="chkGroupe_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)"></td>
+                            <td>
+                                <div id="divNomGroupe_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomGroupe_{{ data.ID }}',this.value.length,3);verifGroupe({{ data.ID }});" id="NomGroupe_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td><select class="form-control" id="LangueGroupe_{{ data.ID }}" disabled><option>{{ data.NomLangue }}</option></select></td>
+                            <td>
+                                <div id="divOrdreGroupe_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreGroupe_{{ data.ID }}',this);verifGroupe({{ data.ID }});" id="OrdreGroupe_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteGroupe_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteGroupe_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteGroupe_{{ data.ID }}',this.value);verifGroupe({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center"><input type="checkbox" id="ActifGroupe_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifGroupe({{ data.ID }});"></td>
+                            <td class="text text-center"
+                                id="modifGroupe_{{ data.ID }}">
+                                <button onclick="getSelect('LangueGroupe_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                                 getSelect('SocieteGroupe_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                                 getModifGroupe({{ data.ID }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            </td>
+                            <td class="text text-center"
+                                id="saveGroupe_{{ data.ID }}"
+                                hidden="hidden">
+                                <button onclick="getUpdateGroupe({{ data.ID }});" disabled id="btnInsertGroupe_{{ data.ID }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

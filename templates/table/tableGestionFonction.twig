@@ -1,0 +1,101 @@
+<!-- tableGestionFonction.twig -->
+<div class="panel-group" id="accordionFonction" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFonction">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFonction" aria-expanded="true" aria-controls="collapseFonction">
+                <h4 class="panel-title">
+                    {% trans "Fonctions" %} <span class="badge">{{ data_fonction|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseFonction" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFonction">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">
+                        <button class="btn btn-xs btn-info" onclick="getSelect('LangueFonction_add','getListeLangue');getSelect('SocieteFonction_add','getListeSocieteTrad');getAdd('tr_saveFonction');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" onclick="getDelete('IDFonction','TBL_FONCTION');collapse('collapseFonction');"><span class="glyphicon glyphicon-minus-sign"></span></button></caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveFonction">
+                        <td></td>
+                        <td>
+                            <div id="divNomFonction_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomFonction_add',this.value.length,3);verifFonction();" id="NomFonction_add">
+                            </div>
+                        </td>
+                        <td><select class="form-control" id="" disabled><option>{% trans "Français" %}</option></select></td>
+                        <td>
+                            <div id="divOrdreFonction_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreFonction_add',this);verifFonction();" id="OrdreFonction_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteFonction_add">
+                                <select class="form-control"  id="SocieteFonction_add"  onchange="checkInputSelect('divSocieteFonction_add',this.value);verifFonction();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" ><input type="checkbox" id="ActifFonction_add"></td>
+                        <td class="text text-center" id="saveFonction_add">
+                            <button onclick="getInsertFonction();" disabled id="btnInsertFonction_add"
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_fonction %}
+                        <tr>
+                            <td class="text text-center"><input type="checkbox" id="chkFonction_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)"></td>
+                            <td>
+                                <div id="divNomFonction_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomFonction_{{ data.ID }}',this.value.length,3);verifFonction({{ data.ID }});" id="NomFonction_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td><select class="form-control" id="LangueFonction_{{ data.ID }}" disabled><option>{{ data.NomLangue }}</option></select></td>
+                            <td>
+                                <div id="divOrdreFonction_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreFonction_{{ data.ID }}',this);verifFonction({{ data.ID }});" id="OrdreFonction_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteFonction_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteFonction_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteFonction_{{ data.ID }}',this.value);verifFonction({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center"><input type="checkbox" id="ActifFonction_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifFonction({{ data.ID }});"></td>
+                            <td class="text text-center"
+                                id="modifFonction_{{ data.ID }}">
+                                <button onclick="getSelect('LangueFonction_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                                 getSelect('SocieteFonction_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                                 getModifFonction({{ data.ID }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            </td>
+                            <td class="text text-center"
+                                id="saveFonction_{{ data.ID }}"
+                                hidden="hidden">
+                                <button onclick="getUpdateFonction({{ data.ID }});" disabled id="btnInsertFonction_{{ data.ID }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

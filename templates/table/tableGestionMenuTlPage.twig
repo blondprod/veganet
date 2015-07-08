@@ -1,0 +1,39 @@
+<!-- tableGestionMenuTlPage.twig -->
+<div class="panel-group" id="accordionMenutlPage" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingMenutlPage">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseMenutlPage" aria-expanded="true" aria-controls="collapseMenutlPage">
+                <h4 class="panel-title">
+                    {% trans "Menus / Pages" %} <span class="badge">{% trans "liaison" %}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseMenutlPage" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMenutlPage">
+            <div class="panel-body">
+                <!-- SOCIETE -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                    <label class="control-label" for="SelectSocieteMenuTlPage">{% trans "Societe" %}</label>
+                    <select class="form-control" id="SelectSocieteMenuTlPage"
+                            title="Choisir une societe pour faire apparaitre les menus"
+                            onchange="getSelectSocieteTlMenu(this,'SelectMenuMenuTlPage');
+                                      getSelectSocieteTlPage(this,'SelectPageMenuTlPage');">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- MENU -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label class="control-label" for="SelectMenuMenuTlPage">{% trans "Menu" %}</label>
+                    <select class="form-control" id="SelectMenuMenuTlPage"
+                            title="{% trans "Choisir un menu pour faire apparaitre les pages active" %}"
+                            onchange="getTableMenuTlPage(this.value,$('#SelectSocieteMenuTlPage').val());">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- PAGE -->
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tableMenuTlPage">
+                    <!-- elements/tableLiaisonMenuTlPage.twig -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

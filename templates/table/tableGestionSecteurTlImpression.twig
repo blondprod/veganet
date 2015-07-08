@@ -1,0 +1,36 @@
+<!-- tableGestionSecteurTlImpression.twig -->
+<div class="panel-group" id="accordionSecteurTlImpression" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSecteurTlImpression">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSecteurTlImpression" aria-expanded="true" aria-controls="collapseSecteurTlImpression">
+                <h4 class="panel-title">
+                    {% trans "Secteurs / Type" %} <span class="badge">{% trans "liaison" %}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseSecteurTlImpression" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSecteurTlImpression">
+            <div class="panel-body">
+                <!-- SOCIETE -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                    <label class="control-label" for="SelectSocieteSecteurTlImpression">{% trans "Societe" %}</label>
+                    <select class="form-control" id="SelectSocieteSecteurTlImpression"
+                            onchange="getSelectSocieteTlSecteur(this,'SelectSecteurSecteurTlImpression');
+                                      getSelectSocieteTlImpression(this,'SelectImpressionSecteurTlImpression');">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- SECTEUR -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label class="control-label" for="SelectSecteurSecteurTlImpression">{% trans "Secteur" %}</label>
+                    <select class="form-control" id="SelectSecteurSecteurTlImpression" onchange="getTableSecteurTlImpression(this.value,$('#SelectSocieteSecteurTlImpression').val());">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- IMPRESSION -->
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tableSecteurTlImpression">
+                    <!-- elements/tableLiaisonSecteurTlImpression.twig -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

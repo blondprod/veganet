@@ -1,0 +1,56 @@
+<!-- daterangepicker.twig -->
+<script type="text/javascript">
+    $('#{{ idDateRangePicker }}').daterangepicker(
+        {
+            ranges: {
+                '{% trans "aujourdhuiDatePicker" %}': [moment(), moment()],
+                '{% trans "hierDatePicker" %}': [moment().subtract('days', 1), moment().subtract('days', 1)],
+                '{% trans "demainDatePicker" %}': [moment().add('days', 1), moment().add('days', 1)],
+                '{% trans "semaineEnCoursDatePicker" %}': [moment().startOf('week'), moment().endOf('week')],
+                '{% trans "7DernierJoursDatePicker" %}': [moment().subtract('days', 6), moment()],
+                '{% trans "30DernierJoursDatePicker" %}': [moment().subtract('days', 29), moment()],
+                '{% trans "moisEnCoursDatePicker" %}': [moment().startOf('month'), moment().endOf('month')],
+                '{% trans "moisDernierDatePicker" %}': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+            },
+            startDate: moment(),/*.subtract('days', 29),*/
+            endDate: moment(),
+            separator:' - ',
+            locale:
+            {
+                applyLabel:'{% trans "validerDatePicker" %}',
+                cancelLabel:'{% trans "fermerDatePicker" %}',
+                fromLabel: '{% trans "entreLeDatePicker" %}',
+                toLabel: '{% trans "etLeDatePicker" %}',
+                weekLabel: '{% trans "SDatePicker" %}',
+                daysOfWeek: [
+                    '{% trans "Dimanche" %}',
+                    '{% trans "Lundi" %}',
+                    '{% trans "Mardi" %}',
+                    '{% trans "Marcredi" %}',
+                    '{% trans "Jeudi" %}',
+                    '{% trans "Vendredi" %}',
+                    '{% trans "Samedi" %}'
+                ],
+                monthNames: [
+                    '{% trans "Janvier" %}',
+                    '{% trans "Fevrier" %}',
+                    '{% trans "Mars" %}',
+                    '{% trans "Avril" %}',
+                    '{% trans "Mai" %}',
+                    '{% trans "Juin" %}',
+                    '{% trans "Juillet" %}',
+                    '{% trans "Aout" %}',
+                    '{% trans "Septembre" %}',
+                    '{% trans "Octobre" %}',
+                    '{% trans "Novembre" %}',
+                    '{% trans "Decembre" %}'
+                ],
+                customRangeLabel: '{% trans "AutreDatePicker" %}'
+            }
+        },
+        function(start, end) {
+            $('#{{ idDateRangePicker }}').html(start.format('YYYYMMDD') + ' - ' + end.format('YYYYMMDD'));
+        }
+    );
+</script>
+

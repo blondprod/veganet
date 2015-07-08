@@ -1,0 +1,31 @@
+<!-- selectPagination.twig -->
+
+<!-- MENU PAGINATION -->
+<div class="container-fluid">
+    <div id="pager" class="pager">
+        <form>
+            <img src="img/first.png" class="first" title="{% trans "allerAlaPremierePageTitleImg" %}"/>
+            <img src="img/prev.png" class="prev" title="{% trans "allerAlaDernierePageTitleImg" %}"/>
+            <input type="text" class="pagedisplay"  disabled style="width:70px;" title="{% trans "numeroDePageTitleInput" %}"/>
+            <img src="img/next.png" class="next" title="{% trans "allerAlaPageSuivanteTitleImg" %}"/>
+            <img src="img/last.png" class="last" title="{% trans "allerAlaPagePrecedenteTitleImg" %}"/>
+            <select class="pagesize form-control" style="width:100px; display: inline;" title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">
+                <option value="10" selected="selected">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+            </select>
+        </form>
+    </div>
+</div>
+
+{% if(idpager is defined) %}
+    <script type="text/javascript">
+        $(function() {
+            $("table").tablesorterPager({container:$("#pager"),size:{{ idpager }}});
+        });
+        $("#pager .pagesize").val({{ idpager }});
+
+    </script>
+{% endif %}

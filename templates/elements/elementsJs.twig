@@ -1,0 +1,325 @@
+<!-- elementsJs.twig -->
+<script type="text/javascript">
+    function getAll(i,count,id,div)
+    {
+        for (j = i+1; j <= count; j++){ $("select#"+div+""+j+" option[value="+id+"]").attr("selected","selected"); }
+    }
+
+    function verifDescriptionDossier()
+    {
+        var s_dossier = $('#Dossier').val();
+        var n_quantite = $('#Quantite').val();
+        var d_date = $('#DateExpedition').val();
+        var n_NbElement = $('#NbElement').val();
+        var n_NbOption = $('#NbOption').val();
+        var n_NbPose = $('#NbPose').val();
+        var n_NbMachine = $('#NbMachine').val();
+        var b_Pliage = $('#Pliage').is(':checked') ? 1 : 0;
+        var b_Amalgame = $('#Amalgame').is(':checked') ? 1 : 0;
+        var LargeurOuvert = $('#LargeurOuvert').val();
+        var HauteurOuvert = $('#HauteurOuvert').val();
+        var LargeurFerme = $('#LargeurFerme').val();
+        var HauteurFerme = $('#HauteurFerme').val();
+        var divLargeurOuvert = document.getElementById('divLargeurOuvert');
+        var divHauteurOuvert = document.getElementById('divHauteurOuvert');
+        var divLargeurFerme = document.getElementById('divLargeurFerme');
+        var divHauteurFerme = document.getElementById('divHauteurFerme');
+        var divNbPose = document.getElementById('divNbPose');
+
+        var test = 'a';
+//        console.log("s_dossier: "+s_dossier);
+//        console.log("n_quantite: "+n_quantite);
+//        console.log("d_date: "+d_date);
+//        console.log("n_NbElement: "+n_NbElement);
+//        console.log("n_NbOption: "+n_NbOption);
+
+        if (s_dossier && s_dossier.length > 2) { if (document.getElementById('divDossier')) document.getElementById('divDossier').className = 'has-success'; test = test+'a'; }
+        else { if (document.getElementById('divDossier')) document.getElementById('divDossier').className = 'has-error'; test = test+'z'; }
+        if (n_quantite && n_quantite > '0') { if(document.getElementById('divQuantite')) document.getElementById('divQuantite').className = 'has-success'; test = test+'a'; }
+        else { if(document.getElementById('divQuantite')) document.getElementById('divQuantite').className = 'has-error'; test = test+'z'; }
+        if (d_date && d_date.length==10) { if (document.getElementById('divDateExpedition')) document.getElementById('divDateExpedition').className = 'has-success'; test = test+'a'; }
+        else { if (document.getElementById('divDateExpedition')) document.getElementById('divDateExpedition').className = 'has-error'; test = test+'z'; }
+        if (n_NbMachine && n_NbMachine >0) { if(document.getElementById('divNbMachine')) document.getElementById('divNbMachine').className = 'has-success'; test = test+'a'; }
+        else {  if(document.getElementById('divNbMachine')) document.getElementById('divNbMachine').className = 'has-error'; test = test+'z'; }
+        if (n_NbElement && n_NbElement >0) { if(document.getElementById('divNbElement')) document.getElementById('divNbElement').className = 'has-success'; test = test+'a'; }
+        else { if(document.getElementById('divNbElement')) document.getElementById('divNbElement').className = 'has-error'; test = test+'z'; }
+
+        if ( b_Amalgame && b_Amalgame == 0){
+            if ( LargeurOuvert > 0 ) { divLargeurOuvert.className = 'has-success';test = test+'a'; }
+            else { divLargeurOuvert.className = 'has-error';test = test+'z'; }
+            if ( HauteurOuvert > 0 ) { divHauteurOuvert.className = 'has-success';test = test+'a'; }
+            else { divHauteurOuvert.className = 'has-error';test = test+'z'; }
+        }
+        if ( b_Amalgame && b_Amalgame == 1){
+            if (n_NbPose > 0) { document.getElementById('divNbPose').className = 'has-success'; test = test+'a'; }
+            else { document.getElementById('divNbPose').className = 'has-error'; test = test+'z'; }
+        }
+        if ( b_Pliage && b_Pliage == 1){
+            if ( LargeurFerme > 0 ) { divLargeurFerme.className = 'has-success';test = test+'a'; }
+            else { divLargeurFerme.className = 'has-error';test = test+'z'; }
+            if ( HauteurFerme > 0 ) { divHauteurFerme.className = 'has-success';test = test+'a'; }
+            else { divHauteurFerme.className = 'has-error';test = test+'z'; }
+        }
+        for (k = 1; k <= n_NbOption; k++){
+            var selectOption = $('#selectOption'+k+'').val();
+            var divSelectOption = document.getElementById('divSelectOption'+k+'');
+            if ( selectOption > 0 ) { divSelectOption.className = 'has-success';test = test+'a'; }
+            else { divSelectOption.className = 'has-error';test = test+'z'; }
+        }
+
+        if (document.getElementById('divCommentaire')) document.getElementById('divCommentaire').className = 'has-success';
+        if (document.getElementById('divRef')) document.getElementById('divRef').className = 'has-success';
+
+        if ( test.indexOf('z') >= 0 ) $('#btnNext').prop("disabled",true);
+        if ( test.indexOf('z') == -1 ) $('#btnNext').prop("disabled",false);
+    }
+
+    function verifCompositionDossier(nbElement)
+    {
+        var verif = null;
+
+        for (i = 1; i <= nbElement; i++){
+
+            var element = $('#Element'+i+'').val(); var divElement = $('#divSelectElement'+i+'');
+            divElement.removeClass(); if (element!=0) {
+                divElement.addClass('has-success');
+                verif = verif + '1';
+            } else {
+                divElement.addClass('has-error');
+                verif = verif +'0';
+            }
+
+
+            var support = $('#Support'+i+'').val(); var divSupport = $('#divSupport'+i+'');
+            divSupport.removeClass(); if (support!=0) {
+                divSupport.addClass('has-success');
+                verif = verif + '1';
+            } else {
+                divSupport.addClass('has-error');
+                verif = verif +'0';
+            }
+
+            var Format = $('#Format'+i+'').val(); var divFormat = $('#divFormat'+i+'');
+            divFormat.removeClass(); if (Format!=0) {
+                divFormat.addClass('has-success');
+                verif = verif + '1';
+            } else {
+                divFormat.addClass('has-error');
+                verif = verif + '0';
+            }
+
+            var Impression = $('#Impression'+i+'').val(); var divImpression = $('#divImpression'+i+'');
+            divImpression.removeClass(); if (Impression!=0) {
+                divImpression.addClass('has-success');
+                verif = verif + '1';
+            } else {
+                divImpression.addClass('has-error');
+                verif = verif + '0';
+            }
+
+            var Quantite = $('#Quantite'+i+'').val(); var divQuantite = $('#divQuantite'+i+'');
+            divQuantite.removeClass(); if ($.isNumeric(Quantite) && Quantite>0) {
+                divQuantite.addClass('has-success');
+                verif = verif + '1';
+            } else {
+                divQuantite.addClass('has-error');
+                verif = verif + '0';
+            }
+        }
+//        console.log("verif: "+verif);
+        if ( verif.indexOf(0) == -1 ) { $('#btnSaveDossier').prop("disabled",false); }
+        else { $('#btnSaveDossier').prop("disabled",true); }
+    }
+
+    function getOption()
+    {
+        var nbOption = $('#NbOption').val();
+        var idsociete = $('#SelectSociete').val();
+        var txt = '';
+
+        if($.isNumeric(nbOption)) {
+            txt = txt + '{#<p class="lead">{% trans "Options sur le dossier" %}</p>#}<div class="row">';
+            for (i = 1; i <= nbOption; i++) {
+                txt = txt + '<!-- option --><div id="divSelectOption'+i+'">' +
+                '<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+                '<label class="control-label" for="selectOption'+i+'" title="{% trans "Entrez une option" %}">{% trans "Option" %}&nbsp;&nbsp;<span class="badge">'+i+'</span></label>'+
+                '<select class="form-control" id="selectOption'+i+'" name="Option'+i+'" title="{% trans "Entrez une option" %}"'+
+                ' onchange="getSelectOptionTlOption('+nbOption+');checkInputSelect(\'divSelectOption'+i+'\',this.value);verifDescriptionDossier();"></select></div></div>';
+                if ( idsociete > 0 ) { getSelectSocieteTlOption(idsociete,'selectOption'+i); }
+                else { getSelect('selectOption'+i,'getListeOptionTrad',$('#selectOption'+i+'').val()); }
+            }
+            txt = txt + '</div>';
+            if (txt!='') $('#divOption').html(txt);
+        } else { $('#divOption').html('<div class="row"></div>'); }
+    }
+
+    function getElement()
+    {
+        var nbElement = $('#NbElement').val();
+        var nbOption = $('#NbOption').val();
+        var nbMachine = $('#NbMachine').val();
+        var idsociete = $('#SelectSociete').val();
+        var txt = '';
+        getSelectOptionTlOption(nbOption);
+        if($.isNumeric(nbElement)) {
+            for (i = 1; i <= nbElement; i++) {
+                txt = txt + '<div class="well"> ';
+                txt = txt + '<div class="row">';
+
+                txt = txt + '<!-- element --><div id="divSelectElement'+i+'"><div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+                '<label class="control-label" for="Element'+i+'" title="{% trans "Entrez un element" %}">{% trans "Element" %} <span class="badge">'+i+'</span></label>' +
+                '<select class="form-control" id="Element'+i+'" name="Element'+i+'" title="{% trans "Entrez un element" %}"'+
+                ' onchange="getElementAll('+i+','+nbElement+',this.value,\'Element\');'+
+                ' checkInputSelect(\'divSelectElement'+i+'\',this.value); verifCompositionDossier('+nbElement+');">'+
+                '</select></div></div>';
+
+                txt = txt + '<!-- quantite --><div id="divQuantite'+i+'"><div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2"> ' +
+                '<label class="control-label" for="Quantite'+i+'" title="{% trans "Entrez une quantité" %}">{% trans "Quantité" %}</label>' +
+                '<input type="number" min="0" step="1" class="form-control" id="Quantite'+i+'" placeholder="{% trans "Quantite" %}"'+
+                ' value="'+$('#Quantite').val()+'" name="Quantite'+i+'" title="{% trans "Entrez une quantité" %}"'+
+                ' onkeyup="checkInputNumber(\'divQuantite'+i+'\',this);verifCompositionDossier('+nbElement+');">'+
+                '</div></div>';
+
+                txt = txt + '<!-- support --><div id="divSupport'+i+'"><div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+                '<label class="control-label" for="Support'+i+'" title="{% trans "Entrez un support" %}">{% trans "Support" %}</label>' +
+                '<select class="form-control" id="Support'+i+'" name="Support'+i+'" title="{% trans "Entrez un support" %}"'+
+                ' onchange="getSupportAll('+i+','+nbElement+',this.value);'+
+                'getSelectTlSociete(\'Format'+i+'\',\'FormatTlSupport\',$(\'#SelectSociete\').val(),this.value);'+
+                'checkInputSelect(\'divSupport'+i+'\',this.value); verifCompositionDossier('+nbElement+');">'+
+                '</select></div></div>';
+
+                txt = txt + '<!-- format --><div id="divFormat'+i+'"><div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+                '<label class="control-label" for="Format'+i+'" title="{% trans "Entrez un format" %}">{% trans "Format" %}</label>' +
+                '<select class="form-control" id="Format'+i+'" name="Format'+i+'" title="{% trans "Entrez un format" %}"'+
+                ' onchange="getAll('+i+','+nbElement+',this.value,\'Format\');'+
+                ' checkInputSelect(\'divFormat'+i+'\',this.value);verifCompositionDossier('+nbElement+');">'+
+                '</select></div></div>';
+
+                {#txt = txt + '<!-- impression --><div id="divImpression'+i+'"><div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">' +#}
+                {#'<label class="control-label" for="Impression'+i+'" title="{% trans "Entrez un impression" %}">{% trans "Impression" %}</label>' +#}
+                {#'<select class="form-control" id="Impression'+i+'" name="Impression'+i+'" title="{% trans "Entrez un impression" %}"'+#}
+                {#' onchange="getAll('+i+','+nbElement+',this.value,\'Impression\');checkInputSelect(\'divImpression'+i+'\',this.value);verifCompositionDossier('+nbElement+');">'+#}
+                {#'</select></div></div>';#}
+
+                txt = txt + '<!-- commentaire --><div id="divCommentaire'+i+'"><div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2"> ' +
+                '<label class="control-label" for="Commentaire'+i+'" title="{% trans "Entrez un commentaire" %}">{% trans "Commentaire" %}</label>' +
+                '<input type="text" class="form-control" id="Commentaire'+i+'" placeholder="{% trans "Commentaire" %}" name="Commentaire'+i+'" '+
+                ' title="{% trans "Entrez un commentaire" %}" onkeyup="checkInputText(\'divCommentaire'+i+'\',this.value.length);">'+
+                '</div></div>';
+
+                txt = txt + '</div>';
+
+                //__ optionElement
+                if($.isNumeric(nbOption)) {
+                    txt = txt + '<div class="row">';
+                    for (j = 1; j <= nbOption; j++) {
+                        txt = txt + '<!-- optionElement -->' +
+                        '<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+                        '<label class="" for="Option'+i+'Element'+j+'" title="{% trans "Entrez une option" %}">{% trans "Option" %}&nbsp;&nbsp;<span class="badge">'+i+'-'+j+'</span></label>'+
+                        '<select class="form-control" id="Option'+i+'Element'+j+'" name="Option'+i+'Element'+j+'" title="{% trans "Entrez une option" %}"'+
+                        ' onchange="getOptionAll('+i+','+j+','+nbElement+',this.value);"></select></div>';
+                    }
+                    txt = txt + '</div>';
+                }
+
+                //__ machineElement
+                if($.isNumeric(nbMachine)) {
+                    txt = txt + '<div class="row">';
+                    for (f = 1; f <= nbMachine; f++) {
+                        txt = txt + '<!-- machineElement -->' +
+                        '<div id="divElement'+i+'Machine'+f+'"><div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+                        '<label class="control-label" for="Element'+i+'Machine'+f+'" title="{% trans "Entrez une machine" %}">{% trans "Machine" %}&nbsp;&nbsp;<span class="badge">'+i+'-'+f+'</span></label>'+
+                        '<select class="form-control" id="Element'+i+'Machine'+f+'" name="Element'+i+'Machine'+f+'" title="{% trans "Entrez une machine" %}"'+
+                        ' onchange="getMachineAll('+i+','+f+','+nbElement+',this.value);checkInputSelect(\'divElement'+i+'Machine'+f+'\',this.value);verifCompositionDossier('+nbElement+');'+
+                        'getSelectTlSociete(\'Element'+i+'MachineImpression'+f+'\',\'ImpressionTlMachine\',$(\'#SelectSociete\').val(),this.value);">'+
+                        '</select></div></div>';
+                        getSelect('Element'+i+'Machine'+f+'','getListeMachineTrad');
+                    }
+                    txt = txt + '</div>';
+                }
+
+                //__ machineTypeElement
+                if($.isNumeric(nbMachine)) {
+                    txt = txt + '<div class="row">';
+                    for (h = 1; h <= nbMachine; h++) {
+                        txt = txt + '<!-- machineImpressionElement -->' +
+                        '<div id="divElement'+i+'MachineImpression'+h+'"><div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+                        '<label class="control-label" for="Element'+i+'MachineImpression'+h+'" title="{% trans "Entrez un type pour la machine" %}">{% trans "Type" %}&nbsp;&nbsp;<span class="badge">'+i+'-'+h+'</span></label>'+
+                        '<select class="form-control" id="Element'+i+'MachineImpression'+h+'" name="Element'+i+'MachineImpression'+h+'" title="{% trans "Entrez une machine" %}"'+
+                        ' onchange="checkInputSelect(\'divElement'+i+'MachineImpression'+h+'\',this.value);verifCompositionDossier('+nbElement+');getMachineImpressionAll('+i+','+h+','+nbElement+',this.value);">'+
+                        '</select></div></div>';
+                        getSelect('Element'+i+'MachineImpression'+h+'','getListeImpressionTrad');
+                    }
+                    txt = txt + '</div>';
+                }
+                txt = txt + '</div> ';
+
+                if(idsociete>0) { getSelectSocieteTlSupport(document.getElementById('SelectSociete'),'Support'+i+''); }
+                else { getSelect('Support'+i+'','getListeSupportTrad'); }
+                getSelect('Format'+i+'','getListeFormatTrad');
+                getSelect('Element'+i+'','getListeElementTrad');
+                getSelect('Impression'+i+'','getListeImpressionTrad');
+            }
+
+            if (txt!='') $('#divElement').html('<p class="lead">{% trans "Composition du dossier" %}</p>'+txt+'<br/>');
+
+            $('#divSave').prop('hidden',false);
+        }
+        else { $('#divElement').html('<div class="row"></div>'); }
+    }
+
+    function getSupportAll(i,nbElement,idSupport)
+    {
+        var idsociete = '0';
+        if ( document.getElementById('SelectSociete') && document.getElementById('SelectSociete') > 0 ) { idsociete =  document.getElementById('SelectSociete'); }
+        for (j = i; j <= nbElement; j++) { getSelectSocieteTlSupport(idsociete,'Support'+(j+1)+'',idSupport); }
+    }
+
+    function getElementAll(i,count,id,div)
+    {
+        var n = parseInt(id)+1;
+        for (m = i+1; m <= count; m++) {
+            if($.isNumeric(id)) { $("select#"+div+""+m+" option[value="+(n)+"]").attr("selected","selected"); n++; }
+            else { $("select#"+div+""+m+" option[value=0]").attr("selected","selected"); }
+        }
+    }
+
+    function getOptionAll(i,j,count,id)
+    {
+        for (k = i+1; k <= count; k++) { $("select#Option"+k+"Element"+j+" option[value="+id+"]").attr("selected","selected"); }
+    }
+
+    function getMachineAll(i,j,count,id)
+    {
+        for (k = i+1; k <= count; k++) { $("select#Element"+k+"Machine"+j+" option[value="+id+"]").attr("selected","selected"); }
+    }
+
+    function getMachineImpressionAll(i,j,count,id)
+    {
+        for (k = i+1; k <= count; k++) {
+            $("select#Element"+k+"MachineImpression"+j+" option[value="+id+"]").attr("selected","selected");
+        }
+    }
+
+    function getSelectOptionTlOption(nbOption)
+    {
+        var nbElement = $('#NbElement').val();
+        var listeIdOption = '';
+        for (i = 1; i <= nbOption; i++) { if(listeIdOption!='') listeIdOption = listeIdOption + ',' + $('#selectOption'+i+'').val(); else listeIdOption = $('#selectOption'+i+'').val(); }
+//        console.log((listeIdOption));
+        $.getJSON(
+                'Select',
+                {
+                    'action': 'getListeOptionTlOption',
+                    'async': '1',
+                    'listeIdOption': listeIdOption
+                },
+                function (data)
+                {
+                    for (o = 1; o <= nbElement; o++){
+                        for (k = 1; k <= nbOption; k++){ $('#Option'+o+'Element'+k+'').html(data.SentData); }
+                    }
+                }
+        );
+    }
+</script>

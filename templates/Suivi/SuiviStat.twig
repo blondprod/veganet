@@ -1,0 +1,98 @@
+<!-- SuiviStat.twig -->
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\SuiviStat::IdPageDossier')] is defined) %}
+    {% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\SuiviStat::IdPageDossier')] %}
+{% endif %}#}
+
+<script type="text/javascript" src="js/SuiviStat.js"></script>
+
+{% if(session.Classe[constant('fbx\\Fab\\SuiviStat::ClassPage')]) == '1'  or (session.FBX_USER_SU) == '1' %}
+    <body id="SuiviStat" onload="getMenu('navBarDyna'); document.title= '{% trans "Suivi stats" %} // {{ session.Slogan }}';
+                                          {#getSelect('SelectSociete','getListeSocieteTrad','{{ OUT.IDSociete }}');#}
+                                          {#getSelect('SelectSecteur','getListeSecteurTrad','{{ OUT.IDSecteur }}');#}
+                                          {#getSelect('SelectMachine','getListeMachineTrad','{{ OUT.IDMachine }}');#}
+                                          /*getSelect('SelectSupport','getListeSupportTrad');*/
+            ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron visible-lg visible-md" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divJumbotron">
+                <div class="alert alert-block well fade in">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1>{% trans "Suivi des Stats de prod." %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid paddingJumbotron visible-sm visible-xs" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+        </div>
+    </div>
+
+    <!-- search engine -->
+    <div class="container-fluid">
+        <div class="panel-group" id="accordionSearch" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSearch">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                        <h4 class="panel-title">{% trans "Recherche" %}</h4>
+                    </a>
+                </div>
+                <div id="collapseSearch" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSearch">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <!-- date begin -->
+                                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                        <label class="control-label" for="searchDateDossierBegin">{% trans "Début" %}</label>
+                                        <input id="searchDateDossierBegin" name="searchDateDossierBegin" class="form-control" type="text"
+                                               value="{% if (OUT.searchDateDossierBegin=='') %}{{ ("now"|date_modify("- 1 month"))|date("d/m/Y") }}{% else %}{{ OUT.searchDateDossierBegin }}{% endif %}">
+                                        <!-- JS FOR DATERANGEPICKER -->
+                                        {% set idPicker = "searchDateDossierBegin" %}
+                                        {% include "elements/datepicker.twig" %}
+                                    </div>
+                                    <!-- date end -->
+                                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                        <label class="control-label" for="searchDateDossierEnd">{% trans "Fin" %}</label>
+                                        <input id="searchDateDossierEnd" name="searchDateDossierEnd" class="form-control" type="text"
+                                               value="{% if (OUT.searchDateDossierEnd=='') %}{{ "tomorrow"|date("d/m/Y") }}{% else %}{{ OUT.searchDateDossierEnd }}{% endif %}">
+                                        <!-- JS FOR DATERANGEPICKER -->
+                                        {% set idPicker = "searchDateDossierEnd" %}
+                                        {% include "elements/datepicker.twig" %}
+                                    </div>
+                                    <!-- Submit -->
+                                    <div class="form-group col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                                        <label class="control-label">&nbsp;</label>
+                                        <button type="submit" name="submit" value="ok"
+                                                id="btnSearchDossier" class="form-control btn btn-primary"
+                                                onclick="$('#divJumbotron').prop('hidden',true);
+                                                         $('.collapse').collapse('toggle');
+                                                         getDataForTableStat();">
+                                            {% trans "Chercher" %}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table -->
+    <div class="container-fluid" id="tableStat">
+
+    </div>
+<br/>
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}
+
+    <script type="text/javascript">
+
+    </script>

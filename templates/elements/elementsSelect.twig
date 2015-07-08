@@ -1,0 +1,13 @@
+<!-- Select.twig -->
+{% if(OUT.bool==2) %}
+{% else %}
+    <option value="0">&nbsp;</option>
+{% endif %}
+
+{% for i, array in data_Liste %}
+    {% if array.ID in data_ID %}
+        <option selected="selected" value="{{ array.ID }}">{{ array.Nom }}</option>
+    {% else %}
+        <option value="{{ array.ID }}">{{ array.Nom }}</option>
+    {% endif %}
+{% endfor %}

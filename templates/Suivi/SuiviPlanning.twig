@@ -1,0 +1,110 @@
+<!-- SuiviPlanning.twig -->
+{% if ( (session.Classe[constant('fbx\\Fab\\SuiviPlanning::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1' ) %}
+    <script type="text/javascript" src="js/SuiviPlanning.js"></script>
+    <body id="SuiviPlanning"
+          onload="getMenu('navBarDyna');
+                  document.title= '{% trans "Plannings" %} // {{ session.Slogan }}';
+                  getTablePlanning();
+                  getSelect('SelectSecteur','getListeSecteurTrad');
+                  getSelect('SelectMachine','getListeMachineTrad');
+                  ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divJumbotron">
+                <div class="alert alert-block well fade in visible-lg visible-md">
+                    <a type="a" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</a>
+                    <h1>{% trans "Suivi Planning" %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- SEARCH FILTER -->
+    <div class="container-fluid" hidden="hidden">
+        <div class="panel-group" id="accordionSearch" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSearch">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                        <h4 class="panel-title">{% trans "Recherche" %}</h4>
+                    </a>
+                </div>
+                <div id="collapseSearch" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSearch">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            {#<!-- EXP START -->#}
+                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">#}
+                                {#<label class="control-label" for="expStart">{% trans "Expédition" %}</label>#}
+                                {#<input id="expStart" name="expStart" class="form-control tooltip-link"#}
+                                       {#type="text" title="{% trans "Entrez le début de la période de date d'expédition" %}"#}
+                                       {#placeholder="{% trans "Début" %}">#}
+                                {#<!-- JS FOR DATERANGEPICKER -->#}
+                                {#{% set idPicker = "expStart" %}#}
+                                {#{% include "elements/datepicker.twig" %}#}
+                            {#</div>#}
+
+                            {#<!-- EXP END -->#}
+                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">#}
+                                {#<label class="control-label" for="expEnd">&nbsp;</label>#}
+                                {#<input id="expEnd" name="expEnd" class="form-control tooltip-link"#}
+                                       {#type="text" title="{% trans "Entrez la fin de la période de date d'expédition" %}"#}
+                                       {#placeholder="{% trans "Fin" %}">#}
+                                {#<!-- JS FOR DATERANGEPICKER -->#}
+                                {#{% set idPicker = "expEnd" %}#}
+                                {#{% include "elements/datepicker.twig" %}#}
+                            {#</div>#}
+
+                            <!-- SECTEUR -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                                <label class="" for="SelectSecteur">{% trans "Secteur" %}</label>
+                                <select id="SelectSecteur" class="form-control tooltip-link" name="IDSecteur" title="{% trans "choisissez un secteur" %}" onchange="getSelectSecteurTlMachine(this,'SelectMachine');getTablePlanning();">
+                                    <!-- elementsSelect.twig / getSelect('SelectSecteur','getListeSecteurTrad'); -->
+                                </select>
+                            </div>
+
+                            <!-- MACHINE -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                                <label class="" for="SelectMachine">{% trans "Machine" %}</label>
+                                <select id="SelectMachine" class="form-control tooltip-link" name="IDMachine" title="{% trans "choisissez une machine" %}" onchange="getTablePlanning();">
+                                    <!-- elementsSelect.twig / getSelect('SelectMachine','getListeMachineTrad'); -->
+                                </select>
+                            </div>
+                            <!-- DOSSIER -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                                <label class="" for="dossier">{% trans "Dossier" %}</label>
+                                <input id="dossier" type="text" class="form-control">
+                            </div>
+                            <!-- REF -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                                <label class="" for="Ref">{% trans "Ref." %}</label>
+                                <input id="Ref" type="text" class="form-control">
+                            </div>
+
+                            <!-- Submit -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                                <label class="">&nbsp;</label>
+                                <button type="button" class="form-control btn btn-primary" id="btnSearchPlanning"
+                                        onclick="getTablePlanning();">
+                                    {% trans "Chercher" %}&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- TABLE -->
+    <div class="container-fluid" id="tableSuiviPlanning">
+        <!-- tableSuiviPlanning.twig -->
+    </div>
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}

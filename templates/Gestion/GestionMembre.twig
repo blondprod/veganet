@@ -1,0 +1,377 @@
+<!-- GestionMembre.twig -->
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\GestionMembre::IdPageDossier')] is defined) %}#}
+    {#{% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\GestionMembre::IdPageDossier')] %}#}
+{#{% endif %}#}
+{% set IDGroupe = null %}
+{% for n, item in OUT.IDGroupe %}
+    {% if(OUT.IDGroupe|length)==(n+1) %}
+        {% set IDGroupe = IDGroupe~item %}
+    {% else %}
+        {% set IDGroupe = IDGroupe~item~".:." %}
+    {% endif %}
+{%  endfor %}
+
+{% set IDFonction = null %}
+{% for n, item in OUT.IDFonction %}
+    {% if(OUT.IDFonction|length)==(n+1) %}
+        {% set IDFonction = IDFonction~item %}
+    {% else %}
+        {% set IDFonction = IDFonction~item~".:." %}
+    {% endif %}
+{%  endfor %}
+
+{% set IDMembre = null %}
+{% for n, item in OUT.IDMembre %}
+    {% if(OUT.IDMembre|length)==(n+1) %}
+        {% set IDMembre = IDMembre~item %}
+    {% else %}
+        {% set IDMembre = IDMembre~item~".:." %}
+    {% endif %}
+{%  endfor %}
+
+{% if ( (session.Classe[constant('fbx\\Fab\\GestionMembre::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1' ) %}
+    <script type="text/javascript" src="js/GestionReglage.js"></script>
+    <script type="text/javascript" src="js/GestionDroit.js"></script>
+    <script type="text/javascript" src="js/GestionMembre.js"></script>
+    <body id="GestionMembre"
+          onload="getMenu('navBarDyna'); document.title= '{% trans "Membres" %} // {{ session.Slogan }}';
+                  getTableMembre();
+                  getSelect('selectMembre','getListeMembre','{{ IDMembre }}');
+                  getSelect('selectMembre2','getListeMembre','{{ IDMembre }}');
+                  getSelect('selectGroupe','getListeGroupeTrad','{{ IDGroupe }}');
+                  getSelect('selectGroupe2','getListeGroupeTrad','{{ IDGroupe }}');
+                  getSelect('selectGroupe3','getListeGroupeTrad','{{ IDGroupe }}');
+                  getSelect('selectFonction','getListeFonctionTrad','{{ IDFonction }}');
+                  getSelect('selectFonction2','getListeFonctionTrad','{{ IDFonction }}');
+                  getSelect('selectFonction3','getListeFonctionTrad','{{ IDFonction }}');
+                  getSelect('Societe','getListeSocieteTrad');
+                  getSelect('Langue','getListeLangue','{{ idlangue }}');">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="alert alert-block well fade in">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1> {% trans "Membres" %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- CHANGE TEXTES ACCUEIL -->
+    <div class="container-fluid">
+        <div class="panel-group" id="accordionTexte" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTexte">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTexte" aria-expanded="true" aria-controls="collapseTexte">
+                        <h4 class="panel-title">{% trans "ChangerTextesAccueil" %}</h4>
+                    </a>
+                </div>
+                <div id="collapseTexte" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTexte">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <form class="form-group" role="form" method="POST" name="upAccueilText" action="GestionMembre">
+                                    <div class="row">
+                                        <!-- select groupe -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-1">
+                                            <label class="" for="selectGroupe">{% trans "Groupes" %}</label>
+                                            <select id="selectGroupe" class="form-control" name="IDGroupe[]" multiple size="6" title="{% trans "choisissez un ou plusieurs groupes" %}"
+                                                    onclick="getSelectGroupeTLFonction('selectFonction');getSelectGroupeTLMembre('selectMembre');"><!-- elementsSelect.twig--></select>
+                                        </div>
+                                        <!-- select fonction -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-1">
+                                            <label class="" for="selectFonction">{% trans "Fonctions" %}</label>
+                                            <select id="selectFonction" class="form-control" name="IDFonction[]" multiple size="6" title="{% trans "choisissez une ou plusieurs fonctions" %}"
+                                                    onclick="getSelectFonctionTLMembre('selectMembre');"><!-- elementsSelect.twig--></select>
+                                        </div>
+                                        <!-- select membre -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-1">
+                                            <label class="" for="selectMembre">{% trans "Membre" %}</label>
+                                            <select id="selectMembre" class="form-control" name="IDMembre[]" multiple size="6" title="{% trans "choisissez un ou plusieur membre" %}"
+                                                    onclick="verifAddText();"><!-- elementsSelect.twig--></select>
+                                        </div>
+                                        <!-- text1 -->
+                                        <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <div class="form-group" id="divText1">
+                                                <label class="control-label" for="IDtext1">{% trans "Text1" %}</label>
+                                                <br/>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="IDtext1"
+                                                       placeholder="{% trans "Text1" %}"
+                                                       onkeyup="checkInputText('divText1',this.value.length);verifAddText();"
+                                                       name="text1" title="{% trans "ChangeText1" %}">
+                                            </div>
+                                        </div>
+                                        <!-- text2 -->
+                                        <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <div class="form-group" id="divText2">
+                                                <label class="control-label" for="IDtext2">{% trans "Text2" %}</label>
+                                                <br/>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="IDtext2"
+                                                       placeholder="{% trans "Text2" %}"
+                                                       onkeyup="checkInputText('divText2',this.value.length);verifAddText();"
+                                                       name="text2" title="{% trans "ChangeText2" %}">
+                                            </div>
+                                        </div>
+                                        <!-- text3 -->
+                                        <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <div class="form-group" id="divText3">
+                                                <label class="control-label" for="IDtext3">{% trans "Text3" %}</label>
+                                                <br/>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="IDtext3"
+                                                       placeholder="{% trans "Text3" %}"
+                                                       onkeyup="checkInputText('divText3',this.value.length);verifAddText();"
+                                                       name="text3" title="{% trans "ChangeText3" %}">
+                                            </div>
+                                        </div>
+                                        <!-- text4 -->
+                                        <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <div class="form-group" id="divText4">
+                                                <label class="control-label" for="IDtext4">{% trans "Text4" %}</label>
+                                                <br/>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="IDtext4"
+                                                       placeholder="{% trans "Text4" %}"
+                                                       onkeyup="checkInputText('divText4',this.value.length);verifAddText();"
+                                                       name="text4" title="{% trans "ChangeText4" %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- submit -->
+                                    <div class="row">
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <input type="hidden" name="action" value="getUpAccueilTxt">
+                                            <input type="hidden" name="div" value="collapseTexte">
+                                            <label>&nbsp;</label>
+                                            <br/>
+                                            <button type="submit" name="submit" value="ok" class="btn btn-primary" id="saveText" disabled
+                                                    title="{% trans "enregistrerTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- CHANGE IMAGES ACCUEIL -->
+    <div class="container-fluid">
+        <div class="panel-group" id="accordionImage" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingImage">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseImage" aria-expanded="true" aria-controls="collapseImage">
+                        <h4 class="panel-title">{% trans "Changer les images de la page d'accueil" %}</h4>
+                    </a>
+                </div>
+                <div id="collapseImage" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingImage">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <form class="form-group" role="form" method="POST" name="upAccueil" action="GestionMembre" enctype="multipart/form-data">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="50097152">
+                                    <div class="row">
+                                        <!-- select groupe -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-1">
+                                            <label class="" for="selectGroupe2">{% trans "Groupes" %}</label>
+                                            <select id="selectGroupe2" class="form-control" name="IDGroupe2[]" multiple size="6" title="{% trans "choisissez un ou plusieurs groupes" %}"
+                                                    onclick="getSelectGroupeTLFonction('selectFonction2','2');getSelectGroupeTLMembre('selectMembre2','2');"><!-- elementsSelect.twig--></select>
+                                        </div>
+                                        <!-- select fonction -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-1">
+                                            <label class="" for="selectFonction2">{% trans "Fonctions" %}</label>
+                                            <select id="selectFonction2" class="form-control" name="IDFonction2[]" multiple size="6" title="{% trans "choisissez une ou plusieurs fonctions" %}"
+                                                    onclick="getSelectFonctionTLMembre('selectMembre2','2');"><!-- elementsSelect.twig--></select>
+                                        </div>
+                                        <!-- select membre -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-1">
+                                            <label class="" for="selectMembre2">{% trans "Membre" %}</label>
+                                            <select id="selectMembre2" class="form-control" name="IDMembre2[]" multiple size="6" title="{% trans "choisissez un ou plusieur membre" %}"
+                                                    onclick="verifAddImg();"><!-- elementsSelect.twig--></select>
+                                        </div>
+                                        <!-- image1 -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="" for="IDimage1">{% trans "Image1" %}</label>
+                                            <br/>
+                                            <input type="file"
+                                                    {#class="form-control"#}
+                                                   id="IDimage1"
+                                                   accept="image/*"
+                                                   placeholder="{% trans "Image1" %}"
+                                                   name="image1" title="{% trans "transfertImage1" %}">
+                                        </div>
+                                        <!-- image2 -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="" for="IDimage2">{% trans "Image2" %}</label>
+                                            <br/>
+                                            <input type="file"
+                                                    {#class="form-control"#}
+                                                   id="IDimage2"
+                                                   accept="image/*"
+                                                   placeholder="{% trans "Image2" %}"
+                                                   name="image2" title="{% trans "transfertImage2" %}">
+                                        </div>
+                                        <!-- image3 -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="" for="IDimage3">{% trans "Image3" %}</label>
+                                            <br/>
+                                            <input type="file"
+                                                    {#class="form-control"#}
+                                                   id="IDimage3"
+                                                   accept="image/*"
+                                                   placeholder="{% trans "Image3" %}"
+                                                   name="image3" title="{% trans "transfertImage3" %}">
+                                        </div>
+                                        <!-- image4 -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="" for="IDimage4">{% trans "Image4" %}</label>
+                                            <br/>
+                                            <input type="file"
+                                                    {#class="form-control"#}
+                                                   id="IDimage4"
+                                                   accept="image/*"
+                                                   placeholder="{% trans "Image4" %}"
+                                                   name="image4" title="{% trans "transfertImage4" %}">
+                                        </div>
+                                    </div>
+                                    <!-- submit -->
+                                    <div class="row">
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <input type="hidden" name="action" value="getUpAccueilImg">
+                                            <input type="hidden" name="div" value="collapseImage">
+                                            <label>&nbsp;</label>
+                                            <br/>
+                                            <button type="submit" name="submit" value="ok" class="btn btn-primary" id="saveImg" disabled
+                                                    title="{% trans "enregistrerTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- SEARCH FILTER -->
+    <div class="container-fluid">
+        <div class="panel-group" id="accordionSearch" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSearch">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                        <h4 class="panel-title">{% trans "Recherche" %}</h4>
+                    </a>
+                </div>
+                <div id="collapseSearch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSearch">
+                    <div class="panel-body">
+                        <div class="row">
+                            <!-- GROUPE -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="selectGroupe3">{% trans "Groupes" %}</label>
+                                <select id="selectGroupe3" class="form-control" name="IDGroupe[]" multiple size="6" title="{% trans "choisissez un ou plusieurs groupes" %}" onclick="getSelectGroupeTLFonction('selectFonction3',3);">
+                                    <!-- elementsSelect.twig-->
+                                </select>
+                            </div>
+                            <!-- FONCTION -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="selectFonction3">{% trans "Fonctions" %}</label>
+                                <select id="selectFonction3" class="form-control" name="IDFonction[]" multiple size="6" title="{% trans "choisissez une ou plusieurs fonctions" %}">
+                                    <!-- elementsSelect.twig-->
+                                </select>
+                            </div>
+                            <!-- PreNom -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="Prenom">{% trans "Prenom" %}</label>
+                                <input type="text" id="Prenom" class="form-control" name="Prenom" placeholder="{% trans "Prenom" %}">
+                            </div>
+                            <!-- Nom -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="Nom">{% trans "Nom" %}</label>
+                                <input type="text" id="Nom" class="form-control" name="Nom" placeholder="{% trans "Nom" %}">
+                            </div>
+                            <!-- Login -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="Login">{% trans "Login" %}</label>
+                                <input type="text" id="Login" class="form-control" name="Login" placeholder="{% trans "Login" %}">
+                            </div>
+                            <!-- Email -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="Email">{% trans "Email" %}</label>
+                                <input type="email" id="Email" class="form-control" name="Email" placeholder="{% trans "Email" %}">
+                            </div>
+                            <!-- LANGUE -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="Langue">{% trans "Langue" %}</label>
+                                <select id="Langue" class="form-control" name="IDLangue">
+                                    <!-- elements/elementsMenu.twig-->
+                                </select>
+                            </div>
+                            <!-- Societe -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4" {% if ( (session.FBX_USER_SU) != 1) %} hidden="hidden"{% endif %}>
+                                <label class="" for="Societe">{% trans "Societe" %}</label>
+                                <select id="Societe" class="form-control" name="IDSociete">
+                                    <!-- elements/elementsMenu.twig-->
+                                </select>
+                            </div>
+                            <!-- ACTIF -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="estActif">{% trans "Actif" %}</label>
+                                <select id="estActif" class="form-control" name="Actif">
+                                    <option value="" selected>&nbsp;</option>
+                                    <option value="1">{% trans "Oui" %}</option>
+                                    <option value="0">{% trans "Non" %}</option>
+                                </select>
+                            </div>
+                            <!-- Telephone -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <label class="" for="Telephone">{% trans "Téléphone" %}</label>
+                                <input type="tel" id="Telephone" class="form-control" name="Telephone" placeholder="{% trans "Telephone" %}">
+                            </div>
+                            <!-- Submit -->
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                                <div class="row">
+                                    <label class="">&nbsp;</label><br/>
+                                    <button type="submit" name="submit" value="ok" class="btn btn-primary" id="btnSearchMembre"
+                                            onclick="getTableMembre();">
+                                        {% trans "Chercher" %}
+                                    </button>
+                                    <input type="hidden" name="action" value="getDataTableGestionMembre">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                            
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- TABLE -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive" id="tableGestionMembre">
+                    <!-- tableGestionMembre.twig -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}

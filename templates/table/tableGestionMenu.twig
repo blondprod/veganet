@@ -1,0 +1,121 @@
+<!-- tableGestionMenu.twig -->
+<div class="panel-group" id="accordionMenu" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingMenu">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseMenu" aria-expanded="true" aria-controls="collapseMenu">
+                <h4 class="panel-title">
+                    {% trans "Menus" %} <span class="badge">{{ data_menu|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseMenu" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMenu">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">
+                        <button class="btn btn-xs btn-info" title="{% trans "Ajouter un menu à la barre de navigation" %}"
+                                onclick="getSelect('LangueMenu_add','getListeLangue','1');
+                                         getSelect('SocieteMenu_add','getListeSocieteTrad');
+                                         getAdd('tr_saveMenu');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" title="{% trans "Supprimer un menu à la barre de navigation" %}"
+                                onclick="getDelete('IDMenu','TBL_MENU');
+                                         collapse('collapseMenu');"><span class="glyphicon glyphicon-minus-sign"></span></button></caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveMenu">
+                        <td></td>
+                        <td>
+                            <div id="divNomMenu_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomMenu_add',this.value.length,3);verifMenu();" id="NomMenu_add">
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control" id="" disabled>
+                                <option>{% trans "Français" %}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div id="divOrdreMenu_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreMenu_add',this);verifMenu();" id="OrdreMenu_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteMenu_add">
+                                <select class="form-control"  id="SocieteMenu_add"  onchange="checkInputSelect('divSocieteMenu_add',this.value);verifMenu();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" >
+                            <input type="checkbox" id="ActifMenu_add">
+                        </td>
+                        <td class="text text-center" id="saveMenu_add">
+                            <button onclick="getInsertMenu();" disabled id="btnInsertMenu_add"
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_menu %}
+                        <tr>
+                            <td class="text text-center">
+                                <input type="checkbox" id="chk_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)">
+                            </td>
+                            <td>
+                                <div id="divNomMenu_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomMenu_{{ data.ID }}',this.value.length,3);verifMenu({{ data.ID }});" id="NomMenu_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" id="LangueMenu_{{ data.ID }}" disabled>
+                                    <option>{{ data.Langue }}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div id="divOrdreMenu_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreMenu_{{ data.ID }}',this);verifMenu({{ data.ID }});" id="OrdreMenu_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteMenu_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteMenu_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteMenu_{{ data.ID }}',this.value);verifMenu({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifMenu_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifMenu({{ data.ID }});">
+                            </td>
+                            <td class="text text-center"
+                                id="modifMenu_{{ data.ID }}">
+                                <button onclick="
+                                            getSelect('LangueMenu_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                            getSelect('SocieteMenu_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                            getModifMenu({{ data.ID }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            </td>
+                            <td class="text text-center"
+                                id="saveMenu_{{ data.ID }}"
+                                hidden="hidden">
+                                <button onclick="getUpdateMenu({{ data.ID }});" disabled id="btnInsertMenu_{{ data.ID }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

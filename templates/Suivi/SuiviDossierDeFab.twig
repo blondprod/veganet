@@ -1,0 +1,383 @@
+<!-- SuiviDossierDeFab.twig -->
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\SuiviDossierDeFab::IdPageDossier')] is defined) %}
+    {% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\SuiviDossierDeFab::IdPageDossier')] %}
+{% endif %}#}
+<script type="text/javascript" src="js/SuiviDossierDeFab.js"></script>
+{% if(session.Classe[constant('fbx\\Fab\\SuiviDossierDeFab::ClassPage')]) == '1'  or (session.FBX_USER_SU) == '1'  %}
+    <body id="SuiviDossierDeFab"
+          onload="
+            document.title= '{% trans "Dossiers de fabrication" %} // {{ session.Slogan }}';
+            getMenu('navBarDyna');
+            getSelect('SelectSecteur','getListeSecteurTrad','{{ OUT.SelectSecteur }}');
+        ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divJumbotron">
+                <div class="alert alert-block well fade in visible-lg visible-md">
+                    <a type="a" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</a>
+                    <h1>{% trans "Dossiers de fabrication" %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- RECHERCHE -->
+    <div class="container-fluid">
+        <div class="panel-group" id="accordionSearch" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSearch">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                        <h4 class="panel-title">{% trans "Recherche" %}</h4>
+                    </a>
+                </div>
+                <div id="collapseSearch" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSearch">
+                    <div class="panel-body">
+                        <div class="row">
+                            <form class="form-group" role="form" method="POST" name="search" action="SuiviDossierDeFab" id="searchDossierDeFab">
+                                <input type="hidden" name="action" value="getDataDossierDeFab">
+                                <!-- date exp begin -->
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="searchDateDossierExpBegin">{% trans "Expédition" %}</label>
+                                    <input id="searchDateDossierExpBegin"
+                                           name="searchDateDossierExpBegin"
+                                           class="form-control tooltip-link"
+                                           type="text" title="{% trans "Entrez le début de la période de date d'expédition" %}"
+                                           placeholder="{% trans "Début" %}"
+                                           value="{% if (OUT.searchDateDossierExpBegin=='') %}{#{{ "now"|date("d/m/Y") }}#}{% else %}{{ OUT.searchDateDossierExpBegin }}{% endif %}">
+                                    <!-- JS FOR DATERANGEPICKER -->
+                                    {% set idPicker = "searchDateDossierExpBegin" %}
+                                    {% include "elements/datepicker.twig" %}
+                                </div>
+                                <!-- date exp end -->
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="searchDateDossierExpEnd">&nbsp;</label>
+                                    <input id="searchDateDossierExpEnd"
+                                           name="searchDateDossierExpEnd"
+                                           class="form-control tooltip-link"
+                                           type="text" title="{% trans "Entrez la fin de la période de date d'expédition" %}"
+                                           placeholder="{% trans "Fin" %}"
+                                           value="{% if (OUT.searchDateDossierExpEnd=='') %}{#{{ "tomorrow"|date("d/m/Y") }}#}{% else %}{{ OUT.searchDateDossierExpEnd }}{% endif %}">
+                                    <!-- JS FOR DATERANGEPICKER -->
+                                    {% set idPicker = "searchDateDossierExpEnd" %}
+                                    {% include "elements/datepicker.twig" %}
+                                </div>
+                                <!-- date crea begin -->
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="searchDateDossierCreaBegin">{% trans "Creation" %}</label>
+                                    <input id="searchDateDossierCreaBegin"
+                                           name="searchDateDossierCreaBegin"
+                                           class="form-control tooltip-link"
+                                           type="text" title="{% trans "Entrez le début de la période de date de création" %}"
+                                           placeholder="{% trans "Début" %}"
+                                           value="{% if (OUT.searchDateDossierCreaBegin=='') %}{#{{ "now"|date("d/m/Y") }}#}{% else %}{{ OUT.searchDateDossierCreaBegin }}{% endif %}">
+                                    <!-- JS FOR DATERANGEPICKER -->
+                                    {% set idPicker = "searchDateDossierCreaBegin" %}
+                                    {% include "elements/datepicker.twig" %}
+                                </div>
+                                <!-- date crea end -->
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="searchDateDossierCreaEnd">&nbsp;</label>
+                                    <input id="searchDateDossierCreaEnd"
+                                           name="searchDateDossierCreaEnd"
+                                           class="form-control tooltip-link"
+                                           type="text" title="{% trans "Entrez la fin de la période de date de création" %}"
+                                           placeholder="{% trans "Fin" %}"
+                                           value="{% if (OUT.searchDateDossierCreaEnd=='') %}{#{{ "tomorrow"|date("d/m/Y") }}#}{% else %}{{ OUT.searchDateDossierCreaEnd }}{% endif %}">
+                                    <!-- JS FOR DATERANGEPICKER -->
+                                    {% set idPicker = "searchDateDossierCreaEnd" %}
+                                    {% include "elements/datepicker.twig" %}
+                                </div>
+                                <!-- secteur -->
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="SelectSecteur">{% trans "Secteur" %}</label>
+                                    <select id="SelectSecteur" class="form-control tooltip-link" name="SelectSecteur" title="{% trans "Dernier secteur 'badgé'" %}">
+                                        <!-- getSelect('SelectSecteur','getListeSecteurTrad'); -->
+                                    </select>
+                                </div>
+                                <!-- type dossier -->
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="typeDossier">{% trans "Type" %}</label>
+                                    <select id="typeDossier" class="form-control tooltip-link" name="typeDossier" title="{% trans "Type de dossier de fabrication" %}" >
+                                        <option value="0"></option>
+                                        <option value="1" {% if (OUT.typeDossier==1) %}selected="selected" {% endif %}>{% trans "Fiche" %}</option>
+                                        <option value="2" {% if (OUT.typeDossier==2) %}selected="selected" {% endif %}>{% trans "Pliable" %}</option>
+                                        <option value="3" {% if (OUT.typeDossier==3) %}selected="selected" {% endif %}>{% trans "Amalgame" %}</option>
+                                    </select>
+                                </div>
+                                <!-- Dossier -->
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group" id="">
+                                    <label class="control-label" for="Dossier">{% trans "Dossier" %}</label>
+                                    <input class="form-control tooltip-link" type="text" id="Dossier" name="Dossier"
+                                           placeholder="{% trans "Dossier" %}" value="{{ OUT.Dossier }}"
+                                           onkeyup="checkInputText('divDossier',this.value.length,3);"
+                                           title="{% trans "Entrez un libellé de dossier de fabrication" %}">
+                                </div>
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group" id="">
+                                    <label class="control-label" for="Ref">{% trans "Ref" %}</label>
+                                    <input class="form-control tooltip-link" type="text" id="Ref" name="Ref"
+                                           placeholder="{% trans "Ref" %}" value="{{ OUT.Ref }}"
+                                           onkeyup="checkInputText('divRef',this.value.length,3);"
+                                           title="{% trans "Entrez la référence d'un dossier de fabrication" %}">
+                                </div>
+                                <!-- Submit -->
+                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                                    <label class="control-label" for="btnSearch">&nbsp;</label>
+                                    <button class="btn btn-primary form-control" type="submit" id="btnSearch">{% trans "Chercher" %}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- TABLE & SIDEBAR BTN -->
+    <div class="container-fluid" {% if (OUT|length)<1 %}hidden="hidden"{% endif %}>
+        <div class="row">
+            <!-- SIDEBAR BTN -->
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 sidebar text text-center">
+                <ul class="nav nav-sidebar"> <!-- hidden="hidden" id="btnPrint" -->
+                    <li>
+                        <a onclick="getDossierDeFabHTML('{{ session.IP }}','{{ session.PUBLIC_PATH }}');">
+                            <span title="{% trans "Fiche de fab." %}" class="glyphicon glyphicon-print tooltip-link"></span>
+                        </a>
+                    </li>
+                    {#<li><a><span title="{% trans "QRcode" %}" class="glyphicon glyphicon-qrcode tooltip-link"></span></a></li>#}
+                    <li><a onclick='getData2EditDossierDeFabElement();'><span title="{% trans "Editer" %}" class="glyphicon glyphicon-pencil tooltip-link"></span></a></li>
+                    <li><a onclick='$("#deleteDossierDeFab").modal("show");'><span title="{% trans "Supprimer" %}" class="glyphicon glyphicon-remove tooltip-link"></span></a></li>
+                    {#<li><a href=""><span class="glyphicon glyphicon-plus-sign"></span></a></li>#}
+                    {#<li><a href=""><span class="glyphicon glyphicon-minus-sign"></span></a></li>#}
+                </ul>
+                <ul class="nav nav-sidebar">
+                    {#<li><a href=""><span class="glyphicon glyphicon-ok"></span></a></li>#}
+                    <li><a href=""><span title="{% trans "Recharger" %}" class="glyphicon glyphicon-refresh tooltip-link"></span></a></li>
+                </ul>
+            </div>
+
+            <!-- TABLE -->
+            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 main">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table table-hover table-condensed tablesorter">
+                            {% if (data_dossier|length > 0) %}<caption class="lead" onclick="$('.collapse').collapse();"><code>{{ data_dossier|length }} {% trans "dossiers" %}</code></caption>{% endif %}
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>{% trans "Dossier" %}</th>
+                                <th>{% trans "Ref." %}</th>
+                                <th></th>
+                                <th></th>
+                                <th>{% trans "Quantité" %}</th>
+                                <th style="width: 7%;">{% trans "Temps" %}</th>
+                                <th>{% trans "Exp." %}</th>
+                                <th></th>
+                                <th style="width: 50%;">{% trans "Elements" %}</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i, DossierDeFab in data_dossier %}
+                                {#{% set dateExp = DossierDeFab.DateExpedition|date("Y-m-d") %}#}
+                                {#{% if date(dateExp) < date('-24hours') %}#}
+                                    {#{% set class = "danger" %}#}
+                                {#{% elseif date(dateExp) < date('-12hours') %}#}
+                                    {#{% set class = "warning" %}#}
+                                {#{% elseif date(dateExp) > date('-12hours') %}#}
+                                    {#{% set class = "" %}#}
+                                {#{% endif %}#}
+                                {% set Q = DossierDeFab.Quantite %}
+
+                                {% if Q > 20000 %}
+                                    {% set label = "label-danger" %}
+                                {% elseif Q > 20000 %}
+                                    {% set label = "label-warning" %}
+                                {% elseif Q > 10000 %}
+                                    {% set label = "label-success" %}
+                                {% elseif Q > 2500 %}
+                                    {% set label = "label-primary" %}
+                                {% elseif Q > 1000 %}
+                                    {% set label = "label-info" %}
+                                {% elseif Q < 500 %}
+                                    {% set label = "label-default" %}
+                                {% else %}
+                                    {% set label = "label-default" %}
+                                {% endif %}
+
+                                <tr ondblclick="getDossierDeFabPage('{{ session.IP }}','{{ session.PUBLIC_PATH }}','{{ DossierDeFab.ID }}');" class="{{ class }}">
+                                    <!-- print dossier de fab -->
+                                    <td style="vertical-align: middle;" class="text text-center"><a target="_blank" href="Production?action=imp&IDDossierDeFab={{ DossierDeFab.ID }}"><span class="text text-danger glyphicon glyphicon-print tooltip-link" title="{% trans "Imprimer le dossier de fabrication" %}"></span></a></td>
+                                    <!-- dossier -->
+                                    <td style="vertical-align: middle;">
+                                        <span class="lead">{{ DossierDeFab.Nom }}</span>&nbsp;
+                                        {% if DossierDeFab.DateMaj != '' %}
+                                            <span class="text text-warning glyphicon glyphicon-user"
+                                                  onmouseover="this.className = 'text text-success glyphicon glyphicon-user';$(this).tooltip('show')"
+                                                  onmouseout="this.className = 'text text-warning glyphicon glyphicon-user'"
+                                                  id="userMaj_{{ DossierDeFab.ID }}"
+                                                  onclick=""
+                                                  title="{% trans "Ouvert par" %}&nbsp;{{ DossierDeFab.NomMembre }}&nbsp;{% trans "le" %}&nbsp;{{ DossierDeFab.DateAdd|date('d/m/Y') }}&nbsp;{% trans "à" %}&nbsp;{{ DossierDeFab.DateAdd|date('H:i') }}.&nbsp;{% trans "Mis à jour par" %}&nbsp;{{ DossierDeFab.NomMembreMaj }}&nbsp;{% trans "le" %}&nbsp;{{ DossierDeFab.DateMaj|date('d/m/Y') }}&nbsp;{% trans "à" %}&nbsp;{{ DossierDeFab.DateMaj|date('H:i') }}">&nbsp;</span>
+                                        {% else %}
+                                            <span class="text text-primary glyphicon glyphicon-user"
+                                                  onmouseover="this.className = 'text text-success glyphicon glyphicon-user';$(this).tooltip('show')"
+                                                  onmouseout="this.className = 'text text-primary glyphicon glyphicon-user'"
+                                                  id="user_{{ DossierDeFab.ID }}"
+                                                  onclick=""
+                                                  title="{% trans "Ouvert par" %}&nbsp;{{ DossierDeFab.NomMembre }}&nbsp;{% trans "le" %}&nbsp;{{ DossierDeFab.DateAdd|date('d/m/Y') }}&nbsp;{% trans "à" %}&nbsp;{{ DossierDeFab.DateAdd|date('H:i') }}">&nbsp;</span>
+                                        {% endif %}
+                                    </td>
+                                    <!-- ref -->
+                                    <td style="vertical-align: middle;">
+                                        <em>{{ DossierDeFab.Ref }}</em>
+                                    </td>
+                                    <!-- commentaire -->
+                                    <td class="text text-center" style="vertical-align: middle;">
+                                        {% if (DossierDeFab.Commentaire|length)>0 %}
+                                            <h4><span class="glyphicon glyphicon-warning-sign tooltip-link"
+                                                  onmouseover="this.className = 'glyphicon glyphicon-warning-sign tooltip-link text text-danger';$(this).tooltip('show')"
+                                                  onmouseout="this.className = 'glyphicon glyphicon-warning-sign tooltip-link'"
+                                                  id="comm_{{ DossierDeFab.ID }}"
+                                                  onclick=""
+                                                  title="{{ DossierDeFab.Commentaire }}"></span></h4>
+                                        {% endif %}
+                                    </td>
+                                    <!-- pliable ou amalgame -->
+                                    <td class="text text-center" style="vertical-align: middle;">
+                                        {% if (DossierDeFab.EstAmalgame=='1') %}
+                                        <h4><span class="text text-primary glyphicon glyphicon-th tooltip-link" title="{{ DossierDeFab.NbPose }} {% trans "poses" %}"
+                                                  id="amalgame_{{ DossierDeFab.ID }}"
+                                                  onmouseover="this.className = 'text text-danger glyphicon glyphicon-th tooltip-link';$(this).tooltip('show')"
+                                                  onmouseout="this.className = 'text text-primary glyphicon glyphicon-th tooltip-link'"
+                                                    onclick=""></span></h4>
+                                        {% endif %}
+                                        {% if (DossierDeFab.EstPliable=='1') %}
+                                            <h4><span class="text text-primary glyphicon glyphicon-book tooltip-link" title="{{ DossierDeFab.LargeurOuvert }}x{{ DossierDeFab.HauteurOuvert}}{% trans "mm" %} - {{ DossierDeFab.LargeurFerme }}x{{ DossierDeFab.HauteurFerme }}{% trans "mm" %}"
+                                                  id="pliable_{{ DossierDeFab.ID }}"
+                                                  onmouseover="this.className = 'text text-danger glyphicon glyphicon-book tooltip-link';$(this).tooltip('show')"
+                                                  onmouseout="this.className = 'text text-primary glyphicon glyphicon-book tooltip-link'"
+                                                  onclick=""></span></h4>
+                                        {% endif %}
+                                        {% if (DossierDeFab.EstAmalgame=='0' and DossierDeFab.EstPliable=='0') %}
+                                                <h4><span class="text text-primary glyphicon glyphicon-file tooltip-link" title="{{ DossierDeFab.LargeurOuvert }}x{{ DossierDeFab.HauteurOuvert}}{% trans "mm" %}"
+                                                  id="pliable_{{ DossierDeFab.ID }}"
+                                                  onmouseover="this.className = 'text text-danger glyphicon glyphicon-file tooltip-link';$(this).tooltip('show')"
+                                                  onmouseout="this.className = 'text text-primary glyphicon glyphicon-file tooltip-link'"
+                                                  onclick=""></span></h4>
+                                        {% endif %}
+                                    </td>
+                                    <!-- quantite -->
+                                    <td style="vertical-align: middle;" class="text text-right">
+                                        <h5><span class="label {{ label }}" {#ondblclick="Sel_Mngt({{ DossierDeFab.ID }},true);getData2EditDossierDeFabElement();"#}>{{ DossierDeFab.Quantite }}</span></h5>
+                                    </td>
+                                    <!-- tmps -->
+                                    <td style="vertical-align: middle;" class="text text-right">
+                                        {% set temps = data_dossierTlElementTlMachine[DossierDeFab.ID]['tmpTotal'] %}
+                                        {#{{ dump(data_dossierTlElementTlMachine[DossierDeFab.ID]) }}#}
+                                        {% if (temps) > 0 %}<code>
+                                            {% if (temps) < 60 %}
+                                                {{ temps }} {% trans "mn" %}
+                                            {% else %}
+                                                {{ ((temps) / 60)|round(0, 'floor') }} {% trans "h" %} {{ (temps) % 60 }} {% trans "mn" %}
+                                            {% endif %}
+                                        </code>
+                                        {% endif %}
+                                    </td>
+                                    <!-- date expe -->
+                                    <td style="vertical-align: middle;" class="text text-center">
+                                        {{ DossierDeFab.DateExpedition|date("Y-m-d") }}
+                                    </td>
+                                    <!-- nb option -->
+                                    <td class="text text-center" style="vertical-align: middle;">
+                                        {% if (DossierDeFab.NbOption)>'0' %}
+                                        <span class="badge tooltip-link"
+                                              id="option_{{ DossierDeFab.ID }}"
+                                                {% if (DossierDeFab.NbOption > '0') %}
+                                                    onchange="$('#option_{{ DossierDeFab.ID }}').tooltip('show')"
+                                                    title="{% for j, Option in data_option %}
+                                                                {% if (Option.IDDossierDeFab == DossierDeFab.ID) %} {{ Option.NomOption }} {% endif %}
+                                                           {% endfor %}"
+                                                {% endif %}>{{ DossierDeFab.NbOption }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <!-- colapse element -->
+                                    <td style="vertical-align: middle;">
+                                        <div class="panel-group" id="accordion_{{ DossierDeFab.ID }}" role="tablist" aria-multiselectable="true">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="heading_{{ DossierDeFab.ID }}">
+                                                    <a data-toggle="collapse" data-parent="#accordion"
+                                                       href="#collapse_{{ DossierDeFab.ID }}"
+                                                       onmouseover="getDossierDeFabElement({{ DossierDeFab.ID }});"
+                                                       aria-expanded="true" aria-controls="collapse_{{ DossierDeFab.ID }}">
+                                                        <h4 class="panel-title"><span class="badge">{{ DossierDeFab.NbElement }}</span></h4>
+                                                    </a>
+                                                </div>
+                                                <div id="collapse_{{ DossierDeFab.ID }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_{{ DossierDeFab.ID }}">
+                                                    <div class="panel-body" id="body_{{ DossierDeFab.ID }}">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!-- checkbox -->
+                                    <td style="vertical-align: middle;" class="text-center">
+                                        <label>
+                                        <input type="checkbox" name="checkbox_{{ DossierDeFab.ID }}"
+                                               id="checkbox_{{ DossierDeFab.ID }}"
+                                               onchange="Sel_Mngt({{ DossierDeFab.ID }},this.checked);getPrintButton(this.checked);">
+                                        </label>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div {% if (OUT|length)<1 %}hidden="hidden"{% endif %}>
+        {% include "elements/selectPagination.twig" %}
+    </div>
+    {% include 'elements/elementsJs.twig' %}
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- MODAL EDIT -->
+    <div id="modal">
+
+    </div>
+
+    <!-- MODAL DELETE -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="deleteDossierDeFab">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal head -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                    <h4 class="modal-title" id="ModalAlert">{% trans "AlertH4" %}</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p class="lead">{% trans 'Etes-vous sur de vouloir supprimer ce(s) dossier(s) ?' %}</p>
+                    <input type="hidden" id="IDDossierDeFab">
+                </div>
+                <!-- Modal foot -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Annuler" %}</button>
+                    <button type="button" class="btn btn-danger" onclick="getDeleteDossierDeFab(tab_store_id);" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Supprimer" %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#<script type="text/javascript">#}
+    {#</script>#}

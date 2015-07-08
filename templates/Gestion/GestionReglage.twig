@@ -1,0 +1,256 @@
+<!-- GestionReglage.twig -->
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\GestionReglage::IdPageDossier')] is defined) %}
+    {% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\GestionReglage::IdPageDossier')] %}
+{% endif %}#}
+
+
+{% if ( (session.Classe[constant('fbx\\Fab\\GestionReglage::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1' ) %}
+    {#<script type="text/javascript" src="js/GestionReglage.js"></script>
+    <script type="text/javascript" src="js/GestionDroit.js"></script>
+    <script type="text/javascript" src="js/GestionMembre.js"></script>#}
+    <body id="GestionReglage"
+          onload="getMenu('navBarDyna'); document.title= '{% trans "Réglages" %} // {{ session.Slogan }}';
+                  getTableGestionReglageAll();
+                  getTableGestionDroitAll();
+                  /*getSelect('SelectSociete','getListeSocieteTrad');*/
+                  getSelect('SelectSocieteUpSlogan','getListeSocieteTrad');
+                  getSelect('SelectSocieteUpLogo','getListeSocieteTrad');
+                  getSelect('SelectSocieteUpFavicon','getListeSocieteTrad');
+//                  getSelect('SelectMenuMenuTlPage','getListeMenu');
+//                  getSelect('SelectPageMenuTlPage','getListePage');
+//                  getSelect('SelectSecteurSecteurTlCodeErreur','getListeSecteur');
+//                  getSelect('SelectFonctionFonctionTlPage','getListeFonction');
+//                  getSelect('SelectGroupeGroupeTlFonction','getListeGroupe');
+//                  getSelect('SelectGroupeGroupeTlMenu','getListeGroupe');
+//                  getSelect('SelectSupportSupportTlFormat','getListeSupport');
+//                  getSelect('SelectSecteurSecteurTlOption','getListeSecteur');
+          ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="alert alert-block well fade in">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1><a onclick="$('.collapse').collapse('toggle');">{% trans "Réglages" %}</a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- TABLE SOCIETE -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                <div class="table-responsive" id="tableGestionSociete"><!-- GestionReglage.js - tableGestionSociete.twig --></div>
+            </div>
+            <!-- TABLE MACHINE -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive" id="tableGestionMachine"><!-- GestionReglage.js - tableGestionMachine.twig --></div>
+            </div>
+            <!-- BRAND MARK -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="panel-group" id="accordionSlogan" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingSlogan">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSlogan" aria-expanded="true" aria-controls="collapseSlogan">
+                                <h4 class="panel-title">{% trans "Slogan" %}</h4>
+                            </a>
+                        </div>
+                        <div id="collapseSlogan" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSlogan">
+                            <div class="panel-body">
+                                <form class="form-group" role="form" method="POST" name="upAccueil" action="GestionReglage">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                        <div id="divSelectSocieteUpSlogan">
+                                            <select class="form-control" id="SelectSocieteUpSlogan" name="IDSocieteSlogan"
+                                                    onchange="checkInputSelect('divSelectSocieteUpSlogan',this.value);verifUpdateBrand($('#brand').val().length,this.value);">
+                                                <!-- getSelect('SelectSociete','getListeSocieteTrad'); - elements/elementsSelect.twig -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                        <div class="form-group" id="divBrand">
+                                            <input class="form-control" type="text" id="brand" placeholder="{% trans "Slogan" %}" name="brand" title="{% trans "Pour changer le slogan du site" %}"
+                                                   onkeyup="checkInputText('divBrand',this.value.length,3);verifUpdateBrand(this.value.length,$('#SelectSocieteUpSlogan').val());">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                        <input type="hidden" name="action" value="getUpBrand">
+                                        <button id="btnUpBrand" disabled type="submit" class="btn btn-primary" title="{% trans "enregistrerTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- LOGO -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="panel-group" id="accordionLogo" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingLogo">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseLogo" aria-expanded="true" aria-controls="collapseLogo">
+                                <h4 class="panel-title">{% trans "Logo" %}</h4>
+                            </a>
+                        </div>
+                        <div id="collapseLogo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLogo">
+                            <div class="panel-body">
+                                <form class="form-group" role="form" method="POST" name="upAccueil" action="GestionReglage" enctype="multipart/form-data">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                        <div id="divSelectSocieteUpLogo">
+                                            <select class="form-control" id="SelectSocieteUpLogo" name="IDSociete"
+                                                    onchange="checkInputSelect('divSelectSocieteUpLogo',this.value);">
+                                                <!-- getSelect('SelectSociete','getListeSocieteTrad'); - elements/elementsSelect.twig -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+                                        <div class="form-group" id="divLogo">
+                                            <label class="" for="IDimage">{% trans "Logo du site" %}</label>
+                                            <input type="file" id="IDimage" accept="image/*" placeholder="{% trans "Logo" %}" name="image" title="{% trans "Pour changer le logo du site" %}">
+                                            <br>
+                                            <input type="hidden" name="action" value="getUpImg">
+                                            <input type="hidden" name="nameOfFile" value="logo">
+                                            <input type="hidden" name="div" value="collapseLogo">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+                                        <input type="hidden" name="MAX_FILE_SIZE" value="150097152">
+                                        <button id="btnUpLogo" type="submit" class="btn btn-primary" title="{% trans "enregistrerTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FAVICON -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="panel-group" id="accordionFavicon" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFavicon">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFavicon" aria-expanded="true" aria-controls="collapseFavicon">
+                                <h4 class="panel-title">{% trans "Favicon" %}</h4>
+                            </a>
+                        </div>
+                        <div id="collapseFavicon" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFavicon">
+                            <div class="panel-body">
+                                <form class="form-group" role="form" method="POST" name="upAccueil" action="GestionReglage" enctype="multipart/form-data">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                        <div id="divSelectSocieteUpFavicon">
+                                            <select class="form-control" id="SelectSocieteUpFavicon" name="IDSociete"
+                                                    onchange="checkInputSelect('divSelectSocieteUpFavicon',this.value);">
+                                                <!-- getSelect('SelectSociete','getListeSocieteTrad'); - elements/elementsSelect.twig -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+                                        <div class="form-group" id="divFavicon">
+                                            <label class="" for="Favicon">{% trans "Favicon" %}</label>
+                                            <input type="file" id="Favicon" accept="image/*" placeholder="{% trans "Favicon" %}" name="image" title="{% trans "Pour changer la favicon du site" %}">
+                                            <br>
+                                            <input type="hidden" name="action" value="getUpImg">
+                                            <input type="hidden" name="nameOfFile" value="favicon">
+                                            <input type="hidden" name="div" value="collapseFavicon">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+                                        <input type="hidden" name="MAX_FILE_SIZE" value="150097152">
+                                        <button id="btnUpFavicon" type="submit" class="btn btn-primary" title="{% trans "enregistrerTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- LOGIN -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                <div class="panel-group" id="accordionLogin" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingLogin">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseLogin" aria-expanded="true" aria-controls="collapseLogin">
+                                <h4 class="panel-title">{% trans "Login" %}</h4>
+                            </a>
+                        </div>
+                        <div id="collapseLogin" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLogin">
+                            <div class="panel-body">
+                                <form class="form-group" role="form" method="POST" name="upAccueil" action="GestionReglage" enctype="multipart/form-data">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="150097152">
+                                    <div class="row">
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <label class="" for="IDimage">{% trans "Image page de connexion" %}</label>
+                                            <input type="file" id="IDimage" accept="image/*" placeholder="{% trans "Logo" %}" name="image" title="{% trans "Pour changer le logo du site" %}">
+                                            <br>
+                                            <input type="hidden" name="action" value="getUpImg">
+                                            <input type="hidden" name="nameOfFile" value="background">
+                                            <input type="hidden" name="div" value="collapseLogin">
+                                            <button type="submit" class="btn btn-xs btn-primary" title="{% trans "enregistrerTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TABLE LANGUE -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                <div class="table-responsive" id="tableGestionLangue"><!-- tableGestionLangue.twig --></div>
+            </div>
+            <!-- TABLE MENU -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionMenu"><!-- tableGestionMenu.twig --></div>
+            </div>
+            <!-- TABLE PAGE -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionPage"><!-- tableGestionPage.twig --></div>
+            </div>
+            <!-- TABLE GROUPE -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionGroupe"><!-- tableGestionGroupe.twig --></div>
+            </div>
+            <!-- TABLE FONCTION -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionFonction"><!-- tableGestionFonction.twig --></div>
+            </div>
+            <!-- TABLE SECTEUR -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionSecteur"><!-- tableGestionSecteur.twig --></div>
+            </div>
+            <!-- TABLE OPTION -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionOption"><!-- tableGestionOption.twig --></div>
+            </div>
+            <!-- TABLE CODE ERREUR -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionCodeErreur"><!-- tableGestionCodeErreur.twig --></div>
+            </div>
+            <!-- TABLE SUPPORT -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionSupport"><!-- tableGestionSupport.twig --></div>
+            </div>
+            <!-- TABLE FORMAT -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionFormat"><!-- tableGestionFormat.twig --></div>
+            </div>
+            <!-- TABLE ELEMENT -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionElement"><!-- tableGestionElement.twig --></div>
+            </div>
+            <!-- TABLE IMPRESSION -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionImpression"><!-- tableGestionImpression.twig --></div>
+            </div>
+
+        </div>
+    </div>
+
+{% else %}
+    {% include 'welcome.twig' %}
+    {#{{ dump(session.PrefsPagesPermit[constant('fbx\\Fab\\GestionReglage::IdPageDossier')]) }}#}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}

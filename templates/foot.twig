@@ -1,0 +1,184 @@
+<!-- foot.twig -->
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="alert">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "AlertH4" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div><pre id="message" hidden="hidden"></pre></div>
+            </div>
+            <!-- Modal foot -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Fermer" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="confirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "AlertH4" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <p class="lead">{% trans 'Etes-vous sur de vouloir supprimer cette fiche ?' %}</p>
+                <input type="hidden" id="IDFicheDeProdModal">
+            </div>
+            <!-- Modal foot -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Annuler" %}</button>
+                <button type="button" class="btn btn-danger" onclick="getDeleteFicheDeProd($('#IDFicheDeProdModal').val(),'{{ session.IP }}','{{ session.PUBLIC_PATH }}');" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Supprimer" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $(".tooltip-link").tooltip();
+    });
+</script>
+
+<script type="text/javascript">
+    var buffer = '';
+    var IDUser = '';
+    var login = '';
+    var password = '';
+    var IDDossierDeFabTlElement = '';
+    var valid = '';
+    var IDSecteur = '';
+    var IDMachine = '';
+    var IDDossierDeFab = '';
+    var IDDossier = '';
+    var IDElement = '';
+
+    //__ special char accepted " $ % & ' ( ) .
+    $(window).keypress(function(event){
+
+        var keyCode = event.keyCode;
+        buffer += String.fromCharCode(keyCode);
+
+//        //__ Login to application
+//        if ( buffer.indexOf('\'')!=-1 ) {
+////            console.log( buffer.substring(buffer.indexOf('\'')+1 , buffer.lastIndexOf('\'')) );
+//            if (keyCode == 13) {
+//                login = buffer.substring(buffer.indexOf('\'')+1 , buffer.lastIndexOf('\''));
+//                password = buffer.substring(buffer.lastIndexOf('\'') + 1);
+//                window.location.href = 'http://localhost/labox/public/index.php?login=' + login + '&password=' + password + '&languages=fr_FR';
+//                buffer = login = password = '';
+//            }
+//        }
+        //__ Login to application
+        if ( buffer.indexOf('()')!=-1 ) {
+            if (keyCode == 13) {
+                IDUser = buffer.substring(buffer.indexOf('()')+2 , buffer.lastIndexOf('()'));
+                $.getJSON
+                (   'http://{{ session.IP_SERVER }}/{{ session.PUBLIC_PATH }}index.php',
+                    { 'IDUser': IDUser },
+                    function (data) {}
+                );
+                setTimeout(function() { window.location.href='http://{{ session.IP_SERVER }}/{{ session.PUBLIC_PATH }}index.php'; }, 750);
+                buffer = IDUser = '';
+            }
+        }
+
+        //__ search element for job
+//        if ( buffer.indexOf('()')!=-1 ) {
+//            if (keyCode == 13) {
+//                IDDossierDeFabTlElement = buffer.substring(buffer.indexOf('()')+2 , buffer.lastIndexOf('()'));
+////                console.log(IDDossierDeFabTlElement);
+//                getDataDossierDeFabTlElement(IDDossierDeFabTlElement);
+//                $("select#IDElement option[value="+IDDossierDeFabTlElement+"]").attr("selected","selected");
+//                buffer = IDDossierDeFabTlElement = '';
+//            }
+//        }
+
+        //__ validation production sheet
+        if ( buffer.indexOf(')(')!=-1 ) {
+            if (keyCode == 13) {
+                valid = buffer.substring(buffer.indexOf(')(')+2 , buffer.lastIndexOf(')('));
+//                console.log(valid);
+                if (typeof(enabledRow) == "function" && $('#SelectMachine').val() > '0') {
+                    if ( valid == "well") $( "#formProductionFicheDeProd" ).submit();
+                    if ( valid == "plan") getDataPlanning();
+                }
+                if ( valid == "logout") window.location.href = 'http://{{ session.IP_SERVER }}/{{ session.PUBLIC_PATH }}Auth?action=logout';
+                buffer = valid = '';
+            }
+        }
+
+        //__ link to production sheet with iddossierdefab et iddossierTlelement
+        if ( buffer.indexOf('((')!=-1 ) {
+            if (keyCode == 13) {
+                if (typeof(enabledRow) == "function") {
+                    IDDossier = buffer.substring(buffer.indexOf('((')+2 , buffer.lastIndexOf('(('));
+                    IDElement = buffer.substring(buffer.lastIndexOf('((')+2);
+//                    console.log(IDDossier);
+                    IDElement = parseInt(IDElement);
+//                    console.log(IDElement);
+                    $.getJSON(
+                        'Base',
+                        {
+                            'action': 'getDossierWithIDDossierDeFab',
+                            'IDDossierDeFab':IDDossier,
+                            'async_data': '1',
+                            'async': '1'
+                        },
+                        function (data)
+                        {
+                            $('#Dossier').val(data);
+                            enabledRow($('#SelectSociete').val());
+                        }
+                    );
+                    if (IDElement){
+                        setTimeout(function() {
+                            getDataDossierDeFabTlElement(IDElement);
+                            $("select#IDElement option[value="+IDElement+"]").attr("selected","selected");
+                        }, 500);
+                    }
+                }
+                buffer = '';
+            }
+        }
+
+        //__ link to production sheet with machine setting and sector
+        if ( buffer.indexOf('$$')!=-1 ) {
+//            console.log("test fiche de prod");
+            if (keyCode == 13) {
+                    IDSecteur = buffer.substring(buffer.indexOf('$$') + 2, buffer.lastIndexOf('$$'));
+                    IDMachine = buffer.substring(buffer.lastIndexOf('$$') + 2);
+                    window.location.href = 'http://{{ session.IP_SERVER }}/{{ session.PUBLIC_PATH }}ProductionFicheDeProd?action=getInsertDataFicheDeProd&IDSecteur=' + IDSecteur + '&IDMachine=' + IDMachine + '';
+                    buffer = IDSecteur = IDMachine = '';
+                }
+        }
+
+        //__ link to Dossier de fab
+        if ( buffer.indexOf('%%')!=-1 ) {
+            if (keyCode == 13) {
+                IDDossierDeFab = buffer.substring(buffer.indexOf('%%')+2);
+//                console.log("barcode IDDossierDeFab: "+IDDossierDeFab);
+                $('#Dossier').val(IDDossierDeFab);
+                //typeof(enabledRow) == "function" ? enabledRow($('#SelectSociete').val()) : $( "#searchDossierDeFab" ).submit();
+                if (typeof(enabledRow) == "function") { enabledRow($('#SelectSociete').val()); }
+                else {
+                    if (document.getElementById('searchDossierDeFab')) { $( "#searchDossierDeFab" ).submit(); }
+                    else { window.open('http://{{ session.IP_SERVER }}/{{ session.PUBLIC_PATH }}Production?action=imp&Dossier='+IDDossierDeFab+'','DossierDeFab', ''); }
+                }
+                buffer = IDDossierDeFab = '';
+            }
+        }
+
+        if (keyCode == 13) { buffer = ''; $('#modalPlanning').modal('hide');}
+    });
+</script>
+
+</body>
+</html>

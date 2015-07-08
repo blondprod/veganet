@@ -1,0 +1,121 @@
+<!-- tableGestionFormat.twig -->
+<div class="panel-group" id="accordionFormat" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFormat">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFormat" aria-expanded="true" aria-controls="collapseFormat">
+                <h4 class="panel-title">
+                    {% trans "Formats" %} <span class="badge">{{ data_format|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseFormat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFormat">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">
+                        <button class="btn btn-xs btn-info" title="{% trans "Ajouter un format" %}"
+                                onclick="getSelect('LangueFormat_add','getListeLangue','1');
+                                         getSelect('SocieteFormat_add','getListeSocieteTrad');
+                                         getAdd('tr_saveFormat');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" title="{% trans "Supprimer un format" %}"
+                                onclick="getDelete('IDFormat','TBL_FORMAT');
+                                         collapse('collapseFormat');"><span class="glyphicon glyphicon-minus-sign"></span></button></caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveFormat">
+                        <td></td>
+                        <td>
+                            <div id="divNomFormat_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomFormat_add',this.value.length,3);verifFormat();" id="NomFormat_add">
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control" id="" disabled>
+                                <option>{% trans "Français" %}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div id="divOrdreFormat_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreFormat_add',this);verifFormat();" id="OrdreFormat_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteFormat_add">
+                                <select class="form-control"  id="SocieteFormat_add"  onchange="checkInputSelect('divSocieteFormat_add',this.value);verifFormat();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" >
+                            <input type="checkbox" id="ActifFormat_add">
+                        </td>
+                        <td class="text text-center" id="saveFormat_add">
+                            <button onclick="getInsertFormat();" disabled id="btnInsertFormat_add"
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_format %}
+                        <tr>
+                            <td class="text text-center">
+                                <input type="checkbox" id="chk_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)">
+                            </td>
+                            <td>
+                                <div id="divNomFormat_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomFormat_{{ data.ID }}',this.value.length,3);verifFormat({{ data.ID }});" id="NomFormat_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" id="LangueFormat_{{ data.ID }}" disabled>
+                                    <option>{{ data.Langue }}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div id="divOrdreFormat_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreFormat_{{ data.ID }}',this);verifFormat({{ data.ID }});" id="OrdreFormat_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteFormat_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteFormat_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteFormat_{{ data.ID }}',this.value);verifFormat({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifFormat_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifFormat({{ data.ID }});">
+                            </td>
+                            <td class="text text-center"
+                                id="modifFormat_{{ data.ID }}">
+                                <button onclick="
+                                            getSelect('LangueFormat_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                            getSelect('SocieteFormat_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                            getModifFormat({{ data.ID }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            </td>
+                            <td class="text text-center"
+                                id="saveFormat_{{ data.ID }}"
+                                hidden="hidden">
+                                <button onclick="getUpdateFormat({{ data.ID }});" disabled id="btnInsertFormat_{{ data.ID }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

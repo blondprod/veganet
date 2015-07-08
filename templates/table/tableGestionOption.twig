@@ -1,0 +1,108 @@
+<!-- tableGestionOption.twig -->
+{#{{ dump(data_option) }}#}
+<div class="panel-group" id="accordionOption" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOption">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOption" aria-expanded="true" aria-controls="collapseOption">
+                <h4 class="panel-title">
+                    {% trans "Options" %} <span class="badge">{{ data_option|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseOption" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOption">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">{#{{ data_option|length }} {% trans "OPTIONS" %}<br/>#}
+                        <button class="btn btn-xs btn-info" title="{% trans "ajouter un option de production" %}"
+                                onclick="getSelect('LangueOption_add','getListeLangue');
+                                         getSelect('SocieteOption_add','getListeSocieteTrad');
+                                         getAdd('tr_saveOption');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" title="{% trans "Supprimer un option de production" %}"
+                                onclick="getDelete('IDOption','TBL_OPTION');
+                                         collapse('collapseOption');"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    </caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveOption">
+                        <td></td>
+                        <td>
+                            <div id="divNomOption_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomOption_add',this.value.length,3);verifOption();" id="NomOption_add">
+                            </div>
+                        </td>
+                        <td><select class="form-control" id="" disabled><option>{% trans "Français" %}</option></select></td>
+                        <td>
+                            <div id="divOrdreOption_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreOption_add',this);verifOption();" id="OrdreOption_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteOption_add">
+                                <select class="form-control"  id="SocieteOption_add"  onchange="checkInputSelect('divSocieteOption_add',this.value);verifOption();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" ><input type="checkbox" id="ActifOption_add"></td>
+                        <td class="text text-center" id="saveOption_add">
+                            <button onclick="getInsertOption();" disabled id="btnInsertOption_add" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_option %}
+                        <tr>
+                            <td class="text text-center"><input type="checkbox" id="chk_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)"></td>
+                            <td>
+                                <div id="divNomOption_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomOption_{{ data.ID }}',this.value.length,3);verifOption({{ data.ID }});" id="NomOption_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" id="LangueOption_{{ data.ID }}" disabled>
+                                    <option>{{ data.NomLangue }}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div id="divOrdreOption_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreOption_{{ data.ID }}',this);verifOption({{ data.ID }});" id="OrdreOption_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteOption_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteOption_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteOption_{{ data.ID }}',this.value);verifOption({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifOption_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifOption({{ data.ID }});">
+                            </td>
+                            <td class="text text-center" id="modifOption_{{ data.ID }}">
+                                <button onclick="getSelect('LangueOption_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                                 getSelect('SocieteOption_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                                 getModifOption({{ data.ID }});" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </td>
+                            <td class="text text-center" id="saveOption_{{ data.ID }}" hidden="hidden">
+                                <button onclick="getUpdateOption({{ data.ID }});" disabled id="btnInsertOption_{{ data.ID }}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

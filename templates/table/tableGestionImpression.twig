@@ -1,0 +1,147 @@
+<!-- tableGestionImpression.twig -->
+<div class="panel-group" id="accordionImpression" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingImpression">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseImpression" aria-expanded="true" aria-controls="collapseImpression">
+                <h4 class="panel-title">
+                    {% trans "Type" %} <span class="badge">{{ data_impression|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseImpression" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingImpression">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">
+                        <button class="btn btn-xs btn-info" title="{% trans "Ajouter un impression" %}"
+                                onclick="getSelect('LangueImpression_add','getListeLangue','1');
+                                         getSelect('SocieteImpression_add','getListeSocieteTrad');
+                                         getAdd('tr_saveImpression');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" title="{% trans "Supprimer un impression" %}"
+                                onclick="getDelete('IDImpression','TBL_IMPRESSION');
+                                         collapse('collapseImpression');"><span class="glyphicon glyphicon-minus-sign"></span></button></caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 18%;">{% trans "Langue" %}</th>
+                        <th style="width: 12%;">{% trans "Ordre" %}</th>
+                        <th style="width: 15%;">{% trans "Calages" %}</th>
+                        <th style="width: 12%;">{% trans "Tours" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveImpression">
+                        <td></td>
+                        <td>
+                            <div id="divNomImpression_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomImpression_add',this.value.length,3);verifImpression();" id="NomImpression_add">
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control" id="" disabled>
+                                <option>{% trans "Français" %}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div id="divOrdreImpression_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreImpression_add',this);verifImpression();" id="OrdreImpression_add" value="1">
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div id="divCalageImpression_add">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divCalageImpression_add',this);verifImpression();" id="CalageImpression_add" value="1">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div id="divTourImpression_add">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divTourImpression_add',this);verifImpression();" id="TourImpression_add" value="1">
+                                </div>
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteImpression_add">
+                                <select class="form-control"  id="SocieteImpression_add"  onchange="checkInputSelect('divSocieteImpression_add',this.value);verifImpression();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" >
+                            <input type="checkbox" id="ActifImpression_add">
+                        </td>
+                        <td class="text text-center" id="saveImpression_add">
+                            <button onclick="getInsertImpression();" disabled id="btnInsertImpression_add"
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_impression %}
+                        <tr>
+                            <td class="text text-center">
+                                <input type="checkbox" id="chk_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)">
+                            </td>
+                            <td>
+                                <div id="divNomImpression_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomImpression_{{ data.ID }}',this.value.length,3);verifImpression({{ data.ID }});" id="NomImpression_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" id="LangueImpression_{{ data.ID }}" disabled>
+                                    <option>{{ data.Langue }}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div id="divOrdreImpression_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreImpression_{{ data.ID }}',this);verifImpression({{ data.ID }});" id="OrdreImpression_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divCalageImpression_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divCalageImpression_{{ data.ID }}',this);verifImpression({{ data.ID }});" id="CalageImpression_{{ data.ID }}" disabled value="{{ data.NbCalage }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divTourImpression_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divTourImpression_{{ data.ID }}',this);verifImpression({{ data.ID }});" id="TourImpression_{{ data.ID }}" disabled value="{{ data.NbTour }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteImpression_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteImpression_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteImpression_{{ data.ID }}',this.value);verifImpression({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifImpression_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifImpression({{ data.ID }});">
+                            </td>
+                            <td class="text text-center"
+                                id="modifImpression_{{ data.ID }}">
+                                <button onclick="
+                                            getSelect('LangueImpression_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                            getSelect('SocieteImpression_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                            getModifImpression({{ data.ID }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            </td>
+                            <td class="text text-center"
+                                id="saveImpression_{{ data.ID }}"
+                                hidden="hidden">
+                                <button onclick="getUpdateImpression({{ data.ID }});" disabled id="btnInsertImpression_{{ data.ID }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

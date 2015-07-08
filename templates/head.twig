@@ -1,0 +1,48 @@
+<!-- head.twig -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {#<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">#}
+    <meta name="description" content="L A  B O X">
+    <meta name="author" content="Blond Production ©">
+
+    <title>{{ session.Slogan }}</title>
+
+    <link rel="shortcut icon" href="img/logos/favicon-{{ session.FBX_USER_SOCIETE_ID }}.png">
+
+    <!-- LINK CSS -->
+    <link rel="stylesheet" type="text/css" media="all" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/carousel.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker-bs3.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
+
+    <!-- LINK JS -->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    {#<script type="text/javascript" src="bower_components/bootstrap/dist/js/npm.js"></script>#}
+    <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="js/jquery.tablesorter.pager.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <script type="text/javascript" src="js/fbx.js"></script>
+    <script type="text/javascript" src="js/GestionReglage.js"></script>
+    <script type="text/javascript" src="js/GestionDroit.js"></script>
+    <script type="text/javascript" src="js/GestionMembre.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("table")
+                .tablesorter({widthFixed: true, widgets: ['zebra']})
+                .tablesorterPager({container: $("#pager")});
+        });
+    </script>
+    <script type="text/javascript">
+        $(function()
+        {
+            getMenu("navBarDyna");
+            getSelect('SelectSociete','getListeSocieteTrad');
+        })</script>
+
+</head>

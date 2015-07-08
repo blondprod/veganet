@@ -1,0 +1,15 @@
+<!-- Menu.twig -->
+{% for k , data in data_menu %}
+    {% if( (session.PrefsMenusPermit[data.IDMenu])=='1' ) %}
+        <li class='dropdown'>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown'>{{ data.NomMenu }} <b class='caret'></b></a>
+            <ul class='dropdown-menu'>
+                {% for w, obj in data_page[data.IDMenu] %}
+                    {% if( (session.PrefsPagesPermit[obj.IDPage])=='1' ) %}
+                        <li><a href="{{ obj.ClassPage }}">{{ obj.NomPage }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+    {% endif %}
+{% endfor %}

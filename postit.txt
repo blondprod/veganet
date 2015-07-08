@@ -1,0 +1,74 @@
+<!-- WEBPAO
+
+<config>
+    <!-- database -->
+    <dev>
+        <host>localhost</host>
+        <ip>192.168.3.136</ip>
+        <username>root</username>
+        <password>fl0r1@n</password>
+        <dbname>efactory</dbname>
+        <port>3306</port>
+    </dev>
+
+    <!-- Path cURL to -->
+    <path>
+        <!-- BarCode -->
+        <barcode>http://192.168.3.136/efactory/public/barcodeGen.php</barcode>
+        <!-- QrCode -->
+        <qrcode>http://192.168.3.136/efactory/public/cQRCodeGen.php</qrcode>
+        <public>efactory/public/</public>
+    </path>
+
+    <!-- link QRcode -->
+    <qr>
+        <dossier>http://192.168.3.136/efactory/public/PrintDossierDeFab</dossier>
+        <membre>http://192.168.3.136/efactory/public/accueil</membre>
+        <machine>http://192.168.3.136/efactory/public/ProductionFicheDeProd</machine>
+    </qr>
+
+    <!-- link dir images -->
+    <img>
+    <barcode>/var/www/efactory/public/img/barcode</barcode>
+    <qrcode>/var/www/efactory/public/img/qrcode</qrcode>
+    </img>
+</config>
+
+-->
+
+<!-- IMAC
+
+<config>
+    <!-- database -->
+    <dev>
+        <host>88.167.74.237</host>
+        <ip>88.167.74.237</ip>
+        <username>root</username>
+        <password>3x@</password>
+        <dbname>labox</dbname>
+        <port>3306</port>
+    </dev>
+
+    <!-- Path cURL -->
+    <path>
+    <!-- BarCode -->
+        <barcode>http://88.167.74.237/barcodeGen.php</barcode>
+        <qrcode>http://88.167.74.237/cQRCodeGen.php</qrcode>
+        <public></public>
+    </path>
+
+    <!-- link QRcode -->
+    <qr>
+        <dossier>http://88.167.74.237/PrintDossierDeFab</dossier>
+        <machine>http://88.167.74.237/ProductionFicheDeProd</machine>
+        <membre>http://88.167.74.237/accueil</membre>
+    </qr>
+
+    <!-- link dir images -->
+    <img>
+        <barcode>/Library/WebServer/Documents/labox/public/img/barcode</barcode>
+        <qrcode>/Library/WebServer/Documents/labox/public/img/qrcode</qrcode>
+    </img>
+</config>
+
+-->

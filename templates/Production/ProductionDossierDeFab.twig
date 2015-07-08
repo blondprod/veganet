@@ -1,0 +1,300 @@
+<!-- ProductionDossierDeFab.twig -->
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\ProductionDossierDeFab::IdPageDossier')] is defined) %}
+    {% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\ProductionDossierDeFab::IdPageDossier')] %}
+{% endif %}#}
+{% if(session.Classe[constant('fbx\\Fab\\ProductionDossierDeFab::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1' %}
+    <body id="ProductionDossierDeFab" onload="document.title= '{% trans "Ouverture dossier fab" %} // {{ session.Slogan }}';getMenu('navBarDyna');">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divJumbotron">
+                <div class="alert alert-block well fade in visible-lg visible-md" id="">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1>{% trans "Ouverture de dossier de fabrication" %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- form -->
+    <form class="form-group" role="form" method="POST" name="search" action="ProductionDossierDeFab">
+        <input type="hidden" name="action" value="getInsertDataDossierDeFab">
+        <div class="container-fluid" id="divDescriptionDossier">
+            <p class="lead">{% trans "Description du dossier" %}</p>
+            <div class="well">
+                <!-- Description dossier -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <!-- dossier -->
+                            <div id="divDossier">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                    <label class="control-label" for="Dossier"
+                                           title="{% trans "Entrez un libelle pour le dossier de fabrication" %}">{% trans "Dossier" %}</label>
+                                    <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Dossier"
+                                           placeholder="{% trans "Libelle" %}" name="Dossier" value="{{ OUT.Dossier }}"
+                                           onkeyup="checkInputText('divDossier',this.value.length,3);verifDescriptionDossier();"
+                                           title="{% trans "Entrez un libelle pour le dossier de fabrication" %}" autofocus="autofocus">
+                                </div>
+                            </div>
+                            <!-- ref -->
+                            <div id="divRef">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                    <label class="control-label" for="Ref"
+                                           title="{% trans "Entrez une ref client" %}">{% trans "Reférence" %}</label>
+                                    <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Ref"
+                                           placeholder="{% trans "Ref. client" %}" name="Ref" value="{{ OUT.Ref }}"
+                                           onkeyup="checkInputText('divRef',this.value.length,3);verifDescriptionDossier();"
+                                           title="{% trans "Entrez une ref client" %}">
+                                </div>
+                            </div>
+                            <!-- commentaire -->
+                            <div id="divCommentaire">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                    <label class="control-label" for="Commentaire"
+                                           title="{% trans "Entrez un commentaire" %}">{% trans "Commentaire" %}</label>
+                                    <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Commentaire"
+                                           placeholder="{% trans "Commentaire" %}" name="Commentaire" value="{{ OUT.Commentaire }}"
+                                           onkeyup="verifDescriptionDossier();"
+                                           title="{% trans "Entrez un commentaire" %}">
+                                </div>
+                            </div>
+                            <!-- quantite -->
+                            <div id="divQuantite">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="Quantite"
+                                           title="{% trans "Entrez une quantité finale à expédier" %}">{% trans "Quantité" %}</label>
+                                    <input type="number" class="form-control tooltip-link" data-placement="bottom" id="Quantite"
+                                           placeholder="{% trans "Quantité" %}" name="Quantite" value="{{ OUT.Quantite }}"
+                                           onkeyup="checkInputNumber('divQuantite',this);verifDescriptionDossier();"
+                                           title="{% trans "Entrez une quantité finale à expédier" %}">
+                                </div>
+                            </div>
+                            <!-- nbOption -->
+                            <div id="divNbOption">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="NbOption"
+                                           title="{% trans "Entrez le nombre d'options du dossier" %}">{% trans "Option" %}</label>
+                                    <input type="number" class="form-control tooltip-link" data-placement="bottom" id="NbOption"
+                                           placeholder="{% trans "Nombre" %}" name="NbOption" value="{{ OUT.NbOption }}"
+                                           onkeyup="getOption();verifDescriptionDossier();"
+                                           title="{% trans "Entrez le nombre d'options du dossier" %}">
+                                </div>
+                            </div>
+                            <!-- nbMachine -->
+                            <div id="divNbMachine">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="NbMachine"
+                                           title="{% trans "Entrez le nombre de machine nécessaire" %}">{% trans "Machine" %}</label>
+                                    <input type="number" class="form-control tooltip-link" data-placement="bottom" id="NbMachine"
+                                           placeholder="{% trans "Nombre" %}" name="NbMachine"
+                                           onkeyup="checkInputNumber('divNbMachine',this);verifDescriptionDossier();getElement();"
+                                           title="{% trans "Entrez le nombre de machine nécessaire" %}">
+                                </div>
+                            </div>
+                            <!-- nbElement -->
+                            <div id="divNbElement">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="NbElement"
+                                           title="{% trans "Entrez le nombre d'éléments du dossier" %}">{% trans "Elément" %}</label>
+                                    <input type="number" class="form-control tooltip-link" data-placement="bottom" id="NbElement"
+                                           placeholder="{% trans "Nombre" %}" name="NbElement" value="{{ OUT.NbElement }}"
+                                           onkeyup="checkInputNumber('divNbElement',this);getElement();verifDescriptionDossier();"
+                                           title="{% trans "Entrez le nombre d'éléments du dossier" %}">
+                                </div>
+                            </div>
+                            <!-- dateExpedition -->
+                            <div id="divDateExpedition">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="DateExpedition"
+                                           title="{% trans "Entrez une date d'expédition" %}">{% trans "Expédition" %}</label>
+                                    <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DateExpedition"
+                                           placeholder="{% trans "Date" %}" name="DateExpedition"
+                                           value="{% if(( OUT.Quantite)!='') %}{{ OUT.DateExpedition }}{% else %}{{ "now"|date('d/m/Y') }}{% endif %}"
+                                           title="{% trans "Entrez une date d'expédition" %}">
+                                    <!-- JS FOR DATERANGEPICKER -->
+                                    {% set div = "divDateExpedition" %}
+                                    {% set idPicker = "DateExpedition" %}
+                                    {% include "elements/datepicker.twig" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- pliage -->
+                            <div id="divPliage">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="Pliage"
+                                           title="{% trans "Cocher pour indiquer si il s'agit d'un document pliable" %}">{% trans "Pliable" %}</label>
+                                    <div class="">
+                                        <input type="checkbox"
+                                               id="Pliage"
+                                               name="Pliage"
+                                               class="tooltip-link"
+                                               data-placement="bottom"
+                                               onclick="if(this.checked==true) {
+                                                    $('#divAmalgame').prop('hidden',true );
+                                                    $('#divAmalgame').prop('disabled',true );
+                                                    $('#divDimensionFerme').prop('hidden',false );
+                                                    $('#divDimensionFerme').prop('disabled',false );
+                                                    $('#divNbPose').prop('hidden',true );
+                                                    $('#divNbPose').prop('disabled',true );
+                                               } else {
+                                                    $('#divAmalgame').prop('hidden',false );
+                                                    $('#divAmalgame').prop('disabled',false );
+                                                    $('#divDimensionFerme').prop('hidden',true );
+                                                    $('#divDimensionFerme').prop('disabled',true );
+                                                    $('#divNbPose').prop('hidden',true );
+                                                    $('#divNbPose').prop('disabled',true );
+                                               };verifDescriptionDossier();"
+                                               onchange=""
+                                               title="{% trans "Cocher pour indiquer si il s'agit d'un document pliable" %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- amalgame -->
+                            <div id="divAmalgame">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="Amalgame"
+                                           title="{% trans "Cocher pour indiquer si il s'agit d'un amalgame" %}">{% trans "Amalgame" %}</label>
+                                    <div class="">
+                                        <input type="checkbox"
+                                               id="Amalgame"
+                                               name="Amalgame"
+                                               class="tooltip-link"
+                                               data-placement="bottom"
+                                               onclick="
+                                               if(this.checked==true) {
+                                                    $('#divPliage').prop('hidden',true );
+                                                    $('#divPliage').prop('disabled',true );
+                                                    $('#divDimensionOuvert').prop('hidden',true );
+                                                    $('#divDimensionOuvert').prop('disabled',true );
+                                                    $('#divDimensionFerme').prop('hidden',true );
+                                                    $('#divDimensionFerme').prop('disabled',true );
+                                                    $('#divNbPose').prop('hidden',false );
+                                                    $('#divNbPose').prop('disabled',false );
+                                               } else {
+                                                    $('#divPliage').prop('hidden',false ) ;
+                                                    $('#divPliage').prop('disabled',false ) ;
+                                                    $('#divDimensionOuvert').prop('hidden',false ) ;
+                                                    $('#divDimensionOuvert').prop('disabled',false ) ;
+                                                    $('#divDimensionFerme').prop('hidden',true ) ;
+                                                    $('#divDimensionFerme').prop('disabled',true ) ;
+                                                    $('#divNbPose').prop('hidden',true );
+                                                    $('#divNbPose').prop('disabled',true );
+                                               };verifDescriptionDossier();"
+                                               title="{% trans "Cocher pour indiquer si il s'agit d'un amalgame" %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- nbPose -->
+                            <div id="divNbPose" hidden="hidden">
+                                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <label class="control-label" for="NbPose"
+                                           title="{% trans "Entrez le nombre de poses" %}">{% trans "Poses" %}</label>
+                                    <input type="number" class="form-control tooltip-link" data-placement="bottom" id="NbPose"
+                                           placeholder="{% trans "Poses" %}" name="NbPose" value="{{ OUT.NbPose }}"
+                                           onkeyup="checkInputNumber('divNbPose',this);verifDescriptionDossier();"
+                                           title="{% trans "Entrez le nombre de poses" %}">
+                                </div>
+                            </div>
+                            <!-- dimension ouvert -->
+                            <div id="divDimensionOuvert">
+                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-2">
+                                    <div id="divLargeurOuvert">
+                                        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <label class="control-label" for="LargeurOuvert"  title="{% trans "Entrez la largeur du document ouvert (en mm)" %}">{% trans "Ouvert" %}</label>
+                                            <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="LargeurOuvert"
+                                                   placeholder="{% trans "Largeur" %}" name="LargeurOuvert" value="{{ OUT.LargeurOuvert }}"
+                                                   onkeyup="checkInputNumber('divLargeurOuvert',this);verifDescriptionDossier();"
+                                                   title="{% trans "Entrez la largeur du document ouvert (en mm)" %}">
+                                        </div>
+                                    </div>
+                                    <div id="divHauteurOuvert">
+                                        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <label class="control-label" for="HauteurOuvert"  title="{% trans "Entrez la hauteur du document ouvert (en mm)" %}">&nbsp;</label>
+                                            <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="HauteurOuvert"
+                                                   placeholder="{% trans "Hauteur" %}" name="HauteurOuvert" value="{{ OUT.HauteurOuvert }}"
+                                                   onkeyup="checkInputNumber('divHauteurOuvert',this);verifDescriptionDossier();"
+                                                   title="{% trans "Entrez la hauteur du document ouvert (en mm)" %}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dimension ferme -->
+                            <div id="divDimensionFerme" hidden="hidden">
+                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-2">
+                                    <div id="divLargeurFerme">
+                                        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <label class="control-label" for="LargeurFerme"  title="{% trans "Entrez la largeur du document ferme (en mm)" %}">{% trans "Fermé" %}</label>
+                                            <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="LargeurFerme"
+                                                   placeholder="{% trans "Largeur" %}" name="LargeurFerme" value="{{ OUT.LargeurFerme }}"
+                                                   onkeyup="checkInputNumber('divLargeurFerme',this);verifDescriptionDossier();"
+                                                   title="{% trans "Entrez la largeur du document ferme (en mm)" %}">
+                                        </div>
+                                    </div>
+                                    <div id="divHauteurFerme">
+                                        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <label class="sr" for="HauteurFerme"  title="{% trans "Entrez la hauteur du document ferme (en mm)" %}">&nbsp;</label>
+                                            <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="HauteurFerme"
+                                                   placeholder="{% trans "Hauteur" %}" name="HauteurFerme" value="{{ OUT.HauteurFerme }}"
+                                                   onkeyup="checkInputNumber('divHauteurFerme',this);verifDescriptionDossier();"
+                                                   title="{% trans "Entrez la hauteur du document ferme (en mm)" %}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- option dossier -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divOption"><!-- getOption() --></div>
+                </div>
+            </div>
+            <!-- btns -->
+            <div class="row" hidden="hidden">
+                <!-- next -->
+                <div id="divNext">
+                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                        <button type="button" name="next" class="form-control btn btn-primary" id="btnNext" disabled
+                                onclick="$('#divDescriptionDossier').prop('hidden',true);$('#divCompositionDossier').prop('hidden',false);$('#divJumbotron').prop('hidden',true);/*getElement();*/">
+                            {% trans "Suivant" %}&nbsp;<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" {#hidden="hidden"#} id="divCompositionDossier">
+            <!-- element dossier -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divElement"><!-- getElement() --></div>
+            </div>
+            <!-- btns -->
+            <div class="row">
+                <!-- previous -->
+                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1" hidden="hidden">
+                    <button type="button" name="Previous" class="form-control btn btn-warning" id="btnPrevious"
+                            onclick="$('#divDescriptionDossier').prop('hidden',false);$('#divCompositionDossier').prop('hidden',true);$('#divJumbotron').prop('hidden',false);">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;{% trans "Revenir" %}
+                    </button>
+                </div>
+                <!-- save dossier -->
+                <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                    <button type="submit" name="saveDossier" class="form-control btn btn-success" id="btnSaveDossier" disabled>
+                        {% trans "Enregistrer" %}&nbsp;<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br/>
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}
+    {% include 'elements/elementsJs.twig' %}
+
+    {#{{ dump(OUT) }}#}
+

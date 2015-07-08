@@ -1,0 +1,81 @@
+<!-- GestionReglage.twig -->
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\GestionReglage::IdPageDossier')] is defined) %}
+    {% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\GestionReglage::IdPageDossier')] %}
+{% endif %}#}
+
+
+{% if ( (session.Classe[constant('fbx\\Fab\\GestionDroit::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1' ) %}
+    {#<script type="text/javascript" src="js/GestionReglage.js"></script>
+    <script type="text/javascript" src="js/GestionDroit.js"></script>
+    <script type="text/javascript" src="js/GestionMembre.js"></script>#}
+    <body id="GestionReglage"
+          onload="getMenu('navBarDyna'); document.title= '{% trans "Liaison" %} // {{ session.Slogan }}';
+//                  getTableGestionReglageAll();
+                  getTableGestionDroitAll();
+                  getSelect('SelectMenuMenuTlPage','getListeMenu');
+                  getSelect('SelectPageMenuTlPage','getListePage');
+                  getSelect('SelectSecteurSecteurTlCodeErreur','getListeSecteur');
+                  getSelect('SelectFonctionFonctionTlPage','getListeFonction');
+                  getSelect('SelectGroupeGroupeTlFonction','getListeGroupe');
+                  getSelect('SelectGroupeGroupeTlMenu','getListeGroupe');
+                  getSelect('SelectSupportSupportTlFormat','getListeSupport');
+                  getSelect('SelectSecteurSecteurTlOption','getListeSecteur');
+                  getSelect('SelectSecteurSecteurTlImpression','getListeSecteur');
+          ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="alert alert-block well fade in">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1><a onclick="$('.collapse').collapse('toggle');">{% trans "Liaisons" %}</a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- TABLE MENU TL PAGE -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionMenuTlPage"><!-- tableGestionMenuTlPage.twig --></div>
+            </div>
+            <!-- TABLE GROUPE TL FONCTION -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionGroupeTlFonction"><!-- tableGestionGroupeTlFonction.twig --></div>
+            </div>
+            <!-- TABLE GROUPE TL MENU -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionGroupeTlMenu"><!-- tableGestionGroupeTlMenu.twig --></div>
+            </div>
+            <!-- TABLE FONCTION TL PAGE -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionFonctionTlPage"><!-- tableGestionFonctionTlPage.twig --></div>
+            </div>
+            <!-- TABLE SECTEUR TL CODE ERREUR -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionSecteurTlCodeErreur"><!-- tableGestionSecteurTlCodeErreur.twig --></div>
+            </div>
+            <!-- TABLE SUPPORT TL FORMAT -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionSupportTlFormat"><!-- tableGestionSupportTlFormat.twig --></div>
+            </div>
+            <!-- TABLE SECTEUR TL OPTION -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionSecteurTlOption"><!-- tableGestionSecteurTlOption.twig --></div>
+            </div>
+            <!-- TABLE SECTEUR TL IMPRESSION -->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="table-responsive" id="tableGestionSecteurTlImpression"><!-- tableGestionSecteurTlImpression.twig --></div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    {% include 'welcome.twig' %}
+    {#{{ dump(session.PrefsPagesPermit[constant('fbx\\Fab\\GestionReglage::IdPageDossier')]) }}#}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}

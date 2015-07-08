@@ -1,0 +1,182 @@
+<!-- tableGestionMembre.twig -->
+<table class="table table-bordered table-hover table-condensed">
+    <caption class="lead">{{ data_membre|length }} {% trans "MEMBRES" %}<br/>
+        <button class="btn btn-xs btn-info" onclick="
+                                                getSelect('LangueMembre_add','getListeLangue');
+                                                getSelect('FonctionMembre_add','getListeFonctionTrad');
+                                                getSelect('SocieteMembre_add','getListeSocieteTrad');
+                                                getAdd('tr_saveMembre');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+        <button class="btn btn-xs btn-info" onclick="getDelete('IDMembre','TBL_MEMBRE');"><span class="glyphicon glyphicon-minus-sign"></span></button></caption>
+    <!-- TBL HEAD -->
+    <thead>
+    <tr>
+        <th></th>
+        <th>{% trans "Nom" %}</th>
+        <th>{% trans "Prenom" %}</th>
+        <th>{% trans "Fonction" %}</th>
+        <th>{% trans "Login" %}</th>
+        <th>{% trans "Pwd" %}</th>
+        <th>{% trans "Langue" %}</th>
+        <th>{% trans "Tel" %}</th>
+        <th>{% trans "Mail" %}</th>
+        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+        <th>{% trans "Actif" %}</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <!-- TBL BODY -->
+    <tbody>
+    <tr hidden="hidden" id="tr_saveMembre">
+        <td></td>
+        <td>
+            <div id="divNomMembre_add">
+                <input type="text" class="form-control" onkeyup="checkInputText('divNomMembre_add',this.value.length,3);verifInsertMembre();" id="NomMembre_add">
+            </div>
+        </td>
+        <td>
+            <div id="divPrenomMembre_add">
+                <input type="text" class="form-control" onkeyup="checkInputText('divPrenomMembre_add',this.value.length,3);verifInsertMembre();" id="PrenomMembre_add">
+            </div>
+        </td>
+        <td>
+            <div id="divFonctionMembre_add">
+                <select class="form-control" onchange="checkInputSelect('divFonctionMembre_add',this.value);verifInsertMembre();" id="FonctionMembre_add">
+                    <!-- elements/elementsSelect.twig -->
+                </select>
+            </div>
+        </td>
+        <td>
+            <div id="divLoginMembre_add">
+                <input type="text" class="form-control" onkeyup="checkInputText('divLoginMembre_add',this.value.length,3);verifInsertMembre();" id="LoginMembre_add">
+            </div>
+        </td>
+        <td>
+            <div id="divPwdMembre_add">
+                <input type="text" class="form-control" onkeyup="checkInputText('divPwdMembre_add',this.value.length,3);verifInsertMembre();" id="PwdMembre_add">
+            </div>
+        </td>
+        <td>
+            <div id="divLangueMembre_add">
+                <select class="form-control" onchange="checkInputSelect('divLangueMembre_add',this.value);verifInsertMembre();" id="LangueMembre_add">
+                    <!-- elements/elementsSelect.twig -->
+                </select>
+            </div>
+        </td>
+        <td>
+            <div id="divTelephoneMembre_add">
+                <input type="tel" class="form-control" onkeyup="checkInputText('divTelephoneMembre_add',this.value.length,14);verifInsertMembre();" id="TelephoneMembre_add">
+            </div>
+        </td>
+        <td>
+            <div id="divMailMembre_add">
+                <input type="email" class="form-control" onkeyup="checkInputText('divMailMembre_add',this.value.length,3);verifInsertMembre();" id="MailMembre_add">
+            </div>
+        </td>
+        <td {% if (session.FBX_USER_SU != '1') %} hidden="hidden"{% endif %}>
+            <div id="divSocieteMembre_add">
+                <select class="form-control" onchange="checkInputSelect('divSocieteMembre_add',this.value);verifInsertMembre();
+                        getSelectSocieteTlFonction(document.getElementById('SocieteMembre_add'),'FonctionMembre_add',$('#FonctionMembre_add').val());" id="SocieteMembre_add">
+                    <!-- elements/elementsSelect.twig -->
+                </select>
+            </div>
+        </td>
+        <td class="text text-center" >
+            <input type="checkbox" id="ActifMembre_add">
+        </td>
+        <td></td>
+        <td></td>
+        <td class="text text-center" id="saveMembre_add">
+            <button onclick="getInsertMembre();" disabled id="btnInsertMembre"
+                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span></button>
+        </td>
+    </tr>
+    {% for i, data in data_membre %}
+        <tr>
+            <td style="vertical-align: middle;" class="text text-center">
+                <input type="checkbox" id="chkMembre_{{ data.IDMembre }}" onclick="Sel_Mngt({{ data.IDMembre }},this.checked)">
+            </td>
+
+            <td>
+                <div id="divNomMembre_{{ data.IDMembre }}">
+                    <input type="text" class="form-control" onkeyup="checkInputText('divNomMembre_{{ data.IDMembre }}',this.value.length,3);verifUpdateMembre({{ data.IDMembre }});" id="NomMembre_{{ data.IDMembre }}"  disabled value="{{ data.Nom }}">
+                </div>
+            </td>
+            <td>
+                <div id="divPrenomMembre_{{ data.IDMembre }}">
+                    <input type="text" class="form-control" onkeyup="checkInputText('divPrenomMembre_{{ data.IDMembre }}',this.value.length,3);verifUpdateMembre({{ data.IDMembre }});" id="PrenomMembre_{{ data.IDMembre }}"  disabled value="{{ data.Prenom }}">
+                </div>
+            </td>
+            <td>
+                <div id="divFonctionMembre_{{ data.IDMembre }}">
+                    <select class="form-control" id="FonctionMembre_{{ data.IDMembre }}" disabled onchange="checkInputSelect('divFonctionMembre_{{ data.IDMembre }}',this.value);verifUpdateMembre({{ data.IDMembre }});" >
+                        <!-- elements/elementsSelect.twig! -->
+                        <option value="{{ data.IDFonction }}">{{ data.NomFonction }}</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div id="divLoginMembre_{{ data.IDMembre }}">
+                    <input type="text" class="form-control" onkeyup="checkInputText('divLoginMembre_{{ data.IDMembre }}',this.value.length,3);verifUpdateMembre({{ data.IDMembre }});" id="LoginMembre_{{ data.IDMembre }}" disabled value="{{ data.Login }}">
+                </div>
+            </td>
+            <td>
+                <div id="divPwdMembre_{{ data.IDMembre }}">
+                    <input type="text" class="form-control" onkeyup="checkInputText('divPwdMembre_{{ data.IDMembre }}',this.value.length,3);verifUpdateMembre({{ data.IDMembre }});" id="PwdMembre_{{ data.IDMembre }}" disabled value="{{ data.Pwd }}">
+                </div>
+            </td>
+            <td>
+                <div id="divLangueMembre_{{ data.IDMembre }}">
+                    <select class="form-control" id="LangueMembre_{{ data.IDMembre }}" disabled onchange="checkInputSelect('divLangueMembre_{{ data.IDMembre }}',this.value);verifUpdateMembre({{ data.IDMembre }});" >
+                        <!-- elements/elementsSelect.twig -->
+                        <option>{{ data.NomLangue }}</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div id="divTelephoneMembre_{{ data.IDMembre }}">
+                <input type="text" class="form-control" onkeyup="checkInputText('divTelephoneMembre_{{ data.IDMembre }}',this.value.length,14);verifUpdateMembre({{ data.IDMembre }});" id="TelephoneMembre_{{ data.IDMembre }}" disabled value="{{ data.Telephone }}">
+                </div>
+            </td>
+            <td>
+                <div id="divMailMembre_{{ data.IDMembre }}">
+                <input type="text" class="form-control" onkeyup="checkInputText('divMailMembre_{{ data.IDMembre }}',this.value.length,3);verifUpdateMembre({{ data.IDMembre }});" id="MailMembre_{{ data.IDMembre }}" disabled value="{{ data.Mail }}">
+                </div>
+            </td>
+            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                <div id="divSocieteMembre_{{ data.IDMembre }}">
+                    <select class="form-control"  id="SocieteMembre_{{ data.IDMembre }}"  disabled onchange="checkInputSelect('divSocieteMembre_{{ data.IDMembre }}',this.value);verifUpdateMembre({{ data.IDMembre }});
+                            getSelectSocieteTlFonction(document.getElementById('SocieteMembre_{{ data.IDMembre }}'),'FonctionMembre_{{ data.IDMembre }}',{{ data.IDFonction }});">
+                        <!-- elements/elementsSelect.twig -->
+                        <option value="{{ data.IDSociete}}">{{ data.NomSociete }}</option>
+                    </select>
+                </div>
+            </td>
+            <td style="vertical-align: middle;" class="text text-center">
+                <input type="checkbox" id="ActifMembre_{{ data.IDMembre }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifUpdateMembre({{ data.IDMembre }});">
+            </td>
+            <td style="vertical-align: middle;" class="text text-center">
+                <a target="_blank" href="img/qrcode/membre/membre-{{ data.IDMembre }}.png"><button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-qrcode"></span></button></a>
+            </td>
+            <td style="vertical-align: middle;" class="text text-center">
+                <a target="_blank" href="img/barcode/membre/barcodeMembre-{{ data.IDMembre }}.png"><button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-barcode"></span></button></a>
+            </td>
+            <td class="text text-center"
+                id="modifMembre_{{ data.IDMembre }}">
+                <button onclick="getSelect('LangueMembre_{{ data.IDMembre }}','getListeLangue','{{ data.IDLangue }}');
+                                 getSelectSocieteTlFonction(document.getElementById('SocieteMembre_{{ data.IDMembre }}'),'FonctionMembre_{{ data.IDMembre }}',{{ data.IDFonction }});
+                                 getSelect('SocieteMembre_{{ data.IDMembre }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                 getModifMembre({{ data.IDMembre }});"
+                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+            </td>
+            <td class="text text-center"
+                id="saveMembre_{{ data.IDMembre }}"
+                hidden="hidden">
+                <button onclick="getUpdateMembre({{ data.IDMembre }});" disabled id="btnUpdateMembre_{{ data.IDMembre }}"
+                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span></button>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

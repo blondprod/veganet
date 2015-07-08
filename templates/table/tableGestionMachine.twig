@@ -1,0 +1,198 @@
+<!-- tableGestionMachine.twig -->
+<div class="panel-group" id="accordionMachine" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingMachine">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseMachine" aria-expanded="true" aria-controls="collapseMachine">
+                <h4 class="panel-title">
+                    {% trans "Machines de fabrication" %} <span class="badge">{{ data_machine|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseMachine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMachine">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">{#{{ data_secteur|length }} {% trans "SECTEURS" %}<br/>#}
+                        <button class="btn btn-xs btn-info"
+                                onclick="getSelect('LangueMachine_add','getListeLangue');
+                                         getSelect('SecteurMachine_add','getListeSecteur');
+                                         getSelect('SocieteMachine_add','getListeSocieteTrad');
+                                         getAdd('tr_saveMachine');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info"
+                                onclick="getDelete('IDMachine','TBL_MACHINE');
+                                         collapse('collapseMachine');"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    </caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th>{% trans "Secteur" %}</th>
+                        <th>{% trans "Calages (min)" %}</th>
+                        <th>{% trans "Calages (feuilles)" %}</th>
+                        <th>{% trans "Gâche (pour 1000 feuilles)" %}</th>
+                        <th>{% trans "Cadence (tours/h)" %}</th>
+                        <th>{% trans "2 passages" %}</th>
+                        <th>{% trans "Langue" %}</th>
+                        <th style="width: 5%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th>{% trans "Actif" %}</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveMachine">
+                        <td></td>
+                        <td>
+                            <div id="divNomMachine_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomMachine_add',this.value.length,3);verifMachine();" id="NomMachine_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divSecteurMachine_add">
+                                <select class="form-control" onchange="checkInputSelect('divSecteurMachine_add',this.value);verifMachine();" id="SecteurMachine_add">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{% trans "Machine" %}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divCalageMinMachine_add">
+                                <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divCalageMinMachine_add',this);verifMachine();" id="CalageMinMachine_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divCalageFeuillesMachine_add">
+                                <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divCalageFeuillesMachine_add',this);verifMachine();" id="CalageFeuillesMachine_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divGachePour1000FeuillesMachine_add">
+                                <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divGachePour1000FeuillesMachine_add',this);verifMachine();" id="GachePour1000FeuillesMachine_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divCadenceTourMinMachine_add">
+                                <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divCadenceTourMinMachine_add',this);verifMachine();" id="CadenceTourMinMachine_add">
+                            </div>
+                        </td>
+                        <td class="text text-center" ><input type="checkbox" id="2passagesMachine_add"></td>
+                        <td><select class="form-control" id="" disabled><option>{% trans "Français" %}</option></select></td>
+                        <td>
+                            <div id="divOrdreMachine_add">
+                                <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreMachine_add',this);verifMachine();" id="OrdreMachine_add">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteMachine_add">
+                                <select class="form-control"  id="SocieteMachine_add"
+                                        onchange="checkInputSelect('divSocieteMachine_add',this.value);
+                                                  getSelectSocieteTlSecteur(document.getElementById('SocieteMachine_add'),'SecteurMachine_add',$('#SecteurMachine_add').val());
+                                                  verifMachine();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" ><input type="checkbox" id="ActifMachine_add"></td>
+                        <td></td>
+                        <td class="text text-center" id="saveMachine_add">
+                            <button onclick="getInsertMachine();" disabled id="btnInsertMachine_add" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_machine %}
+                        <tr>
+                            <td class="text text-center"><input type="checkbox" id="chk_{{ data.IDMachine }}" onclick="Sel_Mngt({{ data.IDMachine }},this.checked)"></td>
+                            <td>
+                                <div id="divNomMachine_{{ data.IDMachine }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomMachine_{{ data.IDMachine }}',this.value.length,3);verifMachine({{ data.IDMachine }});" id="NomMachine_{{ data.IDMachine }}"  disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divSecteurMachine_{{ data.IDMachine }}">
+                                    <select class="form-control" id="SecteurMachine_{{ data.IDMachine }}" disabled onchange="checkInputSelect('divSecteurMachine_{{ data.IDMachine }}',this.value);verifMachine({{ data.IDMachine }});" >
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option value="{{ data.IDSecteur }}">{{ data.NomSecteur }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divCalageMinMachine_{{ data.IDMachine }}">
+                                    <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divCalageMinMachine_{{ data.IDMachine }}',this);verifMachine({{ data.IDMachine }});"
+                                           id="CalageMinMachine_{{ data.IDMachine }}"  disabled value="{{ data.CalageMin }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divCalageFeuillesMachine_{{ data.IDMachine }}">
+                                    <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divCalageFeuillesMachine_{{ data.IDMachine }}',this);verifMachine({{ data.IDMachine }});"
+                                           id="CalageFeuillesMachine_{{ data.IDMachine }}"  disabled value="{{ data.CalageFeuilles }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divGachePour1000FeuillesMachine_{{ data.IDMachine }}">
+                                    <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divGachePour1000FeuillesMachine_{{ data.IDMachine }}',this);verifMachine({{ data.IDMachine }});"
+                                           id="GachePour1000FeuillesMachine_{{ data.IDMachine }}"  disabled value="{{ data.GachePour1000Feuilles }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divCadenceTourMinMachine_{{ data.IDMachine }}">
+                                    <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divCadenceTourMinMachine_{{ data.IDMachine }}',this);verifMachine({{ data.IDMachine }});"
+                                           id="CadenceTourMinMachine_{{ data.IDMachine }}"  disabled value="{{ data.CadenceTourMin }}">
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="2passagesMachine_{{ data.IDMachine }}" disabled {% if(data.passages=='1') %}checked="checked"{% endif %}
+                                        onclick="verifMachine({{ data.IDMachine }});">
+                            </td>
+                            <td>
+                                <select class="form-control" id="LangueMachine_{{ data.IDMachine }}" disabled>
+                                    <option>{{ data.NomLangue }}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div id="divOrdreMachine_{{ data.IDMachine }}">
+                                    <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreMachine_{{ data.IDMachine }}',this);verifMachine({{ data.IDMachine }});"
+                                           id="OrdreMachine_{{ data.IDMachine }}"  disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteMachine_{{ data.IDMachine }}">
+                                    <select class="form-control"  id="SocieteMachine_{{ data.IDMachine }}"  disabled
+                                            onchange="checkInputSelect('divSocieteMachine_{{ data.IDMachine }}',this.value);
+                                                      getSelectSocieteTlSecteur(document.getElementById('SocieteMachine_{{ data.IDMachine }}'),'SecteurMachine_{{ data.IDMachine }}',{{ data.IDSecteur }});
+                                                      verifMachine({{ data.IDMachine }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option value="{{ data.IDSociete }}">{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifMachine_{{ data.IDMachine }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %}
+                                       onclick="verifMachine({{ data.IDMachine }});">
+                            </td>
+                            <td style="vertical-align: middle;" class="text text-center">
+                                <a target="_blank" href="img/qrcode/machine/machine-{{ data.IDMachine }}.png"><button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-qrcode"></span></button></a>
+                            </td>
+                            <td style="vertical-align: middle;" class="text text-center">
+                                <a target="_blank" href="img/barcode/machine/barcodeMachine-{{ data.IDMachine }}.png"><button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-barcode"></span></button></a>
+                            </td>
+                            <td class="text text-center" id="modifMachine_{{ data.IDMachine }}">
+                                <button onclick="getSelect('LangueMachine_{{ data.IDMachine }}','getListeLangue','{{ data.IDLangue }}');
+                                                 getSelect('SecteurMachine_{{ data.IDMachine }}','getListeSecteur','{{ data.IDSecteur }}');
+                                                 getSelect('SocieteMachine_{{ data.IDMachine }}','getListeSocieteTrad','{{ data.IDSociete}}');
+                                                 getSelectSocieteTlSecteur(document.getElementById('SocieteMachine_{{ data.IDMachine }}'),'SecteurMachine_{{ data.IDMachine }}',{{ data.IDSecteur }});
+                                                 getModifMachine({{ data.IDMachine }});" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </td>
+                            <td class="text text-center" id="saveMachine_{{ data.IDMachine }}" hidden="hidden">
+                                <button onclick="getUpdateMachine({{ data.IDMachine }});" disabled id="btnInsertMachine_{{ data.IDMachine }}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

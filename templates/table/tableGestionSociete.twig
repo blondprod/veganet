@@ -1,0 +1,190 @@
+<!-- tableGestionSociete.twig -->
+<div class="panel-group" id="accordionSociete" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSociete">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSociete" aria-expanded="true" aria-controls="collapseSociete">
+                <h4 class="panel-title">
+                    {% trans "Sociéte" %} <span class="badge">{{ data_societe|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseSociete" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSociete">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">{#{{ data_secteur|length }} {% trans "SECTEURS" %}<br/>#}
+                        <button class="btn btn-xs btn-info"
+                                onclick="getSelect('LangueSociete_add','getListeLangue');
+                                         getSelect('MembreSociete_add','getListeMembre');
+                                         getAdd('tr_saveSociete');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info"
+                                onclick="getDelete('IDSociete','TBL_SOCIETE');
+                                         collapse('collapseSociete');"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    </caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th>{% trans "Email" %}</th>
+                        <th>{% trans "Tél." %}</th>
+                        <th>{% trans "Contact" %}</th>
+                        <th>{% trans "Adresse1" %}</th>
+                        <th>{% trans "Adresse2" %}</th>
+                        <th>{% trans "C.P." %}</th>
+                        <th>{% trans "Ville" %}</th>
+                        <th>{% trans "Pays" %}</th>
+                        <th>{% trans "Langue" %}</th>
+                        <th>{% trans "Actif" %}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveSociete">
+                        <td></td>
+                        <td>
+                            <div id="divNomSociete_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomSociete_add',this.value.length,3);verifSociete();" id="NomSociete_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divEmailSociete_add">
+                                <input type="email" class="form-control" onkeyup="checkInputText('divEmailSociete_add',this.value.length,3);verifSociete();" id="EmailSociete_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divTelephoneSociete_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divTelephoneSociete_add',this.value.length,14);verifSociete();" id="TelephoneSociete_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divMembreSociete_add">
+                                <select class="form-control" onchange="checkInputSelect('divMembreSociete_add',this.value);verifSociete();" id="MembreSociete_add">
+                                    <!-- elements/elementsSelect.twig -->
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divAdresse1Societe_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divAdresse1Societe_add',this.value.length,3);verifSociete();" id="Adresse1Societe_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divAdresse2Societe_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divAdresse2Societe_add',this.value.length,3);verifSociete();" id="Adresse2Societe_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divCodePostaleSociete_add">
+                                <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divCodePostale_add',this);verifSociete();" id="CodePostaleSociete_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divVilleSociete_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divVilleSociete_add',this.value.length,3);verifSociete();" id="VilleSociete_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divPaysSociete_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divPaysSociete_add',this.value.length,3);verifSociete();" id="PaysSociete_add">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divLangueSociete_add">
+                                <select class="form-control" onchange="checkInputSelect('divLangueSociete_add',this.value);verifSociete();" id="LangueSociete_add">
+                                    <!-- elements/elementsSelect.twig -->
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" ><input type="checkbox" id="ActifSociete_add"></td>
+                        <td class="text text-center" id="saveSociete_add">
+                            <button onclick="getInsertSociete();" disabled id="btnInsertSociete_add" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span></button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_societe %}
+                        <tr>
+                            <td class="text text-center"><input type="checkbox" id="chk_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)"></td>
+                            <td>
+                                <div id="divNomSociete_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomSociete_{{ data.ID }}',this.value.length,3);verifSociete({{ data.ID }});"
+                                           id="NomSociete_{{ data.ID }}"  disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divEmailSociete_{{ data.ID }}">
+                                    <input type="email" class="form-control" onkeyup="checkInputText('divEmailSociete_{{ data.ID }}',this.value.length,3);verifSociete({{ data.ID }});"
+                                           id="EmailSociete_{{ data.ID }}"  disabled value="{{ data.Mail }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divTelephoneSociete_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divTelephoneSociete_{{ data.ID }}',this.value.length,14);verifSociete({{ data.ID }});"
+                                           id="TelephoneSociete_{{ data.ID }}" disabled value="{{ data.Telephone }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divMembreSociete_{{ data.ID }}">
+                                    <select class="form-control" id="MembreSociete_{{ data.ID }}" disabled onchange="checkInputSelect('divMembreSociete_{{ data.ID }}',this.value);verifSociete({{ data.ID }});" >
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.PrenomNomMembre }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divAdresse1Societe_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divAdresse1Societe_{{ data.ID }}',this.value.length,3);verifSociete({{ data.ID }});"
+                                           id="Adresse1Societe_{{ data.ID }}"  disabled value="{{ data.Adresse1 }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divAdresse2Societe_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divAdresse2Societe_{{ data.ID }}',this.value.length,3);verifSociete({{ data.ID }});"
+                                           id="Adresse2Societe_{{ data.ID }}"  disabled value="{{ data.Adresse2 }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divCodePostaleSociete_{{ data.ID }}">
+                                    <input type="number" min="0" step="1" class="form-control" onkeyup="checkInputNumber('divCodePostaleSociete_{{ data.ID }}',this);verifSociete({{ data.ID }});"
+                                           id="CodePostaleSociete_{{ data.ID }}"  disabled value="{{ data.CodePostal }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divVilleSociete_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divVilleSociete_{{ data.ID }}',this.value.length,3);verifSociete({{ data.ID }});"
+                                           id="VilleSociete_{{ data.ID }}"  disabled value="{{ data.Ville }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divPaysSociete_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divPaysSociete_{{ data.ID }}',this.value.length,3);verifSociete({{ data.ID }});"
+                                           id="PaysSociete_{{ data.ID }}"  disabled value="{{ data.Pays }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divLangueSociete_{{ data.ID }}">
+                                    <select class="form-control" id="LangueSociete_{{ data.ID }}" disabled onchange="checkInputSelect('divLangueSociete_{{ data.ID }}',this.value);verifSociete({{ data.ID }});" >
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomLangue }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifSociete_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %}
+                                       onclick="verifSociete({{ data.ID }});">
+                            </td>
+                            <td class="text text-center" id="modifSociete_{{ data.ID }}">
+                                <button onclick="getSelect('LangueSociete_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                                 getSelect('MembreSociete_{{ data.ID }}','getListeMembre','{{ data.IDMembreContact }}');
+                                        getModifSociete({{ data.ID }});" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </td>
+                            <td class="text text-center" id="saveSociete_{{ data.ID }}" hidden="hidden">
+                                <button onclick="getUpdateSociete({{ data.ID }});" disabled id="btnInsertSociete_{{ data.ID }}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

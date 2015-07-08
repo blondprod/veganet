@@ -1,0 +1,117 @@
+<!-- listeElementsDossiersDeFab.twig -->
+<div class="table-responsive">
+    <table class="table table-condensed table-striped">
+        <tr>
+            {% for k, var in DATA %}
+            <td class="info">
+                {#<span class="badge">{{ var.Element }}</span>#}
+                <code>{{ var.Element }}</code>
+            </td>
+            <td class="info">
+                {% if (var.Commentaire!='') %} <span class="glyphicon glyphicon-info-sign tooltip-link text text-danger"
+                                                     id="ComElement_{{ var.ID }}"
+                                                     onmouseover="this.className='glyphicon glyphicon-info-sign tooltip-link text text-success';$('#ComElement_{{ var.ID }}').tooltip('show')"
+                                                     onmouseout="this.className='glyphicon glyphicon-info-sign tooltip-link text text-danger'"
+                                                     onclick=""
+                                                     title="{{ var.Commentaire }}"></span>{% endif %}
+            </td>
+            <td class="info">
+                {% set Q = var.Quantite %}
+
+                {% if Q > 20000 %}
+                    {% set label = "label-danger" %}
+                {% elseif Q > 20000 %}
+                    {% set label = "label-warning" %}
+                {% elseif Q > 10000 %}
+                    {% set label = "label-success" %}
+                {% elseif Q > 2500 %}
+                    {% set label = "label-primary" %}
+                {% elseif Q > 1000 %}
+                    {% set label = "label-info" %}
+                {% elseif Q < 1000 %}
+                    {% set label = "label-default" %}
+                {% else %}
+                    {% set label = "label-default" %}
+                {% endif %}
+
+                {#<span class="label label-default">{{ var.Quantite|number_format(0, ',', ' ') }}&nbsp;{% trans "ex" %}</span>#}
+                <code>{{ var.Quantite|number_format(0, ',', ' ') }}&nbsp;{% trans "ex" %}</code>
+            </td>
+            <td class="info">
+                <code>{{ var.NomSupport }}</code>
+            </td>
+            <td class="info">
+                <code>{{ var.NomFormat }}</code>
+            </td>
+            <td class="info">
+                {% for o, option in OPTION %}
+                    {% if (option.IDDossierDeFab_tl_element == var.ID ) %}
+                        {% if (option.Nom != '' ) %}
+                            &nbsp;&nbsp;<code>{{ option.Nom }}</code>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td class="info">
+                {% for y, fiches in FICHE %}
+                    {% if (fiches.Element == var.Element ) %}
+                        {% set secteur = fiches.NomSecteur|split('',2) %}
+                        <span class="badge"
+                              id="Secteur_{{ var.ID }}_{{ k }}_{{ y }}"
+                              onmouseover="$('#Secteur_{{ var.ID }}_{{ k }}_{{ y }}').tooltip('show')"
+                              title="{{ fiches.NomSecteur }} - {{ fiches.NomMachine }} - {{ fiches.NomImpression }} / {{ fiches.NomMembre }} {% trans "le" %} {{ fiches.DateAdd|date('d/m/Y') }} {% trans "à" %} {{ fiches.DateAdd|date('H:i') }}">{{ secteur[0] }}</span>
+                    {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8">
+                <table class="table table-hover">
+                    <tr>{% set title = "" %}
+                    {% for x, machine in MACHINE %}
+                        {% if (machine.IDDossierDeFab_tl_element == var.ID ) %}
+                            <th>{% set label = "default" %}{% set title = "" %}
+                                {% if (machine.Nom != '' ) %}
+                                    {% for y, fiches in FICHE %}
+                                        {% if (fiches.Element == var.Element ) %}
+                                            {% if ( (fiches.NomMachine == machine.Nom) and (fiches.NomImpression == machine.NomImpression) ) %}
+                                                {% set label = "success" %}
+                                                {% set title = fiches.NomMembre ~ " " ~ fiches.DateAdd|date('d/m/Y H:i') %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    <span class="label label-{{ label }}" id="Machine{{ var.ID }}_{{ x }}_{{ y }}" title="{{ title }}"
+                                          onmouseover="$('#Machine{{ var.ID }}_{{ x }}_{{ y }}').tooltip('show')">{{ machine.Nom }}</span>
+                                {% endif %}
+                            </th>
+                        {% endif %}
+                    {% endfor %}
+                    </tr>
+                    <tr>
+                    {% for y, impression in MACHINE %}
+                        {% if (impression.IDDossierDeFab_tl_element == var.ID ) %}
+                            <td>
+                                {% if (impression.NomImpression != '' ) %}
+                                    <small>{{ impression.NomImpression }}</small>
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                    </tr>
+                    {#<tr>#}
+                    {#{% for y, impression in MACHINE %}#}
+                        {#{% if (impression.IDDossierDeFab_tl_element == var.ID ) %}#}
+                        {#<td>#}
+                            {#{% if (impression.NbTour > '0' ) %}#}
+                                {#<small><em>{{ (impression.NbTour*impression.Quantite)|number_format(0,',',' ') }} {% trans "tours" %}</em></small>#}
+                            {#{% endif %}#}
+                        {#</td>#}
+                        {#{% endif %}#}
+                    {#{% endfor %}#}
+                    {#</tr>#}
+                </table>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

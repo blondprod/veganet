@@ -1,0 +1,39 @@
+<!-- tableGestionGroupeTlFonction.twig -->
+<div class="panel-group" id="accordionGroupeTlFonction" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingGroupeTlFonction">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseGroupeTlFonction" aria-expanded="true" aria-controls="collapseGroupeTlFonction">
+                <h4 class="panel-title">
+                    {% trans "Groupes / Fonctions" %} <span class="badge">{% trans "liaison" %}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseGroupeTlFonction" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGroupeTlFonction">
+            <div class="panel-body">
+                <!-- SOCIETE -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                    <label class="control-label" for="SelectSocieteGroupeTlFonction">{% trans "Societe" %}</label>
+                    <select class="form-control" id="SelectSocieteGroupeTlFonction"
+                            onchange="
+                                getSelectSocieteTlGroupe(this,'SelectGroupeGroupeTlFonction');
+                                getSelectSocieteTlFonction(this,'SelectFonctionGroupeTlFonction');
+                              ">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- GROUPE -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label class="control-label" for="SelectGroupeGroupeTlFonction">{% trans "Groupe" %}</label>
+                    <select class="form-control" id="SelectGroupeGroupeTlFonction"
+                            onchange="getTableGroupeTlFonction(this.value,$('#SelectSocieteGroupeTlFonction').val());">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- FONCTION -->
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tableGroupeTlFonction">
+                    <!-- elements/tableLiaisonGroupeTlFonction.twig -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

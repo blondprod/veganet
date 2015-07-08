@@ -1,0 +1,91 @@
+<!-- navbar.twig -->
+<div class='navbar {#navbar-inverse#} navbar-default navbar-fixed-top' role='navigation' id="mainNavBar">
+    <div class='container-fluid'>
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' href='accueil' title="{{ session.Slogan }}"><img width='20px' height='20px' src='img/logos/logo-{{ session.FBX_USER_SOCIETE_ID }}.png'> {% if((session.FBX_SERVER_TYPE)=="PROD") %}{{ session.Slogan }}{% else %}{{ session.Slogan }}<em>Dev</em>{% endif %}</a>
+        </div>
+        <div class='navbar-collapse collapse'>
+            <ul class='nav navbar-nav' id="navBarDyna">
+
+            </ul>
+            <ul class='nav navbar-nav navbar-right'>
+                <!-- aide -->
+                {#<li class=' visible-sm visible-md visible-lg'>#}
+                    {#<a href="#" target="_blank">#}
+                        {#<span class="glyphicon glyphicon-question-sign tooltip-link"#}
+                              {#id="aide"#}
+                              {#data-placement="bottom"#}
+                              {#onmouseover="$('#aide').tooltip('show')"#}
+                              {#title="{% trans "Aide" %}"></span>#}
+                    {#</a>#}
+                </li>
+                <!-- date -->
+                <li class=' visible-md visible-lg'>
+                    <a href='accueil' id='dateJour'><script>dateJour();</script></a>
+                </li>
+                <!-- heure -->
+                <li class=' visible-sm visible-md visible-lg'>
+                    <a href='accueil' id='heure'><script>heure();</script></a>
+                </li>
+                <!-- Profil -->
+                <li class='dropdown'>
+                    <a href='#' class='dropdown-toggle'
+                       title="{% trans "accederAuxReglagesProfil" %}"
+                       data-toggle='dropdown'>{{ session.FBX_USER_PRENOM }} <b class='caret'></b></a>
+                    <ul class='dropdown-menu'>
+                        <li>
+                            <!-- reglages -->
+                            <a href='Profil' title="{% trans "accederAuxReglagesProfil" %}">{% trans "Profil" %}</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- select societe -->
+                {% if (session.FBX_USER_SU == '1') %}
+                <li>
+                    <form class='navbar-form' method='POST' action='Auth'>
+                        <label class="sr-only" for="SelectSociete"></label>
+                        <select class="input-sm"
+                                id="SelectSociete"
+                                onchange="getTableMembre(this.value);
+                                          getSelectSocieteTlSecteur(this,'SelectSecteur');
+                                          getSelectTlSociete('SelectMachine','MachineTlSociete',this.value);
+                                          getSelect('SelectSocieteUpSlogan','getListeSocieteTrad',this.value);
+                                          getSelect('SelectSocieteUpLogo','getListeSocieteTrad',this.value);
+                                          getSelect('SelectSocieteUpFavicon','getListeSocieteTrad',this.value);
+                                          getSelectSocieteTlGroupe(this,'selectGroupe');
+                                          getSelectSocieteTlGroupe(this,'selectGroupe2');
+                                          getSelectSocieteTlGroupe(this,'selectGroupe3');
+                                          getSelectSocieteTlFonction(this,'selectFonction');
+                                          getSelectSocieteTlFonction(this,'selectFonction2');
+                                          getSelectSocieteTlFonction(this,'selectFonction3');
+                                          getSelectSocieteTlMembre(this,'selectMembre');
+                                          getSelectSocieteTlMembre(this,'selectMembre2');
+                                          getTableGestionDroitAll();
+                                          getTableGestionReglageAll();
+                                          "{#hidden="hidden"#}>
+                            <!-- getSelect('SelectSociete','getListeSocieteTrad'); - elements/elementsSelect.twig -->
+                        </select>
+                    </form>
+                </li>
+                {% endif %}
+                <li>
+                    <form class='navbar-form' method='POST' action='Auth'>
+                        &nbsp;&nbsp;&nbsp;<button type='submit'
+                                                  name='action'
+                                                  value='logout'
+                                                  class='btn btn-sm btn-success'
+                                                  title='{% trans "clicPourSortirTitleBtn" %}'>
+                            <span class='glyphicon glyphicon-off'></span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

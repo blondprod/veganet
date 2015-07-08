@@ -1,0 +1,20 @@
+<!-- tableLiaisonMenuTlPage.twig -->
+<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <th>{% trans "Page" %}</th>
+        <th>{% trans "Actif" %}</th>
+        {#<th style="width: 7%;"></th>#}
+    </tr>
+    {% for i, data in data_table %}
+    <tr>
+        <td>{{ data.Nom }}</td>
+        <input type="hidden" id="IDPage_{{ data.ID }}" value="{{ data.ID }}">
+        <td class="text text-center">
+            <input type="checkbox"
+                   id="chkMenuTlPage_{{ data.ID }}" {% if (data.IDMenu != '-' ) %} checked="checked" {% endif %}
+                   onchange="getLiaisonMenuTlPage(this.checked?1:0,{{ data.ID }});">
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{#{{ dump(data) }}#}

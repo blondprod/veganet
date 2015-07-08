@@ -1,0 +1,683 @@
+<!-- modalEditDossierDeFab.twig -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="editDossierDeFab">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalEditDossierDeFab">{% trans "Edition de dossier de fab." %}</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="form-group" role="form" method="POST" name="search" action="SuiviDossierDeFab">
+                    <input type="hidden" name="action" value="getUpdateDataDossierDeFab">
+                    <input type="hidden" name="IDDossierDeFab" value="{{ DATA[0].IDDossierDeFab }}">
+
+                    <!-- Description dossier -->
+                    <div class="container-fluid" id="divDescriptionDossier">
+                        <p class="lead">{% trans "Description du dossier" %}</p>
+                        <div class="well">
+                            <!-- Description dossier -->
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <!-- dossier -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <div id="divDossierModal">
+                                                <label class="control-label" for="DossierModal"
+                                                       title="{% trans "Entrez un libelle pour le dossier de fabrication" %}">{% trans "Dossier" %}</label>
+                                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DossierModal"
+                                                       placeholder="{% trans "Libelle" %}" name="DossierModal" value="{{ DATA[0].Dossier }}"
+                                                       onkeyup="checkInputText('divDossierModal',this.value.length,3);getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez un libelle pour le dossier de fabrication" %}" autofocus="autofocus">
+                                            </div>
+                                        </div>
+                                        <!-- ref -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <div id="divRefModal">
+                                                <label class="control-label" for="RefModal"
+                                                       title="{% trans "Entrez une ref client" %}">{% trans "Reférence" %}</label>
+                                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Ref"
+                                                       placeholder="{% trans "Ref. client" %}" name="RefModal" value="{{ DATA[0].Ref }}"
+                                                       onkeyup="checkInputText('divRefModal',this.value.length,3);getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez une ref client" %}">
+                                            </div>
+                                        </div>
+                                        <!-- commentaire -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <div id="divCommentaireModal">
+                                                <label class="control-label" for="CommentaireModal"
+                                                       title="{% trans "Entrez un commentaire" %}">{% trans "Commentaire" %}</label>
+                                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="CommentaireModal"
+                                                       placeholder="{% trans "Commentaire" %}" name="CommentaireModal" value="{{ DATA[0].Commentaire }}"
+                                                       onkeyup="getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez un commentaire" %}">
+                                            </div>
+                                        </div>
+                                        <!-- quantite -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <div id="divQuantiteModal">
+                                                <label class="control-label" for="QuantiteModal"
+                                                       title="{% trans "Entrez une quantité finale à expédier" %}">{% trans "Quantité" %}</label>
+                                                <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="QuantiteModal"
+                                                       placeholder="{% trans "Quantité" %}" name="QuantiteModal" value="{{ DATA[0].Quantite }}"
+                                                       onkeyup="checkInputNumber('divQuantite',this);getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez une quantité finale à expédier" %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- dateExpedition -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <div id="divDateExpeditionModal">
+                                                <label class="control-label" for="DateExpeditionModal"
+                                                       title="{% trans "Entrez une date d'expédition" %}">{% trans "Expédition" %}</label>
+                                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DateExpeditionModal"
+                                                       placeholder="{% trans "Date" %}" name="DateExpeditionModal"
+                                                       value="{{ (DATA[0].DateExpedition)|date('d/m/Y') }}"
+                                                       title="{% trans "Entrez une date d'expédition" %}">
+                                                <!-- JS FOR DATERANGEPICKER -->
+                                                {% set div = "divDateExpeditionModal" %}
+                                                {% set idPicker = "DateExpeditionModal" %}
+                                                {% include "elements/datepicker.twig" %}
+                                            </div>
+                                        </div>
+                                        <!-- pliage -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1" id="grpPliage">
+                                            <div id="divPliage" {% if(DATA[0].EstAmalgame=='1') %}hidden="hidden"{% endif %}>
+                                                <label class="control-label" for="Pliage"
+                                                       title="{% trans "Cocher pour indiquer si il s'agit d'un document pliable" %}">{% trans "Pliable" %}</label>
+                                                <input type="checkbox"
+                                                       id="Pliage"
+                                                       name="Pliage"
+                                                       class="tooltip-link"
+                                                       data-placement="bottom"
+                                                       onclick="getPliage(this.checked);getVerifFormUpDossierDeFab();"
+                                                       {% if(DATA[0].EstPliable=='1') %}checked{% endif %}
+                                                       title="{% trans "Cocher pour indiquer si il s'agit d'un document pliable" %}">
+                                            </div>
+                                        </div>
+                                        <!-- amalgame -->
+                                        <div id="divAmalgame" {% if(DATA[0].EstPliable=='1') %}hidden="hidden"{% endif %}>
+                                            <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                                <label class="control-label" for="Amalgame"
+                                                       title="{% trans "Cocher pour indiquer si il s'agit d'un amalgame" %}">{% trans "Amalgame" %}</label>
+                                                <div class="form-group">
+                                                    <input type="checkbox"
+                                                           id="Amalgame"
+                                                           name="Amalgame"
+                                                           class="tooltip-link"
+                                                           data-placement="bottom"
+                                                           onclick="getAmalgame(this.checked);getVerifFormUpDossierDeFab();"
+                                                           {% if(DATA[0].EstAmalgame=='1') %}checked{% endif %}
+                                                           title="{% trans "Cocher pour indiquer si il s'agit d'un amalgame" %}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- nbPose -->
+                                        <div id="divNbPose" {% if(DATA[0].EstAmalgame!='1') %}hidden="hidden"{% endif %}>
+                                            <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                                <label class="control-label" for="NbPose"
+                                                       title="{% trans "Entrez le nombre de poses" %}">{% trans "Poses" %}</label>
+                                                <input type="number" class="form-control tooltip-link" data-placement="bottom" id="NbPose"
+                                                       placeholder="{% trans "Poses" %}" name="NbPoseModal" value="{{ DATA[0].NbPose }}"
+                                                       onkeyup="checkInputNumber('divNbPose',this);getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez le nombre de poses" %}">
+                                            </div>
+                                        </div>
+                                        <!-- dimension ouvert -->
+                                        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-2" id="formdivLargeurOuvert" {% if(DATA[0].EstAmalgame=='1') %}hidden="hidden"{% endif %}>
+                                            <div id="divLargeurOuvert">
+                                                <label class="control-label" for="LargeurOuvert"  title="{% trans "Entrez la largeur du document ouvert (en mm)" %}">{% trans "Ouvert" %}</label>
+                                                <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="LargeurOuvert"
+                                                       placeholder="{% trans "Largeur" %}" name="LargeurOuvert" value="{{ DATA[0].LargeurOuvert }}"
+                                                       onkeyup="checkInputNumber('divLargeurOuvert',this);getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez la largeur du document ouvert (en mm)" %}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-2" id="formdivHauteurOuvert" {% if(DATA[0].EstAmalgame=='1') %}hidden="hidden"{% endif %}>
+                                            <div id="divHauteurOuvert">
+                                                <label class="control-label" for="HauteurOuvert"  title="{% trans "Entrez la hauteur du document ouvert (en mm)" %}">&nbsp;</label>
+                                                <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="HauteurOuvert"
+                                                       placeholder="{% trans "Hauteur" %}" name="HauteurOuvert" value="{{ DATA[0].HauteurOuvert }}"
+                                                       onkeyup="checkInputNumber('divHauteurOuvert',this);getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez la hauteur du document ouvert (en mm)" %}">
+                                            </div>
+                                        </div>
+                                        <!-- dimension ferme -->
+                                        <div id="formdivLargeurFerme" class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-2"
+                                                 {% if(DATA[0].EstAmalgame=='1') %}hidden="hidden"{% endif %}
+                                                 {% if(DATA[0].EstPliable=='0') %}hidden="hidden"{% endif %}>
+                                            <div id="divLargeurFerme">
+                                                <label class="control-label" for="LargeurFerme"  title="{% trans "Entrez la largeur du document ferme (en mm)" %}">{% trans "Fermé" %}</label>
+                                                <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="LargeurFerme"
+                                                       placeholder="{% trans "Largeur" %}" name="LargeurFerme" value="{{ DATA[0].LargeurFerme }}"
+                                                       onkeyup="checkInputNumber('divLargeurFerme',this);getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez la largeur du document ferme (en mm)" %}">
+                                            </div>
+                                        </div>
+                                        <div id="formdivHauteurFerme" class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-2"
+                                                 {% if(DATA[0].EstAmalgame=='1') %}hidden="hidden"{% endif %}
+                                                 {% if(DATA[0].EstPliable=='0') %}hidden="hidden"{% endif %}>
+                                            <div id="divHauteurFerme">
+                                                <label class="sr" for="HauteurFerme"  title="{% trans "Entrez la hauteur du document ferme (en mm)" %}">&nbsp;</label>
+                                                <input type="number" min="0" step="1" class="form-control tooltip-link" data-placement="bottom" id="HauteurFerme"
+                                                       placeholder="{% trans "Hauteur" %}" name="HauteurFerme" value="{{ DATA[0].HauteurFerme }}"
+                                                       onkeyup="checkInputNumber('divHauteurFerme',this);getVerifFormUpDossierDeFab();"
+                                                       title="{% trans "Entrez la hauteur du document ferme (en mm)" %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- nbOption -->
+                                        <div id="divNbOption">
+                                            <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                                <input type="hidden" name="NbOption" value="{{ DATA[0].NbOption }}">
+                                                <label class="control-label" for="NbOption"
+                                                       title="{% trans "Entrez le nombre d'options du dossier" %}">{% trans "Option" %}</label>
+                                                <input type="number" class="form-control tooltip-link" data-placement="bottom"
+                                                       id="NbOption" value="{{ DATA[0].NbOption }}"
+                                                       name="NbOptionModal"
+                                                       onkeyup="getOption();getElement();"
+                                                       placeholder="{% trans "Nombre" %}"
+                                                       title="{% trans "Entrez le nombre d'options du dossier" %}">
+                                            </div>
+                                        </div>
+                                        <!-- nbElement -->
+                                        <div id="divNbElement">
+                                            <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                                <input type="hidden" name="NbElement" value="{{ DATA[0].NbElement }}">
+                                                <label class="control-label" for="NbElement"
+                                                       title="{% trans "Entrez le nombre d'éléments du dossier" %}">{% trans "Elément" %}</label>
+                                                <input type="number" class="form-control tooltip-link" data-placement="bottom"
+                                                       id="NbElement" value="{{ DATA[0].NbElement }}"
+                                                       name="NbElementModal"
+                                                       placeholder="{% trans "Nombre" %}"
+                                                       onkeyup="getElement();"
+                                                       title="{% trans "Entrez le nombre d'éléments du dossier" %}">
+                                            </div>
+                                        </div>
+                                        <!-- nbMachine -->
+                                        <div id="divNbMachine">
+                                            <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                                <input type="hidden" name="NbMachine" value="{{ DATA[0].NbMachine }}">
+                                                <label class="control-label" for="NbMachine"
+                                                       title="{% trans "Entrez le nombre d'éléments du dossier" %}">{% trans "Machine" %}</label>
+                                                <input type="number" class="form-control tooltip-link" data-placement="bottom"
+                                                       name="NbMachineModal" id="NbMachine" value="{{ DATA[0].NbMachine }}"
+                                                       placeholder="{% trans "Nombre" %}"
+                                                       onkeyup="getElement();"
+                                                       title="{% trans "Entrez le nombre d'éléments du dossier" %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- option dossier -->
+                            <script type="text/javascript">
+                                $(function(){
+                                    getOption();
+                                    getElement();
+                                })
+                            </script>
+                            <div class="row">
+                                <!-- option -->
+                                {#<div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" id="divOption">#}
+                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="divOption">
+                                    {#<div id="divSelectOptionModal_{{ w }}">#}
+                                        {#<input type="hidden" name="IDDossierDeFab_tl_option_{{ w }}" value="{{ value.IDDossierDeFab_tl_option }}">#}
+                                        {#<label class="control-label" for="selectOptionModal_{{ w }}" title="{% trans "Entrez une option" %}">{% trans "Option" %}&nbsp;&nbsp;<span class="badge"></span></label>#}
+                                        {#<select class="form-control" id="selectOptionModal_{{ w }}" name="selectOptionModal_{{ w }}" title="{% trans "Entrez une option" %}" onchange="getVerifFormUpDossierDeFab();"></select>#}
+                                    {#</div>#}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Composition dossier -->
+                    <div class="container-fluid" hidden="hidden" id="divCompositionDossier">
+                        <!-- element dossier -->
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divElement">
+                                {#<p class="lead">{% trans "Composition du dossier" %}</p>#}
+                                {#{% for a , element in DATA_ELEMENT %}#}
+                                {#<div class="well">#}
+                                    {#<!-- dossier TL element -->#}
+                                    {#<div class="row">#}
+                                        {#<input type="hidden" name="IDDossierDeFab_tl_element_{{ a }}" value="{{ element.IDDossierDeFab_tl_element }}">#}
+                                        {#<div id="divSelectElement_{{ a }}">#}
+                                            {#<!-- element -->#}
+                                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">#}
+                                                {#<div id="divElement_{{ a }}">#}
+                                                    {#<label class="control-label" for="Element_{{ a }}" title="{% trans "Entrez un element" %}">{% trans "Element" %} <span class="badge">{{ a+1 }}</span></label>#}
+                                                    {#<select class="form-control" id="Element_{{ a }}" name="Element_{{ a }}" title="{% trans "Entrez un element" %}" onchange="getVerifFormUpDossierDeFab();"></select>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                            {#<script type="text/javascript">$(function(){getSelect('Element_{{ a }}','getListeElementTrad','{{ element.IDElement }}');})</script>#}
+                                            {#<!-- quantite -->#}
+                                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">#}
+                                                {#<div id="divQuantite_{{ a }}">#}
+                                                    {#<label class="control-label" for="Quantite_{{ a }}" title="{% trans "Entrez une quantité" %}">{% trans "Quantité" %}</label>#}
+                                                    {#<input type="number" min="0" step="1" class="form-control" id="Quantite_{{ a }}" placeholder="{% trans "Quantite" %}"#}
+                                                     {#value="{{ element.Quantite }}" name="Quantite_{{ a }}" title="{% trans "Entrez une quantité" %}"#}
+                                                     {#onkeyup="checkInputNumber('divQuantite_{{ a }}',this);getVerifFormUpDossierDeFab();">#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                            {#<!-- support -->#}
+                                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">#}
+                                                {#<div id="divSupport_{{ a }}">#}
+                                                    {#<label class="control-label" for="Support_{{ a }}" title="{% trans "Entrez un support" %}">{% trans "Support" %}</label>#}
+                                                    {#<select class="form-control" id="Support_{{ a }}" name="Support_{{ a }}" title="{% trans "Entrez un support" %}"#}
+                                                            {#onchange="checkInputSelect('divSupport_{{ a }}',this.value);#}
+                                                                      {#getSelectTlSociete('Format_{{ a }}','FormatTlSupport',$('#SelectSociete').val(),this.value);#}
+                                                                      {#getVerifFormUpDossierDeFab();">#}
+                                                        {#<option></option>#}
+                                                    {#</select>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                            {#<script type="text/javascript">$(function(){getSelect('Support_{{ a }}','getListeSupportTrad','{{ element.IDSupport }}');})</script>#}
+                                            {#<!-- format -->#}
+                                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">#}
+                                                {#<div id="divFormat_{{ a }}">#}
+                                                    {#<label class="control-label" for="Format_{{ a }}" title="{% trans "Entrez un format" %}">{% trans "Format" %}</label>#}
+                                                    {#<select class="form-control" id="Format_{{ a }}" name="Format_{{ a }}" title="{% trans "Entrez un format" %}"#}
+                                                            {#onchange="checkInputSelect('divFormat_{{ a }}',this.value);getVerifFormUpDossierDeFab();">#}
+                                                        {#<option></option>#}
+                                                    {#</select>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                            {#<script type="text/javascript">$(function(){#}
+                                                    {#&#123;&#35;getSelect('Format_{{ a }}','getListeFormatTrad','{{ element.IDFormat }}');&#35;&#125;#}
+                                                    {#getSelectTlSociete('Format_{{ a }}','FormatTlSupport',$('#SelectSociete').val(),{{ element.IDSupport }},{{ element.IDFormat }});#}
+                                                {#})</script>#}
+                                            {#&#123;&#35;<!-- impression -->&#35;&#125;#}
+                                            {#&#123;&#35;<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">&#35;&#125;#}
+                                                {#&#123;&#35;<div id="divImpression_{{ a }}">&#35;&#125;#}
+                                                    {#&#123;&#35;<label class="control-label" for="Impression_{{ a }}" title="{% trans "Entrez un impression" %}">{% trans "Impression" %}</label>&#35;&#125;#}
+                                                    {#&#123;&#35;<select class="form-control" id="Impression_{{ a }}" name="Impression_{{ a }}" title="{% trans "Entrez un impression" %}"&#35;&#125;#}
+                                                            {#&#123;&#35;onchange="checkInputSelect('divImpression_{{ a }}',this.value);getVerifFormUpDossierDeFab();">&#35;&#125;#}
+                                                    {#&#123;&#35;</select>&#35;&#125;#}
+                                                {#&#123;&#35;</div>&#35;&#125;#}
+                                            {#&#123;&#35;</div>&#35;&#125;#}
+                                            {#&#123;&#35;<script type="text/javascript">$(function(){getSelect('Impression_{{ a }}','getListeImpressionTrad','{{ element.IDImpression }}');})</script>&#35;&#125;#}
+                                            {#<!-- commentaire -->#}
+                                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">#}
+                                                {#<div id="divCommentaire_{{ a }}">#}
+                                                    {#<label class="control-label" for="Commentaire_{{ a }}" title="{% trans "Entrez un commentaire" %}">{% trans "Commentaire" %}</label>#}
+                                                    {#<input type="text" class="form-control" id="Commentaire_{{ a }}" placeholder="{% trans "Commentaire" %}" name="Commentaire_{{ a }}"#}
+                                                     {#value="{{ element.Commentaire }}" title="{% trans "Entrez un commentaire" %}"#}
+                                                     {#onkeyup="checkInputText('divCommentaire_{{ a }}',this.value.length);getVerifFormUpDossierDeFab();">#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                    {#<!-- dossier TL element TL option -->#}
+                                    {#<div class="row">#}
+                                        {#{% set n = 1 %}#}
+                                        {#{% for b, elementTLoption in DATA_ELEMENT_TL_OPTION %}#}
+                                            {#{% if(elementTLoption.Element == element.Element) %}#}
+                                                {#<input type="hidden" name="IDDossierDeFab_tl_element_{{ a }}_tl_option_{{ n-1 }}" value="{{ elementTLoption.IDElement_tl_option }}">#}
+                                                {#<input type="hidden" id="idOption{{ a+1 }}Element{{ n }}" value="{{ elementTLoption.IDOption }}">#}
+                                                {#{% set n = n + 1 %}#}
+                                            {#{% else %}#}
+                                                {#{% set n = 1 %}#}
+                                            {#{% endif %}#}
+                                        {#{% endfor %}#}
+                                        {#{% for r in 1..(DATA[0].NbOption) %}#}
+                                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">#}
+                                                {#<div id="divOption{{ a+1 }}Element{{ r }}">#}
+                                                    {#<label class="control-label" for="Option{{ a+1 }}Element{{ r }}" title="{% trans "Entrez une option" %}">{% trans "Option" %}&nbsp;&nbsp;<span class="badge">{{ a+1 }}-{{ r }}</span></label>#}
+                                                    {#<select class="form-control" id="Option{{ a+1 }}Element{{ r }}" name="Option{{ a+1 }}Element{{ r }}" title="{% trans "Entrez une option" %}" onchange="getVerifFormUpDossierDeFab();">#}
+                                                    {#</select>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                        {#{% endfor %}#}
+                                    {#</div>#}
+                                    {#<!-- dossier TL element TL machine -->#}
+                                    {#<div class="row">#}
+                                        {#{% set n = 1 %}#}
+                                        {#{% set nbMachine = 0 %}#}
+                                        {#{% for b, elementTLmachine in DATA_ELEMENT_TL_MACHINE %}#}
+                                            {#{% if(elementTLmachine.Element == element.Element) %}#}
+                                                {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">#}
+                                                    {#<div id="divElement{{ a+1 }}Machine{{ n }}">#}
+                                                        {#<input type="hidden" name="IDElement{{ a+1 }}Machine{{ n }}" value="{{ elementTLmachine.IDElement_tl_machine }}">#}
+                                                        {#<label class="control-label" for="Element{{ a+1 }}Machine{{ n }}" title="{% trans "Entrez une machine" %}">{% trans "Machine" %}&nbsp;&nbsp;<span class="badge">{{ a+1 }}-{{ n }}</span></label>#}
+                                                        {#<select class="form-control" id="Element{{ a+1 }}Machine{{ n }}" name="Element{{ a+1 }}Machine{{ n }}" title="{% trans "Entrez une machine" %}"#}
+                                                                {#onchange="getVerifFormUpDossierDeFab();#}
+                                                                        {#getSelectTlSociete('Element{{ a+1 }}MachineImpression{{ n }}','ImpressionTlMachine',$('#SelectSociete').val(),this.value);">#}
+                                                        {#</select>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<script type="text/javascript">$(function(){ getSelect('Element{{ a+1 }}Machine{{ n }}','getListeMachineTrad',{{ elementTLmachine.IDMachine }}); })</script>#}
+                                                {#{% set n = n + 1 %}#}
+                                                {#{% set nbMachine = nbMachine + 1 %}#}
+                                            {#{% else %}#}
+                                                {#{% set n = 1 %}#}
+                                            {#{% endif %}#}
+                                        {#{% endfor %}#}
+                                        {#<input type="hidden" value="{{ nbMachine }}" name="Element{{ a+1 }}NbMachine">#}
+                                    {#</div>#}
+                                    {#<!-- dossier TL element TL machineImpression -->#}
+                                    {#<div class="row">#}
+                                        {#{% set n = 1 %}#}
+                                        {#{% for b, elementTLmachine in DATA_ELEMENT_TL_MACHINE %}#}
+                                            {#{% if(elementTLmachine.Element == element.Element) %}#}
+                                                {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">#}
+                                                    {#<div id="divElement{{ a+1 }}MachineImpression{{ n }}">#}
+                                                        {#<label class="control-label" for="Element{{ a+1 }}MachineImpression{{ n }}">{% trans "Type" %}&nbsp;&nbsp;<span class="badge">{{ a+1 }}-{{ n }}</span></label>#}
+                                                        {#<select class="form-control" id="Element{{ a+1 }}MachineImpression{{ n }}" name="Element{{ a+1 }}MachineImpression{{ n }}" onchange="getVerifFormUpDossierDeFab();">#}
+                                                        {#</select>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<script type="text/javascript">$(function(){#}
+                                                        {#getSelect('Element{{ a+1 }}MachineImpression{{ n }}','getListeImpressionTrad',{{ elementTLmachine.IDImpression }});#}
+                                                        {#&#123;&#35;$("select#Element{{ a+1 }}MachineImpression{{ n }} option[value={{ elementTLmachine.IDImpression }}]").attr("selected","selected");&#35;&#125;#}
+                                                    {#})</script>#}
+                                                {#{% set n = n + 1 %}#}
+                                            {#{% else %}#}
+                                                {#{% set n = 1 %}#}
+                                            {#{% endif %}#}
+                                        {#{% endfor %}#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#{% endfor %}#}
+                            </div>
+                        </div>
+                        <!-- btns -->
+                        <div class="row">
+                            <!-- save dossier -->
+                            <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                <button type="submit" name="saveDossier" class="form-control btn btn-success" id="btnSaveDossier">
+                                    {% trans "Enregistrer" %}&nbsp;<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal foot -->
+            <div class="modal-footer">
+                <!-- Cancel -->
+                <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}" {#onclick="Sel_Mngt({{ DATA[0].IDDossierDeFab }},false);"#}>{% trans "Annuler" %}</button>
+                <!-- previous -->
+                <button type="button" name="Previous" class="btn btn-warning" id="btnPrevious"
+                        onclick="$('#divDescriptionDossier').prop('hidden',false);
+                                 $('#divCompositionDossier').prop('hidden',true);"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;{% trans "Revenir" %}</button>
+                <!-- next -->
+                <button type="button" name="next" class="btn btn-primary" id="btnNextModal"
+                        onclick="$('#divDescriptionDossier').prop('hidden',true);
+                                 $('#divCompositionDossier').prop('hidden',false);
+                                 getVerifFormUpDossierDeFab();
+                                 getOptionTlOption();
+                                 /*getMachineTlImpression();*/
+                                 getElement();
+                                 getDataComposition();">{% trans "Suivant" %}&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{#{{ dump(DATA) }}#}
+
+<script type="text/javascript">
+    function getDataComposition()
+    {
+        var nbElement = parseInt({{ DATA_ELEMENT|length }});
+        var timeout = 2000;
+        if ( nbElement == 1) timeout = 500;
+        if ( nbElement >= 5) timeout = 4000;
+        if (nbElement >= 10) timeout = 8000;
+        if (nbElement >= 25) timeout = 15000;
+//        console.log("nbElement : "+nbElement);
+//        console.log("timeout : "+timeout);
+
+        {% for a, value in DATA_ELEMENT %}
+            $("#Quantite{{ (a+1) }}").val(parseInt({{ value.Quantite }}));
+            $("#Commentaire{{ (a+1) }}").val("{{ value.Commentaire }}");
+        {#console.log("done #Quantite{{ (a+1) }} : "+ parseInt({{ value.Quantite }}));#}
+        {% endfor %}
+
+        getElementForSelect(timeout);
+        getOptionForSelect(timeout+500);
+        getMachineForSelect(timeout+1000);
+
+        verifCompositionDossier(nbElement);
+    }
+
+    function getElementForSelect(timeout)
+    {
+        setTimeout(function(){
+            {% for w, value in DATA_ELEMENT %}
+                $("select#Element{{ (w+1) }} option[value={{ (value.IDElement) }}]").attr("selected","selected");
+                $("select#Support{{ (w+1) }} option[value={{ (value.IDSupport) }}]").attr("selected","selected");
+                $("select#Format{{ (w+1) }} option[value={{ (value.IDFormat) }}]").attr("selected","selected");
+                {#console.log("done #Element:{{ (w+1) }}");#}
+            {% endfor %}
+        },timeout);
+    }
+
+    function getOptionForSelect(timeout)
+    {
+        setTimeout(function(){
+            {% for q, value in DATA_OPTION %}
+                {% for s, items in DATA_ELEMENT %}
+                    $("select#Option{{ (s+1) }}Element{{ (q+1) }} option[value={{ (value.IDOption) }}]").attr("selected","selected");
+                {% endfor %}
+            {% endfor %}
+        },timeout);
+    }
+
+    function getMachineForSelect(timeout)
+    {
+        setTimeout(function(){
+            {% set n = 1 %}
+            {% for q, element in DATA_ELEMENT %}
+                {% for b, items in DATA_ELEMENT_TL_MACHINE %}
+                    {% if(items.Element == element.Element) %}
+
+                        $("select#Element{{ (q+1) }}Machine{{ (n) }} option[value={{ (items.IDMachine) }}]").attr("selected","selected");
+                        {#console.log("done #Element{{ (q+1) }}Machine{{ (n) }} = {{ (items.IDMachine) }}");#}
+
+                        $("select#Element{{ (q+1) }}MachineImpression{{ (n) }} option[value={{ (items.IDImpression) }}]").attr("selected","selected");
+                        {#console.log("done #Element{{ (q+1) }}Machine{{ (n) }} = {{ (items.IDMachine) }}");#}
+
+                        {% set n = n + 1 %}
+
+                    {% else %}
+                        {% set n = 1 %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        },timeout);
+    }
+
+    function getVerifFormUpDossierDeFab()
+    {
+        var verif = 'a';
+
+        var NbElement = $('#NbElement').val();
+        var NbOption = $('#NbOption').val();
+        var DossierModal = $('#DossierModal').val();
+        var divDossierModal = document.getElementById('divDossierModal');
+        var divRefModal = document.getElementById('divRefModal');
+        var divCommentaireModal = document.getElementById('divCommentaireModal');
+        var Pliage = $('#Pliage').is(':checked') ? 1 : 0;
+        var Amalgame = $('#Amalgame').is(':checked') ? 1 : 0;
+        var LargeurOuvert = $('#LargeurOuvert').val();
+        var divLargeurOuvert = document.getElementById('divLargeurOuvert');
+        var HauteurOuvert = $('#HauteurOuvert').val();
+        var divHauteurOuvert = document.getElementById('divHauteurOuvert');
+        var LargeurFerme = $('#LargeurFerme').val();
+        var divLargeurFerme = document.getElementById('divLargeurFerme');
+        var HauteurFerme = $('#HauteurFerme').val();
+        var divHauteurFerme = document.getElementById('divHauteurFerme');
+        var QuantiteModal = $('#QuantiteModal').val();
+        var divQuantiteModal = document.getElementById('divQuantiteModal');
+        var DateExpedition = $('#DateExpeditionModal').val();
+        var divDateExpedition = document.getElementById('divDateExpeditionModal');
+//        console.log("Dossier: "+DossierModal);
+//        console.log("Pliage: "+Pliage);
+//        console.log("Amalgame: "+Amalgame);
+//        console.log("LargeurOuvert: "+LargeurOuvert);
+//        console.log("HauteurOuvert: "+HauteurOuvert);
+//        console.log("LargeurFerme: "+LargeurFerme);
+//        console.log("HauteurFerme: "+HauteurFerme);
+//        console.log("Quantite: "+QuantiteModal);
+//        console.log("DateExpedition: "+DateExpedition);
+        if ( DossierModal.length > 2 ) { divDossierModal.className = 'has-success';verif = verif+'a'; }
+        else { divDossierModal.className = 'has-error';verif = verif+'z'; }
+        if ( QuantiteModal > 0 ) { divQuantiteModal.className = 'has-success';verif = verif+'a'; }
+        else { divQuantiteModal.className = 'has-error';verif = verif+'z'; }
+        if ( DateExpedition.length == 10 ) { divDateExpedition.className = 'has-success';verif = verif+'a'; }
+        else { divDateExpedition.className = 'has-error';verif = verif+'z'; }
+        if ( Amalgame == 0){
+            if ( LargeurOuvert > 0 ) { divLargeurOuvert.className = 'has-success';verif = verif+'a'; }
+            else { divLargeurOuvert.className = 'has-error';verif = verif+'z'; }
+            if ( HauteurOuvert > 0 ) { divHauteurOuvert.className = 'has-success';verif = verif+'a'; }
+            else { divHauteurOuvert.className = 'has-error';verif = verif+'z'; }
+        }
+        if ( Pliage == 1){
+            if ( LargeurFerme > 0 ) { divLargeurFerme.className = 'has-success';verif = verif+'a'; }
+            else { divLargeurFerme.className = 'has-error';verif = verif+'z'; }
+            if ( HauteurFerme > 0 ) { divHauteurFerme.className = 'has-success';verif = verif+'a'; }
+            else { divHauteurFerme.className = 'has-error';verif = verif+'z'; }
+        }
+        for (k = 0; k < NbOption; k++){
+            var selectOptionModal = $('#selectOptionModal_'+k+'').val();
+            var divSelectOption = document.getElementById('divSelectOptionModal_'+k+'');
+//            console.log("selectOptionModal_"+k+": "+selectOptionModal);
+            if ( selectOptionModal > 0 ) { if (divSelectOption)  divSelectOption.className = 'has-success';verif = verif+'a'; }
+            else { if (divSelectOption) divSelectOption.className = 'has-error';verif = verif+'z'; }
+        }
+        divCommentaireModal.className = 'has-success';
+        divRefModal.className = 'has-success';
+
+        if ( verif.indexOf('z') >= 0 ) $('#btnNext').prop("disabled",true);
+        if ( verif.indexOf('z') == -1 ) $('#btnNext').prop("disabled",false);
+
+        for (k = 0; k < NbElement; k++){
+            var divSelectElement = document.getElementById('divSelectElement_'+k+'');
+            if (divSelectElement) divSelectElement.className = 'has-success';
+            var divCommentaire = document.getElementById('divCommentaire_'+k+'');
+            if (divCommentaire) divCommentaire.className = 'has-success';
+            var Quantite = $('#Quantite_'+k+'').val();
+            var divQuantite = document.getElementById('divQuantite_'+k+'');
+            var Support = $('#Support_'+k+'').val();
+            var divSupport = document.getElementById('divSupport_'+k+'');
+            var Format = $('#Format_'+k+'').val();
+            var divFormat = document.getElementById('divFormat_'+k+'');
+            var Impression = $('#Impression_'+k+'').val();
+            var divImpression = document.getElementById('divImpression_'+k+'');
+            if ( Quantite && Quantite > 0 ) { if(divQuantite) divQuantite.className = 'has-success';verif = verif+'a'; }
+            else { if(divQuantite) divQuantite.className = 'has-error';verif = verif+'z'; }
+            if ( Support && Support > 0 ) { if(divSupport) divSupport.className = 'has-success';verif = verif+'a'; }
+            else { if(divSupport) divSupport.className = 'has-error';verif = verif+'z'; }
+            if ( Format && Format > 0 ) { if(divFormat) divFormat.className = 'has-success';verif = verif+'a'; }
+            else { if (divFormat) divFormat.className = 'has-error';verif = verif+'z'; }
+//            if ( Impression > 0 ) { divImpression.className = 'has-success';verif = verif+'a'; }
+//            else { divImpression.className = 'has-error';verif = verif+'z'; }
+        }
+
+//        console.log("Verif: "+verif);
+
+        if ( verif.indexOf('z') >= 0 ) $('#btnSaveDossier').prop("disabled",true);
+        if ( verif.indexOf('z') == -1 ) $('#btnSaveDossier').prop("disabled",false);
+
+        for (o = 1; o <= NbElement; o++){
+            for (k = 1; k <= NbOption; k++){
+                var divOption = document.getElementById('divOption'+o+'Element'+k+'');
+                if (divOption) divOption.className = 'has-success';
+            }
+        }
+    }
+
+    function getOptionTlOption()
+    {
+        var nbElement = {{ DATA[0].NbElement }};
+        var nbOption = {{ DATA[0].NbOption }};
+
+//        console.log("nbElement: "+nbElement);
+//        console.log("nbOption: "+nbOption);
+
+        var listeIdOption = '';
+        var valueoption ;
+        var id;
+
+        for (i = 0; i < nbOption; i++) {
+            if (document.getElementById('selectOptionModal_'+i+'')) {
+                valueoption = document.getElementById('selectOptionModal_'+i+'').value;
+            }
+//            console.log("valueoption: "+valueoption);
+            if(listeIdOption!='') listeIdOption = listeIdOption + ',' + valueoption; else listeIdOption = valueoption;
+        }
+
+        $.getJSON(
+            'Select',
+            {
+                'action': 'getListeOptionTlOption',
+                'async': '1',
+                'listeIdOption': listeIdOption
+            },
+            function (data)
+            {
+                for (o = 1; o <= nbElement; o++){
+                    for (k = 1; k <= nbOption; k++){
+                        id = $('#idOption'+o+'Element'+k+'').val();
+//                        console.log("id: "+id);
+                        $('#Option'+o+'Element'+k+'').html(data.SentData);
+                        $("select#Option"+o+"Element"+k+" option[value="+id+"]").attr("selected","selected");
+                    }
+                }
+            }
+        );
+    }
+
+    function getPliage(value)
+    {
+        if(value==true) {
+            $('#divAmalgame').prop('hidden',true );             $('#Amalgame').prop('disabled',true );
+            $('#formdivLargeurFerme').prop('hidden',false );    $('#LargeurFerme').prop('disabled',false );
+            $('#formdivHauteurFerme').prop('hidden',false );    $('#HauteurFerme').prop('disabled',false );
+//            $('#divNbPose').prop('hidden',true );    $('#NbPose').prop('disabled',true );
+        } else {
+            $('#divAmalgame').prop('hidden',false );            $('#Amalgame').prop('disabled',false );
+            $('#formdivLargeurFerme').prop('hidden',true );     $('#LargeurFerme').prop('disabled',true );
+            $('#formdivHauteurFerme').prop('hidden',true );     $('#HauteurFerme').prop('disabled',true );
+//            $('#divNbPose').prop('hidden',false );    $('#NbPose').prop('disabled',false );
+        }
+    }
+
+    function getAmalgame(value)
+    {
+        if(value) {
+            $('#divPliage').prop('hidden',true );               $('#Pliage').prop('disabled',true );
+            $('#formdivLargeurFerme').prop('hidden',true );     $('#LargeurFerme').prop('disabled',true );
+            $('#formdivHauteurFerme').prop('hidden',true );     $('#HauteurFerme').prop('disabled',true );
+            $('#formdivLargeurOuvert').prop('hidden',true );    $('#LargeurOuvert').prop('disabled',true );
+            $('#formdivHauteurOuvert').prop('hidden',true );    $('#HauteurOuvert').prop('disabled',true );
+            $('#divNbPose').prop('hidden',false );    $('#NbPose').prop('disabled',false );
+        } else {
+            $('#divPliage').prop('hidden',false ) ;             $('#Pliage').prop('disabled',false ) ;
+            $('#formdivLargeurFerme').prop('hidden',true );     $('#LargeurFerme').prop('disabled',true );
+            $('#formdivHauteurFerme').prop('hidden',true );     $('#HauteurFerme').prop('disabled',true );
+            $('#formdivLargeurOuvert').prop('hidden',false );   $('#LargeurOuvert').prop('disabled',false );
+            $('#formdivHauteurOuvert').prop('hidden',false );   $('#HauteurOuvert').prop('disabled',false );
+            $('#divNbPose').prop('hidden',true );    $('#NbPose').prop('disabled',true );
+        }
+    }
+</script>
+
+
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            {% for w, value in DATA_OPTION %}
+                $("select#selectOption{{ (w+1) }} option[value={{ (value.IDOption) }}]").attr("selected","selected");
+            {% endfor %}
+        },750);
+    });
+</script>

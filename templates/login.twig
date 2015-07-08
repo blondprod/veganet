@@ -1,0 +1,122 @@
+<!-- login.twig -->
+<body onload="document.title='&nbsp;L A  B O X !'">
+    <div class="container">
+        <form class="pull-left form-signin" role="form" method="POST" action="accueil">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2 class="form-signin-heading">{% trans "connexionH2" %}</h2>
+                <input name="login" type="text" class="form-control"
+                       title="{% trans "entrezVotreIdentifiantTitleInput" %}"
+                       placeholder="{% trans "identifiantPlaceholder" %}"
+                       required>
+                <input name="password" type="password" class="form-control"
+                       title="{% trans "entrezVotreMotDePasseTitleInput" %}"
+                       placeholder="{% trans "motDePassePlaceholder" %}"
+                       required>
+                <label class="checkbox" title="{% trans "cliquezIciPourResterConnecterTitleCheckbox" %}">
+                    <input type="checkbox" name="remember"
+                           title="{% trans "cliquezIciPourResterConnecterTitleCheckbox" %}">
+                    {% trans "ResterConnecter" %}
+                </label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label class="sr-only" for="languages"></label>
+                <select class="form-control" name="languages" id="languages">
+                    <option value="fr_FR">{% trans "francaisOptionSelect" %}</option>
+                    <option value="es_ES">{% trans "Espagne" %}</option>
+                    <option value="en_GB">{% trans "anglaisOptionSelect" %}</option>
+                    <option value="it_IT">{% trans "italienOptionSelect" %}</option>
+                </select>
+                <br/>
+            </div>
+            {#<input type="hidden" name="languages" value="fr_FR">#}
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button class="btn btn-lg btn-primary btn-block"
+                        type="submit"
+                        title="{% trans "cliquezPourEntrerTitleBtn" %}">{% trans "entrerBtn" %}</button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox pull-right">
+                    <small>
+                        {% if(MdpOublie == '1') %}
+                            {% trans "motDePassOublieEnvoye" %}
+                        {% else %}
+                            <a href="#" data-toggle="modal" data-target="#myModal">{% trans "motDePassOublieLogin" %}</a>
+                        {% endif %}
+                    </small>
+                </label>
+            </div>
+            {#<h2 class="form-signin-heading">&nbsp;<a href="#"#}
+                                                 {#target="_blank"><span class="glyphicon glyphicon-question-sign tooltip-link"#}
+                                                                       {#id="aide"#}
+                                                                       {#data-placement="right"#}
+                                                                       {#onmouseover="$('#aide').tooltip('show')"#}
+                                                                       {#title="{% trans "Aide" %}"></span></a></h2>#}
+        </form>
+    </div>
+    <div class="container">
+        <img src="img/background.png" style="width: 450px;" class="visible-sm visible-lg visible-md">
+    </div>
+
+    {% if(MdpOublie != '1') %}
+        <!-- Modal mot de passe oublie -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">{% trans "RenvoiDeMotDePasse" %}</h4>
+                    </div>
+                    <form method="post" action="Auth">
+                        <input type="hidden" name="action" value="SendForgottenPassword"/>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- INPUT TEXT LOGIN -->
+                                <div class="col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                                    <label for="IDlogin">{% trans "Identifiant" %}</label>
+                                    <input id="IDlogin" class="form-control" name="login"
+                                           title="{% trans "entrezVotreIdentifiant" %}"
+                                           type="text" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Fermer" %}</button>
+                            <button type="submit" class="btn btn-primary" title="{% trans "RenvoyerLeMotDePasse" %}">{% trans "Envoyer" %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+
+    <script type="text/javascript">
+//        var buffer = '';
+//
+//        $(window).keypress(function(event){
+//
+//            // special char accepted " $ % & ' ( ) .
+//            var keyCode = event.keyCode;
+//
+//            buffer += String.fromCharCode(keyCode);
+//            if ( buffer.indexOf('\'')!=-1 ) {
+//                console.log("test conn");
+//                if (keyCode == 13) {
+//
+//                    var login = buffer.substring(1, buffer.indexOf('\'', 1));
+//                    var password = buffer.substring(buffer.lastIndexOf('\'') + 1);
+//
+//                    window.location.href = 'http://localhost/labox/public/index.php?login=' + login + '&password=' + password + '&languages=fr_FR';
+//
+////                console.warn( login );
+////                console.warn( password );
+//
+//                    buffer = login = password = '';
+//                }
+//            }
+//        });
+    </script>
+{#<pre>#}
+    {#{{ dump(session) }}#}
+{#</pre>#}

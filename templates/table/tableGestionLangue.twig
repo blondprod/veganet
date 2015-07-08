@@ -1,0 +1,85 @@
+<!-- tableGestionLangue.twig -->
+<div class="panel-group" id="accordionLangue" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingLangue">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseLangue" aria-expanded="true" aria-controls="collapseLangue">
+                <h4 class="panel-title">
+                    {% trans "Langues" %} <span class="badge">{{ data_langue|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseLangue" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLangue">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">
+                        <button class="btn btn-xs btn-info" onclick="getAdd('tr_saveLangue');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" onclick="getDelete('IDLangue','TBL_LANGUE');collapse('collapseLangue');"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    </caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Langue" %}</th>
+                        <th>{% trans "Code BCP" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveLangue">
+                        <td></td>
+                        <td>
+                            <div id="divNom_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNom_add',this.value.length,3);verifLangue();" id="nom_add">
+                            </div>
+                        <td>
+                            <div id="divBcp_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divBcp_add',this.value.length,5);verifLangue();" id="bcp_add">
+                            </div>
+                        </td>
+                        <td class="text text-center" >
+                            <input type="checkbox" id="actifLangue_add">
+                        </td>
+                        <td class="text text-center" id="saveLangue_add">
+                            <button onclick="getInsertLangue();" disabled id="btnInsertLangue_add"
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_langue %}
+                        <tr>
+                            <td class="text text-center">
+                                <input type="checkbox" id="chk_{{ data.IDLangue }}" onclick="Sel_Mngt({{ data.IDLangue }},this.checked)">
+                            </td>
+                            <td>
+                                <div id="divNom_{{ data.IDLangue }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNom_{{ data.IDLangue }}',this.value.length,3);verifLangue({{ data.IDLangue }});" id="nom_{{ data.IDLangue }}" disabled value="{{ data.NomLangue }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divBcp_{{ data.IDLangue }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divBcp_{{ data.IDLangue }}',this.value.length,5);verifLangue({{ data.IDLangue }});" id="bcp_{{ data.IDLangue }}" disabled value="{{ data.CodeBCP }}">
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="actifLangue_{{ data.IDLangue }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifLangue({{ data.IDLangue }});">
+                            </td>
+                            <td class="text text-center"
+                                id="modifLangue_{{ data.IDLangue }}">
+                                <button onclick="getModifLangue({{ data.IDLangue }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> </button>
+                            </td>
+                            <td class="text text-center"
+                                id="saveLangue_{{ data.IDLangue }}"
+                                hidden="hidden">
+                                <button onclick="getUpdateLangue({{ data.IDLangue }});" disabled id="btnInsertLangue_{{ data.IDLangue }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

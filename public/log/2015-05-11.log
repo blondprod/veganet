@@ -1,0 +1,492 @@
+
+2015-05-11 16:44:250.11496700 | GestionDroit.php | getLiaisonFonctionTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_FONCTION_TL_PAGE ( DateAdd, IDMembreAdd, IDFonction, IDPage ) VALUES ( NOW(),'1','7','4' ) 
+resu: 
+
+2015-05-11 16:44:260.84922200 | GestionDroit.php | getLiaisonFonctionTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_FONCTION_TL_PAGE ( DateAdd, IDMembreAdd, IDFonction, IDPage ) VALUES ( NOW(),'1','7','5' ) 
+resu: 
+
+2015-05-11 16:44:270.82340400 | GestionDroit.php | getLiaisonFonctionTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_FONCTION_TL_PAGE ( DateAdd, IDMembreAdd, IDFonction, IDPage ) VALUES ( NOW(),'1','7','6' ) 
+resu: 
+
+2015-05-11 16:44:570.45503500 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = '(SUD)',
+    MEMBRE.Prenom = 'Fanny',
+    MEMBRE.IDFonction = '2',
+    MEMBRE.Login = 'tintin',
+    MEMBRE.Pwd = '@@@',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '04.67.59.07.45',
+    MEMBRE.Mail = 'bast@lui.f',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '6'
+WHERE
+    MEMBRE.IDMembre = '2' 
+resu: 
+
+2015-05-11 17:00:380.30642100 | GestionDroit.php | getUpdateFonction | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_FONCTION AS TBL
+SET
+    TBL.DateMaj = NOW(),
+    TBL.EstActif = '1',
+    TBL.Ordre = '5',
+    TBL.IDMembreMaj ='1',
+    TBL.IDSociete = 'graphica'
+WHERE
+    TBL.IDFonction = '8' 
+resu: 
+
+2015-05-11 17:00:380.30714200 | GestionDroit.php | getUpdateFonction | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_FONCTION_TRAD AS TBL
+SET
+    TBL.Nom = 'AdmFnGMFr'
+WHERE
+    TBL.IDFonction = '8' 
+resu: 
+
+2015-05-11 17:00:470.73506100 | GestionDroit.php | getUpdateFonction | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_FONCTION AS TBL
+SET
+    TBL.DateMaj = NOW(),
+    TBL.EstActif = '1',
+    TBL.Ordre = '1',
+    TBL.IDMembreMaj ='1',
+    TBL.IDSociete = 'graphica'
+WHERE
+    TBL.IDFonction = '8' 
+resu: 
+
+2015-05-11 17:00:470.73584200 | GestionDroit.php | getUpdateFonction | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_FONCTION_TRAD AS TBL
+SET
+    TBL.Nom = 'AdmFnGMFr'
+WHERE
+    TBL.IDFonction = '8' 
+resu: 
+
+2015-05-11 17:02:050.70893600 | GestionDroit.php | getLiaisonMenuTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_MENU_TL_PAGE ( DateAdd, IDMembreAdd, IDMenu, IDPage ) VALUES ( NOW(),'1','7','5' ) 
+resu: 
+
+2015-05-11 17:02:060.78765600 | GestionDroit.php | getLiaisonMenuTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_MENU_TL_PAGE ( DateAdd, IDMembreAdd, IDMenu, IDPage ) VALUES ( NOW(),'1','7','6' ) 
+resu: 
+
+2015-05-11 17:02:130.71764900 | GestionDroit.php | getLiaisonGroupeTlFonction | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_GROUPE_TL_FONCTION ( DateAdd, IDMembeAdd, IDFonction, IDGroupe ) VALUES ( NOW(),'1','8','2' ) 
+resu: 
+
+2015-05-11 17:02:280.77831000 | GestionDroit.php | getLiaisonFonctionTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_FONCTION_TL_PAGE ( DateAdd, IDMembreAdd, IDFonction, IDPage ) VALUES ( NOW(),'1','8','4' ) 
+resu: 
+
+2015-05-11 17:02:290.65953000 | GestionDroit.php | getLiaisonFonctionTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_FONCTION_TL_PAGE ( DateAdd, IDMembreAdd, IDFonction, IDPage ) VALUES ( NOW(),'1','8','5' ) 
+resu: 
+
+2015-05-11 17:02:310.38888800 | GestionDroit.php | getLiaisonFonctionTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_FONCTION_TL_PAGE ( DateAdd, IDMembreAdd, IDFonction, IDPage ) VALUES ( NOW(),'1','8','6' ) 
+resu: 
+
+2015-05-11 17:02:480.65515100 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = '(SUD)',
+    MEMBRE.Prenom = 'Fanny',
+    MEMBRE.IDFonction = '8',
+    MEMBRE.Login = 'tintin',
+    MEMBRE.Pwd = '@@@',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '04.67.59.07.45',
+    MEMBRE.Mail = 'bast@lui.f',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '6'
+WHERE
+    MEMBRE.IDMembre = '2' 
+resu: 
+
+2015-05-11 17:02:570.12709000 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = '(PURE)',
+    MEMBRE.Prenom = 'Landry',
+    MEMBRE.IDFonction = '7',
+    MEMBRE.Login = 'landry',
+    MEMBRE.Pwd = 'pure',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '12-23-34-45-56',
+    MEMBRE.Mail = 'lm@pure.fr',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '5'
+WHERE
+    MEMBRE.IDMembre = '3' 
+resu: 
+
+2015-05-11 17:03:020.21541900 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = '(PURE)',
+    MEMBRE.Prenom = 'Landry',
+    MEMBRE.IDFonction = '2',
+    MEMBRE.Login = 'landry',
+    MEMBRE.Pwd = 'pure',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '12-23-34-45-56',
+    MEMBRE.Mail = 'lm@pure.fr',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '5'
+WHERE
+    MEMBRE.IDMembre = '3' 
+resu: 
+
+2015-05-11 17:03:100.07813700 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = '(PURE)',
+    MEMBRE.Prenom = 'Landry',
+    MEMBRE.IDFonction = '7',
+    MEMBRE.Login = 'landry',
+    MEMBRE.Pwd = 'pure',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '12-23-34-45-56',
+    MEMBRE.Mail = 'lm@pure.fr',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '5'
+WHERE
+    MEMBRE.IDMembre = '3' 
+resu: 
+
+2015-05-11 17:48:190.11657100 | GestionReglage.php | getInsertMenu | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_MENU ( DateAdd, IDMembreAdd, EstActif, Ordre, IDSociete  ) VALUES ( NOW(),'1','1','2','6' );
+INSERT INTO TBL_MENU_TRAD ( IDMenu,Nom,IDLangue ) VALUES ( LAST_INSERT_ID(),'Prod-Menu-GM-fr','1' ) 
+resu: 
+
+2015-05-11 17:48:550.75519400 | GestionDroit.php | getLiaisonGroupeTlMenu | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_GROUPE_TL_MENU ( DateAdd, IDMembreAdd, IDMenu, IDGroupe ) VALUES ( NOW(),'1','9','2' ) 
+resu: 
+
+2015-05-11 17:49:560.34478100 | GestionDroit.php | getLiaisonFonctionTlPage | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_FONCTION_TL_PAGE AS TBL
+SET
+    TBL.IDMembreSupp='1',
+    TBL.DateSupp=NOW(),
+    TBL.EstSupp = '1'
+WHERE
+    TBL.IDFonction_tl_page = 15 
+resu: 1
+
+2015-05-11 17:51:550.75272400 | GestionDroit.php | getLiaisonGroupeTlMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_GROUPE_TL_MENU AS TBL
+SET
+    TBL.IDMembreSupp='1',
+    TBL.DateSupp=NOW(),
+    TBL.EstSupp = '1'
+WHERE
+    TBL.IDGroupe_tl_menu = 14 
+resu: 1
+
+2015-05-11 18:01:350.72366900 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU AS TBL
+SET
+    TBL.DateMaj = NOW(),
+    TBL.IDMembreMaj = '1',
+    TBL.EstActif = '0',
+    TBL.Ordre = '2',
+    TBL.IDSociete = '6'
+WHERE
+    MENU.IDMenu = '9' 
+resu: 
+
+2015-05-11 18:01:350.72450500 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU_TRAD AS TBL
+SET
+    TBL.Nom = 'Prod-Menu-GM-fr'
+WHERE
+    TBL.IDMenu = '9' 
+resu: 
+
+2015-05-11 18:01:460.47961000 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU AS TBL
+SET
+    TBL.DateMaj = NOW(),
+    TBL.IDMembreMaj = '1',
+    TBL.EstActif = '0',
+    TBL.Ordre = '1',
+    TBL.IDSociete = '6'
+WHERE
+    MENU.IDMenu = '7' 
+resu: 
+
+2015-05-11 18:01:460.48042000 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU_TRAD AS TBL
+SET
+    TBL.Nom = 'Gestion-Menu-GM'
+WHERE
+    TBL.IDMenu = '7' 
+resu: 
+
+2015-05-11 21:31:520.30546700 | GestionDroit.php | getLiaisonGroupeTlMenu | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_GROUPE_TL_MENU ( DateAdd, IDMembreAdd, IDMenu, IDGroupe ) VALUES ( NOW(),'1','2','7' ) 
+resu: 
+
+2015-05-11 23:19:580.16066300 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = '(SUD)',
+    MEMBRE.Prenom = 'Fanny',
+    MEMBRE.IDFonction = '8',
+    MEMBRE.Login = 'tintin',
+    MEMBRE.Pwd = '@@@',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '04.67.59.07.45',
+    MEMBRE.Mail = 'bast@lui.f',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '5'
+WHERE
+    MEMBRE.IDMembre = '2' 
+resu: 
+
+2015-05-11 23:20:450.50211500 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = '(SUD)',
+    MEMBRE.Prenom = 'Fanny',
+    MEMBRE.IDFonction = '6',
+    MEMBRE.Login = 'tintin',
+    MEMBRE.Pwd = '@@@',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '04.67.59.07.45',
+    MEMBRE.Mail = 'bast@lui.f',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '5'
+WHERE
+    MEMBRE.IDMembre = '2' 
+resu: 
+
+2015-05-11 23:22:540.10034100 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = '(SUD)',
+    MEMBRE.Prenom = 'Fanny',
+    MEMBRE.IDFonction = '8',
+    MEMBRE.Login = 'tintin',
+    MEMBRE.Pwd = '@@@',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '04.67.59.07.45',
+    MEMBRE.Mail = 'bast@lui.f',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '6'
+WHERE
+    MEMBRE.IDMembre = '2' 
+resu: 
+
+2015-05-11 23:27:200.83589700 | GestionDroit.php | getInsertGroupe | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_GROUPE (DateAdd,IDMembreAdd,EstActif,Ordre,IDSociete) VALUES (NOW(),'1','0','99','0');
+INSERT INTO TBL_GROUPE_TRAD (Nom,IDGroupe, IDLangue) VALUES ('SU_Group',LAST_INSERT_ID(),'1') 
+resu: 
+
+2015-05-11 23:28:010.93156300 | GestionDroit.php | getUpdateGroupe | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_GROUPE AS TBL
+SET
+    TBL.DateMaj = NOW(),
+    TBL.Ordre = '99',
+    TBL.EstActif = '1',
+    TBL.IDMembreMaj = '1',
+    TBL.IDSociete = '0'
+WHERE
+    TBL.IDGroupe = '9' 
+resu: 
+
+2015-05-11 23:28:010.93885300 | GestionDroit.php | getUpdateGroupe | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_GROUPE_TRAD AS GROUPE
+SET
+    GROUPE.Nom = 'SU_Group'
+WHERE
+    GROUPE.IDGroupe = '9' 
+resu: 
+
+2015-05-11 23:28:080.54467200 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = 'BRUAND',
+    MEMBRE.Prenom = 'Florian',
+    MEMBRE.IDFonction = '6',
+    MEMBRE.Login = 'blond',
+    MEMBRE.Pwd = '@@@',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '06.22.20.60.02',
+    MEMBRE.Mail = 'moi@me.com',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '0'
+WHERE
+    MEMBRE.IDMembre = '1' 
+resu: 
+
+2015-05-11 23:29:130.39000600 | GestionDroit.php | getInsertFonction | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_FONCTION (DateAdd, IDMembreAdd, EstActif, Ordre,IDSociete ) VALUES (NOW(),'1','1','1','0');
+INSERT INTO TBL_FONCTION_TRAD (Nom, IDFonction, IDLangue) VALUES ('SU_Fonction',LAST_INSERT_ID(),'1') 
+resu: 
+
+2015-05-11 23:30:510.22595400 | GestionDroit.php | getLiaisonGroupeTlFonction | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_GROUPE_TL_FONCTION ( DateAdd, IDMembeAdd, IDFonction, IDGroupe ) VALUES ( NOW(),'1','9','9' ) 
+resu: 
+
+2015-05-11 23:34:310.19356800 | GestionMembre.php | getUpdateMembre | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MEMBRE AS MEMBRE
+SET
+    MEMBRE.DateMaj = NOW(),
+    MEMBRE.IDMembreMaj = '1',
+    MEMBRE.Nom = 'BRUAND',
+    MEMBRE.Prenom = 'Florian',
+    MEMBRE.IDFonction = '6',
+    MEMBRE.Login = 'blond',
+    MEMBRE.Pwd = '@@@',
+    MEMBRE.IDLangue = '1',
+    MEMBRE.Telephone = '06.22.20.60.02',
+    MEMBRE.Mail = 'moi@me.com',
+    MEMBRE.EstActif = '1',
+    MEMBRE.IDSociete = '5'
+WHERE
+    MEMBRE.IDMembre = '1' 
+resu: 
+
+2015-05-11 23:36:060.37282500 | GestionDroit.php | getLiaisonGroupeTlMenu | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_GROUPE_TL_MENU ( DateAdd, IDMembreAdd, IDMenu, IDGroupe ) VALUES ( NOW(),'1','9','2' ) 
+resu: 
+
+2015-05-11 23:36:220.63980800 | GestionDroit.php | getLiaisonGroupeTlMenu | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_GROUPE_TL_MENU ( DateAdd, IDMembreAdd, IDMenu, IDGroupe ) VALUES ( NOW(),'1','5','5' ) 
+resu: 
+
+2015-05-11 23:36:480.45263700 | GestionDroit.php | getLiaisonFonctionTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_FONCTION_TL_PAGE ( DateAdd, IDMembreAdd, IDFonction, IDPage ) VALUES ( NOW(),'1','8','6' ) 
+resu: 
+
+2015-05-11 23:41:250.19290000 | GestionDroit.php | getLiaisonMenuTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_MENU_TL_PAGE ( DateAdd, IDMembreAdd, IDMenu, IDPage ) VALUES ( NOW(),'1','7','6' ) 
+resu: 
+
+2015-05-11 23:45:520.52714400 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU AS TBL
+SET
+    TBL.DateMaj = NOW(),
+    TBL.IDMembreMaj = '1',
+    TBL.EstActif = '1',
+    TBL.Ordre = '2',
+    TBL.IDSociete = '6'
+WHERE
+    MENU.IDMenu = '9' 
+resu: 
+
+2015-05-11 23:45:520.52853800 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU_TRAD AS TBL
+SET
+    TBL.Nom = 'Prod-Menu-GM-fr'
+WHERE
+    TBL.IDMenu = '9' 
+resu: 
+
+2015-05-11 23:46:050.17888600 | GestionDroit.php | getLiaisonMenuTlPage | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU_TL_PAGE AS TBL
+SET
+    TBL.IDMembreSupp='1',
+    TBL.DateSupp=NOW(),
+    TBL.EstSupp = '1'
+WHERE
+    TBL.IDMenu_tl_page = 6 
+resu: 1
+
+2015-05-11 23:47:080.90695200 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU AS TBL
+SET
+    TBL.DateMaj = NOW(),
+    TBL.IDMembreMaj = '1',
+    TBL.EstActif = '1',
+    TBL.Ordre = '2',
+    TBL.IDSociete = '6'
+WHERE
+    MENU.IDMenu = '9' 
+resu: 
+
+2015-05-11 23:47:080.90793600 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU_TRAD AS TBL
+SET
+    TBL.Nom = 'Prod-Menu-GM-fr'
+WHERE
+    TBL.IDMenu = '9' 
+resu: 
+
+2015-05-11 23:50:440.48312100 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU AS TBL
+SET
+    TBL.DateMaj = NOW(),
+    TBL.IDMembreMaj = '1',
+    TBL.EstActif = '1',
+    TBL.Ordre = '2',
+    TBL.IDSociete = '6'
+WHERE
+    TBL.IDMenu = '9' 
+resu: 
+
+2015-05-11 23:50:440.49021900 | GestionReglage.php | getUpdateMenu | IDuser: 1 | BRUAND Florian
+UPDATE
+    TBL_MENU_TRAD AS TBL
+SET
+    TBL.Nom = 'Prod-Menu-GM-fr'
+WHERE
+    TBL.IDMenu = '9' 
+resu: 
+
+2015-05-11 23:50:550.28677900 | GestionDroit.php | getLiaisonMenuTlPage | IDuser: 1 | BRUAND Florian
+INSERT INTO TBL_MENU_TL_PAGE ( DateAdd, IDMembreAdd, IDMenu, IDPage ) VALUES ( NOW(),'1','9','6' ) 
+resu: 

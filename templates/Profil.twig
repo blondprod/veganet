@@ -1,0 +1,310 @@
+<!-- Profil.twig -->
+
+{% if (IdLangue>'0') %}
+    {% set idlangue = IdLangue %}
+{% else %}
+    {% set idlangue = session.IDLANGUE %}
+{% endif %}
+<script type="text/javascript">$(function(){ getSelect('Langue','getListeLangue','{{ idlangue }}'); })</script>
+
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\Profil::IdPageDossier')] is defined) %}#}
+    {#{% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\Profil::IdPageDossier')] %}#}
+{#{% endif %}#}
+
+{% if(session.FBX_USER_ID) > '0' %}
+    {#<script type="text/javascript" src="js/GestionMembre.js"></script>#}
+    {% if (save=="ok") %}
+        <script type="text/javascript">$(function(){getModalAlert("{% trans "Changement réussi" %}");})</script>
+    {% endif %}
+    <body id="Profil" onload="getMenu('navBarDyna');document.title= '{% trans "Profil" %} // {{ session.Slogan }}';">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    {% if(data|length=='0') %}
+        <div class="container-fluid paddingJumbotron" id="top">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="alert alert-block well fade in">
+                        <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                        <h1>{% trans "Profil" %}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <br/>
+        <br/>
+        <br/>
+    {% endif %}
+
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <div class="container-fluid">
+        <div class="row">
+            <form class="form-group" role="form" method="POST" name="updatePwd" action="Profil">
+                <!-- PreNom -->
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="row col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                        <div class="form-group" id="divPrenom">
+                            <label class="control-label" for="Prenom">{% trans "Changer votre prenom" %}</label>
+                            <input type="text" id="Prenom" class="form-control" name="Prenom" placeholder="{% trans "Prenom" %}"
+                                   onkeyup="checkInputText('divPrenom',this.value.length,3);verifUpdateProfil();">
+                        </div>
+                    </div>
+                </div>
+                <!-- Nom -->
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="row col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                        <div class="form-group" id="divNom">
+                            <label class="control-label" for="Nom">{% trans "Changer votre nom" %}</label>
+                            <input type="text" id="Nom" class="form-control" name="Nom" placeholder="{% trans "Nom" %}"
+                                   onkeyup="checkInputText('divNom',this.value.length,3);verifUpdateProfil();">
+                        </div>
+                    </div>
+                </div>
+                <!-- LANGUE -->
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="row col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                        <div class="form-group" id="divLangue">
+                            <label class="control-label" for="Langue">{% trans "Changer la langue" %}</label>
+                            <select id="Langue" class="form-control" name="IDLangue" onchange="checkInputSelect('divLangue',this.value);verifUpdateProfil();">
+                                <!-- elements/elementsMenu.twig-->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Telephone -->
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="row col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                        <div class="form-group" id="divTelephone">
+                            <label class="control-label" for="Telephone">{% trans "Changer votre n° de téléphone" %}</label>
+                            <input type="tel" id="Telephone" class="form-control" name="Telephone" placeholder="{% trans "Telephone" %}"
+                                   onkeyup="checkInputText('divTelephone',this.value.length,14);verifUpdateProfil();">
+                        </div>
+                    </div>
+                </div>
+                <!-- Email -->
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="row col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                        <div class="form-group" id="divEmail">
+                            <label class="control-label" for="Email">{% trans "Changer votre adresse mail" %}</label>
+                            <input type="email" id="Email" class="form-control" name="Email" placeholder="{% trans "Email" %}"
+                                   onkeyup="checkInputText('divEmail',this.value.length,3);verifUpdateProfil();">
+                        </div>
+                    </div>
+                </div>
+                <!-- Login -->
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="row col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                        <div class="form-group" id="divLogin">
+                            <label class="control-label" for="Login">{% trans "Changer votre nom d\'utilisateur" %}</label>
+                            <input type="text" id="Login" class="form-control" name="Login" placeholder="{% trans "Login" %}"
+                                   onkeyup="checkInputText('divLogin',this.value.length,3);verifUpdateProfil();">
+                        </div>
+                    </div>
+                </div>
+                <!-- Password -->
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="row col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                        <div class="form-group" id="divPwd">
+                            <label class="control-label" for="Pwd">{% trans "Changer votre mot de passe" %}</label>
+                            <input type="text" id="Pwd" class="form-control" name="Pwd" placeholder="{% trans "Password" %}"
+                                   onkeyup="checkInputText('divPwd',this.value.length,3);verifUpdateProfil();">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <div class="row">
+                        <!-- Submit -->
+                        <div class="form-group col-lg-11 col-md-11 col-sm-11 col-xs-11" id="btnSubmitPwd">
+                            <label class="">&nbsp;</label><br/>
+                            <button type="submit" name="submit" value="ok" class="btn btn-primary" id="saveProfil" disabled>
+                                {% trans "Enregistrer" %}
+                            </button>
+                            <input type="hidden" name="action" value="getUpdatePwd">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {#<!-- SAVE PAGES MAX -->#}
+    {#<div class="container-fluid">#}
+        {#<p class="lead">{% trans "SauvegardeLeMaxParPage" %}</p>#}
+        {#<div class="row">#}
+            {#<div class="col-lg-11 col-md-12 col-sm-12">#}
+                {#<form class="form-group" role="form" method="POST" name="savePageMax" action="Profil">#}
+                    {#<div class="row">#}
+                        {#<!-- SAVE PAGES MAX DOSSIER EN COURS (1) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxDossier">#}
+                            {#<label for="maxDossier">{% trans "DossierEnCours" %}</label><br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxDossier"#}
+                                    {#name="IDmax[1]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<!-- SAVE PAGES MAX REMONTEES ATELIER (2) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxRemonteeAtelier">#}
+                            {#<label for="maxRemonteeAtelier">{% trans "RemonteesAtelier" %}</label><br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxRemonteeAtelier"#}
+                                    {#name="IDmax[2]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<!-- SAVE PAGES MAX IMPUTATIONS (7) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxImputations">#}
+                            {#<label for="maxImputations">{% trans "Imputations" %}</label><br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxImputations"#}
+                                    {#name="IDmax[7]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<!-- SAVE PAGES MAX EXPEDITIONS (8) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxExpeditions">#}
+                            {#<label for="maxExpeditions">{% trans "Expeditions" %}</label><br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxExpeditions"#}
+                                    {#name="IDmax[8]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<!-- SAVE PAGES MAX PARAMETRES (3) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxMachines">#}
+                            {#<label for="maxMachines">{% trans "Machines" %}</label><br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxMachines"#}
+                                    {#name="IDmax[3]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<!-- SAVE PAGES MAX GROUPAGE (9) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxGroupage">#}
+                            {#<label for="maxGroupage">{% trans "Groupage" %}</label><br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxGroupage"#}
+                                    {#name="IDmax[9]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<!-- SAVE PAGES MAX LISTES (4) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxPlanning">#}
+                            {#<label for="maxPlanning">{% trans "Listes" %}</label><br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxPlanning"#}
+                                    {#name="IDmax[4]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<!-- SAVE PAGES MAX STATS (5) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxStats">#}
+                            {#<label for="maxStats">{% trans "Stats" %}</label><br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxStats"#}
+                                    {#name="IDmax[5]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<!-- SAVE PAGES MAX FERMETURE (6) -->#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxFermeture">#}
+                            {#<label for="maxFermeture">{% trans "Fermeture" %}</label>#}
+                            {#<br/>#}
+                            {#<select class="pagesize form-control"#}
+                                    {#id="maxFermeture"#}
+                                    {#name="IDmax[6]"#}
+                                    {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                {#<option value="10">10</option>#}
+                                {#<option value="25">25</option>#}
+                                {#<option value="50">50</option>#}
+                                {#<option value="100">100</option>#}
+                                {#<option value="500">500</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#{% if session.EXAFAB_USER_IDWORKSHOP == "0" %} <!-- SI USER N APPARTIENT PAS ATELIER -->#}
+                            {#<!-- SAVE PAGES MAX PaoBoxCommandes (101) -->#}
+                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxPaoBoxCommandes">#}
+                                {#<label for="maxPaoBoxCommandes">{% trans "PaoBoxCommandes" %}</label><br/>#}
+                                {#<select class="pagesize form-control"#}
+                                        {#id="maxPaoBoxCommandes"#}
+                                        {#name="IDmax[101]"#}
+                                        {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                    {#<option value="10">10</option>#}
+                                    {#<option value="25">25</option>#}
+                                    {#<option value="50">50</option>#}
+                                    {#<option value="100">100</option>#}
+                                    {#<option value="500">500</option>#}
+                                {#</select>#}
+                            {#</div>#}
+                            {#<!-- SAVE PAGES MAX PaoBoxPlanches (102) -->#}
+                            {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2" id="divMaxPaoBoxPlanches">#}
+                                {#<label for="maxPaoBoxPlanches">{% trans "PaoBoxPlanches" %}</label><br/>#}
+                                {#<select class="pagesize form-control"#}
+                                        {#id="maxPaoBoxPlanches"#}
+                                        {#name="IDmax[102]"#}
+                                        {#title="{% trans "choissisezUnNombreDeResuTitleSelect" %}">#}
+                                    {#<option value="10">10</option>#}
+                                    {#<option value="25">25</option>#}
+                                    {#<option value="50">50</option>#}
+                                    {#<option value="100">100</option>#}
+                                    {#<option value="500">500</option>#}
+                                {#</select>#}
+                            {#</div>#}
+                        {#{% endif%}#}
+                    {#</div>#}
+                    {#<div class="row">#}
+                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">#}
+                            {#<input type="hidden" name="action" value="getUpPrefPagination">#}
+                            {#<button type="submit" name="submit" value="ok" class="btn btn-primary"#}
+                                    {#title="{% trans "enregistrerTitleBtn" %}">{% trans "Enregistrer" %}</button>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</form>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}

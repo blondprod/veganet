@@ -1,0 +1,118 @@
+<!-- tableProductionFicheDeProd.twig -->
+
+{% set k = '0' %}
+{% for i, value in DATA %}
+    <tr>
+        <td><small>{{ value.DateAdd|date('d/m/Y') }} <br>{{ value.DateAdd|date('H:i') }}</small>&nbsp;<span class="text text-info glyphicon glyphicon-info-sign" onclick="$('#spanMachine_{{ i }}').tooltip('show')" id="spanMachine_{{ i }}" title="{{ value.NomSecteur }} // {{ value.NomMachine }}"></span>
+        </td>
+        <td style="vertical-align: middle;" ondblclick="getDossierDeFabPage('{{ session.IP }}','{{ session.PUBLIC_PATH }}',{{ value.IDDossierDeFab }});">
+            <code>{{ value.Dossier }}</code>
+            {#<a class="link external" data-toggle="modal" data-placement="top" data-target="#myModal"#}
+               {#href="http://{{ session.IP }}/{{ session.PUBLIC_PATH }}Production?action=imp&IDDossierDeFab={{ value.IDDossierDeFab }}"><strong>{{ value.Dossier }}</strong></a>#}
+               <!-- http://192.168.1.51/labox/public/Production?action=imp&IDDossierDeFab=5 -->
+        </td>
+        <td style="vertical-align: middle;" class="text text-center">
+            {% if ( value.CommentaireDossier != '') %}
+                <h4><span class="text text-success glyphicon glyphicon-exclamation-sign tooltip-link" onclick="$('#spanCommentaire_{{ i }}').tooltip('show')" id="spanCommentaire_{{ i }}" title="{{ value.CommentaireDossier }}"></span></h4>
+            {% endif %}
+        </td>
+        <td style="vertical-align: middle;">
+            <em>{{ value.Ref }}</em>
+        </td>
+        <td style="vertical-align: middle;">
+            <span class="badge">{{ value.Element }}</span>
+        </td>
+        <td style="vertical-align: middle;" class="text text-center">
+            {% if ( value.CommentaireElement != '') %}
+                <h4><span class="text text-success glyphicon glyphicon-warning-sign tooltip-link" onclick="$('#spanCommentaireElement_{{ i }}').tooltip('show')" id="spanCommentaireElement_{{ i }}" title="{{ value.CommentaireElement }}"></span></h4>
+            {% endif %}
+        </td>
+        <td style="vertical-align: middle;" id="tdFicheQuantite_{{ value.IDFicheDeProd }}">
+            {% set Q = value.Quantite %}
+            {% if Q > 20000 %}
+                {% set label = "label-danger" %}
+            {% elseif Q > 20000 %}
+                {% set label = "label-warning" %}
+            {% elseif Q > 10000 %}
+                {% set label = "label-success" %}
+            {% elseif Q > 2500 %}
+                {% set label = "label-primary" %}
+            {% elseif Q > 1000 %}
+                {% set label = "label-info" %}
+            {% elseif Q < 500 %}
+                {% set label = "label-default" %}
+            {% else %}
+                {% set label = "label-default" %}
+            {% endif %}
+            <span class="label {{ label }}">{{ value.Quantite }}&nbsp;{% trans "ex" %}</span>
+        </td>
+        <td style="vertical-align: middle;">
+            {{ value.NomSupport }}
+        </td>
+        <td style="vertical-align: middle;">
+            {{ value.NomFormat }}
+        </td>
+        <td style="vertical-align: middle;" id="tdFicheIDImpression_{{ value.IDFicheDeProd }}">
+            {{ value.NomImpression }}
+        </td>
+        <td class="text text-center" style="vertical-align: middle;" id="tdFicheNbPose_{{ value.IDFicheDeProd }}">
+            <span class="badge">{{ value.NbPose }}</span>
+        </td>
+        <td style="vertical-align: bottom;" class="text text-center">
+            <ul class="list-inline">{% for k, valeure in DATA_OPTION %}{% if (value.IDFicheDeProd==valeure.IDFicheDeProd) %}<li><kbd>{{ valeure.NomOption }}</kbd></li>{% endif %}{% endfor %}</ul>
+        </td>
+        <td style="vertical-align: middle;" id="tdFicheCode1_{{ value.IDFicheDeProd }}">
+            {{ DATA_CODE[value.IDFicheDeProd]['NomCodeErreur'][0] }}
+            {#{{ dump(DATA_CODE) }}#}
+        </td>
+        <td style="vertical-align: middle;" id="tdFicheCode2_{{ value.IDFicheDeProd }}">
+            {{ DATA_CODE[value.IDFicheDeProd]['NomCodeErreur'][1] }}
+        </td>
+        <td style="vertical-align: middle;" id="tdFicheCommentaire_{{ value.IDFicheDeProd }}">
+            {{ value.Commentaire }}
+        </td>
+        <td style="vertical-align: middle;" class="text text-center" id="tdUp_{{ value.IDFicheDeProd }}">
+            <button class="btn btn-default btn-sm tooltip-link"
+                    title="{% trans "Editer" %}"
+                    onmouseover="this.className='btn btn-info btn-sm tooltip-link'"
+                    onmouseout="this.className='btn btn-default btn-sm tooltip-link'"
+                    onclick="getModifFicheDeProd({{ value.IDFicheDeProd }})"
+                    type="button"><span class="glyphicon glyphicon-edit"></span></button>
+        </td>
+        <td style="vertical-align: middle;" class="text text-center" hidden="hidden" id="tdSave_{{ value.IDFicheDeProd }}">
+            <button
+                 title="{% trans "Enregistrer" %}"
+                 id="btnSave_{{ value.IDFicheDeProd }}"
+                 class="btn btn-success btn-sm tooltip-link"
+                 onclick="getUpdateFicheDeProd({{ value.IDFicheDeProd }})"
+                 type="button"><span class="glyphicon glyphicon-save"></span></button>
+        </td>
+        <td style="vertical-align: middle;" class="text text-center">
+            <div hidden="hidden" id="divBtnRemove_{{ value.IDFicheDeProd }}">
+                <button disabled
+                     title="{% trans "Supprimer" %}"
+                     onmouseover="this.className='btn btn-danger btn-xs tooltip-link'"
+                     onmouseout="this.className='btn btn-default btn-xs tooltip-link'"
+                     id="btnRemove_{{ value.IDFicheDeProd }}"
+                     class="btn btn-default btn-xs tooltip-link"
+                     onclick="getModalDeleteFicheDeProd({{ value.IDFicheDeProd }});Sel_Mngt({{ value.IDFicheDeProd }},true)"
+                     type="button"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+        </td>
+        <td hidden="hidden">
+            <input type="hidden" id="UpFicheIDSecteur_{{ value.IDFicheDeProd }}" value="{{ value.IDSecteur }}">
+            <input type="hidden" id="UpFicheQuantite_{{ value.IDFicheDeProd }}" value="{{ value.Quantite }}">
+            <input type="hidden" id="UpFicheNbPose_{{ value.IDFicheDeProd }}" value="{{ value.NbPose }}">
+            <input type="hidden" id="UpFicheIDImpression_{{ value.IDFicheDeProd }}" value="{{ value.IDImpression }}">
+            <input type="hidden" id="UpFicheCode1_{{ value.IDFicheDeProd }}" value="{{ DATA_CODE[value.IDFicheDeProd]['IDCodeErreur'][0] }}">
+            <input type="hidden" id="UpFicheCode2_{{ value.IDFicheDeProd }}" value="{{ DATA_CODE[value.IDFicheDeProd]['IDCodeErreur'][1] }}">
+            <input type="hidden" id="UpFicheCommentaire_{{ value.IDFicheDeProd }}" value="{{ value.Commentaire }}">
+        </td>
+    </tr>
+    {% set k = k+1 %}
+{% endfor %}
+{% if (k > '0') %}
+<tr>
+    <td colspan="17" class="lead text-success">{{ k }} {% trans "dossiers" %}</td>
+</tr>
+{% endif %}

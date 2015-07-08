@@ -1,0 +1,298 @@
+<!-- SuiviFicheDeProd.twig -->
+{#{% if(OUT.PrefsNbPages[constant('fbx\\Fab\\SuiviFicheDeProd::IdPageDossier')] is defined) %}
+    {% set idpager = OUT.PrefsNbPages[constant('fbx\\Fab\\SuiviFicheDeProd::IdPageDossier')] %}
+{% endif %}#}
+<script type="text/javascript" src="js/SuiviFicheDeProd.js"></script>
+
+{% if(session.Classe[constant('fbx\\Fab\\SuiviFicheDeProd::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1' %}
+    <body id="SuiviFicheDeProd"
+          onload="getMenu('navBarDyna');
+                  document.title= '{% trans "Suivi fiches" %} // {{ session.Slogan }}';
+                  getSelect('SelectSocieteFicheDeProd','getListeSocieteTrad','{{ OUT.IDSociete }}');
+                  getSelect('SelectSecteur','getListeSecteurTrad','{{ OUT.IDSecteur }}');
+                  getSelect('SelectMachine','getListeMachineTrad','{{ OUT.IDMachine }}');
+                  getSelect('SelectCode','getListeCodeErreurTrad','{{ OUT.IDCode }}');
+                  getSelect('SelectCode','getListeCodeErreurTrad','{{ OUT.IDCode }}');
+                  getSelect('selectMembre','getListeMembre','{{ OUT.IDMembre }}');
+                  {#getSuiviTableFicheDeProd('{{ OUT.IDSecteur }}','{{ OUT.IDMachine }}');#}
+                  /*getSelect('SelectSupport','getListeSupportTrad');*/
+            ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron visible-lg visible-md" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divJumbotron">
+                <div class="alert alert-block well fade in">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1>{% trans "Suivi des Fiches de prod." %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid paddingJumbotron visible-sm visible-xs" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="panel-group" id="accordionSearch" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSearch">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                        <h4 class="panel-title">{% trans "Recherche" %}</h4>
+                    </a>
+                </div>
+                <div id="collapseSearch" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSearch">
+                    <div class="panel-body">
+                        <div class="row">
+                            <form class="form-group" role="form" method="POST" name="search" action="SuiviFicheDeProd">
+                                <input type="hidden" name="action" value="getDataTableSuiviFicheDeProd">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <!-- date crea begin -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                            <label class="control-label" for="searchDateDossierCreaBegin">{% trans "Période" %}</label>
+                                            <input id="searchDateDossierCreaBegin"
+                                                   name="searchDateDossierCreaBegin"
+                                                   class="form-control tooltip-link"
+                                                   type="text" title="{% trans "Entrez le début de la période de date de création" %}"
+                                                   placeholder="{% trans "Début" %}"
+                                                   value="{% if (OUT.searchDateDossierCreaBegin=='') %}{#{{ "now"|date("d/m/Y") }}#}{% else %}{{ OUT.searchDateDossierCreaBegin }}{% endif %}">
+                                            <!-- JS FOR DATERANGEPICKER -->
+                                            {% set idPicker = "searchDateDossierCreaBegin" %}
+                                            {% include "elements/datepicker.twig" %}
+                                        </div>
+                                        <!-- date crea end -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                            <label class="control-label" for="searchDateDossierCreaEnd">&nbsp;</label>
+                                            <input id="searchDateDossierCreaEnd"
+                                                   name="searchDateDossierCreaEnd"
+                                                   class="form-control tooltip-link"
+                                                   type="text" title="{% trans "Entrez la fin de la période de date de création" %}"
+                                                   placeholder="{% trans "Fin" %}"
+                                                   value="{% if (OUT.searchDateDossierCreaEnd=='') %}{#{{ "tomorrow"|date("d/m/Y") }}#}{% else %}{{ OUT.searchDateDossierCreaEnd }}{% endif %}">
+                                            <!-- JS FOR DATERANGEPICKER -->
+                                            {% set idPicker = "searchDateDossierCreaEnd" %}
+                                            {% include "elements/datepicker.twig" %}
+                                        </div>
+                                        <!-- select membre -->
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-1">
+                                            <label class="control-label" for="selectMembre">{% trans "Membre" %}</label>
+                                            <select id="selectMembre" class="form-control" name="IDMembre" title="{% trans "choisissez un membre" %}">
+                                                <!-- elementsSelect.twig-->
+                                            </select>
+                                        </div>
+                                        <!-- secteur -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                            <label class="control-label" for="SelectSecteur">{% trans "Secteur" %}</label>
+                                            <select id="SelectSecteur" class="form-control" name="IDSecteur"
+                                                    onchange="getSelectSecteurTlMachine(this,'SelectMachine');">
+                                                <!-- getSelect('SelectSecteur','getListeSecteurTrad'); -->
+                                            </select>
+                                        </div>
+                                        <!-- machine -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                            <label class="control-label" for="SelectMachine">{% trans "Machine" %}</label>
+                                            <select name="IDMachine" id="SelectMachine" class="form-control">
+                                                <!-- getSelect('SelectMachine','getListeMachine'); -->
+                                            </select>
+                                        </div>
+                                        <!-- dossier -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                            <label class="control-label" for="Dossier">{% trans "Dossier" %}</label>
+                                            <input type="text" class="form-control" id="Dossier"
+                                                   placeholder="{% trans "Dossier" %}" name="Dossier" title="{% trans "Dossier" %}"
+                                                   value="{{ OUT.Dossier }}">
+                                        </div>
+                                        <!-- Ref -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                            <label class="control-label" for="Ref">{% trans "Réf." %}</label>
+                                            <input type="text" class="form-control" id="Ref"
+                                                   placeholder="{% trans "Réf." %}" name="Ref" title="{% trans "Réference client du dossier" %}"
+                                                   value="{{ OUT.Ref }}">
+                                        </div>
+                                        {#<!-- Code -->#}
+                                        {#<div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">#}
+                                            {#<label class="control-label" for="SelectCode">{% trans "Code" %}</label>#}
+                                            {#<select name="IDCode" id="SelectCode" class="form-control">#}
+                                                {#<!-- getSelect('SelectCode','getListeCodeErreurTrad'); -->#}
+                                            {#</select>#}
+                                        {#</div>#}
+                                        <!-- Submit -->
+                                        <div class="form-group col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                                            <label class="control-label">&nbsp;</label>
+                                            <button type="submit" name="submit" value="ok"
+                                                    class="form-control btn btn-primary" id="btnSearchDossier">
+                                                {% trans "Chercher" %}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if (DATA|length>0) %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-condensed tablesorter">
+                        <caption class="lead"><code>{{ DATA|length }} {% trans "Fiches de production" %}</code></caption>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>{% trans "Dossier" %}</th>
+                                <th></th>
+                                <th>{% trans "Ref." %}</th>
+                                <th>{% trans "Elements" %}</th>
+                                <th></th>
+                                <th>{% trans "Quantité" %}</th>
+                                <th>{% trans "Support" %}</th>
+                                <th>{% trans "Format" %}</th>
+                                <th>{% trans "Type" %}</th>
+                                <th>{% trans "Option" %}</th>
+                                <th>{% trans "Code 1" %}</th>
+                                <th>{% trans "Code 2" %}</th>
+                                <th>{% trans "Commentaire" %}</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="">
+                        {% for i, value in DATA %}
+                            <tr>
+                                <td>
+                                    <small>{{ value.DateAdd|date('Y-m-d') }} <br>{{ value.DateAdd|date('H:i') }}</small>{#&nbsp;<span class="text text-info glyphicon glyphicon-info-sign" onclick="$('#spanMachine_{{ i }}').tooltip('show')" id="spanMachine_{{ i }}" title="{{ value.NomSecteur }} // {{ value.NomMachine }}"></span>#}
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    <samp>{{ value.NomMembre }}</samp>
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    {% set secteur = value.NomSecteur|split('',2) %}
+                                    <span class="badge tooltip-link" title="{{ value.NomSecteur }}" id="spanSecteur_{{ i }}" onclick="$('#spanSecteur_{{ i }}').tooltip('show')">{{ secteur[0] }}</span>
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    <strong>{{ value.NomMachine }}</strong>
+                                </td>
+                                <td style="vertical-align: middle;" ondblclick="getDossierDeFabPage('{{ session.IP }}','{{ session.PUBLIC_PATH }}','{{ value.IDDossierDeFab }}');">
+                                    <code>{{ value.Dossier }}</code>
+                                </td>
+                                <td style="vertical-align: middle;" class="text text-center">
+                                    {% if ( value.CommentaireDossier != '') %}
+                                        <h4><span class="text text-success glyphicon glyphicon-exclamation-sign tooltip-link" onclick="$('#spanCommentaire_{{ i }}').tooltip('show')" id="spanCommentaire_{{ i }}" title="{{ value.CommentaireDossier }}"></span></h4>
+                                    {% endif %}
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    <em>{{ value.Ref }}</em>
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    <span class="badge">{{ value.Element }}</span>
+                                </td>
+                                <td style="vertical-align: middle;" class="text text-center">
+                                    {% if ( value.CommentaireElement != '') %}
+                                        <h4><span class="text text-success glyphicon glyphicon-warning-sign tooltip-link" onclick="$('#spanCommentaireElement_{{ i }}').tooltip('show')" id="spanCommentaireElement_{{ i }}" title="{{ value.CommentaireElement }}"></span></h4>
+                                    {% endif %}
+                                </td>
+                                <td style="vertical-align: middle;" id="tdFicheQuantite_{{ value.IDFicheDeProd }}">
+                                    {% set Q = value.Quantite %}
+                                    {% if Q > 20000 %}
+                                        {% set label = "label-danger" %}
+                                    {% elseif Q > 20000 %}
+                                        {% set label = "label-warning" %}
+                                    {% elseif Q > 10000 %}
+                                        {% set label = "label-success" %}
+                                    {% elseif Q > 2500 %}
+                                        {% set label = "label-primary" %}
+                                    {% elseif Q > 1000 %}
+                                        {% set label = "label-info" %}
+                                    {% elseif Q < 500 %}
+                                        {% set label = "label-default" %}
+                                    {% else %}
+                                        {% set label = "label-default" %}
+                                    {% endif %}
+                                    <span class="label {{ label }}">{{ value.Quantite }}&nbsp;{% trans "ex" %}</span>
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    {{ value.NomSupport }}
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    {{ value.NomFormat }}
+                                </td>
+                                <td style="vertical-align: middle;" id="tdFicheIDImpression_{{ value.IDFicheDeProd }}">
+                                    {{ value.NomImpression }}
+                                </td>
+                                <td style="vertical-align: bottom;" class="text text-center">
+                                    <ul class="list-inline">{% for k, valeure in DATA_OPTION %}{% if (value.IDFicheDeProd==valeure.IDFicheDeProd) %}<li><kbd>{{ valeure.NomOption }}</kbd></li>{% endif %}{% endfor %}</ul>
+                                </td>
+                                <td style="vertical-align: middle;" id="tdFicheCode1_{{ value.IDFicheDeProd }}">
+                                    {{ DATA_CODE[value.IDFicheDeProd]['NomCodeErreur'][0] }}
+                                    {#{{ dump(DATA_CODE) }}#}
+                                </td>
+                                <td style="vertical-align: middle;" id="tdFicheCode2_{{ value.IDFicheDeProd }}">
+                                    {{ DATA_CODE[value.IDFicheDeProd]['NomCodeErreur'][1] }}
+                                </td>
+                                <td style="vertical-align: middle;" id="tdFicheCommentaire_{{ value.IDFicheDeProd }}">
+                                    {{ value.Commentaire }}
+                                </td>
+                                <td style="vertical-align: middle;" class="text text-center" id="tdUp_{{ value.IDFicheDeProd }}">
+                                    <button class="btn btn-default btn-sm tooltip-link"
+                                            title="{% trans "Editer" %}"
+                                            onmouseover="this.className='btn btn-info btn-sm tooltip-link'"
+                                            onmouseout="this.className='btn btn-default btn-sm tooltip-link'"
+                                            onclick="getModifFicheDeProd({{ value.IDFicheDeProd }})"
+                                            type="button"><span class="glyphicon glyphicon-edit"></span></button>
+                                </td>
+                                <td style="vertical-align: middle;" class="text text-center" hidden="hidden" id="tdSave_{{ value.IDFicheDeProd }}">
+                                    <button
+                                            title="{% trans "Enregistrer" %}"
+                                            id="btnSave_{{ value.IDFicheDeProd }}"
+                                            class="btn btn-success btn-sm tooltip-link"
+                                            onclick="getUpdateFicheDeProd({{ value.IDFicheDeProd }})"
+                                            type="button"><span class="glyphicon glyphicon-save"></span></button>
+                                </td>
+                                <td id="tdRemove" style="vertical-align: middle;" class="text text-center">
+                                    <div hidden="hidden" id="divBtnRemove_{{ value.IDFicheDeProd }}">
+                                        <button disabled
+                                                title="{% trans "Supprimer" %}"
+                                                onmouseover="this.className='btn btn-danger btn-xs tooltip-link'"
+                                                onmouseout="this.className='btn btn-default btn-xs tooltip-link'"
+                                                id="btnRemove_{{ value.IDFicheDeProd }}"
+                                                class="btn btn-default btn-xs tooltip-link"
+                                                onclick="getModalDeleteFicheDeProd({{ value.IDFicheDeProd }});Sel_Mngt({{ value.IDFicheDeProd }},true)"
+                                                type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                                    </div>
+                                </td>
+                                <td hidden="hidden">
+                                    <input type="hidden" id="UpFicheIDSecteur_{{ value.IDFicheDeProd }}" value="{{ value.IDSecteur }}">
+                                    <input type="hidden" id="UpFicheIDMachine_{{ value.IDFicheDeProd }}" value="{{ value.IDMachine }}">
+                                    <input type="hidden" id="UpFicheQuantite_{{ value.IDFicheDeProd }}" value="{{ value.Quantite }}">
+                                    <input type="hidden" id="UpFicheIDImpression_{{ value.IDFicheDeProd }}" value="{{ value.IDImpression }}">
+                                    <input type="hidden" id="UpFicheCode1_{{ value.IDFicheDeProd }}" value="{{ DATA_CODE[value.IDFicheDeProd]['IDCodeErreur'][0] }}">
+                                    <input type="hidden" id="UpFicheCode2_{{ value.IDFicheDeProd }}" value="{{ DATA_CODE[value.IDFicheDeProd]['IDCodeErreur'][1] }}">
+                                    <input type="hidden" id="UpFicheCommentaire_{{ value.IDFicheDeProd }}" value="{{ value.Commentaire }}">
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "elements/selectPagination.twig" %}
+    {% endif %}
+
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}

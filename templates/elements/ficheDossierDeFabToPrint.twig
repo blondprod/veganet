@@ -1,0 +1,231 @@
+<!-- ficheDossierDeFabToPrint.twig -->
+{#<head>#}
+    {#<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">#}
+{#</head>#}
+<body id="SuiviDossierDeFab">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Dossier -->
+            <div class="col-md-2 col-xs-3">
+                <h1 class="lead"><small>{% trans "Dossier" %}</small><br/><strong><kbd>{{ DATA_DOSSIER[0].Dossier }}</kbd></strong></h1>
+            </div>
+            <!-- Date expedition -->
+            <div class="col-md-2 col-xs-3">
+                <h1 class="lead"><small>{% trans "Expédition" %}</small><br/><strong class="text text-danger"><code>{{ DATA_DOSSIER[0].DateExpedition|date('d/m/Y') }}</code></strong></h1>
+            </div>
+            <!-- Code barre -->
+            <div class="col-md-2 col-md-offset-4 col-xs-3">
+                <br/><img class="img-thumbnail" style="width: 250px;" src="img/barcode/dossier/dossier-{{ DATA_DOSSIER[0].IDDossierDeFab }}.png">
+            </div>
+            <!-- QRcode -->
+            <div class="col-md-2 col-xs-3">
+                <br/><img class="pull-right img-thumbnail" style="width: 110px;" src="img/qrcode/dossier/dossier-{{ DATA_DOSSIER[0].IDDossierDeFab }}.png">
+            </div>
+            <!-- Ref -->
+            {% if (DATA_DOSSIER[0].Ref)!='' %}
+            <div class="col-md-4 col-sm-6 col-xs-6">
+                <h2 class="lead"><small>{% trans "Réference" %}</small><br/><strong>{{ DATA_DOSSIER[0].Ref }}</strong></h2>
+            </div>
+            {% endif %}
+            <!-- Commentaire -->
+            {% if (DATA_DOSSIER[0].Commentaire)!='' %}
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <h2 class="lead"><small>{% trans "Commentaire" %}</small><br/><strong>{{ DATA_DOSSIER[0].Commentaire }}</strong></h2>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            {% endif %}
+            <!-- Date / membre -->
+            <div class="col-md-3 col-sm-3 col-xs-4 pull-right">
+                <!-- Add -->
+                <dl class="text text-right">
+                    <dt><code>{% trans "Ouverture" %}</code></dt>
+                    <dd><strong>{{ DATA_DOSSIER[0].MembreAdd }}</strong> {% trans "le" %} <em>{{ DATA_DOSSIER[0].DateAdd|date('d/m/Y') }}</em></dd>
+                </dl>
+                <!-- Maj -->
+                {% if (DATA_DOSSIER[0].DateMaj != '') %}
+                <dl class="text text-right">
+                    <dt><code>{% trans "Maj" %}</code></dt>
+                    <dd><strong>{{ DATA_DOSSIER[0].MembreMaj }}</strong> {% trans "le" %} <em>{{ DATA_DOSSIER[0].DateMaj|date('d/m/Y') }}</em></dd>
+                </dl>
+                {% endif %}
+            </div>
+            <!-- nb options -->
+            {% if (DATA_DOSSIER[0].NbOption>'0') %}
+                <div class="col-md-2 col-xs-3">
+                    <blockquote>
+                        <p>{% trans "Options" %}</p>
+                        {% for i, item in DATA_DOSSIER_TL_OPTION %}
+                            <footer>{{ item.Nom }}</footer>
+                        {% endfor %}
+                    </blockquote>
+                </div>
+            {% endif %}
+            <!-- Quantite -->
+            <div class="col-md-2 col-xs-2">
+                <dl>
+                    <dt>{% trans "Quantite" %}</dt>
+                    <dd class="text text-info">{{ DATA_DOSSIER[0].Quantite }} {% trans "ex" %}</dd>
+                </dl>
+            </div>
+            <!-- Amalgame / pliable -->
+            <div class="col-md-3 col-xs-4">
+                <!-- Amalgame -->
+                {% if (DATA_DOSSIER[0].EstAmalgame=='1') %}
+                    <p class=""><strong>{% trans "Amalgame" %}</strong></p>
+                {% endif %}
+                <!-- pliable -->
+                {% if (DATA_DOSSIER[0].EstPliable=='1') %}
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <dl>
+                                <dt>{% trans "Ouvert" %}</dt>
+                                <dd class="text text-info visible-lg visible-md">{{ DATA_DOSSIER[0].LargeurOuvert }} x {{ DATA_DOSSIER[0].HauteurOuvert }} {% trans "mm" %}</dd>
+                                <dd class="text text-info visible-xs visible-sm">{{ DATA_DOSSIER[0].LargeurOuvert }} x {{ DATA_DOSSIER[0].HauteurOuvert }}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <dl>
+                                <dt>{% trans "Ferme" %}</dt>
+                                <dd class="text text-info visible-md visible-lg">{{ DATA_DOSSIER[0].LargeurFerme }} x {{ DATA_DOSSIER[0].HauteurFerme }} {% trans "mm" %}</dd>
+                                <dd class="text text-info visible-xs visible-sm">{{ DATA_DOSSIER[0].LargeurFerme }} x {{ DATA_DOSSIER[0].HauteurFerme }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- fiche -->
+                {% if (DATA_DOSSIER[0].EstPliable=='0' and DATA_DOSSIER[0].EstAmalgame=='0') %}
+                    <dl>
+                        <dt>{% trans "Dimensions" %}</dt>
+                        <dd class="text text-info">{{ DATA_DOSSIER[0].LargeurOuvert }} x {{ DATA_DOSSIER[0].HauteurOuvert }} {% trans "mm" %}</dd>
+                    </dl>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+
+        <!-- valdation barcode -->
+        {#<div class="text text-center">#}
+            {#<img class="img-thumbnail" style="width: 250px;" src="img/barcode/well.png">#}
+        {#</div>#}
+        {#<hr>#}
+
+        <!-- COMPOSITION -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="table">
+                    <p class="lead">{% trans "Composition" %}</p>
+                    <table class="table table-hover table-condensed">
+                        {#<thead>#}
+                        <tr class="small">
+                            <th>{% trans "Élément" %}</th>
+                            <th>{% trans "Quantité" %}</th>
+                            <th>{% trans "Support" %}</th>
+                            <th>{% trans "Format" %}</th>
+                            <th>{% trans "Options" %}</th>
+                            <th>{% trans "Commentaire" %}</th>
+                            <th></th>
+                        </tr>
+                        {#</thead>#}
+                        <tbody>
+                        {% for j, object in DATA_DOSSIER_TL_ELEMENT %}
+                        <tr class="small {% if (j is even) %}success{% else %}info{% endif %}">
+                            <td style="vertical-align: middle"><span class="badge">{{ object.NomElement }}</span></td>
+                            <td style="vertical-align: middle">{{ object.QuantiteElement }}&nbsp;{% trans "ex" %}</td>
+                            <td style="vertical-align: middle">{{ object.NomSupport }}</td>
+                            <td style="vertical-align: middle">{{ object.NomFormat }}</td>
+                            <td style="vertical-align: middle">
+                                {% for m, itm in DATA_DOSSIER_TL_ELEMENT_TL_OPTION[j] %}
+                                    {% if (itm.Nom!='') %}<kbd>{{ itm.Nom }}</kbd>{% endif %}
+                                {% endfor %}
+                            </td><td style="vertical-align: middle">{% if (object.CommentaireElement!='') %}<code>{{ object.CommentaireElement }}</code>{% endif %}</td>
+                            <td style="width: 260px;vertical-align: middle" class="text text-center">
+                                <img class="img-thumbnail" style="width: 250px;" src="img/barcode/dossier/dossiertlement-{{ object.IDDossierDeFab_tl_element }}.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8">
+                                <table class="table table-hover table-condensed">
+                                    <tr class="{% if (j is even) %}success{% else %}info{% endif %}">
+                                        {% for n, itm in DATA_DOSSIER_TL_ELEMENT_TL_MACHINE[j] %}
+                                            <td>{% if (itm.NomMachine!='') %}&nbsp;<span class="label label-default">{{ itm.NomMachine }}</span>{% endif %}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr class="{% if (j is even) %}success{% else %}info{% endif %}">
+                                        {% for m, itms in DATA_DOSSIER_TL_ELEMENT_TL_MACHINE[j] %}
+                                            <td>{% if (itms.NomImpression!='') %}&nbsp;<span class="label label-default">{{ itms.NomImpression }}</span>{% endif %}</td>
+                                            {#<td>{% if (itms.Nom!='') %}&nbsp;<kbd>{{ itms.Nom }}</kbd>{% endif %}</td>#}
+                                        {% endfor %}
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- PRODUCTION -->
+        {% if DATA_FICHE|length > '0' %}
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="lead">{% trans "Production" %}</p>
+                {% for k, value in DATA_FICHE %}
+                    {% if (DATA_FICHE[k].NomSecteur!=DATA_FICHE[k+1].NomSecteur) %}
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">{{ value.NomSecteur }}</div>
+                        <!-- Table -->
+                        <div class="table">
+                            <table class="table table-hover table-condensed table-bordered">
+                                <!-- Table head -->
+                                {#<thead>#}
+                                <tr class="small">
+                                    <th style="width: 10%;">{% trans "Date" %}</th>
+                                    <th>{% trans "Membre" %}</th>
+                                    {#<th>{% trans "Secteur" %}</th>#}
+                                    <th>{% trans "Machine" %}</th>
+                                    <th>{% trans "Element" %}</th>
+                                    <th>{% trans "Impression" %}</th>
+                                    <th>{% trans "Support" %}</th>
+                                    <th>{% trans "Format" %}</th>
+                                    <th>{% trans "Quantite" %}</th>
+                                    <th>{% trans "Commentaire" %}</th>
+                                    <th>{% trans "Code1" %}</th>
+                                    <th>{% trans "Code2" %}</th>
+                                </tr>
+                                {#</thead>#}
+                                <!-- Table body -->
+                                <tbody>
+                                {% for m, fiche in DATA_FICHE %}
+                                    {% if (DATA_FICHE[k].NomSecteur == fiche.NomSecteur) %}
+                                        <tr class="small">
+                                            <td>{{ fiche.DateAdd|date('d/m/Y H:i:s') }}</td>
+                                            <td>{{ fiche.MembreAdd }}</td>
+                                            {#<td>{{ fiche.NomSecteur }}</td>#}
+                                            <td>{{ fiche.NomMachine }}</td>
+                                            <td>{{ fiche.NomElement }}</td>
+                                            <td>{{ fiche.NomImpression }}</td>
+                                            <td>{{ fiche.NomSupport }}</td>
+                                            <td>{{ fiche.NomFormat }}</td>
+                                            <td>{{ fiche.Quantite }}&nbsp;{% trans "ex" %}</td>
+                                            <td>{{ fiche.Commentaire }}</td>
+                                            <td>{{ (DATA_FICHE_TL_CODE_ERREUR[m][0].Nom) }}</td>
+                                            <td>{{ (DATA_FICHE_TL_CODE_ERREUR[m][1].Nom) }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>

@@ -1,0 +1,117 @@
+<!-- tableGestionPage.twig -->
+<div class="panel-group" id="accordionPage" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingPage">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
+                <h4 class="panel-title">
+                    {% trans "Pages" %} <span class="badge">{{ data_page|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapsePage" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPage">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_savePage">
+                        <td>
+                            <input type="hidden" id="classPage_add">
+                            <input type="hidden" id="ConstantePage_add">
+                        </td>
+                        <td>
+                            <div id="divNomPage_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomPage_add',this.value.length,3);verifPage();" id="NomPage_add">
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control" id="LanguePage_add">
+
+                            </select>
+                        </td>
+                        <td>
+                            <div id="divOrdrePage_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdrePage_add',this);verifPage();" id="OrdrePage_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocietePage_add">
+                                <select class="form-control" id="SocietePage_add" disabled onchange="checkInputSelect('divSocietePage_add',this.value);verifPage();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center">
+                            <input type="checkbox" id="actifPage_add">
+                        </td>
+                        <td class="text text-center" id="savePage_add">
+                            <button onclick="getInsertPage();" disabled id="btnInsertPage_add"
+                                    class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_page %}
+                        <tr>
+                            <td class="text text-center">
+                                <input type="checkbox" id="chkPage_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)">
+                            </td>
+                            <input type="hidden" id="classPage_{{ data.ID }}" value="{{ data.ClassPage }}">
+                            <input type="hidden" id="ConstantePage_{{ data.ID }}" value="{{ data.ConstantePage }}">
+                            <td>
+                                <div id="divNomPage_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomPage_{{ data.ID }}',this.value.length,3);verifPage({{ data.ID }});" id="NomPage_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" id="LanguePage_{{ data.ID }}" disabled>
+                                    <option>{{ data.Langue }}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div id="divOrdrePage_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdrePage_{{ data.ID }}',this);verifPage({{ data.ID }});" id="OrdrePage_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocietePage_{{ data.ID }}">
+                                    <select class="form-control"  id="SocietePage_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocietePage_{{ data.ID }}',this.value);verifPage({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifPage_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifPage({{ data.ID }});">
+                            </td>
+                            <td class="text text-center"
+                                id="modifPage_{{ data.ID }}">
+                                <button onclick="getSelect('LanguePage_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                                 getSelect('SocietePage_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                                 getModifPage({{ data.ID }});"
+                                        class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </td>
+                            <td class="text text-center"
+                                id="savePage_{{ data.ID }}"
+                                hidden="hidden">
+                                <button onclick="getUpdatePage({{ data.ID }});" disabled id="btnInsertPage_{{ data.ID }}"
+                                        class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

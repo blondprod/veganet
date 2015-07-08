@@ -1,0 +1,108 @@
+<!-- tableGestionSecteur.twig -->
+{#{{ dump(data_secteur) }}#}
+<div class="panel-group" id="accordionSecteur" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSecteur">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSecteur" aria-expanded="true" aria-controls="collapseSecteur">
+                <h4 class="panel-title">
+                    {% trans "Secteurs" %} <span class="badge">{{ data_secteur|length }}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseSecteur" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSecteur">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                    <caption class="lead">{#{{ data_secteur|length }} {% trans "SECTEURS" %}<br/>#}
+                        <button class="btn btn-xs btn-info" title="{% trans "ajouter un secteur de production" %}"
+                                onclick="getSelect('LangueSecteur_add','getListeLangue');
+                                         getSelect('SocieteSecteur_add','getListeSocieteTrad');
+                                         getAdd('tr_saveSecteur');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button class="btn btn-xs btn-info" title="{% trans "Supprimer un secteur de production" %}"
+                                onclick="getDelete('IDSecteur','TBL_SECTEUR');
+                                         collapse('collapseSecteur');"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    </caption>
+                    <!-- TBL HEAD -->
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans "Nom" %}</th>
+                        <th style="width: 27%;">{% trans "Langue" %}</th>
+                        <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
+                        <th style="width: 7%;">{% trans "Actif" %}</th>
+                        <th style="width: 7%;"></th>
+                    </tr>
+                    </thead>
+                    <!-- TBL BODY -->
+                    <tbody>
+                    <tr hidden="hidden" id="tr_saveSecteur">
+                        <td></td>
+                        <td>
+                            <div id="divNomSecteur_add">
+                                <input type="text" class="form-control" onkeyup="checkInputText('divNomSecteur_add',this.value.length,3);verifSecteur();" id="NomSecteur_add">
+                            </div>
+                        </td>
+                        <td><select class="form-control" id="" disabled><option>{% trans "Français" %}</option></select></td>
+                        <td>
+                            <div id="divOrdreSecteur_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreSecteur_add',this);verifSecteur();" id="OrdreSecteur_add" value="1">
+                            </div>
+                        </td>
+                        <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                            <div id="divSocieteSecteur_add">
+                                <select class="form-control"  id="SocieteSecteur_add"  onchange="checkInputSelect('divSocieteSecteur_add',this.value);verifSecteur();">
+                                    <!-- elements/elementsSelect.twig -->
+                                    <option>{{ data.NomSociete }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text text-center" ><input type="checkbox" id="ActifSecteur_add"></td>
+                        <td class="text text-center" id="saveSecteur_add">
+                            <button onclick="getInsertSecteur();" disabled id="btnInsertSecteur_add" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span> </button>
+                        </td>
+                    </tr>
+                    {% for i, data in data_secteur %}
+                        <tr>
+                            <td class="text text-center"><input type="checkbox" id="chk_{{ data.ID }}" onclick="Sel_Mngt({{ data.ID }},this.checked)"></td>
+                            <td>
+                                <div id="divNomSecteur_{{ data.ID }}">
+                                    <input type="text" class="form-control" onkeyup="checkInputText('divNomSecteur_{{ data.ID }}',this.value.length,3);verifSecteur({{ data.ID }});" id="NomSecteur_{{ data.ID }}" disabled value="{{ data.Nom }}">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" id="LangueSecteur_{{ data.ID }}" disabled>
+                                    <option>{{ data.NomLangue }}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div id="divOrdreSecteur_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreSecteur_{{ data.ID }}',this);verifSecteur({{ data.ID }});" id="OrdreSecteur_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                                <div id="divSocieteSecteur_{{ data.ID }}">
+                                    <select class="form-control"  id="SocieteSecteur_{{ data.ID }}"  disabled onchange="checkInputSelect('divSocieteSecteur_{{ data.ID }}',this.value);verifSecteur({{ data.ID }});">
+                                        <!-- elements/elementsSelect.twig -->
+                                        <option>{{ data.NomSociete }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text text-center">
+                                <input type="checkbox" id="ActifSecteur_{{ data.ID }}" disabled {% if(data.EstActif=='1') %}checked="checked"{% endif %} onclick="verifSecteur({{ data.ID }});">
+                            </td>
+                            <td class="text text-center" id="modifSecteur_{{ data.ID }}">
+                                <button onclick="getSelect('LangueSecteur_{{ data.ID }}','getListeLangue','{{ data.IDLangue }}');
+                                                 getSelect('SocieteSecteur_{{ data.ID }}','getListeSocieteTrad','{{ data.IDSociete }}');
+                                                 getModifSecteur({{ data.ID }});" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </td>
+                            <td class="text text-center" id="saveSecteur_{{ data.ID }}" hidden="hidden">
+                                <button onclick="getUpdateSecteur({{ data.ID }});" disabled id="btnInsertSecteur_{{ data.ID }}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-check"></span></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

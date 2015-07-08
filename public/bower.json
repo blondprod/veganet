@@ -1,0 +1,9 @@
+{
+    "name":         "exafab",
+    "dependencies": {
+        "jquery":            "~2.1.0",
+        "bootstrap":         "~3.1.1",
+        "underscore":        "~1.6.0"
+    },
+    "private":      true
+}

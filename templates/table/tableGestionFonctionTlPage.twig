@@ -1,0 +1,36 @@
+<!-- tableGestionFonctionTlPage.twig -->
+<div class="panel-group" id="accordionFonctionTlPage" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFonctionTlPage">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFonctionTlPage" aria-expanded="true" aria-controls="collapseFonctionTlPage">
+                <h4 class="panel-title">
+                    {% trans "Fonctions / Pages" %} <span class="badge">{% trans "liaison" %}</span>
+                </h4>
+            </a>
+        </div>
+        <div id="collapseFonctionTlPage" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFonctionTlPage">
+            <div class="panel-body">
+                <!-- SOCIETE -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
+                    <label class="control-label" for="SelectSocieteFonctionTlPage">{% trans "Societe" %}</label>
+                    <select class="form-control" id="SelectSocieteFonctionTlPage"
+                            onchange="getSelectSocieteTlFonction(this,'SelectFonctionFonctionTlPage');
+                                      getSelectSocieteTlPage(this,'SelectPageFonctionTlPage');">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- MENU -->
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label class="control-label" for="SelectFonctionFonctionTlPage">{% trans "Fonction" %}</label>
+                    <select class="form-control" id="SelectFonctionFonctionTlPage" onchange="getTableFonctionTlPage(this.value,$('#SelectSocieteFonctionTlPage').val());">
+                        <!-- elements/elementsSelect.twig -->
+                    </select>
+                </div>
+                <!-- PAGE -->
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tableFonctionTlPage">
+                    <!-- elements/tableLiaisonFonctionTlPage.twig -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
