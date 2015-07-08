@@ -2,635 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3428df2c-0552-4356-b370-4e8e29f0c0b1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/asc.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/barcode/machine/barcodeMachine-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/barcode/membre/barcodeMembre-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/close.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/desc.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/barcode/dossier/dossier-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/qrcode/dossier/dossier-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/logos/favicon-0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/logos/favicon-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/logos/tmp/favicon-tmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/first.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/folder.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/generic.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/carousel/0/image1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/carousel/0/image2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/carousel/0/image3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/carousel/0/image4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/last.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/logos/logo-0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/logos/logo-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/qrcode/machine/machine-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/qrcode/membre/membre-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locale/fr_FR/LC_MESSAGES/messages.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/next.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/prev.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/barcode/well.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/ext/twig/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/log/2015-05-11.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/log/2015-05-12.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Add.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/And.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Arguments.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Extension/Array.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Array.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Array.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Array.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/AssignName.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/Auth.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/AutoEscape.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/AutoEscape.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Autoloader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Autoloader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/BarCode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/Base.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseAnd.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseOr.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseXor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Block.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Block.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/BlockReference.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/BlockReference.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Body.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Body.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Boolean.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/CHANGELOG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/CONTRIBUTING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Call.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Chain.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Compiler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/CompilerInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Concat.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Conditional.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Constant.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Constant.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Constant.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Middleware/ContentTypes.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/Controller.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Cookies.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Core.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/DBmysql.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/data/Data.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Extension/Debug.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Node/Debug.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/TokenParser/Debug.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Debug.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Filter/Default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Defined.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Div.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Divisibleby.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Do.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Do.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Embed.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Embed.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/EndsWith.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Environment.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Environment.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Equal.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Escaper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Escaper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Even.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExistsLoaderInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/ExportXLS.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Expression.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExpressionParser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Extends.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExtensionInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/ExtensionReference.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FColor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FDrawing.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Filesystem.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Filter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Filter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FilterCallableInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FilterInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Middleware/Flash.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/FloorDiv.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Flush.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Flush.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/For.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/For.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/ForLoop.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/From.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Function.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Function.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Function.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Function.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FunctionCallableInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FunctionInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/GestionDroit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/GestionDroit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Gestion/GestionDroit.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/GestionMembre.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/GestionMembre.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Gestion/GestionMembre.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/GestionPlanning.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/GestionPlanning.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Gestion/GestionPlanning.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/GestionReglage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/GestionReglage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Gestion/GestionReglage.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/GetAttr.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/GrammarInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Greater.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/GreaterEqual.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Hash.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Headers.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Extension/I18n.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/If.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/If.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Import.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Import.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/In.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Include.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Include.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/IntegrationTestCase.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Extension/Intl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/ext/twig/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/LSTable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Less.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/LessEqual.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Lexer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/LexerInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Loader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/LoaderInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Log.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/LogWriter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Macro.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Macro.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Markup.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Matches.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Method.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Method.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Method.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/MethodCall.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Middleware/MethodOverride.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Middleware.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Mod.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Module.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Mul.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Name.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Neg.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Node.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Node.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Node.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeOutputInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/NodeTestCase.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeTraverser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitorInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Not.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/NotEqual.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/NotIn.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Null.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Number.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Odd.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Optimizer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Optimizer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Optional.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Or.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Parent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Parser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ParserInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/Pass.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Pos.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Power.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Middleware/PrettyExceptions.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Print.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/PrintDossierDeFab.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/Production.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/ProductionDossierDeFab.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Production/ProductionDossierDeFab.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/ProductionFicheDeProd.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/ProductionFicheDeProd.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Production/ProductionFicheDeProd.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/Profil.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Profil.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/README.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/README.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/README.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Range.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Request.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Response.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Route.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Router.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Runtime.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/SafeAnalysis.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Sameas.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Sandbox.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Sandbox.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Sandbox.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Sandbox.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/SandboxedModule.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/SandboxedPrint.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityError.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityPolicy.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityPolicyInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/Select.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Middleware/SessionCookie.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Helper/Set.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Set.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Set.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/SetTemp.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleFilter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleFunction.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/SimpleTokenParser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Slim.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/Smarty.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Spaceless.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Spaceless.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Staging.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/StartsWith.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/Stop.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/String.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/StringLoader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Sub.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/SuiviDossierDeFab.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/SuiviDossierDeFab.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Suivi/SuiviDossierDeFab.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/SuiviFicheDeProd.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/SuiviFicheDeProd.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Suivi/SuiviFicheDeProd.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/SuiviPlanning.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/SuiviPlanning.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Suivi/SuiviPlanning.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/SuiviStat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/SuiviStat.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Suivi/SuiviStat.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Switch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Syntax.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/Table_template.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Grammar/Tag.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/TempName.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Template.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TemplateInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TestCallableInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TestInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Extension/Text.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Text.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Token.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserBroker.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserBrokerInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenStream.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/Node/Trans.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/lib/Twig/Extensions/TokenParser/Trans.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/effects/Tween.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/Twig.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/TwigExtension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Use.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Util.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/Utilisateur.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/View.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/manipulation/_evalUrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/abs.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/data/accepts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/core/access.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/addGetHookIf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/advanced.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/advanced_legacy.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/event/alias.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/exports/amd.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/effects/animatedSelector.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/api.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/arr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/doc/array.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/attributes/attr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/attribute.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/attributes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/autoescape.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/autoload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcodeGen.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/batch.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/block.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/block.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/blond.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/cQRCodeGen.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/callbacks.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/capitalize.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/carousel.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/class2type.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/attributes/classes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/codabar.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code11.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code128.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code39.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code93.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/coding_standards.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/concat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/config.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/ext/twig/config.m4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/ext/twig/config.w32" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/constant.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/constant.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/convert_encoding.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/var/cssExpand.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/curCSS.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/cycle.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/data.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/data/var/data_priv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/data/var/data_user.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/date.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/date.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/date_modify.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/datepicker.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/daterangepicker-bs3.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/daterangepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/daterangepicker.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/doc/debug.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/default.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/defaultDisplay.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/deferred.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/defined.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/queue/delay.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/deprecated.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/deprecated.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/dimensions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/divisibleby.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/do.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/dump.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean13.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean8.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/effects.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/elementsJs.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/elementsMenu.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/elementsSelect.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/embed.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/empty.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/escape.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/even.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/event.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/extends.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/fbx.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/ficheDossierDeFabToPrint.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/filter.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/traversing/findFilter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/first.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/flush.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/foot.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/for.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/format.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/from.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.baseUrl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.siteUrl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.urlFor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/var/getStyles.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/exports/global.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/hasOwn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/head.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/hiddenVisibleSelectors.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/doc/i18n.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/i25.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/if.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/import.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/include.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/include.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/log/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/doc/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/indexOf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/core/init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/installation.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/internals.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/doc/intl.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/intro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/intro.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/var/isHidden.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/iterable.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/join.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/dist/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/dist/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/dist/jquery.min.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/jquery.tablesorter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/jquery.tablesorter.pager.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/jquery.tablesorter.pager.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/json_encode.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax/jsonp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/keys.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/labox-structure+data.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/labox-structure-only.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/last.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/length.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/listeElementsDossiersDeFab.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax/load.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/login.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/lower.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/macro.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/manipulation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/max.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/merge.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locale/fr_FR/LC_MESSAGES/messages.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/min.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/modalEditDossierDeFab.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/modalPlanning.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/moment.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/moment.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/msi.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/navbar.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/nl2br.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax/var/nonce.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/null.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/number_format.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/odd.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/offset.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/othercode.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/outro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/parent.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/core/parseHTML.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax/parseJSON.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax/parseXML.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/ext/twig/php_twig.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/slim/slim/phpunit.xml.dist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/phpunit.xml.dist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/phpunit.xml.dist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/pnum.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/postit.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/postnet.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/attributes/prop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/push.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/queue.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/random.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/range.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/raw.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/manipulation/var/rcheckableType.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/core/ready.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/recipes.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/replace.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/reverse.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/var/rmargin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/traversing/var/rneedsContext.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/rnotwhite.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/var/rnumnonpx.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/round.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax/var/rquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/core/var/rsingleTag.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/s25.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tests/sameas.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/sandbox.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/selectPagination.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/selector-native.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/selector-sizzle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/selector.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/serialize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/set.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/sizzle/dist/sizzle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/sizzle/dist/sizzle.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/sizzle/dist/sizzle.min.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/slice.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/slice.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/sort.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/source.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/spaceless.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/split.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/striptags.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/strundefined.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/attributes/support.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/support.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/event/support.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/manipulation/support.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/support.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/css/swap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionCodeErreur.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionElement.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionFonction.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionFonctionTlPage.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionFormat.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionGroupe.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionGroupeTlFonction.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionGroupeTlMenu.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionImpression.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionLangue.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionMachine.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionMembre.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionMenu.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionMenuTlPage.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionOption.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionPage.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionPlanning.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionSecteur.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionSecteurTlCodeErreur.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionSecteurTlImpression.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionSecteurTlOption.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionSociete.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionSupport.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableGestionSupportTlFormat.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/tableLiaisonFonctionTlPage.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/tableLiaisonGroupeTlFonction.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/tableLiaisonGroupeTlMenu.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/tableLiaisonMenuTlPage.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/tableLiaisonSecteurTlCodeErreur.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/tableLiaisonSecteurTlImpression.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/tableLiaisonSecteurTlOption.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/tableLiaisonSupportTlFormat.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableProductionFicheDeProd.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableSuiviPlanning.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/table/tableSuiviStat.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/functions/template_from_string.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/templates.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/extensions/doc/text.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/carousel/0/text1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/title.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/toString.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/traversing.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/var/trim.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/trim.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/ext/twig/twig.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/twig.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upca.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upce.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext2.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext5.barcode.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/upper.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/filters/url_encode.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/use.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/attributes/val.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/veganet.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/twig/twig/doc/tags/verbatim.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/welcome.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/wrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower_components/jquery/src/ajax/xhr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/BarCode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/BarCode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FColor.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FColor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FDrawing.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FDrawing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/LSTable.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/LSTable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/README.md" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/Smarty.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/Smarty.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/Table_template.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/Table_template.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcodeGen.php" afterPath="$PROJECT_DIR$/public/barcodeGen.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/cQRCodeGen.php" afterPath="$PROJECT_DIR$/public/cQRCodeGen.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/codabar.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/codabar.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code11.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code11.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code128.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code128.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code39.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code39.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code93.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code93.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean13.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean13.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean8.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean8.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.baseUrl.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.baseUrl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.siteUrl.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.siteUrl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.urlFor.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.urlFor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/i25.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/i25.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/index.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/jquery.tablesorter.js" afterPath="$PROJECT_DIR$/public/js/jquery.tablesorter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/jquery.tablesorter.pager.css" afterPath="$PROJECT_DIR$/public/css/jquery.tablesorter.pager.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/jquery.tablesorter.pager.js" afterPath="$PROJECT_DIR$/public/js/jquery.tablesorter.pager.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/msi.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/msi.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/othercode.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/othercode.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/postnet.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/postnet.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/s25.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/s25.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upca.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upca.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upce.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upce.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext2.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext2.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext5.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext5.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="veganet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -657,6 +65,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
@@ -694,40 +109,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veganet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veganet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veganet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veganet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veganet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Default">
           <PATH>
@@ -757,6 +138,26 @@
         </subPane>
         <subPane subId="Changed Files" />
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veganet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veganet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veganet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -771,6 +172,22 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="260" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="262" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="266" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1060" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="260" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="262" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="266" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1060" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -797,10 +214,16 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="7446e350-6d56-486c-a5af-58eeb7056597" server_name="imac-home">
       <method />
     </configuration>
     <list size="0" />
@@ -813,33 +236,41 @@
       <option name="number" value="Default" />
       <updated>1436383868986</updated>
     </task>
+    <task id="LOCAL-00001" summary="1st commit">
+      <created>1436384247972</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1436384247972</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1130" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25772098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -857,6 +288,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="1st commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="1st commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -867,7 +300,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1012">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,6 +307,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15718563" vertical-offset="0" max-vertical-offset="668">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.015306123" vertical-offset="0" max-vertical-offset="980">
+          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3120">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7535497" vertical-offset="1729" max-vertical-offset="3120">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

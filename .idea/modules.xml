@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/labox.iml" filepath="$PROJECT_DIR$/.idea/labox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/veganet.iml" filepath="$PROJECT_DIR$/.idea/veganet.iml" />
     </modules>
   </component>
 </project>

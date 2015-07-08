@@ -1,2 +1,2 @@
-# labox
-MVC PHP / MySQL
+# VegaNet
+MVC PHP / MySQL / CSS / TWIG / JS
