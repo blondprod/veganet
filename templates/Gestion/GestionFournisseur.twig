@@ -1,0 +1,808 @@
+<!-- GestionFournisseur.twig -->
+{#<script type="text/javascript" src="js/SuiviReclame.js"></script>#}
+
+{% if(session.Classe[constant('fbx\\Fab\\GestionFournisseur::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1' %}
+    <body id="SuiviReclame"
+          onload="getMenu('navBarDyna');
+                  document.title= '{% trans "Fournisseurs" %} // {{ session.Slogan }}';
+            ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron visible-lg visible-md" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divJumbotron">
+                <div class="alert alert-block well fade in">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1>{% trans "Fournisseurs" %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid paddingJumbotron visible-sm visible-xs" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="panel-group" id="accordionSearch" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSearch">
+                    <h4 class="panel-title">
+                        <span id="collapse" hidden="hidden" class="glyphicon glyphicon-cog" onclick="$('.collapse').collapse('toggle');" onmouseover="$(this).tooltip('show');" title="{% trans "Déployer" %}"></span>&nbsp;
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                        {% trans "Recherche" %}
+                    </a>
+                    </h4>
+                </div>
+                <div id="collapseSearch" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSearch">
+                    <div class="panel-body">
+                        <div class="row">
+                            <form class="form-group" role="form" method="POST" name="search" action="GestionFournisseur" id="formGestionFournisseur">
+                                <input type="hidden" name="action" value="getDataFournisseur">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <!-- entreprise -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="Entreprise">{% trans "Entreprise" %}</label>
+                                            <input type="text" class="form-control" id="Entreprise"
+                                                   placeholder="{% trans "Nom" %}" name="Entreprise" title="{% trans "Chercher avec le nom" %}"
+                                                   value="{{ OUT.Entreprise }}">
+                                        </div>
+                                        <!-- CodeClient -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="CodeClient">{% trans "Code client" %}</label>
+                                            <input type="text" class="form-control" id="CodeClient"
+                                                   placeholder="{% trans "Code" %}" name="CodeClient" title="{% trans "Chercher avec le code client" %}"
+                                                   value="{{ OUT.CodeClient }}">
+                                        </div>
+                                        <!-- Submit -->
+                                        <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                                            <label class="control-label" for="btnSearch">&nbsp;</label>
+                                            <button class="btn btn-primary form-control" type="submit" id="btnSearch">{#{% trans "Chercher" %}#}<span class="glyphicon glyphicon-search"></span> </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- SIDEBAR BTN -->
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 sidebar text text-center">
+                <ul class="nav nav-sidebar">
+                    {#<li><a href="#" onclick=""><span data-placement="bottom" title="{% trans "Modifier" %}" class="glyphicon glyphicon-pencil tooltip-link"></span></a></li>#}
+                    <li><a href="#" onclick="getSelect('SelectTypeFournisseurModal','getListeTypeFournisseurTrad','{{ OUT.SelectReclameEtat }}');$('#add').modal('show');"><span data-placement="bottom" title="{% trans "Nouveau" %}" class="glyphicon glyphicon-plus-sign tooltip-link"></span></a></li>
+                    {#<li><a href="#" onclick=""><span data-placement="bottom" title="{% trans "Supprimer" %}" class="glyphicon glyphicon-minus-sign tooltip-link"></span></a></li>#}
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href=""><span title="{% trans "Recharger" %}" class="glyphicon glyphicon-refresh tooltip-link"></span></a></li>
+                </ul>
+            </div>
+
+            <!-- DATA -->
+            {% if (DATA_FOURNISSEUR|length>0) %}
+            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 main">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="tablesorter">
+                            <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i , itm in DATA_FOURNISSEUR %}
+                            <tr>
+                                <td>
+                                    <div class="panel-group" id="accordion_{{ itm.IDFournisseur }}" role="tablist" aria-multiselectable="true">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="heading_{{ itm.IDFournisseur }}">
+                                                <a data-toggle="collapse" data-parent="#_{{ itm.IDFournisseur }}" href="#collapse_{{ itm.IDFournisseur }}" aria-expanded="true" aria-controls="collapse_{{ itm.IDFournisseur }}">
+                                                    <h4 class="panel-title">{{ itm.Nom }}</h4></a>
+                                            </div>
+                                            <div id="collapse_{{ itm.IDFournisseur }}" class="panel-collapse collapse {#in#}" role="tabpanel" aria-labelledby="heading1">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="container-fluid">
+                                                            <!-- Fournisseur -->
+                                                            <div class="panel panel-primary">
+                                                                <div class="panel-heading">
+                                                                    <h3 class="panel-title"><span onmouseover="$(this).tooltip('show')" class="{% if (itm.DateMaj != '') %}text-danger{% endif %} glyphicon glyphicon-cloud" title="{% trans "Ajouté par" %} {{ itm.MembreAdd }} {% trans "le" %} {{ itm.DateAdd|date("d/m/Y à H:i") }}"></span>&nbsp;&nbsp;{% trans "Fournisseur" %}</h3>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <!-- nom -->
+                                                                    <div id="divEntreprise_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="Entreprise_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez le nom du fournisseur" %}">{% trans "Nom" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Entreprise_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Nom" %}" name="Entreprise_{{ itm.IDFournisseur }}"
+                                                                                   onkeyup="checkInputText('divEntreprise_{{ itm.IDFournisseur }}',this.value.length,3);"
+                                                                                   title="{% trans "Entrez le nom du fournisseur" %}" disabled value="{{ itm.Nom }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- adresse Entreprise -->
+                                                                    <div id="divAdresse1_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                                                            <label class="control-label" for="Adresse1_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez l'adresse du fournisseur" %}">{% trans "Adresse" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Adresse1_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Rue" %}" name="Adresse1_{{ itm.IDFournisseur }}"
+                                                                                   onkeyup="checkInputText('divAdresse1_{{ itm.IDFournisseur }}',this.value.length,3);"
+                                                                                   title="{% trans "Entrez l'adresse du fournisseur" %}" disabled value="{{ itm.Adresse1 }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="divAdresse2_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                                                            <label class="control-label" for="Adresse2_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un complément d'adresse" %}">&nbsp;</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Adresse2_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Complément" %}" name="Adresse2_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un complément d'adresse" %}" disabled value="{{ itm.Adresse2 }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Code postal -->
+                                                                    <div id="divCode_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="Code_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un code postal" %}">{% trans "Code postal" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Code_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "xxxxx" %}" name="Code_{{ itm.IDFournisseur }}"
+                                                                                   onkeyup="checkInputNumber('divCode',this);"
+                                                                                   title="{% trans "Entrez un code postal" %}" disabled value="{{ itm.CodePostal }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Ville -->
+                                                                    <div id="divVille_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="Ville_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un nom de ville" %}">{% trans "Ville" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Ville_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Nom" %}" name="Ville_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un nom de ville" %}" disabled value="{{ itm.Ville }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Téléphone -->
+                                                                    <div id="divTelephone_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="Telephone_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un numéro de téléphone" %}">{% trans "Téléphone" %}</label>
+                                                                            <input type="tel" class="form-control tooltip-link" data-placement="bottom" id="Telephone_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "xx.xx.xx.xx.xx" %}" name="Telephone_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un numéro de téléphone" %}" disabled value="{{ itm.Telephone }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Fax -->
+                                                                    <div id="divFax_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="Fax_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un numéro de fax" %}">{% trans "Fax" %}</label>
+                                                                            <input type="tel" class="form-control tooltip-link" data-placement="bottom" id="Fax_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "xx.xx.xx.xx.xx" %}" name="Fax_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un numéro de Fax" %}" disabled value="{{ itm.Fax }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Mail -->
+                                                                    <div id="divMail_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                                                            <label class="control-label" for="Mail_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez une adresse email" %}">{% trans "Mail" %}</label>
+                                                                            <input type="email" class="form-control tooltip-link" data-placement="bottom" id="Mail_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "xx@xx.xx" %}" name="Mail_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez une adresse email" %}" disabled value="{{ itm.Mail }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Certification -->
+                                                                    <div id="divCertification_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="Certification_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un nom de certification" %}">{% trans "Certification" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Certification_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Nom" %}" name="Certification_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un nom de certification" %}" disabled value="{{ itm.Certification }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Activite -->
+                                                                    <div id="divActivite_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="Activite_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un type de fourniture" %}">{% trans "Activité" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Activite_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Nom" %}" name="Activite_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un type de fourniture" %}" disabled value="{{ itm.Activite }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- CodeClient -->
+                                                                    <div id="divCodeClient_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="CodeClient_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez le code client" %}">{% trans "Code client" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="CodeClient_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Code" %}" name="CodeClient_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez le code client" %}" disabled value="{{ itm.CodeClient }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- TypeFournisseur -->
+                                                                    <div id="divTypeFournisseur_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                                                            <label class="control-label" for="SelectTypeFournisseur_{{ itm.IDFournisseur }}">&nbsp;</label>
+                                                                            <select id="SelectTypeFournisseur_{{ itm.IDFournisseur }}" class="form-control" name="IDTypeFournisseur_{{ itm.IDFournisseur }}" disabled>
+                                                                                <option>{{ itm.NomFournisseurType }}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <input type="hidden" id="IDTypeFournisseur_{{ itm.IDFournisseur }}" value="{{ itm.IDFournisseurType }}">
+                                                                    <!-- CategorieFournisseur -->
+                                                                    <div id="divCategorieFournisseur1_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                                                            <label class="control-label" for="CategorieFournisseur1_{{ itm.IDFournisseur }}">{% trans "Fournisseur" %}</label>
+                                                                            <div class="">
+                                                                                <input type="checkbox" id="CategorieFournisseur1_{{ itm.IDFournisseur }}" name="CategorieFournisseur1_{{ itm.IDFournisseur }}" {% if (itm.EstFournisseur=="1") %}checked{% endif %} disabled>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="divCategorieFournisseur2_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                                                            <label class="control-label" for="CategorieFournisseur2_{{ itm.IDFournisseur }}">{% trans "Sous-traitant" %}</label>
+                                                                            <div class="">
+                                                                                <input type="checkbox" id="CategorieFournisseur2_{{ itm.IDFournisseur }}" name="CategorieFournisseur2_{{ itm.IDFournisseur }}" {% if (itm.EstSousTraitant=="1") %}checked{% endif %} disabled>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="divCategorieFournisseur3_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                                                            <label class="control-label" for="CategorieFournisseur3_{{ itm.IDFournisseur }}">{% trans "Préstataire" %}</label>
+                                                                            <div class="">
+                                                                                <input type="checkbox" id="CategorieFournisseur3_{{ itm.IDFournisseur }}" name="CategorieFournisseur3_{{ itm.IDFournisseur }}" {% if (itm.EstPrestataire=="1") %}checked{% endif %} disabled>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Contact -->
+                                                            <div class="panel panel-primary">
+                                                                <div class="panel-heading">
+                                                                    <h3 class="panel-title"><span class="{% if (itm.DateMaj != '') %}text-danger{% endif %} glyphicon glyphicon-user"{% if (itm.DateMaj != '') %} onmouseover="$(this).tooltip('show')" title="{% trans "Modifié par" %} {{ itm.MembreMaj }} {% trans "le" %} {{ itm.DateMaj|date("d/m/Y à H:i") }}"{% endif %}></span>&nbsp;&nbsp;{% trans "Contact" %}</h3>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <!-- nom -->
+                                                                    <div id="divNomContact_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-4">
+                                                                            <label class="control-label" for="NomContact_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un nom" %}">{% trans "Nom" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="NomContact_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Nom" %}" name="NomContact_{{ itm.IDFournisseur }}"
+                                                                                   onkeyup="checkInputText('divNomContact',this.value.length,3);"
+                                                                                   title="{% trans "Entrez un nom" %}" disabled value="{{ itm.ContactNom }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Prénom -->
+                                                                    <div id="divPrenomContact_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-4">
+                                                                            <label class="control-label" for="PrenomContact_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un prénom" %}">{% trans "Prénom" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="PrenomContact_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Prénom" %}" name="PrenomContact_{{ itm.IDFournisseur }}"
+                                                                                   onkeyup="checkInputText('divPrenomContact',this.value.length,3);"
+                                                                                   title="{% trans "Entrez un prénom" %}" disabled value="{{ itm.ContactPrenom }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Fonction -->
+                                                                    <div id="divFonctionContact_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                                                            <label class="control-label" for="FonctionContact_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez une fonction" %}">{% trans "Fonction" %}</label>
+                                                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="FonctionContact_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "Titre" %}" name="FonctionContact_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez une fonction" %}" disabled value="{{ itm.ContactFonction }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Téléphone -->
+                                                                    <div id="divTelephoneContact_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                                                            <label class="control-label" for="TelephoneContact_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un numéro de téléphone" %}">{% trans "Téléphone" %}</label>
+                                                                            <input type="tel" class="form-control tooltip-link" data-placement="bottom" id="TelephoneContact_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "xx.xx.xx.xx.xx" %}" name="TelephoneContact_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez un numéro de téléphone" %}" disabled value="{{ itm.ContactTelephone }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Mail -->
+                                                                    <div id="divMailContact_{{ itm.IDFournisseur }}">
+                                                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                                                            <label class="control-label" for="MailContact_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez une adresse email" %}">{% trans "Mail" %}</label>
+                                                                            <input type="email" class="form-control tooltip-link" data-placement="bottom" id="MailContact_{{ itm.IDFournisseur }}"
+                                                                                   placeholder="{% trans "xx@xx.xx" %}" name="MailContact_{{ itm.IDFournisseur }}"
+                                                                                   title="{% trans "Entrez une adresse email" %}" disabled value="{{ itm.ContactMail }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br/>
+                                                            <!-- BTNs -->
+                                                            <div class="text-right">
+                                                                <span id="btnAnnul_{{ itm.IDFournisseur }}" hidden="hidden">
+                                                                    <button onclick="getAnnul({{ itm.IDFournisseur }});" class="btn btn-default">{% trans "Annuler" %}</button>&nbsp;
+                                                                </span>
+                                                                <span id="btnSaved_{{ itm.IDFournisseur }}" hidden="hidden">
+                                                                    <button onclick="getSave({{ itm.IDFournisseur }});" class="btn btn-success">{% trans "Enregistrer" %}</button>&nbsp;
+                                                                </span>
+                                                                <span id="btnModif_{{ itm.IDFournisseur }}">
+                                                                    <button onclick="getModif({{ itm.IDFournisseur }});" class="btn btn-warning">{% trans "Modifier" %}</button>&nbsp;
+                                                                </span>
+                                                                <span id="btnSuppr_{{ itm.IDFournisseur }}" hidden="hidden">
+                                                                    <button onclick="getDelete({{ itm.IDFournisseur }});" class="btn btn-danger">{% trans "Supprimer" %}</button>&nbsp;
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+{#{{ dump(DATA_FOURNISSEUR) }}#}
+    </div>
+
+    {% if (DATA_FOURNISSEUR|length>0) %}{% include "elements/selectPagination.twig" %}{% endif %}
+
+    <script type="text/javascript">
+        function getModif(id)
+        {
+            var IDFournisseurType = $('#IDTypeFournisseur_'+id+'').val();
+            getSelect('SelectTypeFournisseur_'+id+'','getListeTypeFournisseurTrad',''+IDFournisseurType+'');
+
+            $('#btnAnnul_'+id+'').prop("hidden",false);
+            $('#btnSaved_'+id+'').prop("hidden",false);
+            $('#btnSuppr_'+id+'').prop("hidden",false);
+            $('#btnModif_'+id+'').prop("hidden",true);
+
+            $('#Entreprise_'+id+'').prop("disabled",false);
+            $('#Adresse1_'+id+'').prop("disabled",false);
+            $('#Adresse2_'+id+'').prop("disabled",false);
+            $('#Code_'+id+'').prop("disabled",false);
+            $('#Ville_'+id+'').prop("disabled",false);
+            $('#Telephone_'+id+'').prop("disabled",false);
+            $('#Fax_'+id+'').prop("disabled",false);
+            $('#Mail_'+id+'').prop("disabled",false);
+            $('#Certification_'+id+'').prop("disabled",false);
+            $('#Activite_'+id+'').prop("disabled",false);
+            $('#CodeClient_'+id+'').prop("disabled",false);
+            $('#SelectTypeFournisseur_'+id+'').prop("disabled",false);
+            $('#CategorieFournisseur1_'+id+'').prop("disabled",false);
+            $('#CategorieFournisseur2_'+id+'').prop("disabled",false);
+            $('#CategorieFournisseur3_'+id+'').prop("disabled",false);
+
+            $('#NomContact_'+id+'').prop("disabled",false);
+            $('#PrenomContact_'+id+'').prop("disabled",false);
+            $('#FonctionContact_'+id+'').prop("disabled",false);
+            $('#TelephoneContact_'+id+'').prop("disabled",false);
+            $('#MailContact_'+id+'').prop("disabled",false);
+        }
+
+        function getSave(id)
+        {
+            $('#btnAnnul_'+id+'').prop("hidden",true);
+            $('#btnSaved_'+id+'').prop("hidden",true);
+            $('#btnSuppr_'+id+'').prop("hidden",true);
+            $('#btnModif_'+id+'').prop("hidden",false);
+
+            var entreprise = $('#Entreprise_'+id+'');
+            var Adresse1 = $('#Adresse1_'+id+'');
+            var Adresse2 = $('#Adresse2_'+id+'');
+            var Code = $('#Code_'+id+'');
+            var Ville = $('#Ville_'+id+'');
+            var Telephone = $('#Telephone_'+id+'');
+            var Fax = $('#Fax_'+id+'');
+            var Mail = $('#Mail_'+id+'');
+            var Certification = $('#Certification_'+id+'');
+            var Activite = $('#Activite_'+id+'');
+            var CodeClient = $('#CodeClient_'+id+'');
+            var IDTypeFournisseur = $('#SelectTypeFournisseur_'+id+'');
+            var CategorieFournisseur1 = $('#CategorieFournisseur1_'+id+'');
+            var CategorieFournisseur2 = $('#CategorieFournisseur2_'+id+'');
+            var CategorieFournisseur3 = $('#CategorieFournisseur3_'+id+'');
+
+            var NomContact = $('#NomContact_'+id+'');
+            var PrenomContact = $('#PrenomContact_'+id+'');
+            var FonctionContact = $('#FonctionContact_'+id+'');
+            var TelephoneContact = $('#TelephoneContact_'+id+'');
+            var MailContact = $('#MailContact_'+id+'');
+
+            $.getJSON(
+                'GestionFournisseur',
+                {
+                    'action': 'getUpdateFournisseur',
+                    'IDFournisseur': id,
+                    'Entreprise': entreprise.val(),
+                    'Adresse1': Adresse1.val(),
+                    'Adresse2': Adresse2.val(),
+                    'Code': Code.val(),
+                    'Ville': Ville.val(),
+                    'Telephone': Telephone.val(),
+                    'Fax': Fax.val(),
+                    'Mail': Mail.val(),
+                    'Certification': Certification.val(),
+                    'Activite': Activite.val(),
+                    'CodeClient': CodeClient.val(),
+                    'IDTypeFournisseur': IDTypeFournisseur.val(),
+                    'CategorieFournisseur1': CategorieFournisseur1.is(':checked') ? 1 : 0,
+                    'CategorieFournisseur2': CategorieFournisseur2.is(':checked') ? 1 : 0,
+                    'CategorieFournisseur3': CategorieFournisseur3.is(':checked') ? 1 : 0,
+                    'NomContact': NomContact.val(),
+                    'PrenomContact': PrenomContact.val(),
+                    'FonctionContact': FonctionContact.val(),
+                    'TelephoneContact': TelephoneContact.val(),
+                    'MailContact': MailContact.val(),
+                    'async': '1',
+                    'async_data': '1'
+                },
+                function (data) {
+                    console.log(data);
+                }
+            );
+
+            entreprise.prop("disabled",true);
+            Adresse1.prop("disabled",true);
+            Adresse2.prop("disabled",true);
+            Code.prop("disabled",true);
+            Ville.prop("disabled",true);
+            Telephone.prop("disabled",true);
+            Fax.prop("disabled",true);
+            Mail.prop("disabled",true);
+            Certification.prop("disabled",true);
+            Activite.prop("disabled",true);
+            CodeClient.prop("disabled",true);
+            IDTypeFournisseur.prop("disabled",true);
+            CategorieFournisseur1.prop("disabled",true);
+            CategorieFournisseur2.prop("disabled",true);
+            CategorieFournisseur3.prop("disabled",true);
+
+            NomContact.prop("disabled",true);
+            PrenomContact.prop("disabled",true);
+            FonctionContact.prop("disabled",true);
+            TelephoneContact.prop("disabled",true);
+            MailContact.prop("disabled",true);
+        }
+
+        function getAnnul(id)
+        {
+//            var IDFournisseurType = $('#IDTypeFournisseur_'+id+'').val();
+//            getSelect('SelectTypeFournisseur_'+id+'','getListeTypeFournisseurTrad',''+IDFournisseurType+'');
+
+            $('#btnAnnul_'+id+'').prop("hidden",true);
+            $('#btnSaved_'+id+'').prop("hidden",true);
+            $('#btnSuppr_'+id+'').prop("hidden",true);
+            $('#btnModif_'+id+'').prop("hidden",false);
+
+            $('#Entreprise_'+id+'').prop("disabled",true);
+            $('#Adresse1_'+id+'').prop("disabled",true);
+            $('#Adresse2_'+id+'').prop("disabled",true);
+            $('#Code_'+id+'').prop("disabled",true);
+            $('#Ville_'+id+'').prop("disabled",true);
+            $('#Telephone_'+id+'').prop("disabled",true);
+            $('#Fax_'+id+'').prop("disabled",true);
+            $('#Mail_'+id+'').prop("disabled",true);
+            $('#Certification_'+id+'').prop("disabled",true);
+            $('#Activite_'+id+'').prop("disabled",true);
+            $('#CodeClient_'+id+'').prop("disabled",true);
+            $('#SelectTypeFournisseur_'+id+'').prop("disabled",true);
+            $('#CategorieFournisseur1_'+id+'').prop("disabled",true);
+            $('#CategorieFournisseur2_'+id+'').prop("disabled",true);
+            $('#CategorieFournisseur3_'+id+'').prop("disabled",true);
+
+            $('#NomContact_'+id+'').prop("disabled",true);
+            $('#PrenomContact_'+id+'').prop("disabled",true);
+            $('#FonctionContact_'+id+'').prop("disabled",true);
+            $('#TelephoneContact_'+id+'').prop("disabled",true);
+            $('#MailContact_'+id+'').prop("disabled",true);
+        }
+
+        function getDelete(id)
+        {
+            $('#delete').modal('show');
+            $('#IDFournisseurDelete').val(id);
+        }
+    </script>
+
+{% else %}
+    {% include 'welcome.twig' %}
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+{% endif %}
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- MODAL ADD -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="add">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "Nouvelle fiche" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <form class="form-group" role="form" method="POST" name="search" action="GestionFournisseur">
+                <div class="modal-body">
+                    <input type="hidden" name="action" value="getInsertFournisseur">
+                    <div class="row">
+                        <div class="container-fluid">
+                            <!-- Fournisseur -->
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">{% trans "Fournisseur" %}</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <!-- nom Entreprise -->
+                                    <div id="divEntreprise">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="EntrepriseModal"
+                                                   title="{% trans "Entrez un nom de fournisseur" %}">{% trans "Entreprise" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="EntrepriseModal"
+                                                   placeholder="{% trans "Nom" %}" name="EntrepriseModal"
+                                                   onkeyup="checkInputText('divEntreprise',this.value.length,3);"
+                                                   title="{% trans "Entrez un nom de fournisseur" %}">
+                                        </div>
+                                    </div>
+                                    <!-- adresse Entreprise -->
+                                    <div id="divAdresse1">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="Adresse1Modal"
+                                                   title="{% trans "Entrez l'adresse du fournisseur" %}">{% trans "Adresse" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Adresse1Modal"
+                                                   placeholder="{% trans "Rue" %}" name="Adresse1Modal"
+                                                   onkeyup="checkInputText('divAdresse1',this.value.length,3);"
+                                                   title="{% trans "Entrez l'adresse du fournisseur" %}">
+                                        </div>
+                                    </div>
+                                    <div id="divAdresse2">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                            <label class="control-label" for="Adresse2Modal"
+                                                   title="{% trans "Entrez un complément d'adresse" %}">&nbsp;</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="Adresse2Modal"
+                                                   placeholder="{% trans "Complément" %}" name="Adresse2Modal"
+                                                   title="{% trans "Entrez un complément d'adresse" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Code postal -->
+                                    <div id="divCode">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                            <label class="control-label" for="CodeModal"
+                                                   title="{% trans "Entrez un code postal" %}">{% trans "Code postal" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="CodeModal"
+                                                   placeholder="{% trans "xxxxx" %}" name="CodeModal"
+                                                   onkeyup="checkInputNumber('divCode',this);"
+                                                   title="{% trans "Entrez un code postal" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Ville -->
+                                    <div id="divVille">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                            <label class="control-label" for="VilleModal"
+                                                   title="{% trans "Entrez un nom de ville" %}">{% trans "Ville" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="VilleModal"
+                                                   placeholder="{% trans "Nom" %}" name="VilleModal"
+                                                   title="{% trans "Entrez un nom de ville" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Téléphone -->
+                                    <div id="divTelephone">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="TelephoneModal"
+                                                   title="{% trans "Entrez un numéro de téléphone" %}">{% trans "Téléphone" %}</label>
+                                            <input type="tel" class="form-control tooltip-link" data-placement="bottom" id="TelephoneModal"
+                                                   placeholder="{% trans "xx.xx.xx.xx.xx" %}" name="TelephoneModal"
+                                                   title="{% trans "Entrez un numéro de téléphone" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Fax -->
+                                    <div id="divFax">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="FaxModal"
+                                                   title="{% trans "Entrez un numéro de fax" %}">{% trans "Fax" %}</label>
+                                            <input type="tel" class="form-control tooltip-link" data-placement="bottom" id="FaxModal"
+                                                   placeholder="{% trans "xx.xx.xx.xx.xx" %}" name="FaxModal"
+                                                   title="{% trans "Entrez un numéro de Fax" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Mail -->
+                                    <div id="divMail">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="MailModal"
+                                                   title="{% trans "Entrez une adresse email" %}">{% trans "Mail" %}</label>
+                                            <input type="email" class="form-control tooltip-link" data-placement="bottom" id="MailModal"
+                                                   placeholder="{% trans "xx@xx.xx" %}" name="MailModal"
+                                                   title="{% trans "Entrez une adresse email" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Certification -->
+                                    <div id="divCertification">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="CertificationModal"
+                                                   title="{% trans "Entrez un nom de certification" %}">{% trans "Certification" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="CertificationModal"
+                                                   placeholder="{% trans "Nom" %}" name="CertificationModal"
+                                                   title="{% trans "Entrez un nom de certification" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Activite -->
+                                    <div id="divActivite">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                            <label class="control-label" for="ActiviteModal"
+                                                   title="{% trans "Entrez un type de fourniture" %}">{% trans "Activité" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="ActiviteModal"
+                                                   placeholder="{% trans "Nom" %}" name="ActiviteModal"
+                                                   title="{% trans "Entrez un type de fourniture" %}">
+                                        </div>
+                                    </div>
+                                    <!-- CodeClient -->
+                                    <div id="divCodeClient">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                            <label class="control-label" for="CodeClientModal"
+                                                   title="{% trans "Entrez le code client" %}">{% trans "Code client" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="CodeClientModal"
+                                                   placeholder="{% trans "Code" %}" name="CodeClientModal"
+                                                   title="{% trans "Entrez le code client" %}">
+                                        </div>
+                                    </div>
+                                    <!-- TypeFournisseur -->
+                                    <div id="divTypeFournisseur">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                                            <label class="control-label" for="SelectTypeFournisseurModal">&nbsp;</label>
+                                            <select id="SelectTypeFournisseurModal" class="form-control" name="IDTypeFournisseurModal">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- CategorieFournisseur -->
+                                    <div id="divCategorieFournisseur1">
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="CategorieFournisseur1">{% trans "Fournisseur" %}</label>
+                                            <div class="">
+                                                <input type="checkbox" id="CategorieFournisseur1" name="CategorieFournisseur1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="divCategorieFournisseur2">
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="CategorieFournisseur2">{% trans "Sous-traitant" %}</label>
+                                            <div class="">
+                                                <input type="checkbox" id="CategorieFournisseur2" name="CategorieFournisseur2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="divCategorieFournisseur3">
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="CategorieFournisseur3">{% trans "Préstataire" %}</label>
+                                            <div class="">
+                                                <input type="checkbox" id="CategorieFournisseur3" name="CategorieFournisseur3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Contact -->
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">{% trans "Contact" %}</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <!-- nom -->
+                                    <div id="divNomContact">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-4">
+                                            <label class="control-label" for="NomContactModal"
+                                                   title="{% trans "Entrez un nom" %}">{% trans "Nom" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="NomContactModal"
+                                                   placeholder="{% trans "Nom" %}" name="NomContactModal"
+                                                   onkeyup="checkInputText('divNomContact',this.value.length,3);"
+                                                   title="{% trans "Entrez un nom" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Prénom -->
+                                    <div id="divPrenomContact">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-4">
+                                            <label class="control-label" for="PrenomContactModal"
+                                                   title="{% trans "Entrez un prénom" %}">{% trans "Prénom" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="PrenomContactModal"
+                                                   placeholder="{% trans "Prénom" %}" name="PrenomContactModal"
+                                                   onkeyup="checkInputText('divPrenomContact',this.value.length,3);"
+                                                   title="{% trans "Entrez un prénom" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Fonction -->
+                                    <div id="divFonctionContact">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="FonctionContactModal"
+                                                   title="{% trans "Entrez une fonction" %}">{% trans "Fonction" %}</label>
+                                            <input type="text" class="form-control tooltip-link" data-placement="bottom" id="FonctionContactModal"
+                                                   placeholder="{% trans "Titre" %}" name="FonctionContactModal"
+                                                   title="{% trans "Entrez une fonction" %}">
+                                        </div>
+                                    </div>
+                                    <!-- Téléphone -->
+                                    <div id="divTelephoneContact">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="TelephoneContactModal"
+                                                   title="{% trans "Entrez un numéro de téléphone" %}">{% trans "Téléphone" %}</label>
+                                            <input type="tel" class="form-control tooltip-link" data-placement="bottom" id="TelephoneContactModal"
+                                                   placeholder="{% trans "xx.xx.xx.xx.xx" %}" name="TelephoneContactModal"
+                                                   title="{% trans "Entrez un numéro de téléphone" %}">
+                                        </div>
+                                    </div>
+                                    {#<!-- Fax -->#}
+                                    {#<div id="divFaxContact">#}
+                                        {#<div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">#}
+                                            {#<label class="control-label" for="FaxContactModal"#}
+                                                   {#title="{% trans "Entrez un numéro de fax" %}">{% trans "Fax" %}</label>#}
+                                            {#<input type="tel" class="form-control tooltip-link" data-placement="bottom" id="FaxContactModal"#}
+                                                   {#placeholder="{% trans "xx.xx.xx.xx.xx" %}" name="FaxContactModal"#}
+                                                   {#title="{% trans "Entrez un numéro de Fax" %}">#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                    <!-- Mail -->
+                                    <div id="divMailContact">
+                                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                            <label class="control-label" for="MailContactModal"
+                                                   title="{% trans "Entrez une adresse email" %}">{% trans "Mail" %}</label>
+                                            <input type="email" class="form-control tooltip-link" data-placement="bottom" id="MailContactModal"
+                                                   placeholder="{% trans "xx@xx.xx" %}" name="MailContactModal"
+                                                   title="{% trans "Entrez une adresse email" %}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal foot -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Annuler" %}</button>
+                    <button type="submit" class="btn btn-success" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- MODAL DELETE -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "AlertH4" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <form class="form-group" role="form" method="POST" name="search" action="GestionFournisseur">
+                <input type="hidden" name="action" value="getDeleteFournisseur">
+                <input type="hidden" id="IDFournisseurDelete" name="IDFournisseurDelete">
+                <div class="modal-body">
+                    <p class="lead">{% trans 'Etes-vous sur supprimer ce fournisseur ?' %}</p>
+                </div>
+                <!-- Modal foot -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Annuler" %}</button>
+                    <button type="submit" class="btn btn-danger" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Supprimer" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -59,7 +59,7 @@
                             {#</div>#}
 
                             <!-- SECTEUR -->
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-group">
                                 <label class="" for="SelectSecteur">{% trans "Secteur" %}</label>
                                 <select id="SelectSecteur" class="form-control tooltip-link" name="IDSecteur" title="{% trans "choisissez un secteur" %}" onchange="getSelectSecteurTlMachine(this,'SelectMachine');getTablePlanning();">
                                     <!-- elementsSelect.twig / getSelect('SelectSecteur','getListeSecteurTrad'); -->
@@ -67,25 +67,25 @@
                             </div>
                             
                             <!-- MACHINE -->
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-group">
                                 <label class="" for="SelectMachine">{% trans "Machine" %}</label>
                                 <select id="SelectMachine" class="form-control tooltip-link" name="IDMachine" title="{% trans "choisissez une machine" %}" onchange="getTablePlanning();">
                                     <!-- elementsSelect.twig / getSelect('SelectMachine','getListeMachineTrad'); -->
                                 </select>
                             </div>
                             <!-- DOSSIER -->
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-group">
                                 <label class="" for="dossier">{% trans "Dossier" %}</label>
                                 <input id="dossier" type="text" class="form-control">
                             </div>
                             <!-- REF -->
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-group">
                                 <label class="" for="Ref">{% trans "Ref." %}</label>
                                 <input id="Ref" type="text" class="form-control">
                             </div>
 
                             <!-- Submit -->
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-group">
                                 <label class="">&nbsp;</label>
                                 <button type="button" class="form-control btn btn-primary" id="btnSearchPlanning"
                                         onclick="getTablePlanning();">

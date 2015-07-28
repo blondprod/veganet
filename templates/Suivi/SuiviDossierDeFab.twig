@@ -126,7 +126,7 @@
                                 <!-- Submit -->
                                 <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4 form-group">
                                     <label class="control-label" for="btnSearch">&nbsp;</label>
-                                    <button class="btn btn-primary form-control" type="submit" id="btnSearch">{% trans "Chercher" %}</button>
+                                    <button class="btn btn-primary form-control" type="submit" id="btnSearch">{#{% trans "Chercher" %}#}<span class="glyphicon glyphicon-search"></span> </button>
                                 </div>
                             </form>
                         </div>
@@ -138,30 +138,31 @@
 
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- TABLE & SIDEBAR BTN -->
-    <div class="container-fluid" {% if (OUT|length)<1 %}hidden="hidden"{% endif %}>
+    <div class="container-fluid">
         <div class="row">
             <!-- SIDEBAR BTN -->
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 sidebar text text-center">
-                <ul class="nav nav-sidebar"> <!-- hidden="hidden" id="btnPrint" -->
+                <ul {% if (OUT|length)<1 %}hidden="hidden"{% endif %} class="nav nav-sidebar"> <!-- hidden="hidden" id="btnPrint" -->
                     <li>
                         <a onclick="getDossierDeFabHTML('{{ session.IP }}','{{ session.PUBLIC_PATH }}');">
-                            <span title="{% trans "Fiche de fab." %}" class="glyphicon glyphicon-print tooltip-link"></span>
+                            <span onmouseover="$(this).tooltip('show');" title="{% trans "Fiche de fab." %}" class="glyphicon glyphicon-print tooltip-link"></span>
                         </a>
                     </li>
                     {#<li><a><span title="{% trans "QRcode" %}" class="glyphicon glyphicon-qrcode tooltip-link"></span></a></li>#}
-                    <li><a onclick='getData2EditDossierDeFabElement();'><span title="{% trans "Editer" %}" class="glyphicon glyphicon-pencil tooltip-link"></span></a></li>
-                    <li><a onclick='$("#deleteDossierDeFab").modal("show");'><span title="{% trans "Supprimer" %}" class="glyphicon glyphicon-remove tooltip-link"></span></a></li>
+                    <li><a onclick='getData2EditDossierDeFabElement();'><span onmouseover="$(this).tooltip('show');" title="{% trans "Editer" %}" class="glyphicon glyphicon-pencil tooltip-link"></span></a></li>
+                    <li><a onclick='$("#deleteDossierDeFab").modal("show");'><span onmouseover="$(this).tooltip('show');" title="{% trans "Supprimer" %}" class="glyphicon glyphicon-remove tooltip-link"></span></a></li>
                     {#<li><a href=""><span class="glyphicon glyphicon-plus-sign"></span></a></li>#}
                     {#<li><a href=""><span class="glyphicon glyphicon-minus-sign"></span></a></li>#}
                 </ul>
                 <ul class="nav nav-sidebar">
                     {#<li><a href=""><span class="glyphicon glyphicon-ok"></span></a></li>#}
-                    <li><a href=""><span title="{% trans "Recharger" %}" class="glyphicon glyphicon-refresh tooltip-link"></span></a></li>
+                    <li><a target="_blank" href="csv/import/index.php"><span onmouseover="$(this).tooltip('show');" title="{% trans "Import .csv" %}" class="glyphicon glyphicon-cloud-download tooltip-link"></span></a></li>
+                    <li><a href=""><span onmouseover="$(this).tooltip('show');" title="{% trans "Recharger" %}" class="glyphicon glyphicon-refresh tooltip-link"></span></a></li>
                 </ul>
             </div>
 
             <!-- TABLE -->
-            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 main">
+            <div {% if (OUT|length)<1 %}hidden="hidden"{% endif %} class="col-lg-11 col-md-11 col-sm-11 col-xs-11 main">
                 <div class="row">
                     <div class="table-responsive">
                         <table class="table table table-hover table-condensed tablesorter">

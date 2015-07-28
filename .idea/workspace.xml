@@ -2,14 +2,94 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3428df2c-0552-4356-b370-4e8e29f0c0b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/barcode/action/logout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/barcode/action/plan.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/barcode/action/well.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/csv/import/file/111.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/csv/import/file/112.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/csv/export/20150716235507.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/csv/export/20150716235548.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/BarCode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/FColor.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/FDrawing.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/GestionFournisseur.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Gestion/GestionFournisseur.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/LSTable.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/ProductionReclame.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/ProductionReclame.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Production/ProductionReclame.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fbx/Fab/SuiviReclame.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Suivi/SuiviReclame.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/Table_template.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/csv/import/class.csv.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/codabar.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/codabar.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/code11.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/code11.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/code128.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/code128.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/code39.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/code39.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/code93.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/code93.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/ean13.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/ean13.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/ean8.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/ean8.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/csv/import/file/exemple.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/footer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/function.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/gen.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/header.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/i25.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/i25.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/image.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/csv/import/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/csv/import/log/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/elements/modalProductionReclame.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/msi.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/msi.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/othercode.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/othercode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/postnet.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/postnet.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/s25.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/s25.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/test.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/upca.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/upca.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/upce.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/upce.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/upcext2.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/upcext2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/class/upcext5.barcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/barcode/html/upcext5.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/barcode/well.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/BarCode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/BarCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FColor.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FColor.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FDrawing.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FDrawing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Gestion/GestionPlanning.twig" afterPath="$PROJECT_DIR$/templates/Gestion/GestionPlanning.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/GestionReglage.js" afterPath="$PROJECT_DIR$/public/js/GestionReglage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/GestionReglage.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/GestionReglage.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Gestion/GestionReglage.twig" afterPath="$PROJECT_DIR$/templates/Gestion/GestionReglage.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/LSTable.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/LSTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Production/ProductionDossierDeFab.twig" afterPath="$PROJECT_DIR$/templates/Production/ProductionDossierDeFab.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/ProductionFicheDeProd.js" afterPath="$PROJECT_DIR$/public/js/ProductionFicheDeProd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/ProductionFicheDeProd.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/ProductionFicheDeProd.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Production/ProductionFicheDeProd.twig" afterPath="$PROJECT_DIR$/templates/Production/ProductionFicheDeProd.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/README.md" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/Select.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/Select.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/Smarty.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/Smarty.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/SuiviDossierDeFab.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/SuiviDossierDeFab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Suivi/SuiviDossierDeFab.twig" afterPath="$PROJECT_DIR$/templates/Suivi/SuiviDossierDeFab.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/SuiviFicheDeProd.js" afterPath="$PROJECT_DIR$/public/js/SuiviFicheDeProd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/SuiviFicheDeProd.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/SuiviFicheDeProd.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Suivi/SuiviFicheDeProd.twig" afterPath="$PROJECT_DIR$/templates/Suivi/SuiviFicheDeProd.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Suivi/SuiviStat.twig" afterPath="$PROJECT_DIR$/templates/Suivi/SuiviStat.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/Table_template.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/Table_template.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcodeGen.php" afterPath="$PROJECT_DIR$/public/barcodeGen.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php" />
@@ -21,6 +101,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code93.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code93.barcode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean13.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean13.barcode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean8.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean8.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/elements/elementsJs.twig" afterPath="$PROJECT_DIR$/templates/elements/elementsJs.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/foot.twig" afterPath="$PROJECT_DIR$/templates/foot.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.baseUrl.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.baseUrl.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.siteUrl.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.siteUrl.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.urlFor.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.urlFor.php" />
@@ -29,11 +111,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/jquery.tablesorter.js" afterPath="$PROJECT_DIR$/public/js/jquery.tablesorter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/jquery.tablesorter.pager.css" afterPath="$PROJECT_DIR$/public/css/jquery.tablesorter.pager.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/jquery.tablesorter.pager.js" afterPath="$PROJECT_DIR$/public/js/jquery.tablesorter.pager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labox-structure+data.sql" afterPath="$PROJECT_DIR$/labox-structure+data.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labox-structure-only.sql" afterPath="$PROJECT_DIR$/labox-structure-only.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/elements/modalEditDossierDeFab.twig" afterPath="$PROJECT_DIR$/templates/elements/modalEditDossierDeFab.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/msi.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/msi.barcode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/othercode.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/othercode.barcode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/postnet.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/postnet.barcode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/s25.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/s25.barcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/table/tableGestionPlanning.twig" afterPath="$PROJECT_DIR$/templates/table/tableGestionPlanning.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/table/tableGestionSecteur.twig" afterPath="$PROJECT_DIR$/templates/table/tableGestionSecteur.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upca.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upca.barcode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upce.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upce.barcode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext2.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext2.barcode.php" />
@@ -54,8 +140,17 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
+  <component name="DatabaseView">
+    <option name="FLATTEN" value="false" />
+    <option name="GROUP_BY_TYPE" value="true" />
+    <option name="SORT_CHILDREN" value="false" />
+    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="veganet" />
@@ -70,11 +165,64 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/lib/fbx/Fab/SuiviFicheDeProd.php" />
+        <option value="$PROJECT_DIR$/templates/Suivi/ProductionReclame.twig" />
+        <option value="$PROJECT_DIR$/public/js/ProductionFicheDeProd.js" />
+        <option value="$PROJECT_DIR$/templates/elements/elementsJs.twig" />
+        <option value="$PROJECT_DIR$/public/js/SuiviFicheDeProd.js" />
+        <option value="$PROJECT_DIR$/templates/elements/modalEditDossierDeFab.twig" />
+        <option value="$PROJECT_DIR$/public/js/ProductionReclame.js" />
+        <option value="$PROJECT_DIR$/templates/elements/modalProductionReclame.twig" />
+        <option value="$PROJECT_DIR$/lib/fbx/Fab/ProductionReclame.php" />
+        <option value="$PROJECT_DIR$/lib/fbx/Fab/SuiviReclame.php" />
+        <option value="$PROJECT_DIR$/lib/fbx/Fab/Select.php" />
+        <option value="$PROJECT_DIR$/lib/fbx/Fab/GestionFournisseur.php" />
+        <option value="$PROJECT_DIR$/public/readCSV.php" />
+        <option value="$PROJECT_DIR$/public/csv/readCSV.php" />
+        <option value="$PROJECT_DIR$/public/csv/test.csv" />
+        <option value="$PROJECT_DIR$/lib/fbx/Fab/SuiviDossierDeFab.php" />
+        <option value="$PROJECT_DIR$/public/csv/0.csv" />
+        <option value="$PROJECT_DIR$/public/csv/index.php" />
+        <option value="$PROJECT_DIR$/public/csv/csv_export.php" />
+        <option value="$PROJECT_DIR$/public/csv/csv_import.php" />
+        <option value="$PROJECT_DIR$/templates/table/tableGestionSecteur.twig" />
+        <option value="$PROJECT_DIR$/lib/fbx/Fab/GestionReglage.php" />
+        <option value="$PROJECT_DIR$/public/js/GestionReglage.js" />
+        <option value="$PROJECT_DIR$/lib/fbx/Fab/ProductionFicheDeProd.php" />
+        <option value="$PROJECT_DIR$/templates/Suivi/SuiviReclame.twig" />
+        <option value="$PROJECT_DIR$/templates/Production/ProductionReclame.twig" />
+        <option value="$PROJECT_DIR$/templates/Gestion/GestionPlanning.twig" />
+        <option value="$PROJECT_DIR$/templates/Production/ProductionFicheDeProd.twig" />
+        <option value="$PROJECT_DIR$/templates/Suivi/SuiviFicheDeProd.twig" />
+        <option value="$PROJECT_DIR$/templates/Suivi/SuiviStat.twig" />
+        <option value="$PROJECT_DIR$/templates/Gestion/GestionFournisseur.twig" />
+        <option value="$PROJECT_DIR$/templates/foot.twig" />
+        <option value="$PROJECT_DIR$/templates/Production/ProductionDossierDeFab.twig" />
+        <option value="$PROJECT_DIR$/templates/Suivi/SuiviDossierDeFab.twig" />
+        <option value="$PROJECT_DIR$/public/csv/import/010.csv" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0e1b029d-b296-4d36-800d-50730b7cb8f1/console.sql" />
+        <option value="$PROJECT_DIR$/templates/Gestion/GestionReglage.twig" />
+        <option value="$PROJECT_DIR$/templates/table/tableGestionPlanning.twig" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/011.csv" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/010.csv" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/020.csv" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/021.csv" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/121.csv" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/120.csv" />
+        <option value="$PROJECT_DIR$/public/csv/import/class.csv.php" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/111.csv" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/112.csv" />
+        <option value="$PROJECT_DIR$/public/csv/import/index.php" />
+        <option value="$PROJECT_DIR$/public/csv/import/file/exemple.csv" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.5">
     <include_path>
@@ -109,6 +257,27 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veganet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veganet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="veganet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Default">
           <PATH>
@@ -138,26 +307,6 @@
         </subPane>
         <subPane subId="Changed Files" />
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veganet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veganet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="veganet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -169,7 +318,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="260" />
@@ -188,30 +337,40 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1060" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/public/csv/import/file" />
+      <recent name="$PROJECT_DIR$/public/img/barcode/action" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/csv/import/log" />
+      <recent name="$PROJECT_DIR$/public/csv" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/.idea" />
-      <recent name="$PROJECT_DIR$/.idea/scopes" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/public/csv/import/file" />
+      <recent name="$PROJECT_DIR$/public/csv/import" />
+      <recent name="$PROJECT_DIR$/public/csv/export" />
+      <recent name="$PROJECT_DIR$/public/csv" />
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
-      <BehatRunner />
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="7446e350-6d56-486c-a5af-58eeb7056597" server_name="imac-home">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -223,12 +382,11 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="7446e350-6d56-486c-a5af-58eeb7056597" server_name="imac-home">
-      <method />
-    </configuration>
-    <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3428df2c-0552-4356-b370-4e8e29f0c0b1" name="Default" comment="" />
@@ -242,29 +400,36 @@
       <option name="project" value="LOCAL" />
       <updated>1436384247972</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init">
+      <created>1436387306212</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1436387306212</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1130" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32596153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19488817" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25772098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1656017" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18423855" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17305644" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278846" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -272,6 +437,31 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298077" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32596153" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32851636" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19488817" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24387646" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17305644" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1826411" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -285,57 +475,376 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
     <MESSAGE value="1st commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="1st commit" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/barcode/class/index.php">
+    <entry file="file://$PROJECT_DIR$/templates/table/tableProductionFicheDeProd.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1012">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Gestion/GestionMembre.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6831984">
+          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/elements/modalProductionReclame.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="54" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/ProductionReclame.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="128" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/ProductionReclame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="10" selection-start-line="46" selection-start-column="8" selection-end-line="64" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/GestionDroit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="51" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/GestionFournisseur.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5780933">
+          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/log/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34989858">
+          <caret line="29" column="1" selection-start-line="9" selection-start-column="0" selection-end-line="29" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/config.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15718563" vertical-offset="0" max-vertical-offset="668">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.103960395">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/SuiviReclame.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.015306123" vertical-offset="0" max-vertical-offset="980">
-          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+        <state vertical-scroll-proportion="-11.083333">
+          <caret line="48" column="128" selection-start-line="48" selection-start-column="128" selection-end-line="48" selection-end-column="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/elements/modalEditDossierDeFab.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="611" column="4" selection-start-line="611" selection-start-column="4" selection-end-line="611" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/SuiviDossierDeFab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="303" column="0" selection-start-line="303" selection-start-column="0" selection-end-line="303" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/GestionReglage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4298419">
+          <caret line="462" column="8" selection-start-line="462" selection-start-column="8" selection-end-line="462" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/table/tableGestionSecteur.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3340081">
+          <caret line="89" column="204" selection-start-line="89" selection-start-column="192" selection-end-line="89" selection-end-column="204" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/ProductionFicheDeProd.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51619434">
+          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30364373">
+          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="44" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/Utilisateur.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.86538464">
+          <caret line="142" column="14" selection-start-line="131" selection-start-column="12" selection-end-line="142" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Suivi/SuiviReclame.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.25">
+          <caret line="94" column="98" selection-start-line="94" selection-start-column="98" selection-end-line="94" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Production/ProductionReclame.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.083334">
+          <caret line="73" column="98" selection-start-line="73" selection-start-column="98" selection-end-line="73" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Production/ProductionFicheDeProd.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.652834">
+          <caret line="93" column="26" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Suivi/SuiviFicheDeProd.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80465585">
+          <caret line="127" column="115" selection-start-line="127" selection-start-column="115" selection-end-line="127" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Suivi/SuiviStat.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27327934">
+          <caret line="48" column="94" selection-start-line="48" selection-start-column="94" selection-end-line="48" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/foot.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8491903">
+          <caret line="145" column="28" selection-start-line="145" selection-start-column="28" selection-end-line="145" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Gestion/GestionFournisseur.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39473686">
+          <caret line="56" column="98" selection-start-line="56" selection-start-column="98" selection-end-line="56" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Suivi/SuiviDossierDeFab.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59210527">
+          <caret line="158" column="41" selection-start-line="158" selection-start-column="41" selection-end-line="158" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Production/ProductionDossierDeFab.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5">
+          <caret line="273" column="73" selection-start-line="273" selection-start-column="73" selection-end-line="273" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/DBmysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.625">
+          <caret line="56" column="22" selection-start-line="34" selection-start-column="8" selection-end-line="56" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/csv/import/log/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3491903">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34109312">
+          <caret line="785" column="9" selection-start-line="785" selection-start-column="9" selection-end-line="785" selection-end-column="9" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47064778">
+          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="42" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0e1b029d-b296-4d36-800d-50730b7cb8f1/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3120">
+        <state vertical-scroll-proportion="-0.5">
+          <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/GestionReglage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49898785">
+          <caret line="782" column="42" selection-start-line="782" selection-start-column="42" selection-end-line="782" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-35.541668">
+          <caret line="331" column="5" selection-start-line="300" selection-start-column="0" selection-end-line="331" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/ProductionDossierDeFab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7054656">
+          <caret line="125" column="42" selection-start-line="120" selection-start-column="20" selection-end-line="125" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/barcode/html/i25.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47064778">
+          <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33300394">
+          <caret line="126" column="18" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/SuiviPlanning.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/table/tableGestionMachine.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="197" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Gestion/GestionReglage.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5080972">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Gestion/GestionPlanning.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6204454">
+          <caret line="90" column="60" selection-start-line="90" selection-start-column="60" selection-end-line="90" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/table/tableGestionPlanning.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73987854">
+          <caret line="319" column="78" selection-start-line="319" selection-start-column="78" selection-end-line="319" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/GestionPlanning.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2895257">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/csv/import/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.541667">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <marker date="1438121164000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1438121164000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1438121164000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1438121164000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/csv/import/file/111.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.014822135">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php">
+    <entry file="file://$PROJECT_DIR$/public/csv/import/file/112.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7535497" vertical-offset="1729" max-vertical-offset="3120">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/csv/import/class.csv.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3491903">
+          <caret line="289" column="69" selection-start-line="289" selection-start-column="63" selection-end-line="289" selection-end-column="69" />
+          <folding>
+            <element signature="e#12321#12577#0#PHP" expanded="false" />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="SELECT IDDos..TBL_DOSSIER_DE_FAB..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="SELECT T2.ID..TBL_OPTION_TRAD..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="SELECT T2.ID..TBL_ELEMENT_TRAD..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="SELECT T1.ID..TBL_SUPPORT_TRAD..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="SELECT T1.ID..TBL_FORMAT_TRAD..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1438121056000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/csv/import/file/exemple.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.044466402">
+          <caret line="3" column="73" selection-start-line="3" selection-start-column="73" selection-end-line="3" selection-end-column="73" />
           <folding />
         </state>
       </provider>

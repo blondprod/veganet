@@ -427,8 +427,8 @@
     function getDataComposition()
     {
         var nbElement = parseInt({{ DATA_ELEMENT|length }});
-        var timeout = 2000;
-        if ( nbElement == 1) timeout = 500;
+        var timeout = 5000;
+        if ( nbElement == 1) timeout = 1000;
         if ( nbElement >= 5) timeout = 4000;
         if (nbElement >= 10) timeout = 8000;
         if (nbElement >= 25) timeout = 15000;
@@ -442,8 +442,8 @@
         {% endfor %}
 
         getElementForSelect(timeout);
-        getOptionForSelect(timeout+500);
-        getMachineForSelect(timeout+1000);
+        getOptionForSelect(timeout+1500);
+        getMachineForSelect(timeout+1500);
 
         verifCompositionDossier(nbElement);
     }
@@ -452,9 +452,12 @@
     {
         setTimeout(function(){
             {% for w, value in DATA_ELEMENT %}
-                $("select#Element{{ (w+1) }} option[value={{ (value.IDElement) }}]").attr("selected","selected");
-                $("select#Support{{ (w+1) }} option[value={{ (value.IDSupport) }}]").attr("selected","selected");
-                $("select#Format{{ (w+1) }} option[value={{ (value.IDFormat) }}]").attr("selected","selected");
+                {#$("select#Element{{ (w+1) }} option[value={{ (value.IDElement) }}]").attr("selected","selected");#}
+                document.getElementById("Element{{ (w+1) }}").value = "{{ (value.IDElement) }}";
+                {#$("select#Support{{ (w+1) }} option[value={{ (value.IDSupport) }}]").attr("selected","selected");#}
+                document.getElementById("Support{{ (w+1) }}").value = "{{ (value.IDSupport) }}";
+                {#$("select#Format{{ (w+1) }} option[value={{ (value.IDFormat) }}]").attr("selected","selected");#}
+                document.getElementById("Format{{ (w+1) }}").value = "{{ (value.IDFormat) }}";
                 {#console.log("done #Element:{{ (w+1) }}");#}
             {% endfor %}
         },timeout);
@@ -463,9 +466,17 @@
     function getOptionForSelect(timeout)
     {
         setTimeout(function(){
-            {% for q, value in DATA_OPTION %}
-                {% for s, items in DATA_ELEMENT %}
-                    $("select#Option{{ (s+1) }}Element{{ (q+1) }} option[value={{ (value.IDOption) }}]").attr("selected","selected");
+            {% set n = 1 %}
+            {% for s, items in DATA_ELEMENT %}
+                {% for q, value in DATA_ELEMENT_TL_OPTION %}
+                    {% if(items.IDElement == value.IDElement) %}
+                        {#$("select#Option{{ (s+1) }}Element{{ (q+1) }} option[value={{ (value.IDOption) }}]").attr("selected","selected");#}
+                        document.getElementById("Option{{ (s+1) }}Element{{ (n) }}").value = "{{ (value.IDOption) }}";
+                        {#console.log("Option{{ (s+1) }}Element{{ (n) }}");#}
+                        {% set n = n + 1 %}
+                    {% else %}
+                        {% set n = 1 %}
+                    {% endif %}
                 {% endfor %}
             {% endfor %}
         },timeout);
@@ -479,10 +490,12 @@
                 {% for b, items in DATA_ELEMENT_TL_MACHINE %}
                     {% if(items.Element == element.Element) %}
 
-                        $("select#Element{{ (q+1) }}Machine{{ (n) }} option[value={{ (items.IDMachine) }}]").attr("selected","selected");
+                        {#$("select#Element{{ (q+1) }}Machine{{ (n) }} option[value={{ (items.IDMachine) }}]").attr("selected","selected");#}
+                        document.getElementById("Element{{ (q+1) }}Machine{{ (n) }}").value = "{{ (items.IDMachine) }}";
                         {#console.log("done #Element{{ (q+1) }}Machine{{ (n) }} = {{ (items.IDMachine) }}");#}
 
-                        $("select#Element{{ (q+1) }}MachineImpression{{ (n) }} option[value={{ (items.IDImpression) }}]").attr("selected","selected");
+                        {#$("select#Element{{ (q+1) }}MachineImpression{{ (n) }} option[value={{ (items.IDImpression) }}]").attr("selected","selected");#}
+                        document.getElementById("Element{{ (q+1) }}MachineImpression{{ (n) }}").value = "{{ (items.IDImpression) }}";
                         {#console.log("done #Element{{ (q+1) }}Machine{{ (n) }} = {{ (items.IDMachine) }}");#}
 
                         {% set n = n + 1 %}
@@ -629,7 +642,8 @@
                         id = $('#idOption'+o+'Element'+k+'').val();
 //                        console.log("id: "+id);
                         $('#Option'+o+'Element'+k+'').html(data.SentData);
-                        $("select#Option"+o+"Element"+k+" option[value="+id+"]").attr("selected","selected");
+//                        $("select#Option"+o+"Element"+k+" option[value="+id+"]").attr("selected","selected");
+                        document.getElementById("Option"+o+"Element"+k+"").value = id;
                     }
                 }
             }
@@ -676,8 +690,9 @@
     $(function(){
         setTimeout(function(){
             {% for w, value in DATA_OPTION %}
-                $("select#selectOption{{ (w+1) }} option[value={{ (value.IDOption) }}]").attr("selected","selected");
+                {#$("select#selectOption{{ (w+1) }} option[value={{ (value.IDOption) }}]").attr("selected","selected");#}
+                document.getElementById("selectOption{{ (w+1) }}").value = "{{ (value.IDOption) }}";
             {% endfor %}
-        },750);
+        },1050);
     });
 </script>

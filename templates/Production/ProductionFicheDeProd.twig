@@ -40,7 +40,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="row">
                     <!-- date -->
-                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
                         <label class="control-label" for="searchDateDossier">{% trans "Date" %}</label>
                         <input id="searchDateDossier" class="form-control" type="text" value="{% if (OUT.searchDateDossier=='') %}{{ "now"|date("d/m/Y") }}{% else %}{{ OUT.searchDateDossier }}{% endif %}">
                         <!-- JS FOR DATERANGEPICKER -->
@@ -48,7 +48,7 @@
                         {% include "elements/datepicker.twig" %}
                     </div>
                     <!-- secteur -->
-                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
                         <label class="control-label" for="SelectSecteur">{% trans "Secteur" %}</label>
                         <select id="SelectSecteur" class="form-control" name="SelectSecteur"
                                 onchange="getSelectSecteurTlMachine(this,'SelectMachine');getTableFicheDeProd();setTimeout(function() { getBtnModalPlanning(); }, 100);">
@@ -56,7 +56,7 @@
                         </select>
                     </div>
                     <!-- machine -->
-                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
                         <label class="control-label" for="SelectMachine">{% trans "Machine" %}</label>
                         <select id="SelectMachine" class="form-control" onchange="getTableFicheDeProd();setTimeout(function() { getBtnModalPlanning(); }, 100);">
                             <!-- getSelect('SelectMachine','getListeMachine'); -->
@@ -72,24 +72,24 @@
                                 >
                     </div>
                     <!-- Submit -->
-                    <div class="form-group col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                    <div class="form-group col-xs-3 col-sm-2 col-md-2 col-lg-1">
                             <label class="control-label">&nbsp;</label>
                             <button type="submit" name="submit" value="ok" class="form-control btn btn-primary" id="btnSearchDossier" onclick="enabledRow($('#SelectSociete').val());getTableFicheDeProd();">
-                                {% trans "Chercher" %} &nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>
+                                {#{% trans "Chercher" %} &nbsp;&nbsp;#}<span class="glyphicon glyphicon-search"></span>
                             </button>
                     </div>
                     <!-- cancel -->
-                    <div class="form-group col-xs-3 col-sm-2 col-md-1 col-lg-1" id="divBtnCancel" hidden="hidden">
+                    <div class="form-group col-xs-3 col-sm-2 col-md-2 col-lg-1" id="divBtnCancel" hidden="hidden">
                             <label class="control-label">&nbsp;</label>
                             <button type="button" class="form-control btn btn-warning" id="btnCancel" onclick="getCancelAction();">
-                                {% trans "Annuler" %} &nbsp;&nbsp;<span class="glyphicon glyphicon-remove-sign"></span>
+                                {#{% trans "Annuler" %} &nbsp;&nbsp;#}<span class="glyphicon glyphicon-remove-sign"></span>
                             </button>
                     </div>
                     <!-- active modal planning -->
-                    <div class="form-group col-xs-3 col-sm-2 col-md-1 col-lg-1" id="divBtnPlanning" hidden="hidden">
+                    <div class="form-group col-xs-3 col-sm-2 col-md-2 col-lg-1" id="divBtnPlanning" hidden="hidden">
                         <label class="control-label">&nbsp;</label>
                         <button class="form-control btn btn-info" onclick="getDataPlanning();">
-                            {% trans "Planning" %} &nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span>
+                            {#{% trans "Planning" %} &nbsp;&nbsp;#}<span class="glyphicon glyphicon-calendar"></span>
                         </button>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                                 <th>{% trans "Ref." %}</th>
                                 <th>{% trans "Elements" %}</th>
                                 <th></th>
-                                <th>{% trans "Quantité" %}</th>
+                                <th style="width: 7%;">{% trans "Quantité" %}</th>
                                 <th>{% trans "Support" %}</th>
                                 <th>{% trans "Format" %}</th>
                                 <th>{% trans "Impression" %}</th>

@@ -46,7 +46,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="row">
                                     <!-- date begin -->
-                                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
                                         <label class="control-label" for="searchDateDossierBegin">{% trans "Début" %}</label>
                                         <input id="searchDateDossierBegin" name="searchDateDossierBegin" class="form-control" type="text"
                                                value="{% if (OUT.searchDateDossierBegin=='') %}{{ ("now"|date_modify("- 1 month"))|date("d/m/Y") }}{% else %}{{ OUT.searchDateDossierBegin }}{% endif %}">
@@ -55,7 +55,7 @@
                                         {% include "elements/datepicker.twig" %}
                                     </div>
                                     <!-- date end -->
-                                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                    <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
                                         <label class="control-label" for="searchDateDossierEnd">{% trans "Fin" %}</label>
                                         <input id="searchDateDossierEnd" name="searchDateDossierEnd" class="form-control" type="text"
                                                value="{% if (OUT.searchDateDossierEnd=='') %}{{ "tomorrow"|date("d/m/Y") }}{% else %}{{ OUT.searchDateDossierEnd }}{% endif %}">
@@ -71,7 +71,7 @@
                                                 onclick="$('#divJumbotron').prop('hidden',true);
                                                          $('.collapse').collapse('toggle');
                                                          getDataForTableStat();">
-                                            {% trans "Chercher" %}
+                                            {#{% trans "Chercher" %}#}<span class="glyphicon glyphicon-search"></span>
                                         </button>
                                     </div>
                                 </div>

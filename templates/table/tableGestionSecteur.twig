@@ -28,6 +28,7 @@
                         <th>{% trans "Nom" %}</th>
                         <th style="width: 27%;">{% trans "Langue" %}</th>
                         <th style="width: 16%;">{% trans "Ordre" %}</th>
+                        <th>{% trans "Code" %}</th>
                         <th{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>{% trans "Societe" %}</th>
                         <th style="width: 7%;">{% trans "Actif" %}</th>
                         <th style="width: 7%;"></th>
@@ -46,6 +47,11 @@
                         <td>
                             <div id="divOrdreSecteur_add">
                                 <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreSecteur_add',this);verifSecteur();" id="OrdreSecteur_add" value="1">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="divCodeSecteur_add">
+                                <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divCodeSecteur_add',this);verifSecteur();" id="CodeSecteur_add" value="1">
                             </div>
                         </td>
                         <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
@@ -77,6 +83,11 @@
                             <td>
                                 <div id="divOrdreSecteur_{{ data.ID }}">
                                     <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divOrdreSecteur_{{ data.ID }}',this);verifSecteur({{ data.ID }});" id="OrdreSecteur_{{ data.ID }}" disabled value="{{ data.Ordre }}">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="divCodeSecteur_{{ data.ID }}">
+                                    <input type="number" min="1" step="1" class="form-control" onkeyup="checkInputNumber('divCodeSecteur_{{ data.ID }}',this);verifSecteur({{ data.ID }});" id="CodeSecteur_{{ data.ID }}" disabled value="{{ data.Code }}">
                                 </div>
                             </td>
                             <td{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>

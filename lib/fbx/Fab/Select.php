@@ -180,6 +180,70 @@ ORDER BY
         return \fbx\DBmysql::getInstance()->getSelectData($q);
     }
 
+    private function getListeReclameEtatTrad()
+    {
+        $where = null;
+
+        if ($_SESSION['FBX_USER_SU'] != '1' ) {
+            $pnIDSociete = $_SESSION['FBX_USER_SOCIETE_ID'];
+            $where .= "AND T1.IDSociete = '$pnIDSociete'";
+        }
+        else {
+            if (isset($args['IDSociete']) && $args['IDSociete'] != '')  {
+                $pnIDSociete = $args['IDSociete'];
+                $where .= "AND T1.IDSociete = '$pnIDSociete'";
+            }
+        }
+
+        $q = "SELECT
+    T1.IDReclameEtat AS ID,
+    CASE WHEN ISNULL(T2.Nom) THEN '-' ELSE T2.Nom END AS Nom
+FROM
+    TBL_RECLAME_ETAT AS T1
+    LEFT OUTER JOIN TBL_RECLAME_ETAT_TRAD AS T2
+    ON T1.IDReclameEtat = T2.IDReclameEtat AND T2.IDLangue = {$_SESSION['IDLANGUE']}
+WHERE
+    T1.EstSupp = '0'
+    AND T1.EstActif = '1'
+    $where
+ORDER BY
+    T1.Ordre";
+
+        return \fbx\DBmysql::getInstance()->getSelectData($q);
+    }
+
+    private function getListeTypeFournisseurTrad()
+    {
+        $where = null;
+
+        if ($_SESSION['FBX_USER_SU'] != '1' ) {
+            $pnIDSociete = $_SESSION['FBX_USER_SOCIETE_ID'];
+            $where .= "AND T1.IDSociete = '$pnIDSociete'";
+        }
+        else {
+            if (isset($args['IDSociete']) && $args['IDSociete'] != '')  {
+                $pnIDSociete = $args['IDSociete'];
+                $where .= "AND T1.IDSociete = '$pnIDSociete'";
+            }
+        }
+
+        $q = "SELECT
+    T1.IDFournisseurType AS ID,
+    CASE WHEN ISNULL(T2.Nom) THEN '-' ELSE T2.Nom END AS Nom
+FROM
+    TBL_FOURNISSEUR_TYPE AS T1
+    LEFT OUTER JOIN TBL_FOURNISSEUR_TYPE_TRAD AS T2
+    ON T1.IDFournisseurType = T2.IDFournisseurType AND T2.IDLangue = {$_SESSION['IDLANGUE']}
+WHERE
+    T1.EstSupp = '0'
+    AND T1.EstActif = '1'
+    $where
+ORDER BY
+    T1.Ordre";
+
+        return \fbx\DBmysql::getInstance()->getSelectData($q);
+    }
+
     private function getListeSecteurTrad()
     {
         $where = null;

@@ -193,6 +193,7 @@ ORDER BY
     T1.IDSecteur AS ID,
     CASE WHEN ISNULL(T2.Nom) THEN '-' ELSE T2.Nom END AS Nom,
     T1.Ordre AS Ordre,
+    T1.Code,
     T1.EstActif AS EstActif,
     T2.IDLangue AS IDLangue,
     T3.Nom AS NomLangue,
@@ -568,9 +569,10 @@ VALUES
         if (isset($args['NomSecteur']) && $args['NomSecteur'] != '')    $psNom = $args['NomSecteur'];       else $psNom = 'null';
         if (isset($args['Ordre']) && $args['Ordre'] != '')              $pnOrdre = $args['Ordre'];          else $pnOrdre = '99';
         if (isset($args['EstActif']) && $args['EstActif'] != '')        $pbEstActif = $args['EstActif'];    else $pbEstActif = '0';
+        if (isset($args['Code']) && $args['Code'] != '')        $pnCode = $args['Code'];    else $pnCode = '0';
         $pnIdUser = $_SESSION['FBX_USER_ID'];
 
-        $q = "INSERT INTO TBL_SECTEUR ( DateAdd, IDMembreAdd, EstActif, Ordre,IDSociete  ) VALUES ( NOW(),'$pnIdUser','$pbEstActif','$pnOrdre','$pnIDSociete' );
+        $q = "INSERT INTO TBL_SECTEUR ( DateAdd, IDMembreAdd, EstActif, Ordre, IDSociete, Code ) VALUES ( NOW(),'$pnIdUser','$pbEstActif','$pnOrdre','$pnIDSociete', '$pnCode' );
 INSERT INTO TBL_SECTEUR_TRAD ( IDSecteur,Nom,IDLangue ) VALUES ( LAST_INSERT_ID(),'$psNom','1' )";
 
         $data = \fbx\DBmysql::getInstance()->getInsertData($q);
@@ -903,6 +905,7 @@ WHERE
         if (isset($args['Ordre']) && $args['Ordre'] != '')              $pnOrdre = $args['Ordre'];          else $pnOrdre = '99';
         if (isset($args['EstActif']) && $args['EstActif'] != '')        $pbEstActif = $args['EstActif'];    else $pbEstActif = '0';
         if (isset($args['IDSecteur']) && $args['IDSecteur'] != '')      $pnIDSecteur = $args['IDSecteur'];  else $pnIDSecteur = 'null';
+        if (isset($args['Code']) && $args['Code'] != '')        $pnCode = $args['Code'];    else $pnCode = '0';
         $pnIdUser = $_SESSION['FBX_USER_ID'];
 
         $q = "UPDATE
@@ -912,7 +915,8 @@ SET
     TBL.Ordre = '$pnOrdre',
     TBL.EstActif = '$pbEstActif',
     TBL.IDMembreMaj = '$pnIdUser',
-    TBL.IDSociete = '$pnIDSociete'
+    TBL.IDSociete = '$pnIDSociete',
+    TBL.CODE = '$pnCode'
 WHERE
     TBL.IDSecteur = '$pnIDSecteur'";
         $data = \fbx\DBmysql::getInstance()->getUpdateData($q);

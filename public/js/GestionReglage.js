@@ -397,6 +397,7 @@ function getInsertSecteur()
     var societe = $('#SocieteSecteur_add');
     var ordre = $('#OrdreSecteur_add');
     var actif = $('#ActifSecteur_add');
+    var code = $('#CodeSecteur_add');
 
     $.getJSON(
         'GestionReglage',
@@ -405,6 +406,7 @@ function getInsertSecteur()
             'NomSecteur':nom.val(),
             'IDSociete':societe.val(),
             'Ordre':ordre.val(),
+            'Code':code.val(),
             'EstActif':actif.is(':checked') ? 1 : 0,
             'async': '1',
             'async_data': '1'
@@ -428,6 +430,7 @@ function getModifSecteur(id)
     var nom = $('#NomSecteur_' + id);
     var societe = $('#SocieteSecteur_' + id);
     var ordre = $('#OrdreSecteur_' + id);
+    var code = $('#CodeSecteur_' + id);
     var actif = $('#ActifSecteur_' + id);
 
     var modif = $('#modifSecteur_' + id);
@@ -436,6 +439,7 @@ function getModifSecteur(id)
     nom.prop("disabled", false);
     societe.prop("disabled", false);
     ordre.prop("disabled", false);
+    code.prop("disabled", false);
     actif.prop("disabled", false);
 
     modif.prop("hidden",true);
@@ -447,6 +451,7 @@ function getUpdateSecteur(id)
     var nom = $('#NomSecteur_' + id);
     var societe = $('#SocieteSecteur_' + id);
     var ordre = $('#OrdreSecteur_' + id);
+    var code = $('#CodeSecteur_' + id);
     var actif = $('#ActifSecteur_' + id);
 
     var modif = $('#modifSecteur_' + id);
@@ -455,6 +460,7 @@ function getUpdateSecteur(id)
     nom.prop("disabled", true);
     ordre.prop("disabled", true);
     actif.prop("disabled", true);
+    code.prop("disabled", true);
 
     modif.prop("hidden", false);
     sauve.prop("hidden", true);
@@ -472,6 +478,7 @@ function getUpdateSecteur(id)
             'NomSecteur': nom.val(),
             'IDSociete':societe.val(),
             'Ordre': ordre.val(),
+            'Code': code.val(),
             'EstActif': actif.is(':checked') ? 1 : 0,
             'async': '1',
             'async_data': '1'

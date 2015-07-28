@@ -313,14 +313,15 @@
                         {% set nbCalageFeuilleTotalSecteur = '0' %}
                     </tr>
                     {% endif %}
-                    {% set timeout = '1000' %}
-                    {% if ( data_planning|length > 5 ) %}{% set timeout = '750' %}{% endif %}
-                    {% if ( data_planning|length > 10 ) %}{% set timeout = '1000' %}{% endif %}
-                    {% if ( data_planning|length > 25 ) %}{% set timeout = '1500' %}{% endif %}
-                    {% if ( data_planning|length > 50 ) %}{% set timeout = '3000' %}{% endif %}
+                    {% set timeout = '1500' %}
+                    {% if ( data_planning|length > 5 ) %}{% set timeout = '1500' %}{% endif %}
+                    {% if ( data_planning|length > 10 ) %}{% set timeout = '3000' %}{% endif %}
+                    {% if ( data_planning|length > 25 ) %}{% set timeout = '5000' %}{% endif %}
+                    {% if ( data_planning|length > 50 ) %}{% set timeout = '7500' %}{% endif %}
                     <script type="text/javascript">$(function(){
                             {#$("select#SelectMachine_{{ k }} option[value="+$("#IDMachine_{{ k }}").val()+"]").attr("selected","selected");#}
-                            setTimeout(function() { $("select#SelectMachine_{{ k }} option[value="+$("#IDMachine_{{ k }}").val()+"]").attr("selected","selected"); }, {{ timeout }}); })
+                            {#setTimeout(function() { $("select#SelectMachine_{{ k }} option[value="+$("#IDMachine_{{ k }}").val()+"]").attr("selected","selected"); }, {{ timeout }}); })#}
+                            setTimeout(function() { document.getElementById("SelectMachine_{{ k }}").value = $("#IDMachine_{{ k }}").val() }, {{ timeout }}); })
                     </script>
                 {% endfor %}
                 </tbody>

@@ -1,0 +1,201 @@
+<!-- ProductionReclame.twig -->
+<script type="text/javascript" src="js/ProductionReclame.js"></script>
+
+{% if(session.Classe[constant('fbx\\Fab\\ProductionReclame::ClassPage')]) == '1' or (session.FBX_USER_SU) == '1' %}
+    <body id="ProductionReclame"
+          onload="getMenu('navBarDyna');
+                  document.title= '{% trans "Gestion réclamés" %} // {{ session.Slogan }}';
+                  getSelect('SelectReclameEtat','getListeReclameEtatTrad','{{ OUT.SelectReclameEtat }}');
+            ">
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- JUMBOTRON -->
+    <div class="container-fluid paddingJumbotron visible-lg visible-md" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="divJumbotron">
+                <div class="alert alert-block well fade in">
+                    <button type="button" class="close fade-in" data-dismiss="alert" title="{% trans "fermeLeMessage" %}">x</button>
+                    <h1>{% trans "Gestion des réclamés" %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid paddingJumbotron visible-sm visible-xs" id="top">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+        </div>
+    </div>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- SEARCH ENGINE -->
+    <div class="container-fluid">
+        <div class="panel-group" id="accordionSearch" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSearch">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                        <h4 class="panel-title">{% trans "Recherche" %}</h4>
+                    </a>
+                </div>
+                <div id="collapseSearch" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSearch">
+                    <div class="panel-body">
+                        <div class="row">
+                            <form class="form-group" role="form" method="POST" name="search" action="ProductionReclame" id="formProductionReclame">
+                            {#<form class="form-group" role="form" method="POST" name="search" action="ProductionDossierDeFab" id="searchDossierDeFab">#}
+                                <input type="hidden" name="action" value="getDataTableProductionReclame">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <!-- date crea begin -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                            <label class="control-label" for="searchDateDossierCreaBegin">{% trans "Période" %}</label>
+                                            <input id="searchDateDossierCreaBegin"
+                                                   name="searchDateDossierCreaBegin"
+                                                   class="form-control tooltip-link"
+                                                   type="text" title="{% trans "Entrez le début de la période de date de création" %}"
+                                                   placeholder="{% trans "Début" %}"
+                                                   value="{% if (OUT.searchDateDossierCreaBegin=='') %}{% else %}{{ OUT.searchDateDossierCreaBegin }}{% endif %}">
+                                            <!-- JS FOR DATERANGEPICKER -->
+                                            {% set idPicker = "searchDateDossierCreaBegin" %}
+                                            {% include "elements/datepicker.twig" %}
+                                        </div>
+                                        <!-- date crea end -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-1">
+                                            <label class="control-label" for="searchDateDossierCreaEnd">&nbsp;</label>
+                                            <input id="searchDateDossierCreaEnd"
+                                                   name="searchDateDossierCreaEnd"
+                                                   class="form-control tooltip-link"
+                                                   type="text" title="{% trans "Entrez la fin de la période de date de création" %}"
+                                                   placeholder="{% trans "Fin" %}"
+                                                   value="{% if (OUT.searchDateDossierCreaEnd=='') %}{% else %}{{ OUT.searchDateDossierCreaEnd }}{% endif %}">
+                                            <!-- JS FOR DATERANGEPICKER -->
+                                            {% set idPicker = "searchDateDossierCreaEnd" %}
+                                            {% include "elements/datepicker.twig" %}
+                                        </div>
+                                        <!-- etat -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="SelectReclameEtat">{% trans "État" %}</label>
+                                            <select id="SelectReclameEtat" class="form-control tooltip-link" name="SelectReclameEtat" title="{% trans "Choisir un état" %}" onchange="submit();">
+                                                <!-- getSelect('SelectReclameEtat','getListeReclameEtatTrad'); -->
+                                            </select>
+                                        </div>
+                                        <!-- dossier -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="Dossier">{% trans "Dossier" %}</label>
+                                            <input type="text" class="form-control" id="Dossier"
+                                                   placeholder="{% trans "Dossier" %}" name="Dossier" title="{% trans "Dossier" %}"
+                                                   value="{{ OUT.Dossier }}">
+                                        </div>
+                                        <!-- Ref -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="Ref">{% trans "Réf." %}</label>
+                                            <input type="text" class="form-control" id="Ref"
+                                                   placeholder="{% trans "Réf." %}" name="Ref" title="{% trans "Réference client du dossier" %}"
+                                                   value="{{ OUT.Ref }}">
+                                        </div>
+                                        <!-- Submit -->
+                                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                            <label class="control-label" for="btnSearch">&nbsp;</label>
+                                            <button class="btn btn-primary form-control" type="submit" id="btnSearch">{% trans "Chercher" %}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- SIDEBAR BTN -->
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 sidebar text text-center">
+                <ul class="nav nav-sidebar">
+                    <li><a href="#" onclick="getClotureReclame();"><span data-placement="bottom" title="{% trans "Clôturer une ou plusieurs demandes" %}" class="glyphicon glyphicon-check tooltip-link"></span></a></li>
+                    <li><a href="#" onclick="getReponseReclame();"><span data-placement="bottom" title="{% trans "Répondre à une ou plusieurs demandes" %}" class="glyphicon glyphicon-edit tooltip-link"></span></a></li>
+                    <li><a href="#" onclick="getUpdateDemande();"><span data-placement="bottom" title="{% trans "Modifier une demande" %}" class="glyphicon glyphicon-pencil tooltip-link"></span></a></li>
+                    <li><a href="#" onclick="getDeleteReclame();"><span data-placement="bottom" title="{% trans "Supprimer une demande ou plusieurs demandes" %}" class="glyphicon glyphicon-minus-sign tooltip-link"></span></a></li>
+                    <li><a href="#" onclick="$('#addDemande').modal('show');"><span data-placement="bottom" title="{% trans "Ajouter une demande" %}" class="glyphicon glyphicon-plus-sign tooltip-link"></span></a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href=""><span title="{% trans "Recharger" %}" class="glyphicon glyphicon-refresh tooltip-link"></span></a></li>
+                </ul>
+            </div>
+
+            <!-- TABLE -->
+            {% if (DATA_RECLAME|length>0) %}
+            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 main">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed tablesorter">
+                            <caption class="lead"><code>{{ DATA_RECLAME|length }} {% trans "demandes" %}</code></caption>
+                            <thead>
+                                <tr>
+                                    <th>{% trans "État" %}</th>
+                                    <th>{% trans "Ajout" %}</th>
+                                    <th>{% trans "Demandeur" %}</th>
+                                    <th>{% trans "Dossier" %}</th>
+                                    <th>{% trans "Ref" %}</th>
+                                    <th>{% trans "Quantite" %}</th>
+                                    <th>{% trans "Expedition" %}</th>
+                                    <th>{% trans "Demande" %}</th>
+                                    <th>{% trans "Auteur" %}</th>
+                                    <th></th>
+                                    <th>{% trans "Reponse" %}</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="">
+                            {% for i, value in DATA_RECLAME %}
+                                {% if (value.IDReclameEtat==1) %}
+                                    {% set class = "info" %}
+                                    {% set color = "color: #0000ff;" %}
+                                {% elseif (value.IDReclameEtat==3) %}
+                                    {% set class = "" %}
+                                    {% set color = "color: #d3d3d3;" %}
+                                {% else %}
+                                    {% set class = "" %}
+                                    {% set color = "" %}
+                                {% endif %}
+                                <tr class="{{ class }}">
+                                    <td style="vertical-align: middle;{{ color }}"><small>{{ value.NomReclameEtat }}</small></td>
+                                    <td style="vertical-align: middle;{{ color }}">{% if (value.DateAdd != '') %}{{ value.DateAdd|date("Y-m-d") }}{% endif %}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{{ value.MembreAdd }}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{{ value.Dossier }}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{{ value.Ref }}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{{ value.Quantite }}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{% if (value.DateExpedition != '') %}{{ value.DateExpedition|date("Y-m-d") }}{% endif %}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{{ value.Demande }}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{{ value.MembreReponse }}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{% if (value.DateReponse != '') %}{{ value.DateReponse|date("Y-m-d") }}{% endif %}</td>
+                                    <td style="vertical-align: middle;{{ color }}">{{ value.Reponse }}</td>
+                                    <td style="vertical-align: middle;{{ color }}">
+                                        <label>
+                                            <input type="checkbox" name="checkbox_{{ value.IDReclame }}" id="checkbox_{{ value.IDReclame }}"
+                                                   onchange="Sel_Mngt({{ value.IDReclame }},this.checked);">
+                                        </label>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        {#{{ dump(DATA_RECLAME) }}#}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if (DATA_RECLAME|length>0) %}{% include "elements/selectPagination.twig" %}{% endif %}
+
+    {% include 'elements/modalProductionReclame.twig' %}
+
+{% else %}
+
+    {% include 'welcome.twig' %}
+
+    <script type="text/javascript">$(function(){getModalAlert("Vous n'avez pas les droits");})</script>
+
+{% endif %}

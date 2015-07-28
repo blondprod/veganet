@@ -141,8 +141,9 @@
                     if (IDElement){
                         setTimeout(function() {
                             getDataDossierDeFabTlElement(IDElement);
-                            $("select#IDElement option[value="+IDElement+"]").attr("selected","selected");
-                        }, 500);
+//                            $("select#IDElement option[value="+IDElement+"]").attr("selected","selected");
+                            document.getElementById("IDElement").value = IDElement;
+                        }, 1500);
                     }
                 }
                 buffer = '';
@@ -169,7 +170,8 @@
                 //typeof(enabledRow) == "function" ? enabledRow($('#SelectSociete').val()) : $( "#searchDossierDeFab" ).submit();
                 if (typeof(enabledRow) == "function") { enabledRow($('#SelectSociete').val()); }
                 else {
-                    if (document.getElementById('searchDossierDeFab')) { $( "#searchDossierDeFab" ).submit(); }
+                    if (document.getElementById('searchDossierDeFab'))      { $( "#searchDossierDeFab" ).submit(); }
+                    else if (document.getElementById('formSuiviReclame'))   { $( "#formSuiviReclame" ).submit(); }
                     else { window.open('http://{{ session.IP_SERVER }}/{{ session.PUBLIC_PATH }}Production?action=imp&Dossier='+IDDossierDeFab+'','DossierDeFab', ''); }
                 }
                 buffer = IDDossierDeFab = '';

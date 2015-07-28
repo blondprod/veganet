@@ -42,6 +42,51 @@
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <div class="container-fluid">
         <div class="row">
+            <!-- collapse barcode -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="panel-group" id="accordionBarCode" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingBarCode">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseBarCode" aria-expanded="true" aria-controls="collapseBarCode">
+                                <h4 class="panel-title">
+                                    {% trans "BarCodes de fabrication" %}
+                                </h4>
+                            </a>
+                        </div>
+                        <div id="collapseBarCode" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingBarCode">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <blockquote>
+                                            <p class="lead">{% trans "Validation de dossier" %}</p>
+                                            <img src="img/barcode/action/well.png" class="img-thumbnail">
+                                        </blockquote>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <blockquote>
+                                            <p class="lead">{% trans "Planning machine" %}</p>
+                                            <img src="img/barcode/action/plan.png" class="img-thumbnail">
+                                        </blockquote>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <blockquote>
+                                            <p class="lead">{% trans "Déconnexion" %}</p>
+                                            <img src="img/barcode/action/logout.png" class="img-thumbnail">
+                                        </blockquote>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <p class="text text-right">
+                                            <a href="barcode" target="_blank"><button onmouseover="$(this).tooltip('show');"
+                                                                                      title="{% trans "BarCode Generator" %}"
+                                                                                      class="btn btn-primary tooltip-link"><span class="glyphicon glyphicon-barcode"></span></button></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- TABLE SOCIETE -->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"{% if (session.FBX_USER_SU != '1') %} hidden="hidden" {% endif %}>
                 <div class="table-responsive" id="tableGestionSociete"><!-- GestionReglage.js - tableGestionSociete.twig --></div>

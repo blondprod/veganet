@@ -190,7 +190,7 @@ WHERE
     })
 </script>';
 
-        $where = $data_code = null;
+        $where = $data_code = $whereSociete = null;
         $pdDateCreaBegin = $pdDateCreaEnd = null;
 
         $pnIdLangue = $_SESSION['IDLANGUE'];

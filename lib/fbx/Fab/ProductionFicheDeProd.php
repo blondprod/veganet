@@ -123,8 +123,41 @@ VALUES
                     $this->getWrLog($q_elementTlOption, "$data_elementTlOption", __FUNCTION__, __FILE__);
                 }
             }
+
+            //__ export into CSV # TODO : TO SUPP AFTER
+            $this->csv_export($args);
         }
         $this->_data = array("OUT"=>$args);
+    }
+
+    //__ export into CSV
+    private function csv_export($args)
+    {
+        $psDossier = $args['Dossier'];
+        $pnIdUser = $_SESSION['FBX_USER_ID'];
+        $pnIdSecteur = intval($args['IDSecteur']);
+
+        $q = "SELECT
+    #ISNULL(T.Code,'0') AS CodeSecteur,
+    CASE WHEN T.Code = '' THEN '0' WHEN T.Code IS NULL THEN '0' ELSE T.Code END AS CodeSecteur
+FROM
+    TBL_SECTEUR AS T
+WHERE
+    T.IDSecteur = '$pnIdSecteur'";
+        $data = \fbx\DBmysql::getInstance()->getSelectData($q);
+        $pnCodeSecteur = $data[0]->CodeSecteur;
+
+//        $list = array('nodos','nofeu', 'nogam', 'datedeb', 'heuredeb', 'operateur');
+        $list = array($psDossier,'1', $pnCodeSecteur, date('d/m/Y'), date('H:i:s'), $pnIdUser);
+        $filename = "csv/export/".date('YmdHis').".csv";
+
+        $fp = fopen($filename, 'w');
+
+        fputcsv($fp, $list,";");
+
+        fclose($fp);
+
+        chmod($filename,0777);
     }
 
     //__FUNCTION for JS to complete begin row

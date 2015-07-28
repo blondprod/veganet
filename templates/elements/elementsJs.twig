@@ -2,7 +2,8 @@
 <script type="text/javascript">
     function getAll(i,count,id,div)
     {
-        for (j = i+1; j <= count; j++){ $("select#"+div+""+j+" option[value="+id+"]").attr("selected","selected"); }
+//        for (j = i+1; j <= count; j++){ $("select#"+div+""+j+" option[value="+id+"]").attr("selected","selected"); }
+        for (j = i+1; j <= count; j++){ document.getElementById(""+div+""+j+"").value = id; }
     }
 
     function verifDescriptionDossier()
@@ -279,25 +280,35 @@
     {
         var n = parseInt(id)+1;
         for (m = i+1; m <= count; m++) {
-            if($.isNumeric(id)) { $("select#"+div+""+m+" option[value="+(n)+"]").attr("selected","selected"); n++; }
-            else { $("select#"+div+""+m+" option[value=0]").attr("selected","selected"); }
+            if($.isNumeric(id)) {
+//                $("select#"+div+""+m+" option[value="+(n)+"]").attr("selected","selected");
+                document.getElementById(""+div+""+m+"").value = n;
+                n++;
+            }
+            else {
+//                $("select#"+div+""+m+" option[value=0]").attr("selected","selected");
+                document.getElementById(""+div+""+m+"").value = 0;
+            }
         }
     }
 
     function getOptionAll(i,j,count,id)
     {
-        for (k = i+1; k <= count; k++) { $("select#Option"+k+"Element"+j+" option[value="+id+"]").attr("selected","selected"); }
+//        for (k = i+1; k <= count; k++) { $("select#Option"+k+"Element"+j+" option[value="+id+"]").attr("selected","selected"); }
+        for (k = i+1; k <= count; k++) { document.getElementById("Option"+k+"Element"+j+"").value = id; }
     }
 
     function getMachineAll(i,j,count,id)
     {
-        for (k = i+1; k <= count; k++) { $("select#Element"+k+"Machine"+j+" option[value="+id+"]").attr("selected","selected"); }
+//        for (k = i+1; k <= count; k++) { $("select#Element"+k+"Machine"+j+" option[value="+id+"]").attr("selected","selected"); }
+        for (k = i+1; k <= count; k++) { document.getElementById("Element"+k+"Machine"+j+"").value = id; }
     }
 
     function getMachineImpressionAll(i,j,count,id)
     {
         for (k = i+1; k <= count; k++) {
-            $("select#Element"+k+"MachineImpression"+j+" option[value="+id+"]").attr("selected","selected");
+//            $("select#Element"+k+"MachineImpression"+j+" option[value="+id+"]").attr("selected","selected");
+            for (k = i+1; k <= count; k++) { document.getElementById("Element"+k+"MachineImpression"+j+"").value = id; }
         }
     }
 

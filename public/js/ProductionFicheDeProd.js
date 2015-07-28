@@ -175,7 +175,8 @@ function getDataDossierDeFabTlElement(id)
         getSelectTlSociete('SelectImpression','ImpressionTlMachine',$('#SelectSociete').val(),$('#SelectMachine').val());
     }
     setTimeout(function() {
-        $("select#SelectImpression option[value="+idimp+"]").attr("selected","selected");
+        //$("select#SelectImpression option[value="+idimp+"]").attr("selected","selected");
+        document.getElementById("SelectImpression").value = idimp;
     }, 500);
 }
 
@@ -322,7 +323,8 @@ function getDataDossierDeFabTlElementIntoFiche(IDElement,Dossier)
         $('#modalPlanning').modal("hide");
         setTimeout(function() {
             getDataDossierDeFabTlElement(IDElement);
-            $("select#IDElement option[value="+IDElement+"]").attr("selected","selected");
+            //$("select#IDElement option[value="+IDElement+"]").attr("selected","selected");
+            document.getElementById("IDElement").value = IDElement;
         }, 500);
 
     }

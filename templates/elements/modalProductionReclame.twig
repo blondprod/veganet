@@ -1,0 +1,262 @@
+<!-- modalProductionReclame.twig -->
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- MODAL CLOTURE Reclame -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="clotureReclame">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "AlertH4" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <form class="form-group" role="form" method="POST" name="search" action="ProductionReclame">
+                <input type="hidden" name="action" value="getClotureReclame">
+                <input type="hidden" id="IDReclameModalCloture" name="IDReclameModalCloture">
+                <div class="modal-body">
+                    <p class="lead">{% trans 'Etes-vous sur de vouloir fermer ce(s) demande(s) ?' %}</p>
+                </div>
+                <!-- Modal foot -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Annuler" %}</button>
+                    <button type="submit" class="btn btn-warning" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Clôturer" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- MODAL DELETE Reclame -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="deleteReclame">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "AlertH4" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <form class="form-group" role="form" method="POST" name="search" action="ProductionReclame">
+                <input type="hidden" name="action" value="getDeleteReclame">
+                <input type="hidden" id="IDReclameModalDelete" name="IDReclameModalDelete">
+                <div class="modal-body">
+                    <p class="lead">{% trans 'Etes-vous sur de vouloir supprimer ce(s) demande(s) ?' %}</p>
+                </div>
+                <!-- Modal foot -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Annuler" %}</button>
+                    <button type="submit" class="btn btn-danger" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Supprimer" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- MODAL Add reponse -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="addReponse">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "Ajouter une demande" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <form class="form-group" role="form" method="POST" name="search" action="ProductionReclame">
+                <div class="modal-body">
+                    <input type="hidden" name="action" value="getAddReponse">
+                    <div class="row">
+                        <!-- reponse -->
+                        <div id="divReponse">
+                            <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <label class="control-label" for="ReponseModal"
+                                       title="{% trans "Réponse à(aux) demande(s)" %}">{% trans "Reponse" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="ReponseModal"
+                                       placeholder="{% trans "Texte" %}" name="ReponseModal"
+                                       onkeyup="checkInputText('divReponse',this.value.length,2);if(this.value.length>1){$('#btnUpdate').prop('disabled',false)}else {$('#btnUpdate').prop('disabled',true)}"
+                                       title="{% trans "Réponse à(aux) demande(s)" %}">
+                                <input type="hidden" id="IDReclame" name="IDReclame">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal foot -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Annuler" %}</button>
+                    <button type="submit" class="btn btn-success" id="btnUpdate" disabled title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- MODAL ADD Reclame -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="addDemande">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "Ajouter une demande" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <form class="form-group" role="form" method="POST" name="search" action="ProductionReclame">
+                <div class="modal-body">
+                    <input type="hidden" name="action" value="getInsertProductionReclame">
+                    <div class="row">
+                        <!-- dossier -->
+                        <div id="divDossier">
+                            <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                <label class="control-label" for="DossierModal"
+                                       title="{% trans "Entrez un numéro de dossier" %}">{% trans "Dossier" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DossierModal"
+                                       placeholder="{% trans "Libelle" %}" name="DossierModal"
+                                       onkeyup="checkInputText('divDossier',this.value.length,3);"
+                                       title="{% trans "Entrez un numéro de dossier" %}">
+                            </div>
+                        </div>
+                        <!-- ref -->
+                        <div id="divRef">
+                            <div class="form-group col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                                <label class="control-label" for="RefModal"
+                                       title="{% trans "Entrez une ref client" %}">{% trans "Reférence" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="RefModal"
+                                       placeholder="{% trans "Ref. client" %}" name="RefModal"
+                                       onkeyup="checkInputText('divRef',this.value.length,3);"
+                                       title="{% trans "Entrez une ref client" %}">
+                            </div>
+                        </div>
+                        <!-- demande -->
+                        <div id="divDemande">
+                            <div class="form-group col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                                <label class="control-label" for="DemandeModal"
+                                       title="{% trans "Entrez un demande" %}">{% trans "Demande" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DemandeModal"
+                                       placeholder="{% trans "Demande" %}" name="DemandeModal"
+                                       title="{% trans "Entrez un demande" %}">
+                            </div>
+                        </div>
+                        <!-- quantite -->
+                        <div id="divQuantite">
+                            <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                <label class="control-label" for="QuantiteModal"
+                                       title="{% trans "Entrez une quantité finale à expédier" %}">{% trans "Quantité" %}</label>
+                                <input type="number" class="form-control tooltip-link" data-placement="bottom" id="QuantiteModal"
+                                       placeholder="{% trans "Quantité" %}" name="QuantiteModal"
+                                       onkeyup="checkInputNumber('divQuantite',this);"
+                                       title="{% trans "Entrez une quantité à expédier" %}">
+                            </div>
+                        </div>
+                        <!-- dateExpedition -->
+                        <div id="divDateExpedition">
+                            <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                <label class="control-label" for="DateExpeditionModal"
+                                       title="{% trans "Entrez une date d'expédition" %}">{% trans "Expédition" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DateExpeditionModal"
+                                       placeholder="{% trans "Date" %}" name="DateExpeditionModal"
+                                       title="{% trans "Entrez une date d'expédition souhaitée" %}">
+                                <!-- JS FOR DATERANGEPICKER -->
+                                {% set div = "divDateExpedition" %}
+                                {% set idPicker = "DateExpeditionModal" %}
+                                {% include "elements/datepicker.twig" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal foot -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Annuler" %}</button>
+                    <button type="submit" class="btn btn-success" title="{% trans "fermeLaModalTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL UP Reclame -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="upDemande">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal head -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{% trans "fermeLaModalTitleBtn" %}">&times;</button>
+                <h4 class="modal-title" id="ModalAlert">{% trans "Ajouter une demande" %}</h4>
+            </div>
+            <!-- Modal body -->
+            <form class="form-group" role="form" method="POST" name="search" action="ProductionReclame">
+                <div class="modal-body">
+                    <input type="hidden" name="action" value="getUpdateProductionReclame">
+                    <input type="hidden" name="IDReclameModalUp" id="IDReclameModalUp">
+                    <div class="row">
+                        <!-- dossier -->
+                        <div id="divModalUpDossier">
+                            <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                <label class="control-label" for="DossierModalUp"
+                                       title="{% trans "Entrez un numéro de dossier" %}">{% trans "Dossier" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DossierModalUp"
+                                       placeholder="{% trans "Libelle" %}" name="DossierModalUp"
+                                       onkeyup="checkInputText('divModalUpDossier',this.value.length,3);"
+                                       title="{% trans "Entrez un numéro de dossier" %}">
+                            </div>
+                        </div>
+                        <!-- ref -->
+                        <div id="divModalUpRef">
+                            <div class="form-group col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                                <label class="control-label" for="RefModalUp"
+                                       title="{% trans "Entrez une ref client" %}">{% trans "Reférence" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="RefModalUp"
+                                       placeholder="{% trans "Ref. client" %}" name="RefModalUp"
+                                       onkeyup="checkInputText('divModalUpRef',this.value.length,3);"
+                                       title="{% trans "Entrez une ref client" %}">
+                            </div>
+                        </div>
+                        <!-- demande -->
+                        <div id="divModalUpDemande">
+                            <div class="form-group col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                                <label class="control-label" for="DemandeModalUp"
+                                       title="{% trans "Entrez un demande" %}">{% trans "Demande" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DemandeModalUp"
+                                       placeholder="{% trans "Demande" %}" name="DemandeModalUp"
+                                       title="{% trans "Entrez un demande" %}">
+                            </div>
+                        </div>
+                        <!-- quantite -->
+                        <div id="divModalUpQuantite">
+                            <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                <label class="control-label" for="QuantiteModalUp"
+                                       title="{% trans "Entrez une quantité finale à expédier" %}">{% trans "Quantité" %}</label>
+                                <input type="number" class="form-control tooltip-link" data-placement="bottom" id="QuantiteModalUp"
+                                       placeholder="{% trans "Quantité" %}" name="QuantiteModalUp"
+                                       onkeyup="checkInputNumber('divQuantite',this);"
+                                       title="{% trans "Entrez une quantité à expédier" %}">
+                            </div>
+                        </div>
+                        <!-- dateExpedition -->
+                        <div id="divModalUpDateExpedition">
+                            <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                <label class="control-label" for="DateExpeditionModalUp"
+                                       title="{% trans "Entrez une date d'expédition" %}">{% trans "Expédition" %}</label>
+                                <input type="text" class="form-control tooltip-link" data-placement="bottom" id="DateExpeditionModalUp"
+                                       placeholder="{% trans "Date" %}" name="DateExpeditionModalUp"
+                                       title="{% trans "Entrez une date d'expédition souhaitée" %}">
+                                <!-- JS FOR DATERANGEPICKER -->
+                                {% set div = "divDateExpedition" %}
+                                {% set idPicker = "DateExpeditionModalUp" %}
+                                {% include "elements/datepicker.twig" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ModalUp foot -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" title="{% trans "fermeLaModalUpTitleBtn" %}">{% trans "Annuler" %}</button>
+                    <button type="submit" class="btn btn-success" title="{% trans "fermeLaModalUpTitleBtn" %}">{% trans "Enregistrer" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

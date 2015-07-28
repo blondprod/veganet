@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : imac
  Source Server Type    : MySQL
- Source Server Version : 50623
- Source Host           : localhost
+ Source Server Version : 50624
+ Source Host           : 88.167.74.237
  Source Database       : labox
 
  Target Server Type    : MySQL
- Target Server Version : 50623
+ Target Server Version : 50624
  File Encoding         : utf-8
 
- Date: 07/08/2015 01:07:30 AM
+ Date: 07/29/2015 00:11:18 AM
 */
 
 SET NAMES utf8;
@@ -78,7 +78,7 @@ CREATE TABLE `TBL_DOSSIER_DE_FAB` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDDossierDeFab`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_DOSSIER_DE_FAB_TL_ELEMENT`
@@ -102,7 +102,7 @@ CREATE TABLE `TBL_DOSSIER_DE_FAB_TL_ELEMENT` (
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   `IDImpression` int(11) DEFAULT NULL,
   PRIMARY KEY (`IDDossierDeFab_tl_element`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_DOSSIER_DE_FAB_TL_ELEMENT_TL_MACHINE`
@@ -122,7 +122,7 @@ CREATE TABLE `TBL_DOSSIER_DE_FAB_TL_ELEMENT_TL_MACHINE` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDDossierDeFab_tl_element_tl_machine`)
-) ENGINE=InnoDB AUTO_INCREMENT=260 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=390 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_DOSSIER_DE_FAB_TL_ELEMENT_TL_OPTION`
@@ -141,7 +141,7 @@ CREATE TABLE `TBL_DOSSIER_DE_FAB_TL_ELEMENT_TL_OPTION` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDDossierDeFab_tl_element_tl_option`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_DOSSIER_DE_FAB_TL_OPTION`
@@ -160,7 +160,7 @@ CREATE TABLE `TBL_DOSSIER_DE_FAB_TL_OPTION` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDDossierDeFab_tl_option`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_ELEMENT`
@@ -180,7 +180,7 @@ CREATE TABLE `TBL_ELEMENT` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDElement`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_ELEMENT_TRAD`
@@ -220,7 +220,7 @@ CREATE TABLE `TBL_FICHE_DE_PROD` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDFicheDeProd`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_FICHE_DE_PROD_TL_CODE_ERREUR`
@@ -239,7 +239,7 @@ CREATE TABLE `TBL_FICHE_DE_PROD_TL_CODE_ERREUR` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDFicheDeProd_tl_code_erreur`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_FICHE_DE_PROD_TL_OPTION`
@@ -281,6 +281,26 @@ CREATE TABLE `TBL_FONCTION` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
+--  Table structure for `TBL_FONCTION_PT_PAGE`
+-- ----------------------------
+DROP TABLE IF EXISTS `TBL_FONCTION_PT_PAGE`;
+CREATE TABLE `TBL_FONCTION_PT_PAGE` (
+  `IDFonction_pt_page` int(11) NOT NULL AUTO_INCREMENT,
+  `IDFonction` int(11) DEFAULT NULL,
+  `IDPage` int(11) DEFAULT NULL,
+  `Permit` int(1) NOT NULL DEFAULT '1',
+  `IDMembreAdd` int(11) DEFAULT NULL,
+  `DateAdd` datetime DEFAULT NULL,
+  `IDMembreMaj` int(11) DEFAULT NULL,
+  `DateMaj` datetime DEFAULT NULL,
+  `IDMembreSupp` int(11) DEFAULT NULL,
+  `DateSupp` datetime DEFAULT NULL,
+  `EstSupp` int(1) NOT NULL DEFAULT '0',
+  `EstProtected` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IDFonction_pt_page`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
 --  Table structure for `TBL_FONCTION_TL_PAGE`
 -- ----------------------------
 DROP TABLE IF EXISTS `TBL_FONCTION_TL_PAGE`;
@@ -297,7 +317,7 @@ CREATE TABLE `TBL_FONCTION_TL_PAGE` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDFonction_tl_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_FONCTION_TRAD`
@@ -327,7 +347,7 @@ CREATE TABLE `TBL_FORMAT` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDFormat`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_FORMAT_TRAD`
@@ -335,6 +355,77 @@ CREATE TABLE `TBL_FORMAT` (
 DROP TABLE IF EXISTS `TBL_FORMAT_TRAD`;
 CREATE TABLE `TBL_FORMAT_TRAD` (
   `IDFormat` int(11) NOT NULL,
+  `Nom` varchar(255) DEFAULT NULL,
+  `IDLangue` int(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+--  Table structure for `TBL_FOURNISSEUR`
+-- ----------------------------
+DROP TABLE IF EXISTS `TBL_FOURNISSEUR`;
+CREATE TABLE `TBL_FOURNISSEUR` (
+  `IDFournisseur` int(11) NOT NULL AUTO_INCREMENT,
+  `Nom` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `Adresse1` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `Adresse2` varchar(255) DEFAULT NULL,
+  `CodePostal` int(8) DEFAULT NULL,
+  `Ville` varchar(255) DEFAULT NULL,
+  `Pays` varchar(255) DEFAULT NULL,
+  `Telephone` varchar(255) DEFAULT NULL,
+  `Fax` varchar(255) DEFAULT NULL,
+  `Mail` varchar(255) DEFAULT NULL,
+  `Certification` varchar(255) DEFAULT NULL,
+  `Activite` varchar(255) DEFAULT NULL,
+  `CodeClient` varchar(255) DEFAULT NULL,
+  `IDFournisseurType` int(11) DEFAULT NULL,
+  `EstFournisseur` int(1) NOT NULL DEFAULT '0',
+  `EstSousTraitant` int(1) NOT NULL DEFAULT '0',
+  `EstPrestataire` int(1) NOT NULL DEFAULT '0',
+  `ContactNom` varchar(255) DEFAULT NULL,
+  `ContactPrenom` varchar(255) DEFAULT NULL,
+  `ContactFonction` varchar(255) DEFAULT NULL,
+  `ContactTelephone` varchar(255) DEFAULT NULL,
+  `ContactFax` varchar(255) DEFAULT NULL,
+  `ContactMail` varchar(255) DEFAULT NULL,
+  `IDSociete` int(11) DEFAULT NULL,
+  `EstActif` int(1) NOT NULL DEFAULT '1',
+  `IDMembreAdd` int(11) DEFAULT NULL,
+  `DateAdd` datetime DEFAULT NULL,
+  `IDMembreMaj` int(11) DEFAULT NULL,
+  `DateMaj` datetime DEFAULT NULL,
+  `IDMembreSupp` int(11) DEFAULT NULL,
+  `DateSupp` datetime DEFAULT NULL,
+  `EstSupp` int(1) NOT NULL DEFAULT '0',
+  `EstProtected` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IDFournisseur`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+--  Table structure for `TBL_FOURNISSEUR_TYPE`
+-- ----------------------------
+DROP TABLE IF EXISTS `TBL_FOURNISSEUR_TYPE`;
+CREATE TABLE `TBL_FOURNISSEUR_TYPE` (
+  `IDFournisseurType` int(11) NOT NULL AUTO_INCREMENT,
+  `IDSociete` int(11) DEFAULT NULL,
+  `Ordre` int(11) NOT NULL DEFAULT '99',
+  `EstActif` int(1) DEFAULT '1',
+  `IDMembreAdd` int(11) DEFAULT NULL,
+  `DateAdd` datetime DEFAULT NULL,
+  `IDMembreMaj` int(11) DEFAULT NULL,
+  `DateMaj` datetime DEFAULT NULL,
+  `IDMembreSupp` int(11) DEFAULT NULL,
+  `DateSupp` datetime DEFAULT NULL,
+  `EstSupp` int(1) NOT NULL DEFAULT '0',
+  `EstProtected` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IDFournisseurType`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+--  Table structure for `TBL_FOURNISSEUR_TYPE_TRAD`
+-- ----------------------------
+DROP TABLE IF EXISTS `TBL_FOURNISSEUR_TYPE_TRAD`;
+CREATE TABLE `TBL_FOURNISSEUR_TYPE_TRAD` (
+  `IDFournisseurType` int(11) NOT NULL,
   `Nom` varchar(255) DEFAULT NULL,
   `IDLangue` int(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
@@ -358,6 +449,26 @@ CREATE TABLE `TBL_GROUPE` (
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDGroupe`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+--  Table structure for `TBL_GROUPE_PT_MENU`
+-- ----------------------------
+DROP TABLE IF EXISTS `TBL_GROUPE_PT_MENU`;
+CREATE TABLE `TBL_GROUPE_PT_MENU` (
+  `IDGroupe_pt_menu` int(11) NOT NULL AUTO_INCREMENT,
+  `IDGroupe` int(11) DEFAULT NULL,
+  `IDMenu` int(11) DEFAULT NULL,
+  `Permit` int(1) NOT NULL DEFAULT '1',
+  `IDMembreAdd` int(11) DEFAULT NULL,
+  `DateAdd` datetime DEFAULT NULL,
+  `IDMembreMaj` int(11) DEFAULT NULL,
+  `DateMaj` datetime DEFAULT NULL,
+  `IDMembreSupp` int(11) DEFAULT NULL,
+  `DateSupp` datetime DEFAULT NULL,
+  `EstSupp` int(1) NOT NULL DEFAULT '0',
+  `EstProtected` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IDGroupe_pt_menu`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_GROUPE_TL_FONCTION`
@@ -427,7 +538,7 @@ CREATE TABLE `TBL_IMPRESSION` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDImpression`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_IMPRESSION_TRAD`
@@ -483,7 +594,7 @@ CREATE TABLE `TBL_MACHINE` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDMachine`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_MACHINE_TRAD`
@@ -521,7 +632,7 @@ CREATE TABLE `TBL_MEMBRE` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDMembre`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_MEMBRE_ROW_PAGE`
@@ -573,7 +684,7 @@ CREATE TABLE `TBL_MENU_TL_PAGE` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDMenu_tl_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_MENU_TRAD`
@@ -603,7 +714,7 @@ CREATE TABLE `TBL_OPTION` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDOption`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_OPTION_TRAD`
@@ -634,7 +745,7 @@ CREATE TABLE `TBL_PAGE` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDPage`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_PAGE_TRAD`
@@ -665,11 +776,69 @@ CREATE TABLE `TBL_PLANNING_TL_ELEMENT_TL_MACHINE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
+--  Table structure for `TBL_RECLAME`
+-- ----------------------------
+DROP TABLE IF EXISTS `TBL_RECLAME`;
+CREATE TABLE `TBL_RECLAME` (
+  `IDReclame` int(11) NOT NULL AUTO_INCREMENT,
+  `IDReclameEtat` int(11) NOT NULL DEFAULT '1',
+  `Dossier` varchar(255) DEFAULT NULL,
+  `Ref` varchar(255) DEFAULT NULL,
+  `Quantite` int(11) DEFAULT NULL,
+  `DateExpedition` datetime DEFAULT NULL,
+  `Demande` varchar(255) DEFAULT NULL,
+  `Reponse` varchar(255) DEFAULT NULL,
+  `IDMembreReponse` int(11) DEFAULT NULL,
+  `DateReponse` datetime DEFAULT NULL,
+  `IDSociete` int(11) DEFAULT '1',
+  `IDMembreAdd` int(11) DEFAULT NULL,
+  `DateAdd` datetime DEFAULT NULL,
+  `IDMembreMaj` int(11) DEFAULT NULL,
+  `DateMaj` datetime DEFAULT NULL,
+  `IDMembreSupp` int(11) DEFAULT NULL,
+  `DateSupp` datetime DEFAULT NULL,
+  `EstSupp` int(1) NOT NULL DEFAULT '0',
+  `EstProtected` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IDReclame`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+--  Table structure for `TBL_RECLAME_ETAT`
+-- ----------------------------
+DROP TABLE IF EXISTS `TBL_RECLAME_ETAT`;
+CREATE TABLE `TBL_RECLAME_ETAT` (
+  `IDReclameEtat` int(11) NOT NULL AUTO_INCREMENT,
+  `IDSociete` int(11) DEFAULT NULL,
+  `Ordre` int(11) NOT NULL DEFAULT '99',
+  `EstActif` int(1) DEFAULT '1',
+  `IDMembreAdd` int(11) DEFAULT NULL,
+  `DateAdd` datetime DEFAULT NULL,
+  `IDMembreMaj` int(11) DEFAULT NULL,
+  `DateMaj` datetime DEFAULT NULL,
+  `IDMembreSupp` int(11) DEFAULT NULL,
+  `DateSupp` datetime DEFAULT NULL,
+  `EstSupp` int(1) NOT NULL DEFAULT '0',
+  `EstProtected` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IDReclameEtat`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+--  Table structure for `TBL_RECLAME_ETAT_TRAD`
+-- ----------------------------
+DROP TABLE IF EXISTS `TBL_RECLAME_ETAT_TRAD`;
+CREATE TABLE `TBL_RECLAME_ETAT_TRAD` (
+  `IDReclameEtat` int(11) NOT NULL,
+  `Nom` varchar(255) DEFAULT NULL,
+  `IDLangue` int(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
 --  Table structure for `TBL_SECTEUR`
 -- ----------------------------
 DROP TABLE IF EXISTS `TBL_SECTEUR`;
 CREATE TABLE `TBL_SECTEUR` (
   `IDSecteur` int(11) NOT NULL AUTO_INCREMENT,
+  `Code` int(11) DEFAULT NULL,
   `IDSociete` int(11) DEFAULT NULL,
   `Ordre` int(11) NOT NULL DEFAULT '99',
   `EstActif` int(1) DEFAULT '1',
@@ -682,7 +851,7 @@ CREATE TABLE `TBL_SECTEUR` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDSecteur`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_SECTEUR_TL_CODE_ERREUR`
@@ -720,7 +889,7 @@ CREATE TABLE `TBL_SECTEUR_TL_IMPRESSION` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDSecteur_tl_impression`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_SECTEUR_TL_OPTION`
@@ -816,7 +985,7 @@ CREATE TABLE `TBL_SUPPORT` (
   `EstSupp` int(1) NOT NULL DEFAULT '0',
   `EstProtected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IDSupport`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Table structure for `TBL_SUPPORT_TL_FORMAT`

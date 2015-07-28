@@ -157,7 +157,8 @@ function getDataDossierDeFabTlElement(id)
         $('#tdSelectOption').html('');
         getSelect('SelectImpression','getListeImpressionTrad');
     }
-    $("select#SelectImpression option[value=1]").attr("selected","selected");
+    //$("select#SelectImpression option[value=1]").attr("selected","selected");
+    document.getElementById("SelectImpression").value = 1;
 }
 
 //function enabledRow(IDSociete)
