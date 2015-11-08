@@ -3,86 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3428df2c-0552-4356-b370-4e8e29f0c0b1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/BarCode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/BarCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/BarCode.php" afterPath="$PROJECT_DIR$/public/barcode/class/BarCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FColor.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FColor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/FColor.php" afterPath="$PROJECT_DIR$/public/barcode/class/FColor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FDrawing.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/FDrawing.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/FDrawing.php" afterPath="$PROJECT_DIR$/public/barcode/class/FDrawing.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/LSTable.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/LSTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/LSTable.php" afterPath="$PROJECT_DIR$/public/barcode/class/LSTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/README.md" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/Smarty.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/Smarty.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/Table_template.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/Table_template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/Table_template.php" afterPath="$PROJECT_DIR$/public/barcode/class/Table_template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcodeGen.php" afterPath="$PROJECT_DIR$/public/barcodeGen.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/cQRCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/cQRCodeGen.php" afterPath="$PROJECT_DIR$/public/cQRCodeGen.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/codabar.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/codabar.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/codabar.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/codabar.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/codabar.php" afterPath="$PROJECT_DIR$/public/barcode/html/codabar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code11.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code11.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/code11.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/code11.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/code11.php" afterPath="$PROJECT_DIR$/public/barcode/html/code11.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code128.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code128.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/code128.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/code128.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/code128.php" afterPath="$PROJECT_DIR$/public/barcode/html/code128.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code39.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code39.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/code39.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/code39.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/code39.php" afterPath="$PROJECT_DIR$/public/barcode/html/code39.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code93.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/code93.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/code93.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/code93.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/code93.php" afterPath="$PROJECT_DIR$/public/barcode/html/code93.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean13.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean13.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/ean13.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/ean13.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/ean13.php" afterPath="$PROJECT_DIR$/public/barcode/html/ean13.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean8.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/ean8.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/ean8.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/ean8.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/ean8.php" afterPath="$PROJECT_DIR$/public/barcode/html/ean8.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/footer.php" afterPath="$PROJECT_DIR$/public/barcode/html/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.baseUrl.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.baseUrl.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/function.php" afterPath="$PROJECT_DIR$/public/barcode/html/function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.siteUrl.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.siteUrl.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.urlFor.php" afterPath="$PROJECT_DIR$/vendor/slim/views/Slim/Views/SmartyPlugins/function.urlFor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/gen.php" afterPath="$PROJECT_DIR$/public/barcode/gen.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/header.php" afterPath="$PROJECT_DIR$/public/barcode/html/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/i25.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/i25.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/i25.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/i25.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/i25.php" afterPath="$PROJECT_DIR$/public/barcode/html/i25.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/image.php" afterPath="$PROJECT_DIR$/public/barcode/html/image.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/index.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/index.php" afterPath="$PROJECT_DIR$/public/barcode/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/index.php" afterPath="$PROJECT_DIR$/public/barcode/class/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/jquery.tablesorter.js" afterPath="$PROJECT_DIR$/public/js/jquery.tablesorter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/jquery.tablesorter.pager.css" afterPath="$PROJECT_DIR$/public/css/jquery.tablesorter.pager.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/jquery.tablesorter.pager.js" afterPath="$PROJECT_DIR$/public/js/jquery.tablesorter.pager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/login.twig" afterPath="$PROJECT_DIR$/templates/login.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/msi.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/msi.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/msi.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/msi.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/msi.php" afterPath="$PROJECT_DIR$/public/barcode/html/msi.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/othercode.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/othercode.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/othercode.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/othercode.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/othercode.php" afterPath="$PROJECT_DIR$/public/barcode/html/othercode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/postnet.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/postnet.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/postnet.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/postnet.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/postnet.php" afterPath="$PROJECT_DIR$/public/barcode/html/postnet.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/s25.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/s25.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/s25.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/s25.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/s25.php" afterPath="$PROJECT_DIR$/public/barcode/html/s25.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/style.css" afterPath="$PROJECT_DIR$/public/barcode/html/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/test.php" afterPath="$PROJECT_DIR$/public/barcode/test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upca.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upca.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/upca.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/upca.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/upca.php" afterPath="$PROJECT_DIR$/public/barcode/html/upca.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upce.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upce.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/upce.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/upce.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/upce.php" afterPath="$PROJECT_DIR$/public/barcode/html/upce.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext2.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext2.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/upcext2.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/upcext2.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/upcext2.php" afterPath="$PROJECT_DIR$/public/barcode/html/upcext2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext5.barcode.php" afterPath="$PROJECT_DIR$/lib/fbx/Fab/barcode/class/upcext5.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/class/upcext5.barcode.php" afterPath="$PROJECT_DIR$/public/barcode/class/upcext5.barcode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/barcode/html/upcext5.php" afterPath="$PROJECT_DIR$/public/barcode/html/upcext5.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/config.ini" afterPath="$PROJECT_DIR$/lib/config.ini" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="veganet.iws" />
@@ -114,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/lib/config.ini">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -124,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.028436018">
-              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -138,7 +59,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/fbx/Fab/SuiviFicheDeProd.php" />
         <option value="$PROJECT_DIR$/templates/Suivi/ProductionReclame.twig" />
         <option value="$PROJECT_DIR$/public/js/ProductionFicheDeProd.js" />
         <option value="$PROJECT_DIR$/templates/elements/elementsJs.twig" />
@@ -188,6 +108,7 @@
         <option value="$PROJECT_DIR$/public/csv/import/file/exemple.csv" />
         <option value="$PROJECT_DIR$/templates/login.twig" />
         <option value="$PROJECT_DIR$/templates/Production/ProductionDossierDeFab.twig" />
+        <option value="$PROJECT_DIR$/lib/config.ini" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -483,7 +404,13 @@
       <option name="project" value="LOCAL" />
       <updated>1438121574746</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="v1.0.1">
+      <created>1446984385359</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1446984385359</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -496,7 +423,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1656017" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19488817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1970181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17305644" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -535,9 +462,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1826411" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -555,7 +482,8 @@
     <MESSAGE value="1st commit" />
     <MESSAGE value="init" />
     <MESSAGE value="v1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1" />
+    <MESSAGE value="v1.0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -848,6 +776,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -897,6 +826,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.060728744">
           <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -910,7 +840,7 @@
     <entry file="file://$PROJECT_DIR$/lib/config.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -918,7 +848,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.028436018">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
           <folding />
         </state>
       </provider>
